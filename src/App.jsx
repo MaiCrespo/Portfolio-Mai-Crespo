@@ -5,8 +5,20 @@ import cardUI from "./assets/Card - UI:UX.png";
 import cardGraphic from "./assets/Card - Graphic Design.png";
 import cardIllustration from "./assets/Card - Illustrations.png";
 
+// Import and sort illustrations: Die Cuts first
+const illustrationImages = import.meta.glob(
+  "./assets/Illustrations/*.{png,jpg,jpeg,svg}",
+  { eager: true }
+);
+const illustrations = Object.entries(illustrationImages)
+  .map(([path, mod]) => ({
+    src: mod.default,
+    isDieCut: path.includes("_Die_Cut"),
+  }))
+  .sort((a, b) => b.isDieCut - a.isDieCut);
+
 function App() {
-  const [showCards, setShowCards] = useState(false);
+  const [view, setView] = useState("landing");
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20, scale: 0.95 },
@@ -37,88 +49,122 @@ function App() {
   return (
     <div className="app-wrapper">
       <AnimatePresence mode="wait">
-        {!showCards ? (
+        {view === "landing" && (
           <motion.main
             key="landing"
             className="container"
             initial="hidden"
             animate="visible"
             exit={{ opacity: 0, y: -20 }}
-            transition={{ staggerChildren: 0.2 }}
           >
             <motion.img
-              layoutId="logo"
               src={logo}
-              className="logo"
+              className="landing-logo"
               variants={itemVariants}
-              whileHover={{ rotate: [0, -5, 5, -5, 5, 0] }}
             />
-
-            <motion.h1
-              layoutId="main-title"
-              className="title"
-              variants={itemVariants}
-            >
+            <motion.h1 className="title" variants={itemVariants}>
               MAI CRESPO
             </motion.h1>
-
             <motion.p className="description" variants={itemVariants}>
               Hello, I'm a UI/UX Designer with a strong background in <br />
               Illustration and Graphic Design. Aside from problem-solving <br />
               through tech, I like to draw crazy weird dark things.
             </motion.p>
-
             <motion.button
               className="cta-button"
               variants={itemVariants}
-              onClick={() => setShowCards(true)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              onClick={() => setView("gallery")}
             >
               PICK A CARD
             </motion.button>
           </motion.main>
-        ) : (
-          <motion.div key="gallery" className="gallery-screen">
+        )}
+
+        {view === "gallery" && (
+          <motion.div
+            key="gallery"
+            className="gallery-screen"
+            exit={{ opacity: 0 }}
+          >
             <div className="card-screen-header">
-              <motion.h1
-                layoutId="main-title"
-                className="title"
-                style={{ fontSize: "2rem", cursor: "pointer", width: "auto" }}
-                onClick={() => setShowCards(false)}
+              <h1
+                className="header-name left"
+                onClick={() => setView("landing")}
               >
                 MAI CRESPO
-              </motion.h1>
-
-              <motion.img
-                layoutId="logo"
+              </h1>
+              <div />
+              <img
                 src={logo}
-                className="logo"
-                style={{ width: "50px", cursor: "pointer", marginBottom: 0 }}
-                onClick={() => setShowCards(false)}
-                whileHover={{ rotate: [0, -10, 10, -10, 10, 0] }}
+                className="header-logo-small"
+                onClick={() => setView("landing")}
               />
             </div>
-
+            <h2 className="sub-header">Choose one</h2>
             <div className="cards-container">
-              {[cardUI, cardGraphic, cardIllustration].map((img, i) => (
+              {[
+                { img: cardUI, id: "ui" },
+                { img: cardGraphic, id: "graphic" },
+                { img: cardIllustration, id: "illustration" },
+              ].map((card, i) => (
                 <motion.img
                   key={i}
-                  src={img}
+                  src={card.img}
                   className="card"
                   variants={cardFlick}
                   initial="hidden"
                   animate="visible"
-                  exit={{ y: 800, opacity: 0 }}
                   custom={i}
-                  whileHover={{
-                    y: -40,
-                    rotate: 0,
-                    scale: 1.15,
-                    zIndex: 20,
-                    transition: { duration: 0.3 },
-                  }}
+                  whileHover={{ y: -40, rotate: 0, scale: 1.1, zIndex: 20 }}
+                  onClick={() =>
+                    card.id === "illustration" && setView("illustrations")
+                  }
                 />
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {view === "illustrations" && (
+          <motion.div
+            key="illustrations"
+            className="gallery-screen scrollable"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="card-screen-header">
+              <div className="header-back" onClick={() => setView("gallery")}>
+                &lt; ILLUSTRATIONS
+              </div>
+              <h1
+                className="header-name center"
+                onClick={() => setView("landing")}
+              >
+                MAI CRESPO
+              </h1>
+              <img
+                src={logo}
+                className="header-logo-small"
+                onClick={() => setView("landing")}
+              />
+            </div>
+            <div className="zigzag-grid">
+              {illustrations.map((item, i) => (
+                <motion.div
+                  key={i}
+                  className={`zigzag-item ${i % 2 === 0 ? "left" : "right"}`}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                >
+                  <img
+                    src={item.src}
+                    className={`large-illustration ${
+                      item.isDieCut ? "die-cut-style" : ""
+                    }`}
+                    alt=""
+                  />
+                </motion.div>
               ))}
             </div>
           </motion.div>
