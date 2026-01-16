@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Hellishy";
+  src: url("./assets/fonts/Hellishy.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "NeuePlak";
+  src: url("./assets/fonts/NeuePlak.woff2") format("woff2");
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle, #4a0404 0%, #000000 100%);
+  color: white;
+  font-family: "NeuePlak", sans-serif;
+  overflow-x: hidden;
+}
+
+.gallery-screen.scrollable {
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+.card-screen-header {
+  width: 100%;
+  padding: 40px 60px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.header-name.left {
+  grid-column: 1;
+  justify-self: start;
+}
+.header-name.center {
+  grid-column: 2;
+}
+.header-logo-small {
+  grid-column: 3;
+  justify-self: end;
+  width: 50px;
+  cursor: pointer;
+}
+
+.sub-header {
+  font-weight: normal;
+  font-size: 42px;
+  margin: 40px 0 80px;
+}
+
+.zigzag-grid {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px 100px;
+  gap: 0;
+}
+
+.zigzag-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: -50px;
+}
+
+.left-row {
+  justify-content: flex-start;
+}
+.right-row {
+  justify-content: flex-end;
+}
+
+.large-illustration {
+  width: 50%;
+  height: auto;
+  object-fit: contain;
+}
+
+.die-cut-large {
+  width: 70%;
+}
+
+.header-back {
+  font-family: "Hellishy", serif;
+  font-size: 1.4rem;
+  text-decoration: underline;
+  cursor: pointer;
+}

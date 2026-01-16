@@ -1,0 +1,98 @@
+@font-face {
+  font-family: "Hellishy";
+  src: url("./assets/fonts/Hellishy.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "NeuePlak";
+  src: url("./assets/fonts/NeuePlak.woff2") format("woff2");
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle, #4a0404 0%, #000000 100%);
+  color: white;
+  font-family: "NeuePlak", sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gallery-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.card-screen-header {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.back-link {
+  font-family: "Hellishy", serif;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.illustrations-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 140px 60px 80px 60px;
+  overflow-y: auto;
+  height: 100vh;
+  width: 100%;
+  scrollbar-width: none;
+}
+
+.illustrations-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.illustration-item {
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+}
+
+.sub-header {
+  font-family: "NeuePlak", sans-serif;
+  font-weight: 400;
+  font-size: 38px;
+  color: white;
+  margin-top: 140px;
+  margin-bottom: -40px;
+  text-align: center;
+  width: 100%;
+}
+
+.cards-container {
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.card {
+  width: 320px;
+  cursor: pointer;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.6));
+}
