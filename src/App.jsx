@@ -80,18 +80,48 @@ function App() {
             <motion.img
               src={logo}
               className="landing-logo"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+                delay: 0.1,
+              }}
               whileHover={{ rotate: [0, -10, 10, -10, 10, 0] }}
-              transition={{ duration: 0.3 }}
             />
-            <h1 className="landing-title">MAI CRESPO</h1>
-            <p className="landing-description">
+
+            <motion.h1
+              className="landing-title"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              MAI CRESPO
+            </motion.h1>
+
+            <motion.p
+              className="landing-description"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
               Hello, I'm a UI/UX Designer with a strong background in <br />
               Illustration and Graphic Design. Aside from problem-solving <br />
               through tech, I like to draw crazy weird dark things.
-            </p>
-            <button className="cta-button" onClick={() => setView("gallery")}>
+            </motion.p>
+
+            <motion.button
+              className="cta-button"
+              onClick={() => setView("gallery")}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               PICK A CARD
-            </button>
+            </motion.button>
           </motion.main>
         )}
 
