@@ -5,12 +5,17 @@ import cardUI from "./assets/Card - UI:UX.png";
 import cardGraphic from "./assets/Card - Graphic Design.png";
 import cardIllustration from "./assets/Card - Illustrations.png";
 
+// Import Assets
 const illustrationImages = import.meta.glob(
   "./assets/Illustrations/*.{png,jpg,jpeg,svg}",
   { eager: true }
 );
+const graphicAssets = import.meta.glob(
+  "./assets/Graphic Design/*.{png,jpg,jpeg,svg,pdf}",
+  { eager: true }
+);
 
-const manualOrder = [
+const manualOrderIllustration = [
   "Abomination",
   "Satanic_Panic",
   "Frog_Tarot",
@@ -43,6 +48,43 @@ const manualOrder = [
   "Flaming_Sword_Aziraphale_",
 ];
 
+const manualOrderGraphic = [
+  "Hermit",
+  "Goose",
+  "Superhero",
+  "1st",
+  "2nd",
+  "3rd",
+  "Wormhole",
+  "Gerard Way_",
+  "Swaolamb",
+  "Travel Brochure",
+  "pencil art",
+  "BEEF",
+  "CHICKEN",
+  "SHRIMP",
+  "Can Mock-Up",
+  "Yungblud",
+  "Yungblud2",
+];
+
+const getGraphicData = () => {
+  const assets = Object.entries(graphicAssets);
+  const data = {};
+  assets.forEach(([path, mod]) => {
+    const fileName = path.split("/").pop().split(".")[0];
+    const extension = path.split(".").pop().toLowerCase();
+    if (!data[fileName]) data[fileName] = { name: fileName };
+    if (extension === "pdf") data[fileName].pdfSrc = mod.default;
+    else data[fileName].imgSrc = mod.default;
+  });
+  return Object.values(data).sort((a, b) => {
+    const indexA = manualOrderGraphic.indexOf(a.name);
+    const indexB = manualOrderGraphic.indexOf(b.name);
+    return (indexA === -1 ? 99 : indexA) - (indexB === -1 ? 99 : indexB);
+  });
+};
+
 const illustrations = Object.entries(illustrationImages)
   .map(([path, mod]) => {
     const fileName = path.split("/").pop().split(".")[0];
@@ -54,14 +96,13 @@ const illustrations = Object.entries(illustrationImages)
         fileName === "Pearl-Of-The-Orient" || fileName === "Ghost",
     };
   })
-  .sort((a, b) => {
-    const indexA = manualOrder.indexOf(a.name);
-    const indexB = manualOrder.indexOf(b.name);
-    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-    if (indexA !== -1) return -1;
-    if (indexB !== -1) return 1;
-    return 0;
-  });
+  .sort(
+    (a, b) =>
+      manualOrderIllustration.indexOf(a.name) -
+      manualOrderIllustration.indexOf(b.name)
+  );
+
+const graphics = getGraphicData();
 
 function App() {
   const [view, setView] = useState("landing");
@@ -69,6 +110,7 @@ function App() {
   return (
     <div className="app-wrapper">
       <AnimatePresence mode="wait">
+        {/* LANDING PAGE */}
         {view === "landing" && (
           <motion.main
             key="landing"
@@ -79,52 +121,27 @@ function App() {
           >
             <motion.img
               src={logo}
-              className="landing-logo"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 20,
-                delay: 0.1,
+              className="landing-logo-centered"
+              whileHover={{
+                x: [0, -2, 2, -2, 2, 0],
+                y: [0, 1, -1, 1, -1, 0],
+                rotate: [0, -1, 1, -1, 1, 0],
+                transition: { duration: 0.1, repeat: Infinity },
               }}
-              whileHover={{ rotate: [0, -10, 10, -10, 10, 0] }}
             />
-
-            <motion.h1
-              className="landing-title"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              MAI CRESPO
-            </motion.h1>
-
-            <motion.p
-              className="landing-description"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
+            <h1 className="landing-title">MAI CRESPO</h1>
+            <p className="landing-description">
               Hello, I'm a UI/UX Designer with a strong background in <br />
               Illustration and Graphic Design. Aside from problem-solving <br />
               through tech, I like to draw crazy weird dark things.
-            </motion.p>
-
-            <motion.button
-              className="cta-button"
-              onClick={() => setView("gallery")}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            </p>
+            <button className="cta-button" onClick={() => setView("gallery")}>
               PICK A CARD
-            </motion.button>
+            </button>
           </motion.main>
         )}
 
+        {/* SELECTION SCREEN */}
         {view === "gallery" && (
           <motion.div
             key="gallery"
@@ -146,25 +163,31 @@ function App() {
             </div>
             <h2 className="choose-one-text">Choose one</h2>
             <div className="cards-flex-container">
-              {[cardUI, cardGraphic, cardIllustration].map((img, i) => (
-                <motion.img
-                  key={i}
-                  src={img}
-                  className="tarot-card"
-                  initial={{ y: 500, opacity: 0 }}
-                  animate={{
-                    y: 0,
-                    opacity: 1,
-                    rotate: i === 0 ? -10 : i === 2 ? 10 : 0,
-                  }}
-                  whileHover={{ y: -30, rotate: 0, scale: 1.05 }}
-                  onClick={() => i === 2 && setView("illustrations")}
-                />
-              ))}
+              <motion.img
+                src={cardUI}
+                className="tarot-card"
+                animate={{ y: 40, rotate: -8 }}
+                whileHover={{ y: -20, rotate: 0, scale: 1.05 }}
+              />
+              <motion.img
+                src={cardGraphic}
+                className="tarot-card"
+                animate={{ y: -20, rotate: 3 }}
+                whileHover={{ y: -50, rotate: 0, scale: 1.05 }}
+                onClick={() => setView("graphicDesign")}
+              />
+              <motion.img
+                src={cardIllustration}
+                className="tarot-card"
+                animate={{ y: 60, rotate: 12 }}
+                whileHover={{ y: 10, rotate: 0, scale: 1.05 }}
+                onClick={() => setView("illustrations")}
+              />
             </div>
           </motion.div>
         )}
 
+        {/* ILLUSTRATIONS (ZIGZAG) */}
         {view === "illustrations" && (
           <motion.div
             key="illustrations"
@@ -172,7 +195,7 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <div className="card-screen-header">
+            <div className="card-screen-header fixed-header">
               <div
                 className="header-back-link"
                 onClick={() => setView("gallery")}
@@ -191,10 +214,9 @@ function App() {
                 onClick={() => setView("landing")}
               />
             </div>
-
-            <div className="header-text-container">
-              <h2 className="illustration-title">Estranged Amalgamations</h2>
-              <p className="illustration-body">
+            <div className="illustrations-intro">
+              <h1 className="intro-title">Estranged Amalgamations</h1>
+              <p className="intro-desc">
                 An assortment of drawings, fan art, sticker ideas, and
                 spontaneous inspirations. Some are <br />
                 deliberate. Some happened accidentally. All of them felt
@@ -202,7 +224,6 @@ function App() {
                 Thank you for witnessing the results.
               </p>
             </div>
-
             <div className="zigzag-layout">
               {illustrations.map((item, i) => (
                 <div
@@ -213,12 +234,58 @@ function App() {
                 >
                   <motion.img
                     src={item.src}
-                    className={`illustration-img 
-                      ${item.isDieCut ? "img-die-cut" : ""} 
-                      ${item.isSpecialLarge ? "img-orient-large" : ""}`}
+                    className={`illustration-img ${
+                      item.isDieCut ? "img-die-cut" : ""
+                    } ${item.isSpecialLarge ? "img-orient-large" : ""}`}
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                  />
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* GRAPHIC DESIGN (HORIZONTAL + NUMBERS) */}
+        {view === "graphicDesign" && (
+          <motion.div
+            key="graphicDesign"
+            className="horizontal-gallery-screen"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <div className="card-screen-header fixed-header">
+              <div
+                className="header-back-link"
+                onClick={() => setView("gallery")}
+              >
+                &lt; GRAPHIC DESIGN
+              </div>
+              <h1
+                className="header-name-center"
+                onClick={() => setView("landing")}
+              >
+                MAI CRESPO
+              </h1>
+              <img
+                src={logo}
+                className="header-logo-right"
+                onClick={() => setView("landing")}
+              />
+            </div>
+            <div className="horizontal-scroll-container">
+              {graphics.map((item, i) => (
+                <div key={i} className="horizontal-item-container">
+                  <span className="item-number">
+                    {(i + 1).toString().padStart(2, "0")}
+                  </span>
+                  <img
+                    src={item.imgSrc}
+                    className="horizontal-img"
+                    onClick={() =>
+                      item.pdfSrc && window.open(item.pdfSrc, "_blank")
+                    }
                   />
                 </div>
               ))}

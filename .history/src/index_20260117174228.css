@@ -1,0 +1,319 @@
+@font-face {
+  font-family: "Hellishy";
+  src: url("./assets/fonts/Hellishy.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "NeuePlak";
+  src: url("./assets/fonts/NeuePlak.woff2") format("woff2");
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle, #4a0404 0%, #000000 100%);
+  color: white;
+  font-family: "NeuePlak", sans-serif;
+  overflow-x: hidden;
+}
+
+.app-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+/* Landing Page */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.landing-logo {
+  width: 180px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.landing-title {
+  font-family: "Hellishy", serif;
+  font-size: clamp(3rem, 10vw, 8rem);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.landing-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 20px 0 40px;
+}
+
+.cta-button {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 12px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: "NeuePlak", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: white;
+  color: #4a0404;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Global Header */
+.card-screen-header {
+  width: 100%;
+  padding: 30px 60px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background-color: transparent;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.header-name-left,
+.header-name-center {
+  font-family: "Hellishy";
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 0;
+  color: white;
+}
+
+.header-name-left {
+  grid-column: 1;
+  justify-self: start;
+}
+.header-name-center {
+  grid-column: 2;
+}
+
+.header-logo-right {
+  grid-column: 3;
+  justify-self: end;
+  width: 45px;
+  height: auto;
+  cursor: pointer;
+}
+
+.header-back-link {
+  grid-column: 1;
+  justify-self: start;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: "Hellishy";
+  font-size: 1.2rem;
+  color: white;
+}
+
+/* Gallery Screen */
+.gallery-screen {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.choose-one-text {
+  font-weight: normal;
+  font-size: 42px;
+  margin: 0 0 50px 0;
+}
+
+.cards-flex-container {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.tarot-card {
+  width: 280px;
+  height: auto;
+  cursor: pointer;
+}
+
+/* Illustrations Background & Text */
+.gallery-screen-scroll {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(135deg, #6b0000, #000000, #4a0404, #000000);
+  background-size: 400% 400%;
+  animation: gradientBG 18s ease-in-out infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.header-text-container {
+  text-align: center;
+  margin-top: 180px;
+  padding: 0 20px;
+  max-width: 1100px;
+  z-index: 10;
+}
+
+.illustration-title {
+  font-family: "Hellishy", serif;
+  font-size: 3.5rem;
+  font-weight: normal;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+.illustration-body {
+  font-family: "NeuePlak", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Zigzag Grid */
+.zigzag-layout {
+  width: 100%;
+  max-width: 1400px;
+  padding: 80px 40px 100px;
+  margin: 0 auto;
+}
+
+.zigzag-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: -80px;
+}
+
+.row-left {
+  justify-content: flex-start;
+}
+.row-right {
+  justify-content: flex-end;
+}
+
+.illustration-img {
+  width: 45%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.7));
+}
+
+.img-die-cut {
+  width: 60%;
+}
+
+.img-orient-large {
+  width: 85%;
+  max-width: 1000px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .card-screen-header {
+    padding: 20px;
+  }
+  .header-name-left,
+  .header-name-center {
+    font-size: 1.5rem;
+  }
+  .illustration-title {
+    font-size: 2.2rem;
+  }
+  .illustration-body {
+    font-size: 1rem;
+    br {
+      display: none;
+    }
+  }
+  .header-text-container {
+    margin-top: 120px;
+  }
+  .zigzag-layout {
+    padding-top: 60px;
+  }
+  .zigzag-row {
+    margin-bottom: 40px;
+    justify-content: center !important;
+  }
+  .illustration-img {
+    width: 95%;
+  }
+  .img-orient-large {
+    width: 100%;
+  }
+  .gallery-screen {
+    height: auto;
+    padding: 120px 0;
+  }
+  .cards-flex-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.horizontal-gallery-screen {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle, #4a0404 0%, #000000 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 0 100px;
+  height: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-item {
+  flex: 0 0 auto;
+  height: 65vh;
+}
+
+.horizontal-img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.8));
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
