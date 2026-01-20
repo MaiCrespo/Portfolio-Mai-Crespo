@@ -211,8 +211,8 @@ body {
   align-items: flex-start;
   gap: 40px;
   padding: 0 100px;
-  padding-top: 250px; /* lower content below the fixed header and dropdown */
-  height: calc(100vh - 250px);
+  padding-top: 175px; /* lower content below the fixed header */
+  height: calc(100vh - 175px);
   overflow-x: auto;
   scrollbar-width: none;
 }

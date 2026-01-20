@@ -135,51 +135,48 @@ function App() {
         {view !== "landing" &&
           view !== "graphicDesign" &&
           view !== "illustrations" && (
-            <div className="card-screen-header">
-              <h1
-                className="header-name-left"
-                onClick={() => setView("landing")}
-              >
-                MAI CRESPO
-              </h1>
-              <div
-                className="nav-dropdown-wrapper"
-                onMouseEnter={() => setIsNavOpen(true)}
-                onMouseLeave={() => setIsNavOpen(false)}
-              >
-                <img src={logo} className="header-logo-trigger" alt="logo" />
-                <AnimatePresence>
-                  {isNavOpen && (
-                    <motion.div
-                      className="nav-menu-container"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <div className="nav-separator"></div>
-                      <ul className="nav-menu-list">
-                        {navItems.map((item, i) => (
-                          <motion.li
-                            key={item.label}
-                            initial={{ opacity: 0, x: 10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.05 }}
-                            onClick={() => {
-                              setView(item.target);
-                              setIsNavOpen(false);
-                            }}
-                          >
-                            {item.label}
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+          <div className="card-screen-header">
+            <h1 className="header-name-left" onClick={() => setView("landing")}>
+              MAI CRESPO
+            </h1>
+            <div
+              className="nav-dropdown-wrapper"
+              onMouseEnter={() => setIsNavOpen(true)}
+              onMouseLeave={() => setIsNavOpen(false)}
+            >
+              <img src={logo} className="header-logo-trigger" alt="logo" />
+              <AnimatePresence>
+                {isNavOpen && (
+                  <motion.div
+                    className="nav-menu-container"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="nav-separator"></div>
+                    <ul className="nav-menu-list">
+                      {navItems.map((item, i) => (
+                        <motion.li
+                          key={item.label}
+                          initial={{ opacity: 0, x: 10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.05 }}
+                          onClick={() => {
+                            setView(item.target);
+                            setIsNavOpen(false);
+                          }}
+                        >
+                          {item.label}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-          )}
+          </div>
+        )}
 
         {/* LANDING */}
         {view === "landing" && (
@@ -301,10 +298,7 @@ function App() {
             animate={{ opacity: 1 }}
           >
             <div className="section-header">
-              <div
-                className="header-back-link"
-                onClick={() => setView("gallery")}
-              >
+              <div className="header-back-link" onClick={() => setView("gallery")}>
                 &lt;{" "}
                 <span className="header-back-link-text">ILLUSTRATIONS</span>
               </div>

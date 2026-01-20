@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "./assets/Head@300x.png";
 import cardUI from "./assets/Card - UI:UX.png";
@@ -110,7 +110,7 @@ const graphics = getGraphicData();
 function App() {
   const [view, setView] = useState("landing");
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [activeLightbox, setActiveLightbox] = useState(null);
+  const [activeIllustrationSrc, setActiveIllustrationSrc] = useState(null);
 
   const navItems = [
     { label: "About Me", target: "landing" },
@@ -119,67 +119,53 @@ function App() {
     { label: "UI/UX Design", target: "gallery" },
   ];
 
-  useEffect(() => {
-    if (!activeLightbox) return;
-    const onKeyDown = (e) => {
-      if (e.key === "Escape") setActiveLightbox(null);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [activeLightbox]);
-
   return (
     <div className="app-wrapper">
       <AnimatePresence mode="wait">
         {/* REFINED NAVIGATION HEADER */}
-        {view !== "landing" &&
-          view !== "graphicDesign" &&
-          view !== "illustrations" && (
-            <div className="card-screen-header">
-              <h1
-                className="header-name-left"
-                onClick={() => setView("landing")}
-              >
-                MAI CRESPO
-              </h1>
-              <div
-                className="nav-dropdown-wrapper"
-                onMouseEnter={() => setIsNavOpen(true)}
-                onMouseLeave={() => setIsNavOpen(false)}
-              >
-                <img src={logo} className="header-logo-trigger" alt="logo" />
-                <AnimatePresence>
-                  {isNavOpen && (
-                    <motion.div
-                      className="nav-menu-container"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <div className="nav-separator"></div>
-                      <ul className="nav-menu-list">
-                        {navItems.map((item, i) => (
-                          <motion.li
-                            key={item.label}
-                            initial={{ opacity: 0, x: 10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.05 }}
-                            onClick={() => {
-                              setView(item.target);
-                              setIsNavOpen(false);
-                            }}
-                          >
-                            {item.label}
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+        {view !== "landing" && (
+          <div className="card-screen-header">
+            <h1 className="header-name-left" onClick={() => setView("landing")}>
+              MAI CRESPO
+            </h1>
+            <div
+              className="nav-dropdown-wrapper"
+              onMouseEnter={() => setIsNavOpen(true)}
+              onMouseLeave={() => setIsNavOpen(false)}
+            >
+              <img src={logo} className="header-logo-trigger" alt="logo" />
+              <AnimatePresence>
+                {isNavOpen && (
+                  <motion.div
+                    className="nav-menu-container"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="nav-separator"></div>
+                    <ul className="nav-menu-list">
+                      {navItems.map((item, i) => (
+                        <motion.li
+                          key={item.label}
+                          initial={{ opacity: 0, x: 10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.05 }}
+                          onClick={() => {
+                            setView(item.target);
+                            setIsNavOpen(false);
+                          }}
+                        >
+                          {item.label}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-          )}
+          </div>
+        )}
 
         {/* LANDING */}
         {view === "landing" && (
@@ -300,58 +286,6 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <div className="section-header">
-              <div
-                className="header-back-link"
-                onClick={() => setView("gallery")}
-              >
-                &lt;{" "}
-                <span className="header-back-link-text">ILLUSTRATIONS</span>
-              </div>
-              <h1
-                className="header-name-center"
-                onClick={() => setView("landing")}
-              >
-                MAI CRESPO
-              </h1>
-
-              <div
-                className="nav-dropdown-wrapper"
-                onMouseEnter={() => setIsNavOpen(true)}
-                onMouseLeave={() => setIsNavOpen(false)}
-              >
-                <img src={logo} className="header-logo-trigger" alt="logo" />
-                <AnimatePresence>
-                  {isNavOpen && (
-                    <motion.div
-                      className="nav-menu-container"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <div className="nav-separator"></div>
-                      <ul className="nav-menu-list">
-                        {navItems.map((item, i) => (
-                          <motion.li
-                            key={item.label}
-                            initial={{ opacity: 0, x: 10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.05 }}
-                            onClick={() => {
-                              setView(item.target);
-                              setIsNavOpen(false);
-                            }}
-                          >
-                            {item.label}
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
             <div className="illustrations-intro">
               <h1 className="intro-title">Estranged Amalgamations</h1>
               <p className="intro-desc">
@@ -373,10 +307,45 @@ function App() {
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    onClick={() => setActiveIllustrationSrc(item.src)}
                   />
                 </div>
               ))}
             </div>
+
+            <AnimatePresence>
+              {activeIllustrationSrc && (
+                <motion.div
+                  className="lightbox-overlay"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={() => setActiveIllustrationSrc(null)}
+                >
+                  <motion.img
+                    src={activeIllustrationSrc}
+                    className="lightbox-image"
+                    initial={{ opacity: 0, scale: 0.96, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.96, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                  <button
+                    className="lightbox-close"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveIllustrationSrc(null);
+                    }}
+                    aria-label="Close"
+                    type="button"
+                  >
+                    ✕
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         )}
 
@@ -388,58 +357,6 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <div className="graphic-header">
-              <div
-                className="header-back-link"
-                onClick={() => setView("gallery")}
-              >
-                &lt;{" "}
-                <span className="header-back-link-text">GRAPHIC DESIGN</span>
-              </div>
-              <h1
-                className="header-name-center"
-                onClick={() => setView("landing")}
-              >
-                MAI CRESPO
-              </h1>
-
-              <div
-                className="nav-dropdown-wrapper"
-                onMouseEnter={() => setIsNavOpen(true)}
-                onMouseLeave={() => setIsNavOpen(false)}
-              >
-                <img src={logo} className="header-logo-trigger" alt="logo" />
-                <AnimatePresence>
-                  {isNavOpen && (
-                    <motion.div
-                      className="nav-menu-container"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <div className="nav-separator"></div>
-                      <ul className="nav-menu-list">
-                        {navItems.map((item, i) => (
-                          <motion.li
-                            key={item.label}
-                            initial={{ opacity: 0, x: 10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.05 }}
-                            onClick={() => {
-                              setView(item.target);
-                              setIsNavOpen(false);
-                            }}
-                          >
-                            {item.label}
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
             <div className="horizontal-scroll-container">
               {graphics.map((item, i) => (
                 <div key={i} className="horizontal-item-container">
@@ -450,63 +367,12 @@ function App() {
                     src={item.imgSrc}
                     className="horizontal-img"
                     onClick={() =>
-                      setActiveLightbox({
-                        imgSrc: item.imgSrc,
-                        pdfSrc: item.pdfSrc ?? null,
-                        title: item.name ?? null,
-                      })
+                      item.pdfSrc && window.open(item.pdfSrc, "_blank")
                     }
                   />
                 </div>
               ))}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {activeLightbox?.imgSrc && (
-          <motion.div
-            className="lightbox-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
-            onClick={() => setActiveLightbox(null)}
-          >
-            <motion.div
-              className="lightbox-content"
-              initial={{ opacity: 0, scale: 0.97, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.97, y: 10 }}
-              transition={{ duration: 0.18 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={activeLightbox.imgSrc}
-                className="lightbox-image"
-                alt={activeLightbox.title ?? "Graphic design work"}
-              />
-
-              <div className="lightbox-actions">
-                {activeLightbox.pdfSrc && (
-                  <button
-                    className="lightbox-action-btn"
-                    type="button"
-                    onClick={() => window.open(activeLightbox.pdfSrc, "_blank")}
-                  >
-                    Open PDF
-                  </button>
-                )}
-                <button
-                  className="lightbox-action-btn"
-                  type="button"
-                  onClick={() => setActiveLightbox(null)}
-                >
-                  Close
-                </button>
-              </div>
-            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
