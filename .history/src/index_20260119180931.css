@@ -104,12 +104,6 @@ body {
   letter-spacing: 0.06em;
   margin: 0;
 }
-
-.landing-description {
-  font-size: 1.25rem;
-  line-height: 1.7;
-  margin: 26px 0 0;
-}
 .cta-button {
   background: transparent;
   color: white;
@@ -119,16 +113,6 @@ body {
   cursor: pointer;
   letter-spacing: 2px;
   margin-top: 40px;
-  transition: box-shadow 0.25s ease, text-shadow 0.25s ease,
-    transform 0.25s ease, border-color 0.25s ease;
-}
-
-.cta-button:hover {
-  border-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.35),
-    0 0 42px rgba(255, 255, 255, 0.18);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.55);
-  transform: translateY(-1px);
 }
 
 /* Tarot Selection Screen (Screenshot 2026-01-19 at 5.57.22 PM) */
