@@ -106,69 +106,18 @@ const graphics = getGraphicData();
 
 function App() {
   const [view, setView] = useState("landing");
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
 
-  const navItems = [
-    { label: "About Me", target: "landing" },
-    { label: "Illustrations", target: "illustrations" },
-    { label: "Graphic Design", target: "graphicDesign" },
-    { label: "UI/UX Design", target: "gallery" },
+  const menuItems = [
+    { label: "Home", view: "landing" },
+    { label: "Gallery", view: "gallery" },
+    { label: "Illustrations", view: "illustrations" },
+    { label: "Graphic Design", view: "graphicDesign" },
   ];
 
   return (
     <div className="app-wrapper">
       <AnimatePresence mode="wait">
-        {/* SHARED NAVIGATION HEADER */}
-        {view !== "landing" && (
-          <div className="card-screen-header">
-            <h1 className="header-name-left" onClick={() => setView("landing")}>
-              MAI CRESPO
-            </h1>
-
-            <div
-              className="nav-dropdown-wrapper"
-              onMouseEnter={() => setIsNavOpen(true)}
-              onMouseLeave={() => setIsNavOpen(false)}
-            >
-              <img
-                src={logo}
-                className="header-logo-trigger"
-                alt="Navigation Trigger"
-              />
-
-              <AnimatePresence>
-                {isNavOpen && (
-                  <motion.div
-                    className="nav-menu-container"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="nav-separator"></div>
-                    <ul className="nav-menu-list">
-                      {navItems.map((item, i) => (
-                        <motion.li
-                          key={item.label}
-                          initial={{ opacity: 0, x: 10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.05 }}
-                          onClick={() => {
-                            setView(item.target);
-                            setIsNavOpen(false);
-                          }}
-                        >
-                          {item.label}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
-        )}
-
         {/* LANDING PAGE */}
         {view === "landing" && (
           <motion.main
@@ -205,11 +154,22 @@ function App() {
           <motion.div
             key="gallery"
             className="gallery-screen"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <h2 className="choose-one-text">Choose One</h2>
+            <div className="card-screen-header">
+              <h1
+                className="header-name-left"
+                onClick={() => setView("landing")}
+              >
+                MAI CRESPO
+              </h1>
+              <img
+                src={logo}
+                className="header-logo-right"
+                onClick={() => setView("landing")}
+              />
+            </div>
+            <h2 className="choose-one-text">Choose one</h2>
             <div className="cards-flex-container">
               <motion.img
                 src={cardUI}
@@ -235,7 +195,7 @@ function App() {
           </motion.div>
         )}
 
-        {/* ILLUSTRATIONS */}
+        {/* ILLUSTRATIONS (ZIGZAG) */}
         {view === "illustrations" && (
           <motion.div
             key="illustrations"
@@ -243,6 +203,25 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
+            <div className="card-screen-header fixed-header">
+              <div
+                className="header-back-link"
+                onClick={() => setView("gallery")}
+              >
+                &lt; ILLUSTRATIONS
+              </div>
+              <h1
+                className="header-name-center"
+                onClick={() => setView("landing")}
+              >
+                MAI CRESPO
+              </h1>
+              <img
+                src={logo}
+                className="header-logo-right"
+                onClick={() => setView("landing")}
+              />
+            </div>
             <div className="illustrations-intro">
               <h1 className="intro-title">Estranged Amalgamations</h1>
               <p className="intro-desc">
@@ -276,7 +255,7 @@ function App() {
           </motion.div>
         )}
 
-        {/* GRAPHIC DESIGN */}
+        {/* GRAPHIC DESIGN (HORIZONTAL + NUMBERS) */}
         {view === "graphicDesign" && (
           <motion.div
             key="graphicDesign"
@@ -284,6 +263,25 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
+            <div className="card-screen-header fixed-header">
+              <div
+                className="header-back-link"
+                onClick={() => setView("gallery")}
+              >
+                &lt; GRAPHIC DESIGN
+              </div>
+              <h1
+                className="header-name-center"
+                onClick={() => setView("landing")}
+              >
+                MAI CRESPO
+              </h1>
+              <img
+                src={logo}
+                className="header-logo-right"
+                onClick={() => setView("landing")}
+              />
+            </div>
             <div className="horizontal-scroll-container">
               {graphics.map((item, i) => (
                 <div key={i} className="horizontal-item-container">

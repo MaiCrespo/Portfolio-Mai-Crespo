@@ -1,0 +1,198 @@
+@font-face {
+  font-family: "Hellishy";
+  src: url("./assets/fonts/Hellishy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "NeuePlak";
+  src: url("./assets/fonts/NeuePlak.woff2") format("woff2");
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle, #4a0404 0%, #000000 100%);
+  color: white;
+  font-family: "NeuePlak", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Landing Page */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+.landing-logo-centered {
+  width: 200px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.landing-title {
+  font-family: "Hellishy", serif;
+  font-size: 10rem;
+  margin: 0;
+  line-height: 0.9;
+}
+.cta-button {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 12px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+.cta-button:hover {
+  background: white;
+  color: #4a0404;
+}
+
+/* Navigation Dropdown */
+.card-screen-header {
+  width: 100%;
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+.header-name-left {
+  font-family: "Hellishy";
+  cursor: pointer;
+  font-size: 2rem;
+}
+.nav-dropdown-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.header-logo-trigger {
+  width: 45px;
+  cursor: pointer;
+}
+.nav-menu-list {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  list-style: none;
+  padding: 15px;
+  margin: 0;
+  text-align: right;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  min-width: 160px;
+}
+.nav-menu-list li {
+  font-size: 1.1rem;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nav-menu-list li:hover {
+  color: #ff3b3b;
+}
+
+/* Illustrations */
+.gallery-screen-scroll {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 180px;
+}
+.illustrations-intro {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.intro-title {
+  font-family: "Hellishy", serif;
+  font-size: 4.5rem;
+  margin-bottom: 20px;
+}
+.zigzag-layout {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+.zigzag-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: -50px;
+}
+.row-left {
+  justify-content: flex-start;
+  padding-left: 5%;
+}
+.row-right {
+  justify-content: flex-end;
+  padding-right: 5%;
+}
+.illustration-img {
+  width: 40%;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.7));
+}
+
+/* Graphic Design (Numbers) */
+.horizontal-gallery-screen {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+}
+.horizontal-scroll-container {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding: 0 100px;
+  height: 100vh;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.horizontal-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 0 auto;
+}
+.item-number {
+  font-family: "NeuePlak", sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.horizontal-img {
+  height: 60vh;
+  width: auto;
+  border-radius: 8px;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.8));
+  cursor: pointer;
+}
+
+/* Selection Screen */
+.gallery-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.choose-one-text {
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  font-family: "Hellishy";
+}
+.cards-flex-container {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.tarot-card {
+  width: 300px;
+  cursor: pointer;
+}
