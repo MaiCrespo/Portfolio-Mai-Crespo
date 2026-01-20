@@ -202,13 +202,7 @@ function App() {
               <motion.img
                 src={cardUI}
                 className="tarot-card"
-                initial={{
-                  opacity: 0,
-                  x: -220,
-                  y: -260,
-                  rotate: -28,
-                  scale: 0.95,
-                }}
+                initial={{ opacity: 0, x: -220, y: -260, rotate: -28, scale: 0.95 }}
                 animate={{
                   opacity: 1,
                   x: 0,
@@ -249,13 +243,7 @@ function App() {
               <motion.img
                 src={cardIllustration}
                 className="tarot-card"
-                initial={{
-                  opacity: 0,
-                  x: 220,
-                  y: -240,
-                  rotate: 34,
-                  scale: 0.95,
-                }}
+                initial={{ opacity: 0, x: 220, y: -240, rotate: 34, scale: 0.95 }}
                 animate={{
                   opacity: 1,
                   x: 0,
