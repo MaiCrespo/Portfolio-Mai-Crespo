@@ -175,52 +175,52 @@ body {
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.35;
-  background: radial-gradient(circle, #ff5722, #ff6f3c, #ff8c42);
+  filter: blur(100px);
+  opacity: 0.5;
+  background: radial-gradient(circle, #ff6b35, #ff8c42, #ffa552);
 }
 
 .orb-1 {
-  width: 500px;
-  height: 500px;
-  top: -150px;
-  left: -100px;
+  width: 700px;
+  height: 700px;
+  top: -250px;
+  left: -150px;
   animation: float-1 25s ease-in-out infinite;
 }
 
 .orb-2 {
-  width: 450px;
-  height: 450px;
-  top: 15%;
-  right: -100px;
-  background: radial-gradient(circle, #ff6f3c, #ff8c42, #ffa552);
+  width: 600px;
+  height: 600px;
+  top: 20%;
+  right: -200px;
+  background: radial-gradient(circle, #ff8c42, #ffa552, #ffb366);
   animation: float-2 22s ease-in-out infinite;
 }
 
 .orb-3 {
-  width: 400px;
-  height: 400px;
-  bottom: 20%;
-  left: 15%;
-  background: radial-gradient(circle, #ff5722, #ff6f3c, #ff7a45);
+  width: 500px;
+  height: 500px;
+  bottom: -150px;
+  left: 25%;
+  background: radial-gradient(circle, #ff6b35, #ff7a45, #ff9357);
   animation: float-3 28s ease-in-out infinite;
 }
 
 .orb-4 {
-  width: 350px;
-  height: 350px;
-  top: 50%;
-  left: -80px;
-  background: radial-gradient(circle, #ff8c42, #ffa552, #ffb366);
+  width: 450px;
+  height: 450px;
+  top: 60%;
+  left: -100px;
+  background: radial-gradient(circle, #ffa552, #ffb366, #ffc27a);
   animation: float-4 20s ease-in-out infinite;
 }
 
 .orb-5 {
-  width: 420px;
-  height: 420px;
-  bottom: 5%;
-  right: 10%;
-  background: radial-gradient(circle, #ff6f3c, #ff7a45, #ff8c42);
+  width: 550px;
+  height: 550px;
+  bottom: 10%;
+  right: -100px;
+  background: radial-gradient(circle, #ff7a45, #ff8c42, #ff9357);
   animation: float-5 24s ease-in-out infinite;
 }
 
@@ -328,7 +328,7 @@ body {
 .featured-projects {
   background: var(--black);
   color: var(--white);
-  padding: 8rem 4rem 6rem 4rem;
+  padding: 6rem 4rem;
   border-radius: 40px;
   position: relative;
   z-index: 10;
@@ -340,14 +340,13 @@ body {
   text-align: center;
   font-family: var(--font-display);
   font-weight: 400;
-  margin-top: -2rem;
 }
 
 .header-line {
-  width: 550px;
+  width: 350px;
   height: 2px;
   background: var(--white);
-  margin: 1.5rem auto 6rem;
+  margin: 1.5rem auto 4rem;
   position: relative;
 }
 
@@ -473,19 +472,13 @@ body {
   font-size: 1rem;
 }
 
-.footer-link {
-  color: var(--white);
-  text-decoration: none;
+.footer-links span {
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
 
-.footer-link:hover {
+.footer-links span:hover {
   opacity: 0.7;
-}
-
-.footer-links span {
-  color: var(--white);
 }
 
 .resume-btn {

@@ -473,19 +473,13 @@ body {
   font-size: 1rem;
 }
 
-.footer-link {
-  color: var(--white);
-  text-decoration: none;
+.footer-links span {
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
 
-.footer-link:hover {
+.footer-links span:hover {
   opacity: 0.7;
-}
-
-.footer-links span {
-  color: var(--white);
 }
 
 .resume-btn {
