@@ -120,7 +120,7 @@ function App() {
           </a>
         </div>
 
-        <a href={resumeFile} target="_blank" rel="noopener noreferrer">
+        <a href={myResume} target="_blank" rel="noopener noreferrer">
           <button className="resume-btn">MY RESUME</button>
         </a>
       </footer>

@@ -1,6 +1,7 @@
 import React from "react";
 
 import myResume from "./assets/PDFs/Mai Crespo Resume.pdf";
+
 import whiteLogo from "./assets/Head@300x.png";
 import gotItThumb from "./assets/UI:UX/Got It/Got it thumbnail.png";
 import daybreakThumb from "./assets/UI:UX/Daybreak/Daybreak thumbnail.png";
@@ -120,7 +121,7 @@ function App() {
           </a>
         </div>
 
-        <a href={resumeFile} target="_blank" rel="noopener noreferrer">
+        <a href={myResume} target="_blank" rel="noopener noreferrer">
           <button className="resume-btn">MY RESUME</button>
         </a>
       </footer>
