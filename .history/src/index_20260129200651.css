@@ -1,0 +1,149 @@
+:root {
+  --maroon: #70060e;
+  --cream: #ffe3a4;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  color: var(--maroon);
+  font-family: "NeuePlak", sans-serif;
+  overflow: hidden;
+}
+
+/* NAVIGATION: Centered, lowercase, Home is bold */
+.top-nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--maroon);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  color: white;
+  align-items: center;
+}
+
+.nav-item {
+  text-transform: none; /* Sentence case like reference */
+  font-size: 0.9rem;
+  font-weight: 300; /* Thin for non-active */
+}
+
+.nav-item.active {
+  font-weight: 700;
+} /* Only 'Home' is bold */
+
+.nav-separator {
+  width: 1px;
+  height: 18px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* WHITE LOGO FIX: Keeps it small in the corner */
+.nav-mini-logo {
+  position: absolute;
+  right: 40px;
+  width: 32px;
+  height: auto;
+}
+
+/* VERTICAL CENTERING: Pulls name and logo up from the bottom */
+.landing-container {
+  height: 100vh;
+  display: flex;
+  align-items: center; /* Centers everything vertically */
+  justify-content: center;
+  padding: 0 8%;
+}
+
+.landing-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  align-items: center; /* Aligns left and right sections */
+}
+
+/* BRANDING: Tight spacing between logo and name */
+.hero-logo {
+  width: 220px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.hero-name {
+  font-family: "Hellishy", serif;
+  font-size: 11rem;
+  line-height: 0.8; /* The overlapping 'squish' */
+  margin: 0;
+  letter-spacing: -3px;
+}
+
+/* BIO & PROFILE SECTION */
+.landing-right {
+  text-align: right;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.hero-intro {
+  font-size: 1.4rem;
+  line-height: 1.25;
+  margin-bottom: 25px;
+}
+
+.pill-button {
+  background: transparent;
+  border: 1px solid var(--maroon);
+  color: var(--maroon);
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.profile-wrapper {
+  position: relative;
+  width: 280px;
+  height: 280px;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 14px solid var(--maroon);
+}
+
+.curved-text-svg {
+  position: absolute;
+  top: -15%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+  transform: rotate(-10deg);
+}
+
+.bottom-footer-accent {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 25px;
+  background: black;
+  border-radius: 25px 25px 0 0;
+}

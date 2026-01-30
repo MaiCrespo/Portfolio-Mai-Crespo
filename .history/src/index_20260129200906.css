@@ -1,0 +1,173 @@
+:root {
+  --maroon: #70060e;
+  --cream: #ffe3a4;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  color: var(--maroon);
+  font-family: "NeuePlak", sans-serif;
+  overflow: hidden;
+}
+
+/* NAVIGATION */
+.top-nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--maroon);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  color: white;
+  align-items: center;
+}
+
+.nav-item {
+  text-transform: none;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.nav-item.active {
+  font-weight: 700;
+}
+
+.nav-separator {
+  width: 1px;
+  height: 18px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.nav-mini-logo {
+  position: absolute;
+  right: 40px;
+  width: 32px;
+}
+
+/* LANDING LAYOUT: VERTICAL CENTERING */
+.landing-container {
+  height: 100vh;
+  display: flex;
+  align-items: center; /* Pulls content up from the bottom */
+  justify-content: center;
+  padding: 0 8%;
+}
+
+.landing-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  align-items: center;
+}
+
+/* BRANDING */
+.hero-logo {
+  width: 220px;
+  margin-bottom: 10px;
+}
+
+.hero-name {
+  font-family: "Hellishy", serif;
+  font-size: 11rem;
+  line-height: 0.8;
+  margin: 0;
+  letter-spacing: -3px;
+}
+
+/* BIO & PROFILE */
+.landing-right {
+  text-align: right;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.hero-intro {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.pill-button {
+  background: transparent;
+  border: 1px solid var(--maroon);
+  color: var(--maroon);
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+/* CRESCENT PROFILE DESIGN */
+.profile-wrapper {
+  position: relative;
+  width: 280px;
+  height: 280px;
+}
+
+.crescent-bg {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--maroon);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.profile-img {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 10px solid var(--cream);
+  z-index: 2;
+}
+
+.curved-text-svg {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 320px;
+  height: 320px;
+  z-index: 3;
+}
+
+.curved-text-path {
+  fill: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.or-not {
+  position: absolute;
+  bottom: -15px;
+  right: 15px;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.bottom-footer-accent {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 25px;
+  background: black;
+  border-radius: 25px 25px 0 0;
+}

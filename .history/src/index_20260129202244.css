@@ -1,0 +1,161 @@
+:root {
+  --maroon: #70060e;
+  --cream: #ffe3a4;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  color: var(--maroon);
+  font-family: "NeuePlak", sans-serif;
+  overflow: hidden;
+}
+
+/* Nav Styles */
+.main-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--maroon);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  z-index: 100;
+}
+.nav-links-inner {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  color: white;
+}
+.nav-item {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+.nav-item.bold {
+  font-weight: 700;
+}
+.v-line {
+  width: 1px;
+  height: 18px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.nav-icon-small {
+  position: absolute;
+  right: 40px;
+  width: 30px;
+}
+
+/* Centered Hero Viewport */
+.hero-viewport {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 60px;
+}
+
+/* Left Brand Branding */
+.brand-img {
+  width: 200px;
+  margin-bottom: 5px;
+}
+.brand-text {
+  font-family: "Hellishy", serif;
+  font-size: 11rem;
+  line-height: 0.8;
+  margin: 0;
+  letter-spacing: -4px;
+}
+
+/* Right Bio Section Alignment */
+.bio-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.bio-text-group {
+  text-align: right;
+  max-width: 500px;
+  margin-bottom: 25px;
+}
+.bio-para {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+.pill-btn {
+  background: transparent;
+  border: 1px solid var(--maroon);
+  color: var(--maroon);
+  padding: 10px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* The Layered Profile Design */
+.profile-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+.maroon-disk {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 275px;
+  height: 275px;
+  background-color: var(--maroon);
+  border-radius: 50%;
+  z-index: 1;
+}
+.profile-img {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  width: 255px;
+  height: 255px;
+  border-radius: 50%;
+  border: 10px solid var(--cream);
+  z-index: 2;
+  object-fit: cover;
+}
+.curved-svg {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 330px;
+  height: 330px;
+  z-index: 3;
+}
+.svg-inner-text {
+  fill: white;
+  font-size: 9px;
+  font-weight: 600;
+}
+.or-not {
+  position: absolute;
+  bottom: -5px;
+  right: 15px;
+  font-style: italic;
+}
+
+.black-footer-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 25px;
+  background: black;
+  border-radius: 20px 20px 0 0;
+}
