@@ -1,0 +1,328 @@
+@font-face {
+  font-family: "Hellishy";
+  src: url("./assets/fonts/Hellishy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "NeuePlak";
+  src: url("./assets/fonts/NeuePlak.woff2") format("woff2");
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle, #4a0404 0%, #000000 100%);
+  color: white;
+  font-family: "NeuePlak", sans-serif;
+  overflow-x: hidden;
+}
+
+/* REFINED NAVIGATION (Matches Screenshot 2026-01-19 at 6.04.50 PM) */
+.card-screen-header {
+  width: 100%;
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  box-sizing: border-box;
+}
+
+/* Graphic Design header (matches screenshot style) */
+.graphic-header,
+.section-header {
+  width: 100%;
+  padding: 34px 60px 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2500;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.header-name-center {
+  font-family: "Hellishy";
+  font-size: 2.2rem;
+  margin: 0;
+  letter-spacing: 1px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.header-back-link {
+  font-family: "Hellishy";
+  font-size: 1.6rem;
+  cursor: pointer;
+  user-select: none;
+  letter-spacing: 1px;
+}
+
+.header-back-link-text {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.header-name-left {
+  font-family: "Hellishy";
+  cursor: pointer;
+  font-size: 2.2rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.nav-dropdown-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: -8px;
+}
+.header-logo-trigger {
+  width: 42px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  transition: transform 0.2s;
+}
+.header-logo-trigger:hover {
+  transform: scale(1.1);
+}
+
+.nav-menu-container {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 140px;
+}
+.nav-separator {
+  width: 50px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 5px 0 15px 0;
+}
+.nav-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: right;
+}
+.nav-menu-list li {
+  font-family: "NeuePlak", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  color: white;
+}
+.nav-menu-list li:hover {
+  opacity: 0.5;
+}
+
+/* Landing Page Elements */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+.landing-logo-centered {
+  width: 220px;
+  margin-bottom: 25px;
+}
+.landing-title {
+  font-family: "Hellishy", serif;
+  font-size: 11rem;
+  line-height: 0.85;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.landing-description {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  margin: 26px 0 0;
+}
+.cta-button {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 12px 45px;
+  border-radius: 50px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  margin-top: 40px;
+  transition: box-shadow 0.25s ease, text-shadow 0.25s ease,
+    transform 0.25s ease, border-color 0.25s ease;
+}
+
+.cta-button:hover {
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.35),
+    0 0 42px rgba(255, 255, 255, 0.18);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+/* Tarot Selection Screen (Screenshot 2026-01-19 at 5.57.22 PM) */
+.gallery-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.choose-one-text {
+  font-family: "Hellishy", serif;
+  font-size: 2.2rem;
+  margin-bottom: 60px;
+  font-weight: 400;
+}
+.cards-flex-container {
+  display: flex;
+  gap: 40px;
+}
+.tarot-card {
+  width: 320px;
+  cursor: pointer;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7));
+}
+
+/* Horizontal Gallery Layout (Screenshot 2026-01-17 at 9.02.07 PM) */
+.horizontal-gallery-screen {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+.horizontal-scroll-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 0 100px;
+  padding-top: 175px; /* lower content below the fixed header */
+  height: calc(100vh - 175px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.horizontal-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 0 auto;
+}
+.item-number {
+  font-family: "NeuePlak", sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+}
+.horizontal-img {
+  height: 60vh;
+  width: auto;
+  border-radius: 4px;
+  filter: drop-shadow(0 15px 45px rgba(0, 0, 0, 0.9));
+  cursor: pointer;
+}
+
+/* Graphic Design Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  background: rgba(0, 0, 0, 0.86);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.lightbox-content {
+  width: min(1200px, 94vw);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lightbox-image {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 6px;
+  filter: drop-shadow(0 25px 80px rgba(0, 0, 0, 0.9));
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.lightbox-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.lightbox-action-btn {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.35);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.lightbox-action-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Zigzag Layout (Screenshot 2026-01-17 at 7.01.12 PM) */
+.gallery-screen-scroll {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 220px;
+  background: #4a0404;
+}
+.illustrations-intro {
+  text-align: center;
+  margin-bottom: 100px;
+}
+.intro-title {
+  font-family: "Hellishy", serif;
+  font-size: 5rem;
+  margin-bottom: 25px;
+}
+.zigzag-layout {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+.zigzag-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: -40px;
+}
+.row-left {
+  justify-content: flex-start;
+  padding-left: 8%;
+}
+.row-right {
+  justify-content: flex-end;
+  padding-right: 8%;
+}
+.illustration-img {
+  width: 38%;
+  filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.8));
+}

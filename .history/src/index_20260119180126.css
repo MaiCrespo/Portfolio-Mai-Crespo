@@ -1,0 +1,231 @@
+@font-face {
+  font-family: "Hellishy";
+  src: url("./assets/fonts/Hellishy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "NeuePlak";
+  src: url("./assets/fonts/NeuePlak.woff2") format("woff2");
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle, #4a0404 0%, #000000 100%);
+  color: white;
+  font-family: "NeuePlak", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Header & Shared Elements */
+.card-screen-header {
+  width: 100%;
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Aligns items to the top to support dropdown */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  box-sizing: border-box;
+}
+
+.header-name-left {
+  font-family: "Hellishy";
+  cursor: pointer;
+  font-size: 2.2rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Nav Dropdown Styling based on Reference */
+.nav-dropdown-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.header-logo-trigger {
+  width: 50px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.nav-menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 200px;
+}
+
+.nav-separator {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.4
+  ); /* The thin line from your screenshot */
+  margin: 10px 0 20px 0;
+}
+
+.nav-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: right;
+}
+
+.nav-menu-list li {
+  font-family: "NeuePlak", sans-serif;
+  font-size: 1.4rem;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  color: white;
+}
+
+.nav-menu-list li:hover {
+  opacity: 0.6;
+}
+
+/* Landing Page */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+.landing-logo-centered {
+  width: 220px;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+.landing-title {
+  font-family: "Hellishy", serif;
+  font-size: 11rem;
+  margin: 0;
+  line-height: 0.85;
+}
+.cta-button {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 12px 45px;
+  border-radius: 50px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+.cta-button:hover {
+  background: white;
+  color: #4a0404;
+}
+
+/* Selection Screen */
+.gallery-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.choose-one-text {
+  font-family: "NeuePlak", sans-serif;
+  font-size: 2.8rem;
+  margin-bottom: 60px;
+  font-weight: 300;
+}
+.cards-flex-container {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.tarot-card {
+  width: 320px;
+  cursor: pointer;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7));
+}
+
+/* Graphic Design Page (Horizontal) */
+.horizontal-gallery-screen {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+.horizontal-scroll-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 0 100px;
+  height: 100vh;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.horizontal-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+.horizontal-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 0 auto;
+}
+.item-number {
+  font-family: "NeuePlak", sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+}
+.horizontal-img {
+  height: 60vh;
+  width: auto;
+  border-radius: 4px;
+  filter: drop-shadow(0 15px 45px rgba(0, 0, 0, 0.9));
+  cursor: pointer;
+}
+
+/* Illustrations Page (Zigzag) */
+.gallery-screen-scroll {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 220px;
+  background: #4a0404;
+}
+.illustrations-intro {
+  text-align: center;
+  margin-bottom: 100px;
+}
+.intro-title {
+  font-family: "Hellishy", serif;
+  font-size: 5rem;
+  margin-bottom: 25px;
+}
+.zigzag-layout {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding-bottom: 150px;
+}
+.zigzag-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: -40px;
+}
+.row-left {
+  justify-content: flex-start;
+  padding-left: 8%;
+}
+.row-right {
+  justify-content: flex-end;
+  padding-right: 8%;
+}
+.illustration-img {
+  width: 38%;
+  filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.8));
+}

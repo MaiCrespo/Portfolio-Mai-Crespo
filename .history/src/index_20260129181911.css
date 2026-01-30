@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "Hellishy";
+  src: url("./assets/fonts/Hellishy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "NeuePlak";
+  src: url("./assets/fonts/NeuePlak.woff2") format("woff2");
+}
+
+:root {
+  --maroon: #70060e;
+  --cream: #ffe3a4;
+}
+
+/* Fix the Curved Text on Profile */
+.curved-text-svg {
+  position: absolute;
+  top: -15%;
+  left: -15%;
+  width: 130%; /* Makes it slightly larger than the photo */
+  height: 130%;
+  transform: rotate(-10deg); /* Tilts it to match design */
+  pointer-events: none;
+  z-index: 10;
+}
+
+.curved-text-path {
+  fill: white;
+  font-family: "NeuePlak", sans-serif;
+  font-size: 7px; /* Scaled down to match reference */
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Landing Layout Fixes */
+.landing-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* Aligns "Crespo" with the profile photo bottom */
+  width: 100%;
+  max-width: 1400px;
+  padding-bottom: 5vh;
+}
+
+.landing-name {
+  font-family: "Hellishy", serif;
+  font-size: clamp(6rem, 12vw, 11rem); /* Dynamic sizing */
+  line-height: 0.75; /* Tighter vertical spacing */
+  margin: 0;
+  letter-spacing: -2px;
+}
+
+.landing-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 20px;
+}
+
+.profile-wrapper {
+  position: relative;
+  width: 280px; /* Specific size from design */
+  height: 280px;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 15px solid var(--maroon); /* Thicker border from reference */
+}

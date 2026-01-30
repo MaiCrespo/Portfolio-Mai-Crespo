@@ -1,0 +1,176 @@
+@font-face {
+  font-family: "Hellishy";
+  src: url("./assets/fonts/Hellishy.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "NeuePlak";
+  src: url("./assets/fonts/NeuePlak.woff2") format("woff2");
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle, #4a0404 0%, #000000 100%);
+  color: white;
+  font-family: "NeuePlak", sans-serif;
+}
+
+.app-wrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+  max-width: 1200px;
+  margin-top: 10vh;
+}
+
+.landing-logo {
+  width: 180px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.title {
+  font-family: "Hellishy", serif;
+  font-size: clamp(3rem, 12vw, 10rem);
+  text-transform: uppercase;
+  margin: 10px 0;
+  line-height: 1;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.cta-button {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 12px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.gallery-screen {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-screen.scrollable {
+  height: auto;
+}
+
+.card-screen-header {
+  width: 100%;
+  padding: 40px 60px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header-name {
+  font-family: "Hellishy", serif;
+  font-size: 2.2rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.header-name.left {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.header-name.center {
+  grid-column: 2;
+}
+
+.header-logo-small {
+  width: 50px;
+  cursor: pointer;
+  grid-column: 3;
+  justify-self: end;
+}
+
+.header-back {
+  font-family: "Hellishy", serif;
+  font-size: 1.4rem;
+  text-decoration: underline;
+  cursor: pointer;
+  grid-column: 1;
+  justify-self: start;
+}
+
+.sub-header {
+  font-weight: normal;
+  font-size: 42px;
+  margin-top: 60px;
+  margin-bottom: 80px;
+}
+
+.cards-container {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 100px;
+}
+
+.card {
+  width: 320px;
+  height: auto;
+}
+
+.zigzag-grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 60px 100px 60px;
+  box-sizing: border-box;
+}
+
+.zigzag-item {
+  display: flex;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.zigzag-item.left {
+  justify-content: flex-start;
+}
+
+.zigzag-item.right {
+  justify-content: flex-end;
+  margin-top: -120px;
+}
+
+.large-illustration {
+  width: 45%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.large-illustration.die-cut-style {
+  width: 65%;
+}
+
+@media (max-width: 900px) {
+  .zigzag-item.right {
+    margin-top: 0;
+  }
+  .large-illustration,
+  .large-illustration.die-cut-style {
+    width: 95%;
+  }
+  .zigzag-item {
+    justify-content: center !important;
+    margin-bottom: 60px;
+  }
+}
