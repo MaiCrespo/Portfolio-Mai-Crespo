@@ -72,7 +72,7 @@ body {
 .main-nav {
   position: fixed;
   top: 0;
-  width: calc(100% - 6rem);
+  width: 100%;
   height: 70px;
   background-color: var(--black);
   display: flex;
@@ -82,8 +82,8 @@ body {
   border-bottom-right-radius: 30px;
   z-index: 100;
   padding: 0 50px;
-  left: 3rem;
-  right: 3rem;
+  left: 0;
+  right: 0;
 }
 
 .nav-logo-left {
@@ -182,9 +182,9 @@ body {
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.6;
-  background: radial-gradient(circle, #ff4500, #ff6347, #ff7f50);
+  filter: blur(120px);
+  opacity: 0.35;
+  background: radial-gradient(circle, #ff5722, #ff6f3c, #ff8c42);
 }
 
 .orb-1 {
@@ -200,7 +200,7 @@ body {
   height: 450px;
   top: 15%;
   right: -100px;
-  background: radial-gradient(circle, #ff5722, #ff6347, #ff8c42);
+  background: radial-gradient(circle, #ff6f3c, #ff8c42, #ffa552);
   animation: float-2 22s ease-in-out infinite;
 }
 
@@ -209,7 +209,7 @@ body {
   height: 400px;
   bottom: 20%;
   left: 15%;
-  background: radial-gradient(circle, #ff4500, #ff5722, #ff6347);
+  background: radial-gradient(circle, #ff5722, #ff6f3c, #ff7a45);
   animation: float-3 28s ease-in-out infinite;
 }
 
@@ -218,7 +218,7 @@ body {
   height: 350px;
   top: 50%;
   left: -80px;
-  background: radial-gradient(circle, #ff6347, #ff7f50, #ff8c42);
+  background: radial-gradient(circle, #ff8c42, #ffa552, #ffb366);
   animation: float-4 20s ease-in-out infinite;
 }
 
@@ -227,7 +227,7 @@ body {
   height: 420px;
   bottom: 5%;
   right: 10%;
-  background: radial-gradient(circle, #ff5722, #ff6347, #ff7f50);
+  background: radial-gradient(circle, #ff6f3c, #ff7a45, #ff8c42);
   animation: float-5 24s ease-in-out infinite;
 }
 
@@ -333,13 +333,31 @@ body {
    PROJECTS
 ===================== */
 .featured-projects {
-  background: rgba(10, 10, 10, 0.6);
+  background: var(--black);
   color: var(--white);
   padding: 8rem 4rem 6rem 4rem;
   border-radius: 40px 40px 0 0;
   position: relative;
   z-index: 10;
-  margin: 8rem 3rem 0 3rem;
+  margin: 8rem 0 0 0;
+}
+
+.featured-projects::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 40px 40px 0 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.featured-projects > * {
+  position: relative;
+  z-index: 2;
 }
 
 .section-title {
@@ -465,7 +483,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 3rem 3rem 0 3rem;
+  margin: 3rem 0 0 0;
 }
 
 .footer h3 {

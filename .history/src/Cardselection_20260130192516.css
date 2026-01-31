@@ -37,7 +37,7 @@
 /* CHOOSE ONE TITLE */
 .choose-title {
   font-family: var(--font-display);
-  font-size: 3rem;
+  font-size: 2rem;
   color: var(--white);
   margin-bottom: 4rem;
   z-index: 2;
