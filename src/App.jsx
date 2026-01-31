@@ -1,7 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import myResume from "./assets/PDFs/Mai Crespo Resume.pdf";
 import whiteLogo from "./assets/Head@300x.png";
+
 import gotItThumb from "./assets/UI:UX/Got It/Got it thumbnail.png";
 import daybreakThumb from "./assets/UI:UX/Daybreak/Daybreak thumbnail.png";
 import descentThumb from "./assets/UI:UX/The Descent/The Descent thumbnail.png";
@@ -9,6 +10,8 @@ import descentThumb from "./assets/UI:UX/The Descent/The Descent thumbnail.png";
 import "./index.css";
 
 function App() {
+  const navigate = useNavigate();
+
   const projects = [
     {
       id: "gotit",
@@ -38,38 +41,51 @@ function App() {
 
   return (
     <div className="portfolio-site">
-      <div className="glow-bg"></div>
+      {/* ANIMATED GRADIENT ORBS - FULL PAGE */}
+      <div className="gradient-orbs">
+        <div className="orb orb-1"></div>
+        <div className="orb orb-2"></div>
+        <div className="orb orb-3"></div>
+        <div className="orb orb-4"></div>
+        <div className="orb orb-5"></div>
+      </div>
 
+      {/* NAV */}
       <nav className="main-nav">
-        <div className="nav-links-inner">
+        <img src={whiteLogo} className="nav-logo-left" alt="logo" />
+        <div className="nav-links-center">
           <span className="nav-item bold">Home</span>
           <div className="v-line"></div>
-          <span className="nav-item">Works</span>
+          <span className="nav-item" onClick={() => navigate("/pick-a-card")}>
+            Works
+          </span>
           <div className="v-line"></div>
           <span className="nav-item">About Me</span>
         </div>
-        <img src={whiteLogo} className="nav-icon-small" alt="logo" />
       </nav>
 
+      {/* HERO */}
       <main className="hero-viewport">
         <div className="hero-content">
-          <h1 className="brand-text">
-            MAI
-            <br />
-            CRESPO
+          <h1 className="brand-text-center">
+            <span className="mai">MAI</span>
+            <span className="crespo">CRESPO</span>
           </h1>
 
-          <p className="bio-para">
+          <p className="bio-para-center">
             Hello, I'm a <strong>UI/UX Designer</strong> with a strong
             background in <strong>Illustration and Graphic Design</strong>.
             Aside from problem-solving through tech, I like to draw crazy weird
             dark things.
           </p>
 
-          <button className="pill-btn">PICK A CARD</button>
+          <button className="pill-btn" onClick={() => navigate("/pick-a-card")}>
+            PICK A CARD
+          </button>
         </div>
       </main>
 
+      {/* PROJECTS */}
       <section className="featured-projects">
         <h2 className="section-title">Featured Projects</h2>
         <div className="header-line"></div>
@@ -94,33 +110,37 @@ function App() {
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer className="footer">
         <h3>Don't be a stranger!</h3>
         <div className="footer-links">
           <a href="mailto:yomaicrespo@gmail.com" className="footer-link">
             Email
           </a>
-          <span className="footer-divider">|</span>
+          <span>|</span>
           <a
-            href="https://linkedin.com/in/mai-crespo/"
+            href="https://www.linkedin.com/in/mai-crespo/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="footer-link"
           >
             LinkedIn
           </a>
-          <span className="footer-divider">|</span>
+          <span>|</span>
           <a
-            href="https://instagram.com/heymaicomics/"
+            href="https://www.instagram.com/heymaicomics/"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="footer-link"
           >
             Instagram
           </a>
         </div>
-
-        <a href={resumeFile} target="_blank" rel="noopener noreferrer">
+        <a
+          href="/assets/PDFs/Mai Crespo Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <button className="resume-btn">MY RESUME</button>
         </a>
       </footer>
