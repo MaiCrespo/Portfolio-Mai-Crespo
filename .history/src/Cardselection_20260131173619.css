@@ -1,18 +1,10 @@
-@keyframes slow-rotate {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
 .card-selection-page {
   min-height: 100vh;
   background-color: var(--black);
   position: relative;
 }
 
+/* CARD SELECTION VIEWPORT */
 .card-selection-viewport {
   min-height: 80vh;
   margin: 8rem 3rem 3rem 3rem;
@@ -27,22 +19,22 @@
   border-radius: 40px;
 }
 
+/* TAROT MAT BACKGROUND */
 .tarot-mat-bg {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 320%;
-  height: 320%;
+  width: 300%;
+  height: 300%;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.4;
   z-index: 1;
-  animation: slow-rotate 120s linear infinite;
-  will-change: transform;
 }
 
+/* CHOOSE ONE TITLE */
 .choose-title {
   font-family: var(--font-display);
   font-size: 3rem;
@@ -52,6 +44,7 @@
   position: relative;
 }
 
+/* CARDS CONTAINER */
 .cards-container {
   display: flex;
   gap: 2rem;
@@ -62,6 +55,7 @@
   padding: 2rem;
 }
 
+/* TAROT CARDS */
 .tarot-card {
   cursor: pointer;
   transition: transform 0.4s ease, filter 0.3s ease;
@@ -74,6 +68,7 @@
   display: block;
 }
 
+/* CARD POSITIONS - Natural Layout */
 .card-left {
   transform: rotate(-12deg) translateY(20px);
 }
@@ -87,12 +82,14 @@
   transform: rotate(15deg) translateY(25px);
 }
 
+/* HOVER EFFECTS */
 .tarot-card:hover {
   transform: scale(1.1) rotate(0deg) translateY(-20px) !important;
   filter: drop-shadow(0 15px 40px rgba(255, 111, 60, 0.6));
   z-index: 10;
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .cards-container {
     flex-direction: column;
