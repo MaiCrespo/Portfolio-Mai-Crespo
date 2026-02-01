@@ -1,12 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./App.css";
 import "./Cardselection.css";
 
-// Assets - Ensure these filenames have NO SPACES to fix Vercel
+// Assets
 import whiteLogo from "./assets/Head@300x.png";
 import tarotMat from "./assets/misc/tarot-mat.avif";
 import cardUIUX from "./assets/CardUI-UX.png";
-import cardGraphic from "./assets/CardGraphic Design.png";
+import cardGraphic from "./assets/CardGraphic-Design.png";
 import cardIllustrations from "./assets/CardIllustrations.png";
 
 function Cardselection() {
@@ -39,8 +40,11 @@ function Cardselection() {
 
       {/* Main Content Box with Rotating Mat */}
       <main className="content-pill-main">
-        <div className="mat-overflow-container">
-          <img src={tarotMat} className="rotating-mat-img" alt="" />
+        {/* Tarot Mat in proper container */}
+        <div className="mat-container">
+          <div className="mat-overflow-container">
+            <img src={tarotMat} className="rotating-mat-img" alt="" />
+          </div>
         </div>
 
         <h1 className="main-title">Choose One</h1>
@@ -65,8 +69,10 @@ function Cardselection() {
       <footer className="footer-pill">
         <h2 className="footer-callout">Don't be a stranger!</h2>
         <div className="footer-socials">
-          <span>Email</span> <span className="nav-sep">|</span>
-          <span>LinkedIn</span> <span className="nav-sep">|</span>
+          <span>Email</span>
+          <span className="nav-sep">|</span>
+          <span>LinkedIn</span>
+          <span className="nav-sep">|</span>
           <span>Instagram</span>
         </div>
         <button className="resume-btn">MY RESUME</button>

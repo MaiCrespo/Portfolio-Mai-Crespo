@@ -145,8 +145,8 @@
 }
 
 .rotating-mat-img {
-  width: 2000px;
-  height: 2000px;
+  width: 1400px;
+  height: 1400px;
   max-width: none;
   animation: slowSpin 120s linear infinite;
 }

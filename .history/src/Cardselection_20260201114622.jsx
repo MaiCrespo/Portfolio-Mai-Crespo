@@ -14,15 +14,6 @@ function Cardselection() {
 
   return (
     <div className="global-page-container">
-      {/* Gradient Orbs Background */}
-      <div className="gradient-orbs">
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-        <div className="orb orb-3"></div>
-        <div className="orb orb-4"></div>
-        <div className="orb orb-5"></div>
-      </div>
-
       {/* Navigation */}
       <nav className="nav-pill">
         <div className="nav-links">

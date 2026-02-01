@@ -1,3 +1,7 @@
+./* ==========================================
+   CASE STUDY PAGE SPECIFIC STYLES
+   ========================================== */
+
 .case-study-scroller {
   flex: 1;
   background: rgba(0, 0, 0, 0.6);
@@ -21,7 +25,7 @@
 }
 
 .full-content-img {
-  width: 400%;
+  width: 100%;
   height: auto;
   display: block;
   /* Matches the pill corner at the top */

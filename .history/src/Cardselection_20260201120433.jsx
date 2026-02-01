@@ -23,6 +23,7 @@ function Cardselection() {
         <div className="orb orb-5"></div>
       </div>
 
+    <div className="global-page-container">
       {/* Navigation */}
       <nav className="nav-pill">
         <div className="nav-links">

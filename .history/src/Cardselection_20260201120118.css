@@ -129,7 +129,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
-  padding: 20px 40px 40px;
+  padding: 40px;
 }
 
 /* Tarot Mat - HUGE and centered */
@@ -145,8 +145,8 @@
 }
 
 .rotating-mat-img {
-  width: 2000px;
-  height: 2000px;
+  width: 1400px;
+  height: 1400px;
   max-width: none;
   animation: slowSpin 120s linear infinite;
 }
@@ -166,7 +166,7 @@
   color: #fff;
   font-size: 3.2rem;
   font-weight: 400;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
   z-index: 10;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
 }
@@ -182,7 +182,7 @@
 }
 
 .tarot-card {
-  width: 240px;
+  width: 260px;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
@@ -198,16 +198,16 @@
 
 /* Card Rotations - Natural fan layout */
 .c-left {
-  transform: rotate(-10deg) translateY(15px) translateX(5px);
+  transform: rotate(-12deg) translateY(20px) translateX(5px);
 }
 
 .c-mid {
-  transform: translateY(-20px) scale(1.02);
+  transform: translateY(-25px) scale(1.02);
   z-index: 5;
 }
 
 .c-right {
-  transform: rotate(10deg) translateY(15px) translateX(-5px);
+  transform: rotate(12deg) translateY(20px) translateX(-5px);
 }
 
 /* Hover Animation */
