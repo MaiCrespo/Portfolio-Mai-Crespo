@@ -1,0 +1,75 @@
+/* Universal Side Gaps */
+.global-layout-wrapper {
+  background-color: #000;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 50px;
+  gap: 12px;
+}
+
+.nav-pill,
+.footer-pill {
+  background: #000;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-pill {
+  height: 80px;
+  justify-content: center;
+  position: relative;
+}
+.footer-pill {
+  height: 110px;
+  justify-content: space-between;
+  padding: 0 60px;
+}
+
+.main-content-pill {
+  flex: 1;
+  background: #000;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #2e1208 0%, #000 80%);
+}
+
+/* Natural Card Fan */
+.tarot-fan-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 20;
+}
+
+.tarot-card {
+  width: 280px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.tarot-card img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* Rotations from your video */
+.card-left {
+  transform: rotate(-8deg) translateY(20px);
+}
+.card-mid {
+  transform: translateY(-10px);
+}
+.card-right {
+  transform: rotate(8deg) translateY(20px);
+}
+
+.tarot-card:hover {
+  transform: translateY(-40px) rotate(0deg) scale(1.05);
+  z-index: 100;
+}

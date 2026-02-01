@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.selection-page-container {
+  /* This creates the orange glow seen in the background of your video */
+  background: radial-gradient(circle, #e35d26 0%, #1a0a05 70%);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* EDGE-TO-EDGE NAV */
+.edge-nav {
+  width: 100%;
+  height: 80px;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 100;
+  /* Rounded bottom corners like in your screenshot */
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.nav-links-wrap {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav-link {
+  color: #fff;
+  opacity: 0.6;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.nav-link.active {
+  opacity: 1;
+  font-weight: bold;
+}
+.nav-pipe {
+  color: #fff;
+  opacity: 0.2;
+}
+.logo-right {
+  position: absolute;
+  right: 40px;
+  width: 35px;
+}
+
+/* THE FLOATING CENTER BOX */
+.center-content-box {
+  flex: 1;
+  margin: 10px 15px; /* Creates the gap where orange background shows */
+  background: #000;
+  border-radius: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Keeps the big mat inside */
+}
+
+/* THE ROTATING MAT ANIMATION */
+.mat-layer {
+  position: absolute;
+  width: 1800px;
+  height: 1800px;
+  opacity: 0.25;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mat-rotate-animation {
+  width: 100%;
+  height: 100%;
+  animation: rotateSlowly 100s linear infinite;
+}
+
+@keyframes rotateSlowly {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.choose-title {
+  font-family: serif;
+  font-size: 2.8rem;
+  color: #fff;
+  margin-bottom: 40px;
+  z-index: 10;
+}
+
+.cards-display {
+  display: flex;
+  gap: 30px;
+  z-index: 20;
+}
+
+.card-item {
+  width: 270px;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+.card-item:hover {
+  transform: translateY(-20px) rotate(1deg);
+}
+
+.card-item img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* EDGE-TO-EDGE FOOTER */
+.edge-footer {
+  width: 100%;
+  height: 110px;
+  background: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  z-index: 100;
+  /* Rounded top corners */
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.footer-greeting {
+  font-family: serif;
+  color: #fff;
+  font-size: 2.2rem;
+}
+.footer-links {
+  display: flex;
+  gap: 20px;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+.resume-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+}

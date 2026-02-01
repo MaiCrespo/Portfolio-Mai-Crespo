@@ -1,0 +1,164 @@
+/* Core Layout */
+.page-container {
+  background-color: #000;
+  height: 100vh;
+  width: 100vw;
+  padding: 30px; /* This creates the black space outside the orange border */
+  display: flex;
+  overflow: hidden;
+}
+
+.orange-canvas-frame {
+  flex: 1;
+  border: 2px solid #e35d26; /* The Orange Border */
+  border-radius: 45px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at center, #1a0a05 0%, #000000 90%);
+  overflow: hidden;
+}
+
+/* Nav Styles */
+.frame-nav {
+  height: 90px;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  z-index: 20;
+  position: relative;
+}
+
+.nav-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav-link {
+  color: #fff;
+  opacity: 0.6;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.nav-link.active {
+  opacity: 1;
+  font-weight: bold;
+}
+.nav-pipe {
+  color: #fff;
+  opacity: 0.2;
+}
+.nav-logo {
+  position: absolute;
+  right: 40px;
+  width: 35px;
+}
+
+/* Rotating Mat Logic */
+.selection-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mat-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mat-rotating {
+  width: 900px;
+  height: 900px;
+  opacity: 0.15;
+  animation: spin 100s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Card Selection Grid */
+.choose-title {
+  font-family: serif;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 50px;
+  z-index: 5;
+}
+
+.cards-flex {
+  display: flex;
+  gap: 35px;
+  z-index: 10;
+}
+
+.card-wrapper {
+  width: 280px;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-wrapper:hover {
+  transform: translateY(-20px) scale(1.03);
+}
+
+.card-wrapper img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer Styles */
+.frame-footer {
+  height: 100px;
+  background: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  z-index: 20;
+}
+
+.footer-headline {
+  font-family: serif;
+  color: #fff;
+  font-size: 1.8rem;
+}
+.footer-links {
+  display: flex;
+  gap: 20px;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+.resume-pill {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.resume-pill:hover {
+  background: #fff;
+  color: #000;
+}

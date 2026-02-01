@@ -1,0 +1,25 @@
+.case-study-scroller {
+  flex: 1;
+  background: #000;
+  border-radius: 40px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide scrollbar but keep functionality */
+.case-study-scroller::-webkit-scrollbar {
+  display: none;
+}
+.case-study-scroller {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.full-content-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Matches the pill corner at the top */
+  border-radius: 40px 40px 0 0;
+}

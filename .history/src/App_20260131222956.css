@@ -1,0 +1,44 @@
+/* Universal page wrapper for side-gaps */
+.global-layout-wrapper {
+  background-color: #000;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 50px; /* Consistently apply side gaps */
+  gap: 12px;
+  overflow-x: hidden;
+}
+
+/* Universal Nav Pill */
+.nav-pill {
+  height: 80px;
+  background: #000;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Universal Footer Pill */
+.footer-pill {
+  height: 110px;
+  background: #000;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  flex-shrink: 0;
+}
+
+/* Universal Content Pill */
+.main-content-pill {
+  flex: 1;
+  background: #000;
+  border-radius: 40px;
+  position: relative;
+  overflow-y: auto; /* Allows scrolling for long case study images */
+}

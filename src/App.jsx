@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import whiteLogo from "./assets/Head@300x.png";
-import gotItThumb from "./assets/UI-UX/Got It/Got it thumbnail.png";
-import daybreakThumb from "./assets/UI-UX/Daybreak/Daybreak thumbnail.png";
-import descentThumb from "./assets/UI-UX/The Descent/The Descent thumbnail.png";
+import gotItThumb from "./assets/UI-UX/GotIt/GotItThumbnail.png";
+import daybreakThumb from "./assets/UI-UX/Daybreak/DaybreakThumbnail.png";
+import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
 import "./index.css";
 
 function App() {

@@ -1,101 +1,69 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./GotItCaseStudy.css";
+import "./Cardselection.css";
 
-// Asset imports
+// Assets - Ensure these filenames have NO SPACES to fix Vercel
 import whiteLogo from "./assets/Head@300x.png";
-import headerImg from "./assets/UI-UX/Got It/Case study headers_Got It.png";
-import homepageImg from "./assets/UI-UX/Got It/Homepage.png";
-import solutionImg from "./assets/UI-UX/Got It/solution.png";
-import mockupImg from "./assets/UI-UX/Got It/Mockup.png";
-import brochureImg from "./assets/UI-UX/Got It/Got It Brochure.jpg";
-import impactImg from "./assets/UI-UX/Got It/resultAndImpact.png";
-import contributionsImg from "./assets/UI-UX/Got It/myContributions.png";
+import tarotMat from "./assets/misc/tarot-mat.avif";
+import cardUIUX from "./assets/CardUI-UX.png";
+import cardGraphic from "./assets/CardGraphic Design.png";
+import cardIllustrations from "./assets/CardIllustrations.png";
 
-function GotItCaseStudy() {
+function Cardselection() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
-    <div className="cs-page-wrapper">
-      {/* Navigation - Full Width Pill */}
-      <nav className="main-nav-pill">
-        <div className="nav-back-link" onClick={() => navigate("/pick-a-card")}>
-          « UI/UX Design
-        </div>
-
-        <div className="nav-links-center">
+    <div className="global-page-container">
+      {/* Navigation */}
+      <nav className="nav-pill">
+        <div className="nav-links">
           <span className="nav-item" onClick={() => navigate("/")}>
             Home
           </span>
-          <span className="nav-divider">|</span>
-          <span
-            className="nav-item active"
-            onClick={() => navigate("/pick-a-card")}
-          >
-            Works
-          </span>
-          <span className="nav-divider">|</span>
+          <span className="nav-sep">|</span>
+          <span className="nav-item active">Works</span>
+          <span className="nav-sep">|</span>
           <span className="nav-item">About Me</span>
         </div>
-
-        <img
-          src={whiteLogo}
-          className="nav-logo-right"
-          alt="logo"
-          onClick={() => navigate("/")}
-        />
+        <img src={whiteLogo} className="logo-icon" alt="logo" />
       </nav>
 
-      {/* Hero Section Attached directly to Nav */}
-      <header className="cs-hero">
-        <img src={headerImg} alt="Got It Header" className="cs-header-img" />
-        <button className="next-project-btn">NEXT PROJECT</button>
-      </header>
+      {/* Main Content Box with Rotating Mat */}
+      <main className="content-pill-main">
+        <div className="mat-overflow-container">
+          <img src={tarotMat} className="rotating-mat-img" alt="" />
+        </div>
 
-      {/* Main Content Card anchored to header */}
-      <main className="cs-content-card">
-        <img src={homepageImg} className="cs-responsive-img" alt="Homepage" />
-        <img
-          src={solutionImg}
-          className="cs-responsive-img"
-          alt="The Solution"
-        />
-        <img src={mockupImg} className="cs-responsive-img" alt="App Mockup" />
-        <img
-          src={brochureImg}
-          className="cs-responsive-img"
-          alt="Print Brochure"
-        />
-        <img
-          src={impactImg}
-          className="cs-responsive-img"
-          alt="Impact Results"
-        />
-        <img
-          src={contributionsImg}
-          className="cs-responsive-img"
-          alt="My Contributions"
-        />
+        <h1 className="main-title">Choose One</h1>
+
+        <div className="tarot-card-fan">
+          <div
+            className="tarot-card c-left"
+            onClick={() => navigate("/got-it")}
+          >
+            <img src={cardUIUX} alt="UI/UX" />
+          </div>
+          <div className="tarot-card c-mid">
+            <img src={cardGraphic} alt="Graphic" />
+          </div>
+          <div className="tarot-card c-right">
+            <img src={cardIllustrations} alt="Illustrations" />
+          </div>
+        </div>
       </main>
 
-      {/* Pure Black Footer */}
-      <footer className="cs-footer-black">
-        <h3 className="footer-title">Don't be a stranger!</h3>
-        <div className="footer-links">
-          <a href="mailto:mai@example.com">Email</a>
-          <span className="footer-divider">|</span>
-          <a href="#">LinkedIn</a>
-          <span className="footer-divider">|</span>
-          <a href="#">Instagram</a>
+      {/* Footer */}
+      <footer className="footer-pill">
+        <h2 className="footer-callout">Don't be a stranger!</h2>
+        <div className="footer-socials">
+          <span>Email</span> <span className="nav-sep">|</span>
+          <span>LinkedIn</span> <span className="nav-sep">|</span>
+          <span>Instagram</span>
         </div>
-        <button className="pill-btn-outline">MY RESUME</button>
+        <button className="resume-btn">MY RESUME</button>
       </footer>
     </div>
   );
 }
 
-export default GotItCaseStudy;
+export default Cardselection;

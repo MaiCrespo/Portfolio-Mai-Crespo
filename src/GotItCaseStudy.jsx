@@ -1,16 +1,11 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./App.css";
 import "./GotItCaseStudy.css";
 
-// Asset imports
+// Assets - Path strictly matching your folder sidebar
 import whiteLogo from "./assets/Head@300x.png";
-import headerImg from "./assets/UI-UX/Got It/Case study headers_Got It.png";
-import homepageImg from "./assets/UI-UX/Got It/Homepage.png";
-import solutionImg from "./assets/UI-UX/Got It/solution.png";
-import mockupImg from "./assets/UI-UX/Got It/Mockup.png";
-import brochureImg from "./assets/UI-UX/Got It/Got It Brochure.jpg";
-import impactImg from "./assets/UI-UX/Got It/resultAndImpact.png";
-import contributionsImg from "./assets/UI-UX/Got It/myContributions.png";
+import fullImage from "./assets/PDFs/UI-UX/Got It/GotItContent.png";
 
 function GotItCaseStudy() {
   const navigate = useNavigate();
@@ -20,91 +15,31 @@ function GotItCaseStudy() {
   }, []);
 
   return (
-    <div className="cs-page-wrapper">
-      {/* Background Orbs */}
-      <div className="cs-gradient-orbs">
-        <div className="cs-orb cs-orb-1"></div>
-        <div className="cs-orb cs-orb-2"></div>
-      </div>
-
-      {/* Full-Width Navigation Pill */}
-      <nav className="main-nav-pill">
-        <div className="nav-back-link" onClick={() => navigate("/pick-a-card")}>
-          « UI/UX Design
-        </div>
-
-        <div className="nav-links-center">
-          <span className="nav-item" onClick={() => navigate("/")}>
+    <div className="page-layout">
+      <nav className="nav-pill">
+        <div className="nav-links">
+          <span onClick={() => navigate("/")} className="nav-item">
             Home
           </span>
-          <span className="nav-divider">|</span>
-          <span
-            className="nav-item active"
-            onClick={() => navigate("/pick-a-card")}
-          >
-            Works
-          </span>
-          <span className="nav-divider">|</span>
+          <span className="nav-sep">|</span>
+          <span className="nav-item active">Works</span>
+          <span className="nav-sep">|</span>
           <span className="nav-item">About Me</span>
         </div>
-
-        <img
-          src={whiteLogo}
-          className="nav-logo-right"
-          alt="logo"
-          onClick={() => navigate("/")}
-        />
+        <img src={whiteLogo} className="pill-logo" alt="logo" />
       </nav>
 
-      {/* Hero Section Attached to Nav */}
-      <header className="cs-hero">
-        <img src={headerImg} alt="Got It Header" className="cs-header-img" />
-        <button className="next-project-btn">NEXT PROJECT</button>
-      </header>
-
-      {/* Main Content Card Attached to Hero */}
-      <main className="cs-content-card">
-        <img src={homepageImg} className="cs-responsive-img" alt="Homepage" />
+      <main className="case-study-scroller">
         <img
-          src={solutionImg}
-          className="cs-responsive-img"
-          alt="The Solution"
-        />
-        <img src={mockupImg} className="cs-responsive-img" alt="App Mockup" />
-        <img
-          src={brochureImg}
-          className="cs-responsive-img"
-          alt="Print Brochure"
-        />
-        <img
-          src={impactImg}
-          className="cs-responsive-img"
-          alt="Impact Results"
-        />
-        <img
-          src={contributionsImg}
-          className="cs-responsive-img"
-          alt="My Contributions"
+          src={fullImage}
+          className="full-content-img"
+          alt="Got It Case Study"
         />
       </main>
 
-      {/* Pure Black Footer */}
-      <footer className="cs-footer-black">
-        <div className="footer-left">
-          <h3 className="footer-title">Don't be a stranger!</h3>
-        </div>
-
-        <div className="footer-center">
-          <a href="mailto:mai@example.com">Email</a>
-          <span className="footer-divider">|</span>
-          <a href="#">LinkedIn</a>
-          <span className="footer-divider">|</span>
-          <a href="#">Instagram</a>
-        </div>
-
-        <div className="footer-right">
-          <button className="pill-btn-outline">MY RESUME</button>
-        </div>
+      <footer className="footer-pill">
+        <h2 className="footer-cta">Don't be a stranger!</h2>
+        <button className="resume-btn">MY RESUME</button>
       </footer>
     </div>
   );

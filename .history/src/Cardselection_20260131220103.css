@@ -1,0 +1,156 @@
+/* Layout & Spacing */
+.portfolio-page {
+  background-color: #000;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.content-width-container {
+  width: 100%;
+  max-width: 1400px; /* Adjust based on your screen size */
+  padding: 20px 40px; /* Space on the sides */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between the three sections */
+}
+
+/* Common Pill Style */
+.floating-nav-pill,
+.selection-main-pill,
+.floating-footer-pill {
+  background: #000;
+  border-radius: 40px;
+  position: relative;
+}
+
+/* Nav & Footer specific heights */
+.floating-nav-pill {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.floating-footer-pill {
+  height: 110px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+}
+
+/* Center Content & Rotating Mat */
+.selection-main-pill {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Reddish glow background behind mat */
+  background: radial-gradient(circle, #2b140a 0%, #000000 70%);
+}
+
+.mat-background {
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  opacity: 0.2;
+}
+
+.rotating-mat {
+  width: 100%;
+  animation: spinMat 100s linear infinite;
+}
+
+@keyframes spinMat {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Natural Fanned Tarot Layout */
+.instruction-text {
+  font-family: serif;
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  z-index: 10;
+}
+
+.tarot-fan-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: -20px; /* Allows cards to overlap slightly if needed */
+  z-index: 20;
+}
+
+.tarot-card {
+  width: 280px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-left {
+  transform: rotate(-8deg) translateX(20px);
+}
+.card-center {
+  transform: translateY(-10px);
+}
+.card-right {
+  transform: rotate(8deg) translateX(-20px);
+}
+
+/* Hover effect - Straightens the card when you look at it */
+.tarot-card:hover {
+  transform: translateY(-40px) rotate(0deg) scale(1.05);
+  z-index: 50;
+}
+
+.tarot-card img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Utility */
+.logo-pill {
+  position: absolute;
+  right: 40px;
+  width: 35px;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+  color: #fff;
+}
+.nav-sep {
+  opacity: 0.2;
+}
+.nav-item {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.nav-item.active {
+  opacity: 1;
+  font-weight: bold;
+}
+.footer-title {
+  color: #fff;
+  font-family: serif;
+  font-size: 2.2rem;
+}
+.pill-button {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+}

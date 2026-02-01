@@ -1,0 +1,57 @@
+.selection-container {
+  flex: 1;
+  background: radial-gradient(circle at center, #2e1208 0%, #000000 85%);
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinning-mat {
+  position: absolute;
+  width: 900px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.selection-title {
+  color: #fff;
+  font-family: serif;
+  font-size: 3rem;
+  z-index: 10;
+  margin-bottom: 30px;
+}
+
+.card-fan-wrapper {
+  display: flex;
+  gap: 20px;
+  z-index: 20;
+}
+
+.tarot-card {
+  width: 280px;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+.tarot-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.c-left {
+  transform: rotate(-7deg) translateY(20px);
+}
+.c-mid {
+  transform: translateY(-10px);
+}
+.c-right {
+  transform: rotate(7deg) translateY(20px);
+}
+
+.tarot-card:hover {
+  transform: translateY(-40px) rotate(0) scale(1.05);
+  z-index: 100;
+}
