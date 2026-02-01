@@ -4,13 +4,13 @@ import "./GotItCaseStudy.css";
 
 // Asset imports
 import whiteLogo from "./assets/Head@300x.png";
-import headerImg from "./assets/UI-UX/Got It/Case study headers_Got It.png";
-import homepageImg from "./assets/UI-UX/Got It/Homepage.png";
-import solutionImg from "./assets/UI-UX/Got It/solution.png";
-import mockupImg from "./assets/UI-UX/Got It/Mockup.png";
-import brochureImg from "./assets/UI-UX/Got It/Got It Brochure.jpg";
-import impactImg from "./assets/UI-UX/Got It/resultAndImpact.png";
-import contributionsImg from "./assets/UI-UX/Got It/myContributions.png";
+import headerImg from "./assets/UI:UX/Got It/Case study headers_Got It.png";
+import homepageImg from "./assets/UI:UX/Got It/Homepage.png";
+import solutionImg from "./assets/UI:UX/Got It/solution.png";
+import mockupImg from "./assets/UI:UX/Got It/Mockup.png";
+import brochureImg from "./assets/UI:UX/Got It/Got It Brochure.jpg";
+import impactImg from "./assets/UI:UX/Got It/resultAndImpact.png";
+import contributionsImg from "./assets/UI:UX/Got It/myContributions.png";
 
 function GotItCaseStudy() {
   const navigate = useNavigate();
