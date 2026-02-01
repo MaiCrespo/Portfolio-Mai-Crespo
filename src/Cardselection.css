@@ -29,11 +29,11 @@
 
 .tarot-mat-bg {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 320%;
-  height: 320%;
+  width: 350%;
+  height: 350%;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

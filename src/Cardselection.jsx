@@ -13,13 +13,10 @@ function CardSelection() {
 
   const handleCardClick = (cardType) => {
     setSelectedCard(cardType);
-    // You can add navigation logic here later
-    // For example: navigate(`/portfolio/${cardType}`);
   };
 
   return (
     <div className="card-selection-page">
-      {/* ANIMATED GRADIENT ORBS */}
       <div className="gradient-orbs">
         <div className="orb orb-1"></div>
         <div className="orb orb-2"></div>
@@ -28,7 +25,6 @@ function CardSelection() {
         <div className="orb orb-5"></div>
       </div>
 
-      {/* NAV */}
       <nav className="main-nav">
         <img src={whiteLogo} className="nav-logo-left" alt="logo" />
         <div className="nav-links-center">
@@ -42,7 +38,6 @@ function CardSelection() {
         </div>
       </nav>
 
-      {/* CARD SELECTION AREA */}
       <main className="card-selection-viewport">
         <div
           className="tarot-mat-bg"
@@ -75,7 +70,6 @@ function CardSelection() {
         </div>
       </main>
 
-      {/* FOOTER */}
       <footer className="footer">
         <h3>Don't be a stranger!</h3>
         <div className="footer-links">
