@@ -1,0 +1,128 @@
+.cs-page-wrapper {
+  background-color: #0a0a0a;
+  color: white;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* --- THE ORBS --- */
+.cs-gradient-orbs {
+  position: fixed; /* Fixed so they stay in view as you scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Lowest layer */
+  pointer-events: none;
+}
+
+.cs-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  background: radial-gradient(circle, #ff4500, #ff6347, #70060e);
+}
+
+.cs-orb-1 {
+  width: 600px;
+  height: 600px;
+  top: 10%;
+  left: -200px;
+}
+.cs-orb-2 {
+  width: 500px;
+  height: 500px;
+  bottom: 10%;
+  right: -150px;
+}
+
+/* --- NAVIGATION --- */
+.main-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.nav-back-link {
+  position: absolute;
+  left: 40px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.nav-logo-right {
+  position: absolute;
+  right: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+
+/* --- CONTENT CARD --- */
+.cs-hero {
+  padding-top: 80px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.cs-header-img {
+  width: 100%;
+  display: block;
+}
+
+.cs-content-card {
+  max-width: 1200px;
+  margin: 0 auto 80px auto;
+  padding: 80px 60px;
+  background: rgba(
+    10,
+    10,
+    10,
+    0.85
+  ); /* The semi-transparent black background */
+  backdrop-filter: blur(
+    10px
+  ); /* Subtle glass effect so orbs look creamy behind it */
+  border-radius: 60px; /* Matching the landing page card style */
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  position: relative;
+  z-index: 2; /* Sits above the orbs */
+}
+
+.cs-responsive-img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* --- FOOTER --- */
+.footer {
+  position: relative;
+  z-index: 3;
+  padding: 60px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #70060e, #ff4500);
+}
+
+.footer-title {
+  font-family: "Hellishy", serif;
+  font-size: 2.5rem;
+}
+.footer-links {
+  display: flex;
+  gap: 30px;
+}
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}

@@ -21,48 +21,49 @@ function GotItCaseStudy() {
 
   return (
     <div className="cs-page-wrapper">
-      {/* Background Orbs */}
+      {/* Animated Background Orbs */}
       <div className="cs-gradient-orbs">
         <div className="cs-orb cs-orb-1"></div>
         <div className="cs-orb cs-orb-2"></div>
       </div>
 
-      {/* Full-Width Navigation Pill */}
-      <nav className="main-nav-pill">
-        <div className="nav-back-link" onClick={() => navigate("/pick-a-card")}>
-          « UI/UX Design
-        </div>
-
-        <div className="nav-links-center">
-          <span className="nav-item" onClick={() => navigate("/")}>
-            Home
-          </span>
-          <span className="nav-divider">|</span>
-          <span
-            className="nav-item active"
+      {/* Pill Navigation Bar */}
+      <nav className="main-nav-container">
+        <div className="nav-pill">
+          <div
+            className="nav-back-link"
             onClick={() => navigate("/pick-a-card")}
           >
-            Works
-          </span>
-          <span className="nav-divider">|</span>
-          <span className="nav-item">About Me</span>
-        </div>
+            « UI/UX Design
+          </div>
 
-        <img
-          src={whiteLogo}
-          className="nav-logo-right"
-          alt="logo"
-          onClick={() => navigate("/")}
-        />
+          <div className="nav-links-center">
+            <span className="nav-item" onClick={() => navigate("/")}>
+              Home
+            </span>
+            <span className="nav-divider">|</span>
+            <span className="nav-item" onClick={() => navigate("/pick-a-card")}>
+              Works
+            </span>
+            <span className="nav-divider">|</span>
+            <span className="nav-item">About Me</span>
+          </div>
+
+          <img
+            src={whiteLogo}
+            className="nav-logo-right"
+            alt="logo"
+            onClick={() => navigate("/")}
+          />
+        </div>
       </nav>
 
-      {/* Hero Section Attached to Nav */}
+      {/* Hero Section */}
       <header className="cs-hero">
         <img src={headerImg} alt="Got It Header" className="cs-header-img" />
-        <button className="next-project-btn">NEXT PROJECT</button>
       </header>
 
-      {/* Main Content Card Attached to Hero */}
+      {/* Main Content Card */}
       <main className="cs-content-card">
         <img src={homepageImg} className="cs-responsive-img" alt="Homepage" />
         <img
@@ -88,14 +89,14 @@ function GotItCaseStudy() {
         />
       </main>
 
-      {/* Pure Black Footer */}
+      {/* Black Footer */}
       <footer className="cs-footer-black">
         <div className="footer-left">
           <h3 className="footer-title">Don't be a stranger!</h3>
         </div>
 
         <div className="footer-center">
-          <a href="mailto:mai@example.com">Email</a>
+          <a href="mailto:your@email.com">Email</a>
           <span className="footer-divider">|</span>
           <a href="#">LinkedIn</a>
           <span className="footer-divider">|</span>
@@ -103,7 +104,9 @@ function GotItCaseStudy() {
         </div>
 
         <div className="footer-right">
-          <button className="pill-btn-outline">MY RESUME</button>
+          <button className="pill-btn" onClick={() => navigate("/")}>
+            MY RESUME
+          </button>
         </div>
       </footer>
     </div>

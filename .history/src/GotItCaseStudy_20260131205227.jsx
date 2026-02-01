@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./GotItCaseStudy.css";
 
-// Asset imports
+// Assets - Pathing fixed to ./assets based on your file explorer
 import whiteLogo from "./assets/Head@300x.png";
 import headerImg from "./assets/UI:UX/Got It/Case study headers_Got It.png";
 import homepageImg from "./assets/UI:UX/Got It/Homepage.png";
@@ -27,8 +27,8 @@ function GotItCaseStudy() {
         <div className="cs-orb cs-orb-2"></div>
       </div>
 
-      {/* Full-Width Navigation Pill */}
-      <nav className="main-nav-pill">
+      {/* Nav Bar */}
+      <nav className="main-nav">
         <div className="nav-back-link" onClick={() => navigate("/pick-a-card")}>
           « UI/UX Design
         </div>
@@ -37,14 +37,9 @@ function GotItCaseStudy() {
           <span className="nav-item" onClick={() => navigate("/")}>
             Home
           </span>
-          <span className="nav-divider">|</span>
-          <span
-            className="nav-item active"
-            onClick={() => navigate("/pick-a-card")}
-          >
+          <span className="nav-item" onClick={() => navigate("/pick-a-card")}>
             Works
           </span>
-          <span className="nav-divider">|</span>
           <span className="nav-item">About Me</span>
         </div>
 
@@ -56,46 +51,31 @@ function GotItCaseStudy() {
         />
       </nav>
 
-      {/* Hero Section Attached to Nav */}
       <header className="cs-hero">
-        <img src={headerImg} alt="Got It Header" className="cs-header-img" />
-        <button className="next-project-btn">NEXT PROJECT</button>
+        <img src={headerImg} alt="Header" className="cs-header-img" />
       </header>
 
-      {/* Main Content Card Attached to Hero */}
       <main className="cs-content-card">
         <img src={homepageImg} className="cs-responsive-img" alt="Homepage" />
-        <img
-          src={solutionImg}
-          className="cs-responsive-img"
-          alt="The Solution"
-        />
-        <img src={mockupImg} className="cs-responsive-img" alt="App Mockup" />
-        <img
-          src={brochureImg}
-          className="cs-responsive-img"
-          alt="Print Brochure"
-        />
-        <img
-          src={impactImg}
-          className="cs-responsive-img"
-          alt="Impact Results"
-        />
+        <img src={solutionImg} className="cs-responsive-img" alt="Solution" />
+        <img src={mockupImg} className="cs-responsive-img" alt="Mockup" />
+        <img src={brochureImg} className="cs-responsive-img" alt="Brochure" />
+        <img src={impactImg} className="cs-responsive-img" alt="Impact" />
         <img
           src={contributionsImg}
           className="cs-responsive-img"
-          alt="My Contributions"
+          alt="Contributions"
         />
       </main>
 
-      {/* Pure Black Footer */}
+      {/* Black Footer */}
       <footer className="cs-footer-black">
         <div className="footer-left">
           <h3 className="footer-title">Don't be a stranger!</h3>
         </div>
 
         <div className="footer-center">
-          <a href="mailto:mai@example.com">Email</a>
+          <a href="mailto:your@email.com">Email</a>
           <span className="footer-divider">|</span>
           <a href="#">LinkedIn</a>
           <span className="footer-divider">|</span>
@@ -103,7 +83,7 @@ function GotItCaseStudy() {
         </div>
 
         <div className="footer-right">
-          <button className="pill-btn-outline">MY RESUME</button>
+          <button className="pill-btn">MY RESUME</button>
         </div>
       </footer>
     </div>
