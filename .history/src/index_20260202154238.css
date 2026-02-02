@@ -263,6 +263,7 @@ body {
   border-radius: 70px;
   margin-top: 40px;
   /* Ensure the glass effect/background stays consistent */
+  background: #000;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
 }

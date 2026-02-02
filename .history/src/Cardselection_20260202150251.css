@@ -3,6 +3,8 @@
    ========================= */
 .global-page-container {
   background-color: #000;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   padding: 20px 50px;
@@ -28,7 +30,7 @@
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(200.7px); /* Matches Figma Layer Blur */
+  filter: blur(200.7px); /* Figma: Layer blur 200.7 */
   opacity: 0.9;
   mix-blend-mode: screen;
 }
@@ -36,7 +38,7 @@
 .orb-1 {
   width: 70vw;
   height: 70vw;
-  /* Matches Figma #FFE3A4 to #FF3700 */
+  /* Figma: #FFE3A4 to #FF3700 */
   background: linear-gradient(135deg, #ffe3a4 0%, #ff3700 100%);
   top: -15%;
   left: -20%;
@@ -97,11 +99,11 @@
 }
 
 /* =========================
-       CENTER CONTENT PILL (FIXED FRAME)
+       CENTER CONTENT PILL (FIXED)
      ========================= */
 .content-pill-main {
   flex: 1;
-  background: #000;
+  background: #000; /* Contrast against background orbs */
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 60px;
   position: relative;
@@ -111,8 +113,6 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
-  /* Increased padding to prevent clipping of text and cards */
-  padding: 80px 60px;
 }
 
 /* Tarot Mat */
@@ -129,7 +129,7 @@
 }
 
 .rotating-mat-img {
-  width: 4000px;
+  width: 1500px;
   height: auto;
   animation: slowSpin 120s linear infinite;
 }
@@ -143,24 +143,21 @@
   }
 }
 
-/* Title - Updated to 48px */
+/* Title */
 .main-title {
-  font-family: "Hellishy", serif;
+  font-family: "Hellishy", serif; /* Custom brand font */
   color: #fff;
-  font-size: 48px;
+  font-size: 3.2rem;
   margin-bottom: 50px;
   z-index: 10;
   text-transform: uppercase;
 }
 
-/* =========================
-       TAROT CARD FAN
-     ========================= */
+/* Tarot Card Fan */
 .tarot-card-fan {
   display: flex;
   gap: 30px;
-  /* Aligned to center to keep cards from hitting the frame edge */
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   z-index: 20;
 }
@@ -178,19 +175,18 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
 }
 
-/* Refined rotation to fit within the expanded frame */
 .c-left {
-  transform: rotate(-10deg) translateY(15px);
+  transform: rotate(-12deg) translateY(25px);
 }
 .c-mid {
-  transform: translateY(-15px) scale(1.05);
+  transform: translateY(-10px) scale(1.05);
 }
 .c-right {
-  transform: rotate(10deg) translateY(15px);
+  transform: rotate(12deg) translateY(25px);
 }
 
 .tarot-card:hover {
-  transform: translateY(-50px) scale(1.1) rotate(0deg) !important;
+  transform: translateY(-60px) rotate(0deg) scale(1.1) !important;
   z-index: 100;
 }
 

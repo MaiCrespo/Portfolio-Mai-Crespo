@@ -1,0 +1,119 @@
+/* =========================
+     PAGE LAYOUT
+   ========================= */
+.global-page-container {
+  background-color: #000;
+  /* Use min-height instead of fixed height to prevent clipping */
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 50px;
+  gap: 20px;
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden;
+  /* Allow natural scrolling if the content exceeds screen height */
+  overflow-y: auto;
+}
+
+/* =========================
+       NAVIGATION (REPAIRED)
+     ========================= */
+.nav-pill {
+  height: 80px;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0; /* Prevents nav from squishing */
+  z-index: 100;
+}
+
+/* =========================
+       CENTER CONTENT PILL
+     ========================= */
+.content-pill-main {
+  flex: 1;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 60px;
+  position: relative;
+  /* Changed to visible to ensure cards are seen during hover/animation */
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  /* Increased vertical padding to fit 48px title and full cards */
+  padding: 80px 40px;
+  margin: 10px 0;
+}
+
+/* Title - 48px */
+.main-title {
+  font-family: "Hellishy", serif;
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 50px;
+  z-index: 10;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Tarot Card Fan */
+.tarot-card-fan {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  width: 100%;
+}
+
+.tarot-card {
+  /* Size adjusted to match video reference */
+  width: 260px;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tarot-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Positioning from video */
+.c-left {
+  transform: rotate(-8deg) translateY(20px);
+}
+.c-mid {
+  transform: translateY(-25px) scale(1.05);
+}
+.c-right {
+  transform: rotate(8deg) translateY(20px);
+}
+
+/* Hover Animation (Fully visible) */
+.tarot-card:hover {
+  transform: translateY(-60px) scale(1.1) rotate(0deg) !important;
+  z-index: 100;
+}
+
+/* =========================
+       FOOTER
+     ========================= */
+.footer-pill {
+  height: 140px;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  flex-shrink: 0;
+  z-index: 100;
+}

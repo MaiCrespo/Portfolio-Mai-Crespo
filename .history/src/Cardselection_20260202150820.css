@@ -3,13 +3,18 @@
    ========================= */
 .global-page-container {
   background-color: #000;
+  /* Changed from fixed 100vh to min-height to prevent clipping */
+  min-height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   padding: 20px 50px;
   gap: 20px;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
+  /* Allow vertical scrolling if screen is small */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* =========================
@@ -28,7 +33,7 @@
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(200.7px); /* Matches Figma Layer Blur */
+  filter: blur(200.7px);
   opacity: 0.9;
   mix-blend-mode: screen;
 }
@@ -36,7 +41,6 @@
 .orb-1 {
   width: 70vw;
   height: 70vw;
-  /* Matches Figma #FFE3A4 to #FF3700 */
   background: linear-gradient(135deg, #ffe3a4 0%, #ff3700 100%);
   top: -15%;
   left: -20%;
@@ -51,53 +55,7 @@
 }
 
 /* =========================
-       NAVIGATION & FOOTER
-     ========================= */
-.nav-pill,
-.footer-pill {
-  background: #000;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 40px;
-  z-index: 100;
-}
-
-.nav-pill {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-  color: #fff;
-  font-size: 1rem;
-}
-
-.nav-item {
-  opacity: 0.6;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  text-decoration: none;
-  color: #fff;
-}
-
-.nav-item.active {
-  opacity: 1;
-  font-weight: bold;
-}
-
-.logo-icon {
-  position: absolute;
-  right: 40px;
-  width: 40px;
-}
-
-/* =========================
-       CENTER CONTENT PILL (FIXED FRAME)
+       CENTER CONTENT PILL 
      ========================= */
 .content-pill-main {
   flex: 1;
@@ -105,14 +63,15 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 60px;
   position: relative;
-  overflow: hidden;
+  /* overflow: visible ensures the hover scaling/floating isn't cut off */
+  overflow: visible;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 1;
-  /* Increased padding to prevent clipping of text and cards */
-  padding: 80px 60px;
+  /* Ample padding to ensure 48px font and cards have space */
+  padding: 100px 40px;
 }
 
 /* Tarot Mat */
@@ -126,10 +85,13 @@
   opacity: 0.3;
   z-index: 1;
   pointer-events: none;
+  /* Keeps the mat rotation contained despite overflow visible above */
+  overflow: hidden;
+  border-radius: 60px;
 }
 
 .rotating-mat-img {
-  width: 4000px;
+  width: 1500px;
   height: auto;
   animation: slowSpin 120s linear infinite;
 }
@@ -143,12 +105,12 @@
   }
 }
 
-/* Title - Updated to 48px */
+/* Title - 48px as requested */
 .main-title {
   font-family: "Hellishy", serif;
   color: #fff;
   font-size: 48px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   z-index: 10;
   text-transform: uppercase;
 }
@@ -158,15 +120,15 @@
      ========================= */
 .tarot-card-fan {
   display: flex;
-  gap: 30px;
-  /* Aligned to center to keep cards from hitting the frame edge */
+  gap: 40px;
   align-items: center;
   justify-content: center;
   z-index: 20;
+  width: 100%;
 }
 
 .tarot-card {
-  width: 250px;
+  width: 280px; /* Matched to video scale */
   cursor: pointer;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -178,51 +140,37 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
 }
 
-/* Refined rotation to fit within the expanded frame */
+/* Fan positioning to match video */
 .c-left {
-  transform: rotate(-10deg) translateY(15px);
+  transform: rotate(-8deg) translateY(20px);
 }
 .c-mid {
-  transform: translateY(-15px) scale(1.05);
+  transform: translateY(-30px) scale(1.05);
 }
 .c-right {
-  transform: rotate(10deg) translateY(15px);
+  transform: rotate(8deg) translateY(20px);
 }
 
 .tarot-card:hover {
-  transform: translateY(-50px) scale(1.1) rotate(0deg) !important;
+  transform: translateY(-60px) scale(1.1) rotate(0deg) !important;
   z-index: 100;
 }
 
 /* =========================
-       FOOTER CONTENT
+       NAV & FOOTER (STUB)
      ========================= */
+.nav-pill {
+  height: 80px;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  z-index: 100;
+}
+
 .footer-pill {
   height: 140px;
-  padding: 0 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-}
-
-.footer-callout {
-  font-family: "Hellishy", serif;
-  color: #fff;
-  font-size: 2.8rem;
-}
-
-.resume-btn {
-  background: transparent;
-  border: 1px solid #fff;
-  color: #fff;
-  padding: 12px 36px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.resume-btn:hover {
-  background: #fff;
-  color: #000;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  z-index: 100;
 }

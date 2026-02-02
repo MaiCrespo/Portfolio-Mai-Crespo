@@ -251,38 +251,70 @@ body {
 }
 
 /* =========================
-       FOOTER & BUTTONS
-     ========================= */
+     RESPONSIVE FOOTER
+   ========================= */
 .footer-pill {
-  /* Changed from height to min-height to allow growth on mobile */
+  /* Dimensions & Background */
   min-height: 140px;
-  padding: 0 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 70px;
-  margin-top: 40px;
-  /* Ensure the glass effect/background stays consistent */
+  background: #000;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 60px;
+
+  /* Stability */
+  flex-shrink: 0;
+  z-index: 100;
   box-sizing: border-box;
+  width: 100%;
 }
 
-.footer-text {
-  font-family: var(--font-display);
+/* "Don't be a stranger!" Text */
+.footer-callout {
+  font-family: "Hellishy", serif;
+  color: #fff;
   font-size: 2.8rem;
-  /* Prevents the text from stretching weirdly */
-  line-height: 1.2;
+  white-space: nowrap;
 }
 
+/* Social Links Container */
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #fff;
+}
+
+.social-link {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  font-size: 1rem;
+}
+
+.social-link:hover {
+  opacity: 1;
+}
+
+.nav-sep {
+  opacity: 0.3;
+}
+
+/* My Resume Button */
 .pill-btn {
   background: transparent;
   border: 1px solid #fff;
   color: #fff;
-  padding: 14px 40px;
+  padding: 12px 30px;
   border-radius: 50px;
   cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
+  font-weight: bold;
+  transition: all 0.3s ease;
   white-space: nowrap;
 }
 
@@ -292,38 +324,42 @@ body {
 }
 
 /* =========================
-           RESPONSIVE BREAKPOINTS
-         ========================= */
+       MEDIA QUERIES
+     ========================= */
 
-/* For Tablets/Small Laptops */
+/* Tablets and Small Laptops */
 @media (max-width: 1024px) {
-  .footer-text {
-    font-size: 2.2rem;
-  }
   .footer-pill {
-    padding: 0 40px;
+    padding: 20px 40px;
+  }
+
+  .footer-callout {
+    font-size: 2rem;
   }
 }
 
-/* For Mobile Devices */
+/* Large Mobiles / Small Tablets */
 @media (max-width: 768px) {
   .footer-pill {
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center;
+    flex-direction: column;
+    height: auto;
+    padding: 30px 20px;
     gap: 20px;
-    padding: 40px 20px;
-    height: auto; /* Let content define the height */
-    border-radius: 40px; /* Slightly tighter radius for mobile */
+    border-radius: 30px;
+  }
+
+  .footer-callout {
+    font-size: 1.8rem;
     text-align: center;
   }
 
-  .footer-text {
-    font-size: 1.8rem;
-    white-space: normal; /* Allow text to wrap if necessary */
+  .footer-socials {
+    order: 2;
   }
 
   .pill-btn {
-    width: 100%; /* Button takes full width on small screens */
-    max-width: 250px;
+    order: 3;
+    width: 100%;
+    max-width: 200px;
   }
 }
