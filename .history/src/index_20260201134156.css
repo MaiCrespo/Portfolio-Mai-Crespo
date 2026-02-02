@@ -16,8 +16,7 @@
 :root {
   --font-display: "Hellishy", Georgia, serif;
   --font-body: "Neue Plak", sans-serif;
-  /* Using a very bright orange to ensure visibility */
-  --orb-color: #ff5f00;
+  --bg-orange: #fb7110; /* Vibrant orange from your reference */
 }
 
 * {
@@ -34,7 +33,7 @@ body {
 }
 
 /* =========================
-       FLOATING ORBS LAYER (THE FIX)
+       FLOATING ORBS LAYER
      ========================= */
 .orb-canvas {
   position: fixed;
@@ -42,43 +41,46 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0; /* Sits behind everything */
+  z-index: -1;
   overflow: hidden;
   pointer-events: none;
+  background: #000;
 }
 
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px); /* Soften the edges */
-  opacity: 0.8;
-  mix-blend-mode: screen;
+  filter: blur(100px); /* Creates the soft glow */
+  opacity: 0.6;
 }
 
 .orb-1 {
-  width: 70vw;
-  height: 70vw;
-  background: radial-gradient(circle, var(--orb-color) 0%, transparent 70%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--bg-orange) 0%, transparent 70%);
   top: -10%;
-  left: -20%;
-  animation: floatOrb 20s infinite alternate ease-in-out;
+  left: -10%;
+  animation: float 25s infinite ease-in-out;
 }
 
 .orb-2 {
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(circle, #ff8c00 0%, transparent 70%);
-  bottom: -10%;
-  right: -10%;
-  animation: floatOrb 25s infinite alternate-reverse ease-in-out;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #7e3505 0%, transparent 70%);
+  bottom: 10%;
+  right: -5%;
+  animation: float 30s infinite ease-in-out reverse;
 }
 
-@keyframes floatOrb {
+@keyframes float {
   0% {
     transform: translate(0, 0) scale(1);
   }
+  50% {
+    transform: translate(150px, 80px) scale(1.2);
+  }
   100% {
-    transform: translate(100px, 150px) scale(1.1);
+    transform: translate(-50px, 150px) scale(1);
   }
 }
 
@@ -86,12 +88,10 @@ body {
        PAGE RAIL LAYOUT
      ========================= */
 .page-layout {
-  position: relative;
-  z-index: 1; /* Content stays ABOVE the orbs */
   display: flex;
   flex-direction: column;
-  padding: 20px 50px;
-  gap: 20px;
+  padding: 15px 50px;
+  gap: 12px;
   width: 100%;
 }
 
@@ -101,8 +101,7 @@ body {
 .nav-pill,
 .featured-projects,
 .footer-pill {
-  background: rgba(0, 0, 0, 0.85); /* Slightly transparent to see orbs */
-  backdrop-filter: blur(10px); /* Glass effect from reference */
+  background: #000;
   border-radius: 40px;
   width: 100%;
 }
@@ -137,10 +136,10 @@ body {
 }
 
 /* =========================
-       HERO TEXT
+       HERO TEXT (Match Ref)
      ========================= */
 .hero-viewport {
-  min-height: 80vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -151,30 +150,30 @@ body {
 .brand-title {
   font-family: var(--font-display);
   text-transform: uppercase;
-  line-height: 0.85;
-  margin-bottom: 20px;
+  line-height: 0.8;
+  margin-bottom: 30px;
 }
 
 .mai {
-  font-size: clamp(5rem, 12vw, 9rem);
+  font-size: clamp(4rem, 10vw, 8rem);
   display: block;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
 }
 .crespo {
-  font-size: clamp(6rem, 16vw, 13rem);
+  font-size: clamp(5rem, 15vw, 12rem);
   display: block;
 }
 
 .bio-text {
-  max-width: 700px;
-  font-size: 1.15rem;
-  line-height: 1.5;
+  max-width: 650px;
+  font-size: 1.1rem;
+  line-height: 1.6;
   opacity: 0.9;
   margin-bottom: 40px;
 }
 
 /* =========================
-       PROJECTS GRID
+       PROJECTS SECTION
      ========================= */
 .featured-projects {
   padding: 80px 60px;
@@ -184,15 +183,14 @@ body {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: 3.5rem;
-  margin-bottom: 15px;
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 .title-line {
-  width: 300px;
+  width: 350px;
   height: 1px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.3);
   margin: 0 auto 80px;
-  opacity: 0.3;
 }
 
 .projects-grid {
@@ -203,22 +201,22 @@ body {
 
 .project-card {
   cursor: pointer;
-  transition: 0.3s;
-}
-.project-card:hover {
-  transform: translateY(-10px);
 }
 .project-card h3 {
   font-size: 1.8rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+}
+.p-cat {
+  font-weight: 300;
+  opacity: 0.6;
 }
 
 .img-container {
   width: 100%;
   aspect-ratio: 1/1;
-  border-radius: 35px;
+  border-radius: 30px;
   overflow: hidden;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .img-container img {
@@ -231,28 +229,26 @@ body {
        FOOTER
      ========================= */
 .footer-pill {
-  height: 140px;
+  height: 120px;
   padding: 0 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 70px;
-  margin-top: 40px;
+  border-radius: 60px;
 }
 
 .footer-text {
   font-family: var(--font-display);
-  font-size: 2.8rem;
+  font-size: 2.5rem;
 }
 
 .pill-btn {
   background: transparent;
   border: 1px solid #fff;
   color: #fff;
-  padding: 14px 40px;
+  padding: 12px 35px;
   border-radius: 50px;
   cursor: pointer;
-  font-weight: 600;
   transition: 0.3s;
 }
 

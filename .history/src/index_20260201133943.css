@@ -1,0 +1,251 @@
+/* =========================
+   FONTS
+   ========================= */
+@font-face {
+  font-family: "Hellishy";
+  src: url("./assets/fonts/Hellishy.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Plak";
+  src: url("./assets/fonts/Neue Plak Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* =========================
+       ROOT / RESET
+       ========================= */
+:root {
+  --font-display: "Hellishy", Georgia, serif;
+  --font-body: "Neue Plak", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  /* Dark brown/orange gradient matches the reference video */
+  background-image: radial-gradient(circle at 15% 25%, #3a1508 0%, #000000 45%),
+    radial-gradient(circle at 85% 75%, #4a1d0b 0%, #000000 45%);
+  background-attachment: fixed;
+  color: #fff;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* =========================
+       PAGE RAIL LAYOUT
+       ========================= */
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 50px; /* Side gaps where the gradient shows through */
+  gap: 12px;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+/* =========================
+       UNIVERSAL PILL STYLE
+       ========================= */
+.nav-pill,
+.featured-projects,
+.footer-pill {
+  background: #000;
+  border-radius: 40px;
+  width: 100%;
+}
+
+/* =========================
+       NAVIGATION
+       ========================= */
+.nav-pill {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  letter-spacing: 1.5px;
+}
+
+.nav-item {
+  opacity: 0.5;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: opacity 0.3s;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  opacity: 1;
+}
+
+.nav-sep {
+  opacity: 0.2;
+}
+
+.nav-logo {
+  position: absolute;
+  right: 40px;
+  width: 35px;
+}
+
+/* =========================
+       HERO SECTION
+       ========================= */
+.hero-viewport {
+  flex: 1;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.brand-text-center {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  line-height: 0.8;
+}
+
+.mai {
+  font-size: clamp(4rem, 10vw, 8rem);
+  display: block;
+  letter-spacing: 0.2em;
+}
+
+.crespo {
+  font-size: clamp(5rem, 15vw, 12rem);
+  display: block;
+}
+
+.bio-para-center {
+  max-width: 650px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  margin-bottom: 40px;
+}
+
+.pill-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 15px 45px;
+  border-radius: 50px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.3s;
+}
+
+.pill-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* =========================
+       FEATURED PROJECTS
+       ========================= */
+.featured-projects {
+  padding: 80px 60px;
+  border-radius: 60px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.header-line {
+  width: 300px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 0 auto 60px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.project-card {
+  text-align: center;
+  cursor: pointer;
+}
+
+.project-header {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.p-cat {
+  font-weight: 300;
+  opacity: 0.6;
+}
+
+.p-image-box {
+  width: 100%;
+  aspect-ratio: 1/1; /* Makes squares like the reference */
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.p-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+       FOOTER
+       ========================= */
+.footer-pill {
+  height: 120px;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 60px;
+}
+
+.footer-cta {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+.resume-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+}

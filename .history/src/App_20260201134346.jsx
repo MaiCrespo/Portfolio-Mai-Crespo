@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 // Ensure these paths match your actual folder structure
 import whiteLogo from "./assets/Head@300x.png";
-import gotItThumb from "./assets/UI-UX/GotIt/GotItThumbnail.png";
+import gotItThumb from "./assets/UI-UX/Got It/GotItThumbnail.png";
 import daybreakThumb from "./assets/UI-UX/Daybreak/DaybreakThumbnail.png";
 import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
 
