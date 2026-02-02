@@ -117,7 +117,7 @@ function App() {
             <span>Instagram</span>
           </div>
           <a
-            href="/MaiCrespoResume.pdf"
+            href="/MaiCresporResume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
