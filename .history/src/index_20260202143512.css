@@ -183,9 +183,8 @@ body {
   letter-spacing: 0.15em;
 }
 .crespo {
-  font-size: clamp(7rem, 16vw, 13rem);
+  font-size: clamp(6rem, 16vw, 13rem);
   display: block;
-  letter-spacing: 0.1em;
 }
 
 .bio-text {

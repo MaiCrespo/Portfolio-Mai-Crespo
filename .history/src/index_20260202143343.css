@@ -73,17 +73,12 @@ body {
 }
 
 .orb-2 {
-  width: 55vw;
-  height: 55vw;
-  background: radial-gradient(
-    circle,
-    var(--orb-start) 0%,
-    var(--orb-end) 40%,
-    transparent 70%
-  );
-  bottom: 5%;
-  right: -10%;
-  animation: floatOrb 10s infinite alternate-reverse ease-in-out;
+  width: 80vw;
+  height: 80vw;
+  background: linear-gradient(135deg, var(--orb-start) 0%, var(--orb-end) 100%);
+  bottom: -10%;
+  right: -15%;
+  animation: floatOrb 25s infinite alternate-reverse ease-in-out;
 }
 
 @keyframes floatOrb {
@@ -183,9 +178,8 @@ body {
   letter-spacing: 0.15em;
 }
 .crespo {
-  font-size: clamp(7rem, 16vw, 13rem);
+  font-size: clamp(6rem, 16vw, 13rem);
   display: block;
-  letter-spacing: 0.1em;
 }
 
 .bio-text {

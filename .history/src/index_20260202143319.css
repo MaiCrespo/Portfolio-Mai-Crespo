@@ -53,37 +53,29 @@ body {
 .orb {
   position: absolute;
   border-radius: 50%;
+
   filter: blur(80px);
   opacity: 0.8;
   mix-blend-mode: screen;
 }
 
 .orb-1 {
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(
-    circle,
-    var(--orb-start) 0%,
-    var(--orb-end) 40%,
-    transparent 70%
-  );
-  top: -10%;
-  left: -15%;
-  animation: floatOrb 25s infinite alternate ease-in-out;
+  width: 90vw;
+  height: 90vw;
+  /* Exact Linear Gradient from Figma */
+  background: linear-gradient(135deg, var(--orb-start) 0%, var(--orb-end) 100%);
+  top: -15%;
+  left: -20%;
+  animation: floatOrb 20s infinite alternate ease-in-out;
 }
 
 .orb-2 {
-  width: 55vw;
-  height: 55vw;
-  background: radial-gradient(
-    circle,
-    var(--orb-start) 0%,
-    var(--orb-end) 40%,
-    transparent 70%
-  );
-  bottom: 5%;
-  right: -10%;
-  animation: floatOrb 10s infinite alternate-reverse ease-in-out;
+  width: 80vw;
+  height: 80vw;
+  background: linear-gradient(135deg, var(--orb-start) 0%, var(--orb-end) 100%);
+  bottom: -10%;
+  right: -15%;
+  animation: floatOrb 25s infinite alternate-reverse ease-in-out;
 }
 
 @keyframes floatOrb {
@@ -183,9 +175,8 @@ body {
   letter-spacing: 0.15em;
 }
 .crespo {
-  font-size: clamp(7rem, 16vw, 13rem);
+  font-size: clamp(6rem, 16vw, 13rem);
   display: block;
-  letter-spacing: 0.1em;
 }
 
 .bio-text {
