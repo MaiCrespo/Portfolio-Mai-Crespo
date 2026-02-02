@@ -148,6 +148,7 @@ function App() {
             </a>
           </div>
 
+          {/* Resume Link - Fixed spelling to match your public folder */}
           <a
             href="/MaiCrespoResume.pdf"
             target="_blank"
