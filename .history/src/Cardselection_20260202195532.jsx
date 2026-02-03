@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Cardselection.css";
 
-// Assets - Ensure these filenames have NO SPACES to fix Vercel
+// Assets
 import whiteLogo from "./assets/Head@300x.png";
 import tarotMat from "./assets/misc/tarot-mat.avif";
 import cardUIUX from "./assets/CardUI-UX.png";
@@ -46,22 +46,24 @@ function Cardselection() {
         <h1 className="main-title">Choose One</h1>
 
         <div className="tarot-card-fan">
+          {/* Card I: UI/UX */}
           <div
             className="tarot-card c-left"
             onClick={() => navigate("/got-it")}
           >
             <img src={cardUIUX} alt="UI/UX" />
           </div>
+
+          {/* Card II: Graphic Design - NAVIGATION ADDED HERE */}
           <div
             className="tarot-card c-mid"
             onClick={() => navigate("/graphic-design")}
           >
             <img src={cardGraphic} alt="Graphic" />
           </div>
-          <div
-            className="tarot-card c-right"
-            onClick={() => navigate("/illustrations")}
-          >
+
+          {/* Card III: Illustrations */}
+          <div className="tarot-card c-right">
             <img src={cardIllustrations} alt="Illustrations" />
           </div>
         </div>
@@ -69,11 +71,29 @@ function Cardselection() {
 
       {/* Footer */}
       <footer className="footer-pill">
-        <h2 className="footer-callout">Don't be a stranger!</h2>
-        <div className="footer-socials">
-          <span>Email</span> <span className="nav-sep">|</span>
-          <span>LinkedIn</span> <span className="nav-sep">|</span>
-          <span>Instagram</span>
+        <h3 className="footer-text">Don't be a stranger!</h3>
+        <div className="nav-links">
+          <a href="mailto:yomaicrespo@gmail.com" className="nav-item">
+            Email
+          </a>
+          <span className="nav-sep">|</span>
+          <a
+            href="https://www.linkedin.com/in/mai-crespo/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-item"
+          >
+            LinkedIn
+          </a>
+          <span className="nav-sep">|</span>
+          <a
+            href="https://www.instagram.com/heymaicomics/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-item"
+          >
+            Instagram
+          </a>
         </div>
         <a
           href="/MaiCrespoResume.pdf"
@@ -81,7 +101,7 @@ function Cardselection() {
           rel="noopener noreferrer"
           style={{ textDecoration: "none" }}
         >
-          <button className="resume-btn">MY RESUME</button>
+          <button className="pill-btn">MY RESUME</button>
         </a>
       </footer>
     </div>

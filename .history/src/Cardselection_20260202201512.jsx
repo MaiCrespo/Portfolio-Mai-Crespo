@@ -6,7 +6,7 @@ import "./Cardselection.css";
 import whiteLogo from "./assets/Head@300x.png";
 import tarotMat from "./assets/misc/tarot-mat.avif";
 import cardUIUX from "./assets/CardUI-UX.png";
-import cardGraphic from "./assets/CardGraphicDesign.png";
+import cardGraphic from "./assets/CardGraphic Design.png";
 import cardIllustrations from "./assets/CardIllustrations.png";
 
 function Cardselection() {

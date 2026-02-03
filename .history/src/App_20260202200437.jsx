@@ -1,12 +1,20 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
+
+// Import your page components
+import Cardselection from "./Cardselection";
+import GraphicDesignPage from "./GraphicDesignPage";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
 import gotItThumb from "./assets/UI-UX/GotIt/GotItThumbnail.png";
 import daybreakThumb from "./assets/UI-UX/Daybreak/DaybreakThumbnail.png";
 import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
-
 function App() {
   const navigate = useNavigate();
 
@@ -143,6 +151,17 @@ function App() {
         </footer>
       </div>
     </>
+  );
+}
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pick-a-card" element={<Cardselection />} />
+        <Route path="/graphic-design" element={<GraphicDesignPage />} />
+      </Routes>
+    </Router>
   );
 }
 

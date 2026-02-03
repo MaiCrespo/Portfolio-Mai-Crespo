@@ -1,5 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
+
+// Page Components
+import Cardselection from "./Cardselection";
+import GraphicDesignPage from "./GraphicDesignPage";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
@@ -7,7 +16,11 @@ import gotItThumb from "./assets/UI-UX/GotIt/GotItThumbnail.png";
 import daybreakThumb from "./assets/UI-UX/Daybreak/DaybreakThumbnail.png";
 import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
 
-function App() {
+/**
+ * HOME COMPONENT
+ * Contains the landing page logic and "Featured Projects" section.
+ */
+function Home() {
   const navigate = useNavigate();
 
   const projects = [
@@ -143,6 +156,22 @@ function App() {
         </footer>
       </div>
     </>
+  );
+}
+
+/**
+ * MAIN APP ROUTER
+ * Handles navigation between Home, the Card Selection, and Graphic Design.
+ */
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pick-a-card" element={<Cardselection />} />
+        <Route path="/graphic-design" element={<GraphicDesignPage />} />
+      </Routes>
+    </Router>
   );
 }
 

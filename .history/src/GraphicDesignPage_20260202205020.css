@@ -1,0 +1,84 @@
+.scrollable-content {
+  overflow-y: auto !important;
+  padding-top: 60px !important;
+  /* Lightened glassmorphism effect */
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 40px !important;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.projects-grid {
+  display: grid;
+  /* Using 12 columns for perfect alignment math */
+  grid-template-columns: repeat(12, 1fr);
+  gap: 30px;
+  width: 95%;
+  max-width: 1200px;
+  padding-bottom: 60px;
+}
+
+/* TOP ROW: Force 3 columns together unless on mobile */
+.project-item {
+  grid-column: span 4; /* 12 / 3 = 4 columns each */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* BOTTOM ROW: Centering 2 items under the 3 above */
+.project-item.bottom-row:nth-last-child(2) {
+  grid-column: 3 / span 4; /* Starts at col 3, ends at col 7 */
+}
+
+.project-item.bottom-row:last-child {
+  grid-column: 7 / span 4; /* Starts at col 7, ends at col 11 */
+}
+
+.project-name {
+  font-family: "Hellishy", serif;
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  min-height: 4.5rem; /* Ensures cards stay aligned if titles wrap */
+  display: flex;
+  align-items: flex-end;
+}
+
+.project-card {
+  width: 100%;
+}
+
+.project-card img {
+  width: 100%;
+  /* Forces all images, including Swaolamb and Travel, to be identical size */
+  aspect-ratio: 3/5;
+  object-fit: cover;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin-bottom: 15px;
+}
+
+/* MOBILE VIEW: Collapse everything to 1 column */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 50px;
+  }
+
+  .project-item,
+  .project-item.bottom-row:nth-last-child(2),
+  .project-item.bottom-row:last-child {
+    grid-column: 1 / -1 !important; /* Spans full width */
+  }
+
+  .project-page-title {
+    font-size: 2.2rem;
+  }
+}
