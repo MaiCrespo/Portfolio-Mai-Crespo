@@ -377,11 +377,7 @@ body {
 .loading-container {
   position: fixed;
   inset: 0;
-  background: radial-gradient(
-    circle at center,
-    #000000 20%,
-    var(--orb-end) 100%
-  );
+  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -389,7 +385,7 @@ body {
 }
 
 .spinning-logo {
-  width: 200px;
+  width: 300px;
   height: auto;
   animation: spin 4s linear infinite;
 }

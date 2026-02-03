@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LoadingPage from "./LoadingPage";
-
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
 import gotItThumb from "./assets/UI-UX/GotIt/GotItThumbnail.png";
@@ -10,15 +9,9 @@ import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
 
 function App() {
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
 
-  // Loading timer and Mouse tracking logic
+  // Mouse tracking logic for the spotlight effect
   useEffect(() => {
-    // Show loading page for 2.5 seconds
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
-
     const handleMouseMove = (e) => {
       const root = document.documentElement;
       root.style.setProperty("--mouse-x", `${e.clientX}px`);
@@ -26,11 +19,7 @@ function App() {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const projects = [
@@ -56,11 +45,6 @@ function App() {
       desc: "An interactive learning game inspired by Dante's Inferno circles.",
     },
   ];
-
-  // Render LoadingPage exclusively when isLoading is true
-  if (isLoading) {
-    return <LoadingPage />;
-  }
 
   return (
     <>

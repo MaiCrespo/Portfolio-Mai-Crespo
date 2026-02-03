@@ -378,9 +378,10 @@ body {
   position: fixed;
   inset: 0;
   background: radial-gradient(
-    circle at center,
-    #000000 20%,
-    var(--orb-end) 100%
+    circle,
+    var(--orb-start) 0%,
+    var(--orb-end) 40%,
+    transparent 70%
   );
   display: flex;
   justify-content: center;
@@ -389,7 +390,7 @@ body {
 }
 
 .spinning-logo {
-  width: 200px;
+  width: 300px;
   height: auto;
   animation: spin 4s linear infinite;
 }

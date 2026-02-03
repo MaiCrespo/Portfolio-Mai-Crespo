@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import LoadingPage from "./LoadingPage";
+
+// Components
+import ShapeBlur from "./ShapeBlur";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
@@ -12,25 +14,13 @@ function App() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
 
-  // Loading timer and Mouse tracking logic
   useEffect(() => {
-    // Show loading page for 2.5 seconds
+    // Timer to allow the spinning logo to show before the site reveals
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2500);
 
-    const handleMouseMove = (e) => {
-      const root = document.documentElement;
-      root.style.setProperty("--mouse-x", `${e.clientX}px`);
-      root.style.setProperty("--mouse-y", `${e.clientY}px`);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   const projects = [
@@ -57,21 +47,24 @@ function App() {
     },
   ];
 
-  // Render LoadingPage exclusively when isLoading is true
+  // 1. Loading State View
   if (isLoading) {
-    return <LoadingPage />;
+    return (
+      <div className="loading-container">
+        <img src={whiteLogo} className="spinning-logo" alt="Loading..." />
+      </div>
+    );
   }
 
+  // 2. Main Portfolio View
   return (
     <>
-      {/* Background Orbs */}
       <div className="orb-canvas">
         <div className="orb orb-1"></div>
         <div className="orb orb-2"></div>
       </div>
 
       <div className="page-layout">
-        {/* Navigation */}
         <nav className="nav-pill">
           <div className="nav-links">
             <span className="nav-item active">Home</span>
@@ -85,21 +78,14 @@ function App() {
           <img src={whiteLogo} className="nav-logo" alt="logo" />
         </nav>
 
-        {/* Hero Section with Spotlight Shape Blur */}
         <main className="hero-viewport">
           <div className="brand-title">
-            {/* Background blurred layer */}
-            <div className="text-layer blurred">
-              <span>MAI</span>
-              <span>CRESPO</span>
-            </div>
-            {/* Foreground sharp layer that follows the mouse */}
-            <div className="text-layer sharp">
-              <span>MAI</span>
-              <span>CRESPO</span>
-            </div>
+            <ShapeBlur
+              text="MAI CRESPO"
+              circleSize={0.25}
+              className="hero-shape-blur"
+            />
           </div>
-
           <p className="bio-text">
             Hello, I'm a <strong>UI/UX Designer</strong> with a strong
             background in <strong>Illustration and Graphic Design</strong>.
@@ -111,7 +97,6 @@ function App() {
           </button>
         </main>
 
-        {/* Featured Projects Section */}
         <section className="featured-projects">
           <h2 className="section-title">Featured Projects</h2>
           <div className="title-line"></div>
@@ -128,27 +113,13 @@ function App() {
                 <div className="img-container">
                   <img src={p.image} alt={p.title} />
                 </div>
-                <p
-                  style={{
-                    opacity: 0.7,
-                    fontSize: "0.95rem",
-                    marginBottom: "20px",
-                  }}
-                >
-                  {p.desc}
-                </p>
-                <button
-                  className="pill-btn"
-                  style={{ padding: "10px 30px", fontSize: "0.8rem" }}
-                >
-                  VIEW MORE
-                </button>
+                <p className="project-desc">{p.desc}</p>
+                <button className="pill-btn view-more">VIEW MORE</button>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Footer */}
         <footer className="footer-pill">
           <h3 className="footer-text">Don't be a stranger!</h3>
           <div className="nav-links">
@@ -157,31 +128,24 @@ function App() {
             </a>
             <span className="nav-sep">|</span>
             <a
-              href="https://www.linkedin.com/in/mai-crespo/"
+              href="https://linkedin.com/in/mai-crespo/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noreferrer"
               className="nav-item"
             >
               LinkedIn
             </a>
             <span className="nav-sep">|</span>
             <a
-              href="https://www.instagram.com/heymaicomics/"
+              href="https://instagram.com/heymaicomics/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noreferrer"
               className="nav-item"
             >
               Instagram
             </a>
           </div>
-          <a
-            href="/MaiCrespoResume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ textDecoration: "none" }}
-          >
-            <button className="pill-btn">MY RESUME</button>
-          </a>
+          <button className="pill-btn">MY RESUME</button>
         </footer>
       </div>
     </>
