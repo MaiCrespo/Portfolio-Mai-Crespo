@@ -16,12 +16,10 @@
 :root {
   --font-display: "Hellishy", Georgia, serif;
   --font-body: "Neue Plak", sans-serif;
+
+  /* Exact Colors from Figma Screenshot */
   --orb-start: #ffe3a4;
   --orb-end: #ff3700;
-
-  /* Default spotlight position */
-  --mouse-x: 50%;
-  --mouse-y: 50%;
 }
 
 * {
@@ -38,8 +36,8 @@ body {
 }
 
 /* =========================
-         FLOATING ORBS LAYER
-       ========================= */
+       FLOATING ORBS LAYER
+     ========================= */
 .orb-canvas {
   position: fixed;
   top: 0;
@@ -98,8 +96,8 @@ body {
 }
 
 /* =========================
-         PAGE RAIL LAYOUT
-       ========================= */
+       PAGE RAIL LAYOUT
+     ========================= */
 .page-layout {
   position: relative;
   z-index: 1;
@@ -112,11 +110,12 @@ body {
 }
 
 /* =========================
-         PILL COMPONENTS
-       ========================= */
+       PILL COMPONENTS
+     ========================= */
 .nav-pill,
 .featured-projects,
 .footer-pill {
+  /* Set to transparent so the orb colors are visible */
   background: transparent;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -146,9 +145,12 @@ body {
   text-decoration: none;
   color: #fff;
 }
-.nav-item:hover,
+.nav-item:hover {
+  opacity: 1;
+}
 .nav-item.active {
   opacity: 1;
+  font-weight: bold;
 }
 .nav-logo {
   position: absolute;
@@ -156,95 +158,52 @@ body {
   width: 35px;
 }
 
-/* =========================================
-         HERO TEXT - SPOTLIGHT BLUR EFFECT
-     ========================================= */
+/* =========================
+       HERO TEXT
+     ========================= */
 .hero-viewport {
-  min-height: 85vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   width: 100%;
-  overflow: hidden;
 }
 
 .brand-title {
-  position: relative;
-  width: 100%;
-  font-family: var(--font-display);
-  text-transform: uppercase;
-  line-height: 0.85;
-  margin-bottom: 20px;
-  cursor: none; /* Spotlight acts as the cursor */
-}
-
-/* Base styles for both layers */
-.text-layer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  pointer-events: none;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+  /* Ensure the font matches your custom font in the canvas */
+  font-family: var(--font-display);
 }
 
-.text-layer span:first-child {
+.mai {
   font-size: clamp(5rem, 12vw, 9rem);
+  display: block;
   letter-spacing: 0.15em;
 }
-
-.text-layer span:last-child {
+.crespo {
   font-size: clamp(7rem, 16vw, 13rem);
+  display: block;
   letter-spacing: 0.1em;
 }
 
-/* Layer 1: The Blurred Background */
-.text-layer.blurred {
-  filter: blur(12px);
-  opacity: 0.3;
-  color: #fff;
-  user-select: none;
-}
-
-/* Layer 2: The Sharp Foreground (Masked) */
-.text-layer.sharp {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: #fff;
-  z-index: 2;
-
-  /* The Lens effect using radial mask */
-  -webkit-mask-image: radial-gradient(
-    circle 180px at var(--mouse-x) var(--mouse-y),
-    black 30%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    circle 180px at var(--mouse-x) var(--mouse-y),
-    black 30%,
-    transparent 100%
-  );
-
-  /* Subtle glow for the sharp text */
-  text-shadow: 0 0 15px rgba(255, 227, 164, 0.4);
-}
-
 .bio-text {
-  max-width: 1000px;
-  font-size: 2rem;
+  max-width: 700px;
+  font-size: 1.15rem;
   line-height: 1.5;
   opacity: 0.9;
   margin-bottom: 40px;
-  position: relative;
-  z-index: 3;
 }
 
 /* =========================
-         PROJECTS GRID
-       ========================= */
+       PROJECTS GRID
+     ========================= */
 .featured-projects {
   padding: 80px 60px;
   border-radius: 60px;
@@ -289,6 +248,7 @@ body {
   overflow: hidden;
   margin-bottom: 25px;
 }
+
 .img-container img {
   width: 100%;
   height: 100%;
@@ -296,9 +256,10 @@ body {
 }
 
 /* =========================
-         FOOTER & BUTTONS
-       ========================= */
+       FOOTER & BUTTONS
+     ========================= */
 .footer-pill {
+  /* Changed from height to min-height to allow growth on mobile */
   min-height: 140px;
   padding: 0 60px;
   display: flex;
@@ -306,6 +267,7 @@ body {
   align-items: center;
   border-radius: 70px;
   margin-top: 40px;
+  /* Ensure the glass effect/background stays consistent */
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
 }
@@ -313,6 +275,7 @@ body {
 .footer-text {
   font-family: var(--font-display);
   font-size: 2.8rem;
+  /* Prevents the text from stretching weirdly */
   line-height: 1.2;
 }
 
@@ -327,14 +290,17 @@ body {
   transition: 0.3s;
   white-space: nowrap;
 }
+
 .pill-btn:hover {
   background: #fff;
   color: #000;
 }
 
 /* =========================
-             RESPONSIVE
-           ========================= */
+           RESPONSIVE BREAKPOINTS
+         ========================= */
+
+/* For Tablets/Small Laptops */
 @media (max-width: 1024px) {
   .footer-text {
     font-size: 2.2rem;
@@ -344,33 +310,25 @@ body {
   }
 }
 
+/* For Mobile Devices */
 @media (max-width: 768px) {
   .footer-pill {
-    flex-direction: column;
-    padding: 40px 20px;
-    height: auto;
-    border-radius: 40px;
-    text-align: center;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center;
     gap: 20px;
-  }
-  .footer-text {
-    font-size: 1.8rem;
-  }
-  .pill-btn {
-    width: 100%;
-    max-width: 250px;
+    padding: 40px 20px;
+    height: auto; /* Let content define the height */
+    border-radius: 40px; /* Slightly tighter radius for mobile */
+    text-align: center;
   }
 
-  /* Disable spotlight on mobile/touch */
-  .text-layer.sharp {
-    mask-image: none;
-    -webkit-mask-image: none;
-    position: relative;
+  .footer-text {
+    font-size: 1.8rem;
+    white-space: normal; /* Allow text to wrap if necessary */
   }
-  .text-layer.blurred {
-    display: none;
-  }
-  .brand-title {
-    cursor: default;
+
+  .pill-btn {
+    width: 100%; /* Button takes full width on small screens */
+    max-width: 250px;
   }
 }

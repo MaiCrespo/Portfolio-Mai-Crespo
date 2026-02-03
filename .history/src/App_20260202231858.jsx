@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import ShapeBlur from "./ShapeBlur"; // Ensure this file exists in your src folder
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
@@ -9,18 +10,6 @@ import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
 
 function App() {
   const navigate = useNavigate();
-
-  // Mouse tracking logic for the spotlight effect
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const root = document.documentElement;
-      root.style.setProperty("--mouse-x", `${e.clientX}px`);
-      root.style.setProperty("--mouse-y", `${e.clientY}px`);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   const projects = [
     {
@@ -48,14 +37,12 @@ function App() {
 
   return (
     <>
-      {/* Background Orbs */}
       <div className="orb-canvas">
         <div className="orb orb-1"></div>
         <div className="orb orb-2"></div>
       </div>
 
       <div className="page-layout">
-        {/* Navigation */}
         <nav className="nav-pill">
           <div className="nav-links">
             <span className="nav-item active">Home</span>
@@ -69,19 +56,20 @@ function App() {
           <img src={whiteLogo} className="nav-logo" alt="logo" />
         </nav>
 
-        {/* Hero Section with Spotlight Shape Blur */}
         <main className="hero-viewport">
-          <div className="brand-title">
-            {/* Background blurred layer */}
-            <div className="text-layer blurred">
-              <span>MAI</span>
-              <span>CRESPO</span>
-            </div>
-            {/* Foreground sharp layer that follows the mouse */}
-            <div className="text-layer sharp">
-              <span>MAI</span>
-              <span>CRESPO</span>
-            </div>
+        <h1 className="brand-title">
+    <span className="mai-name">MAI</span>
+    <span className="crespo-name">CRESPO</span>
+  </h1>
+  <p className="bio-text">
+    Hello, I'm a <strong>UI/UX Designer</strong> with a strong
+    background in <strong>Illustration and Graphic Design</strong>.
+    Aside from problem-solving through tech, I like to draw crazy weird
+    dark things.
+  </p>
+  <button className="pill-btn" onClick={() => navigate("/pick-a-card")}>
+    PICK A CARD
+  </button>
           </div>
 
           <p className="bio-text">
@@ -95,7 +83,6 @@ function App() {
           </button>
         </main>
 
-        {/* Featured Projects Section */}
         <section className="featured-projects">
           <h2 className="section-title">Featured Projects</h2>
           <div className="title-line"></div>
@@ -132,7 +119,6 @@ function App() {
           </div>
         </section>
 
-        {/* Footer */}
         <footer className="footer-pill">
           <h3 className="footer-text">Don't be a stranger!</h3>
           <div className="nav-links">

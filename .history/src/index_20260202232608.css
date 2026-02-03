@@ -233,8 +233,8 @@ body {
 }
 
 .bio-text {
-  max-width: 1000px;
-  font-size: 2rem;
+  max-width: 700px;
+  font-size: 1.15rem;
   line-height: 1.5;
   opacity: 0.9;
   margin-bottom: 40px;
