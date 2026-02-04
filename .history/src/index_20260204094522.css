@@ -61,7 +61,7 @@ body {
   );
   top: -10%;
   left: -15%;
-  animation: floatOrb 20s infinite ease-in-out;
+  animation: floatOrb 25s infinite alternate ease-in-out;
 }
 
 .orb-2 {
@@ -75,42 +75,15 @@ body {
   );
   bottom: 5%;
   right: -10%;
-  animation: floatOrbReverse 15s infinite ease-in-out;
+  animation: floatOrb 10s infinite alternate-reverse ease-in-out;
 }
 
 @keyframes floatOrb {
   0% {
     transform: translate(0, 0) scale(1);
   }
-  25% {
-    transform: translate(100px, -80px) scale(1.05);
-  }
-  50% {
-    transform: translate(-50px, 100px) scale(1.1);
-  }
-  75% {
-    transform: translate(80px, 50px) scale(1.02);
-  }
   100% {
-    transform: translate(0, 0) scale(1);
-  }
-}
-
-@keyframes floatOrbReverse {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(-120px, 90px) scale(1.08);
-  }
-  50% {
-    transform: translate(60px, -70px) scale(1.05);
-  }
-  75% {
-    transform: translate(-80px, -40px) scale(1.12);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
+    transform: translate(100px, 150px) scale(1.1);
   }
 }
 

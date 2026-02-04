@@ -17,6 +17,7 @@
   --orb-end: #ff3700;
   --mouse-x: 50%;
   --mouse-y: 50%;
+  /* Define a global content width for perfect alignment */
   --content-max-width: 1300px;
 }
 
@@ -61,7 +62,7 @@ body {
   );
   top: -10%;
   left: -15%;
-  animation: floatOrb 20s infinite ease-in-out;
+  animation: floatOrb 25s infinite alternate ease-in-out;
 }
 
 .orb-2 {
@@ -75,42 +76,15 @@ body {
   );
   bottom: 5%;
   right: -10%;
-  animation: floatOrbReverse 15s infinite ease-in-out;
+  animation: floatOrb 10s infinite alternate-reverse ease-in-out;
 }
 
 @keyframes floatOrb {
   0% {
     transform: translate(0, 0) scale(1);
   }
-  25% {
-    transform: translate(100px, -80px) scale(1.05);
-  }
-  50% {
-    transform: translate(-50px, 100px) scale(1.1);
-  }
-  75% {
-    transform: translate(80px, 50px) scale(1.02);
-  }
   100% {
-    transform: translate(0, 0) scale(1);
-  }
-}
-
-@keyframes floatOrbReverse {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(-120px, 90px) scale(1.08);
-  }
-  50% {
-    transform: translate(60px, -70px) scale(1.05);
-  }
-  75% {
-    transform: translate(-80px, -40px) scale(1.12);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
+    transform: translate(100px, 150px) scale(1.1);
   }
 }
 
@@ -120,12 +94,12 @@ body {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  padding: 40px 0;
+  padding: 40px 0; /* Padding moved to children for full-width control */
   align-items: center;
   gap: 60px;
 }
 
-/* --- NAVIGATION PILL --- */
+/* --- NAVIGATION (RESTORED SIZE & ALIGNED) --- */
 .nav-pill {
   width: 90%;
   max-width: var(--content-max-width);
@@ -193,11 +167,6 @@ body {
   pointer-events: none;
 }
 
-.text-layer.blurred {
-  filter: blur(8px);
-  opacity: 0.7;
-}
-
 .text-layer span:first-child {
   font-size: clamp(5rem, 12vw, 9rem);
   letter-spacing: 0.15em;
@@ -205,6 +174,11 @@ body {
 .text-layer span:last-child {
   font-size: clamp(7rem, 16vw, 13rem);
   letter-spacing: 0.1em;
+}
+
+.text-layer.blurred {
+  filter: blur(12px);
+  opacity: 0.3;
 }
 
 .text-layer.sharp {
@@ -234,7 +208,7 @@ body {
   margin-bottom: 40px;
 }
 
-/* --- PROJECTS SECTION --- */
+/* --- PROJECTS SECTION (ALIGNED WITH PILLS) --- */
 .featured-projects {
   width: 100%;
   display: flex;
@@ -261,7 +235,7 @@ body {
   flex-direction: column;
   gap: 30px;
   width: 90%;
-  max-width: var(--content-max-width);
+  max-width: var(--content-max-width); /* Matches Navbar/Footer */
 }
 
 .project-card {
@@ -271,6 +245,7 @@ body {
   padding: 60px;
   align-items: center;
   border-radius: 50px;
+  text-align: left;
   transition: transform 0.4s ease;
   background: linear-gradient(
     145deg,
@@ -281,6 +256,7 @@ body {
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
 }
 
 .project-card:nth-child(even) {
@@ -290,15 +266,18 @@ body {
   order: 2;
 }
 
-/* --- TEXT ALIGNMENT (FLUSH TO TITLE) --- */
+.project-card:hover {
+  transform: translateY(-8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .project-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
 }
 
 .p-cat {
+  display: block;
   font-size: 0.8rem;
   opacity: 0.7;
   margin-bottom: 15px;
@@ -308,7 +287,7 @@ body {
 .project-info h3 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.5vw, 3.2rem);
-  line-height: 1.1;
+  line-height: 1;
   margin-bottom: 25px;
 }
 
@@ -317,18 +296,14 @@ body {
   line-height: 1.6;
   opacity: 0.85;
   margin-bottom: 35px;
-  margin-left: 0;
-  max-width: 600px;
 }
 
-/* --- THUMBNAIL (SHADOWS FULLY REMOVED) --- */
 .img-container {
   width: 100%;
   border-radius: 35px;
   overflow: hidden;
-  box-shadow: none !important; /* Forces shadow removal */
-  filter: none !important; /* Removes any filter-based shadows */
-  background: transparent;
+  box-shadow: none !important;
+  filter: none !important;
 }
 
 .img-container img {
@@ -336,15 +311,11 @@ body {
   height: auto;
   display: block;
   border-radius: 35px;
-  box-shadow: none !important; /* Double-check image itself */
+  box-shadow: none !important;
   filter: none !important;
 }
 
-.view-more {
-  align-self: flex-start;
-}
-
-/* --- FOOTER PILL --- */
+/* --- FOOTER (RESTORED SIZE & ALIGNED) --- */
 .footer-pill {
   width: 90%;
   max-width: var(--content-max-width);
@@ -356,7 +327,6 @@ body {
   border-radius: 70px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 40px;
 }
 
 .footer-text {
@@ -378,6 +348,39 @@ body {
 .pill-btn:hover {
   background: #fff;
   color: #000;
+}
+
+.view-more {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  padding: 10px 30px;
+}
+
+/* --- LOADING SCREEN --- */
+.loading-container {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    #000000 20%,
+    var(--orb-end) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+.spinning-logo {
+  width: 200px;
+  animation: spin 4s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* --- RESPONSIVE --- */
@@ -404,5 +407,8 @@ body {
     flex-direction: column;
     gap: 15px;
     border-radius: 25px;
+  }
+  .nav-logo {
+    position: static;
   }
 }

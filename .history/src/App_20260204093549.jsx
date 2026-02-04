@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LoadingPage from "./LoadingPage";
+import ShapeBlur from "./ShapeBlur";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
@@ -81,16 +82,12 @@ function App() {
         </nav>
 
         <main className="hero-viewport">
-          <div className="brand-title">
-            <div className="text-layer blurred">
-              <span>MAI</span>
-              <span>CRESPO</span>
-            </div>
-            <div className="text-layer sharp">
-              <span>MAI</span>
-              <span>CRESPO</span>
-            </div>
-          </div>
+          <ShapeBlur
+            text="MAI CRESPO"
+            className="brand-title"
+            circleSize={0.15}
+            shapeSize={1.2}
+          />
 
           <p className="bio-text">
             Hello, I'm a <strong>UI/UX Designer</strong> with a strong

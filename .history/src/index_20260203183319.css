@@ -17,7 +17,6 @@
   --orb-end: #ff3700;
   --mouse-x: 50%;
   --mouse-y: 50%;
-  --content-max-width: 1300px;
 }
 
 * {
@@ -61,7 +60,7 @@ body {
   );
   top: -10%;
   left: -15%;
-  animation: floatOrb 20s infinite ease-in-out;
+  animation: floatOrb 25s infinite alternate ease-in-out;
 }
 
 .orb-2 {
@@ -75,42 +74,15 @@ body {
   );
   bottom: 5%;
   right: -10%;
-  animation: floatOrbReverse 15s infinite ease-in-out;
+  animation: floatOrb 10s infinite alternate-reverse ease-in-out;
 }
 
 @keyframes floatOrb {
   0% {
     transform: translate(0, 0) scale(1);
   }
-  25% {
-    transform: translate(100px, -80px) scale(1.05);
-  }
-  50% {
-    transform: translate(-50px, 100px) scale(1.1);
-  }
-  75% {
-    transform: translate(80px, 50px) scale(1.02);
-  }
   100% {
-    transform: translate(0, 0) scale(1);
-  }
-}
-
-@keyframes floatOrbReverse {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(-120px, 90px) scale(1.08);
-  }
-  50% {
-    transform: translate(60px, -70px) scale(1.05);
-  }
-  75% {
-    transform: translate(-80px, -40px) scale(1.12);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
+    transform: translate(100px, 150px) scale(1.1);
   }
 }
 
@@ -120,15 +92,13 @@ body {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  padding: 40px 0;
-  align-items: center;
-  gap: 60px;
+  padding: 20px 50px;
+  gap: 20px;
 }
 
-/* --- NAVIGATION PILL --- */
+/* --- RESTORED NAVIGATION SIZE --- */
 .nav-pill {
-  width: 90%;
-  max-width: var(--content-max-width);
+  width: 100%;
   height: 80px;
   background: transparent;
   backdrop-filter: blur(10px);
@@ -168,13 +138,12 @@ body {
 
 /* --- HERO SECTION --- */
 .hero-viewport {
-  min-height: 70vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 20px;
 }
 
 .brand-title {
@@ -184,6 +153,7 @@ body {
   text-transform: uppercase;
   line-height: 0.85;
   margin-bottom: 20px;
+  cursor: none;
 }
 
 .text-layer {
@@ -193,11 +163,6 @@ body {
   pointer-events: none;
 }
 
-.text-layer.blurred {
-  filter: blur(8px);
-  opacity: 0.7;
-}
-
 .text-layer span:first-child {
   font-size: clamp(5rem, 12vw, 9rem);
   letter-spacing: 0.15em;
@@ -205,6 +170,11 @@ body {
 .text-layer span:last-child {
   font-size: clamp(7rem, 16vw, 13rem);
   letter-spacing: 0.1em;
+}
+
+.text-layer.blurred {
+  filter: blur(12px);
+  opacity: 0.3;
 }
 
 .text-layer.sharp {
@@ -234,13 +204,10 @@ body {
   margin-bottom: 40px;
 }
 
-/* --- PROJECTS SECTION --- */
+/* --- PROJECT SECTION & ALIGNED CARDS --- */
 .featured-projects {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 0;
+  padding: 80px 0;
+  text-align: center;
 }
 
 .section-title {
@@ -252,16 +219,16 @@ body {
   width: 300px;
   height: 1px;
   background: #fff;
-  margin-bottom: 80px;
+  margin: 0 auto 80px;
   opacity: 0.3;
 }
 
 .projects-grid {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  width: 90%;
-  max-width: var(--content-max-width);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .project-card {
@@ -269,8 +236,9 @@ body {
   grid-template-columns: 1fr 1.4fr;
   gap: 60px;
   padding: 60px;
-  align-items: center;
+  align-items: center; /* Vertical Center Text to Image */
   border-radius: 50px;
+  text-align: left;
   transition: transform 0.4s ease;
   background: linear-gradient(
     145deg,
@@ -281,6 +249,8 @@ body {
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none; /* Removed the weird shadow */
+  cursor: pointer;
 }
 
 .project-card:nth-child(even) {
@@ -290,15 +260,19 @@ body {
   order: 2;
 }
 
-/* --- TEXT ALIGNMENT (FLUSH TO TITLE) --- */
+.project-card:hover {
+  transform: translateY(-8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .project-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  justify-content: center;
 }
 
 .p-cat {
+  display: block;
   font-size: 0.8rem;
   opacity: 0.7;
   margin-bottom: 15px;
@@ -308,7 +282,7 @@ body {
 .project-info h3 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.5vw, 3.2rem);
-  line-height: 1.1;
+  line-height: 1; /* Tight layout like Figma */
   margin-bottom: 25px;
 }
 
@@ -317,18 +291,15 @@ body {
   line-height: 1.6;
   opacity: 0.85;
   margin-bottom: 35px;
-  margin-left: 0;
-  max-width: 600px;
+  max-width: 95%;
 }
 
-/* --- THUMBNAIL (SHADOWS FULLY REMOVED) --- */
 .img-container {
   width: 100%;
   border-radius: 35px;
   overflow: hidden;
-  box-shadow: none !important; /* Forces shadow removal */
-  filter: none !important; /* Removes any filter-based shadows */
-  background: transparent;
+  box-shadow: none; /* Explicitly removed container shadow */
+  filter: none;
 }
 
 .img-container img {
@@ -336,18 +307,11 @@ body {
   height: auto;
   display: block;
   border-radius: 35px;
-  box-shadow: none !important; /* Double-check image itself */
-  filter: none !important;
 }
 
-.view-more {
-  align-self: flex-start;
-}
-
-/* --- FOOTER PILL --- */
+/* --- RESTORED FOOTER SIZE --- */
 .footer-pill {
-  width: 90%;
-  max-width: var(--content-max-width);
+  width: 100%;
   min-height: 140px;
   padding: 0 60px;
   display: flex;
@@ -380,6 +344,41 @@ body {
   color: #000;
 }
 
+.view-more {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  padding: 10px 30px;
+}
+
+/* --- LOADING SCREEN --- */
+.loading-container {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    #000000 20%,
+    var(--orb-end) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.spinning-logo {
+  width: 200px;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* --- RESPONSIVE --- */
 @media (max-width: 900px) {
   .project-card,
@@ -390,19 +389,14 @@ body {
   .project-card:nth-child(even) .img-container {
     order: 0;
   }
+  .page-layout {
+    padding: 20px;
+  }
   .footer-pill {
     flex-direction: column;
     padding: 40px 20px;
     height: auto;
     text-align: center;
     gap: 20px;
-    border-radius: 40px;
-  }
-  .nav-pill {
-    height: auto;
-    padding: 20px;
-    flex-direction: column;
-    gap: 15px;
-    border-radius: 25px;
   }
 }
