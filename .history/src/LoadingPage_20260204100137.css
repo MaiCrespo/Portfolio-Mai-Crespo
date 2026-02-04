@@ -18,7 +18,7 @@
 }
 
 .loading-orb {
-  position: relative;
+  position: absolute;
   border-radius: 50%;
   filter: blur(100px);
   opacity: 0.6;
@@ -26,7 +26,6 @@
 }
 
 .loading-orb-1 {
-  position: relative;
   width: 70vw;
   height: 70vw;
   background: radial-gradient(circle, #ffe3a4 0%, #ff3700 40%, transparent 70%);
@@ -38,7 +37,6 @@
 }
 
 .loading-orb-2 {
-  position: relative;
   width: 65vw;
   height: 65vw;
   background: radial-gradient(circle, #ffe3a4 0%, #ff3700 40%, transparent 70%);
