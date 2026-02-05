@@ -5,7 +5,7 @@ import "./GotItCaseStudy.css";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
-import fullImage from "./assets/UI-UX/GotIt/GotItContent.png";
+import fullImage from "./assets/UI-UX/GotIt/CaseStudyHeadersGot It.png";
 
 function GotItCaseStudy() {
   const navigate = useNavigate();
