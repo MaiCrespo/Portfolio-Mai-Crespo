@@ -34,21 +34,21 @@ function App() {
   const projects = [
     {
       id: "gotit",
-      title: "I was the UI Design Lead and Product Designer",
+      title: "UI Design Lead and Product Designer",
       category: "STUDY GUIDE | WEBSITE",
       image: gotItThumb,
       desc: "Got It is a study guide website designed to support neurodiverse electrical trades students. I led the UI design, shaping the overall look and feel of the product and ensuring the app and marketing materials were cohesive and visually aligned.",
     },
     {
       id: "daybreak",
-      title: "I was the Art Director and UI Designer",
+      title: "Art Director and UI Designer",
       category: "HORROR | GAME",
       image: daybreakThumb,
       desc: "Daybreak is an online multiplayer survival horror game centered on betrayal and sabotage as players compete to reach the finish line. I led the visual direction of the game, designing the world map, villain characters, and promotional materials.",
     },
     {
       id: "descent",
-      title: "I was the Creative Director & Prototyper",
+      title: "Creative Director & Prototyper",
       category: "HORROR | INTERACTIVE LEARNING GAME",
       image: descentThumb,
       desc: "The Descent is an interactive learning game inspired by Dante's Inferno, guiding players through the nine circles of Hell while exploring morality, choice, and transformation. This was a solo project in which I handled illustration, prototyping, and asset production from start to finish.",
