@@ -36,7 +36,7 @@ function GotItCaseStudy() {
           <span className="nav-sep">|</span>
           <span className="nav-item">About Me</span>
         </div>
-        <img src={whiteLogo} className="pill-logo" alt="logo" />
+        <img src={whiteLogo} className="nav-logo" alt="logo" />
       </nav>
 
       {/* Case Study Content */}

@@ -9,8 +9,8 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  padding: 15px 50px;
-  gap: 12px;
+  padding: 40px 50px;
+  gap: 30px;
   box-sizing: border-box;
   position: relative;
   overflow-x: hidden;
@@ -195,4 +195,171 @@
 .featured-projects {
   position: relative;
   z-index: 10;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+/* Tablet and smaller laptops */
+@media (max-width: 1024px) {
+  .page-layout {
+    padding: 15px 30px;
+    gap: 20px;
+  }
+
+  .nav-pill,
+  .footer-pill {
+    padding: 0 30px;
+  }
+
+  .nav-logo,
+  .pill-logo {
+    right: 25px;
+    width: 40px;
+  }
+
+  .footer-pill {
+    padding: 0 40px;
+  }
+
+  .footer-cta {
+    font-size: 1.6rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .page-layout {
+    padding: 10px 20px;
+    gap: 15px;
+  }
+
+  .nav-pill {
+    height: auto;
+    padding: 20px 25px;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 30px;
+  }
+
+  .nav-logo,
+  .pill-logo {
+    display: none;
+  }
+
+  .nav-links {
+    font-size: 0.9rem;
+    gap: 15px;
+  }
+
+  .footer-pill {
+    height: auto;
+    flex-direction: column;
+    padding: 30px 25px;
+    gap: 20px;
+    text-align: center;
+    border-radius: 30px;
+  }
+
+  .footer-cta {
+    font-size: 1.4rem;
+  }
+
+  .footer-links,
+  .footer-socials {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9rem;
+  }
+
+  .footer-text {
+    font-size: 1.8rem;
+  }
+
+  .orb {
+    filter: blur(80px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .page-layout {
+    padding: 8px 15px;
+    gap: 10px;
+  }
+
+  .nav-pill {
+    padding: 15px 20px;
+    border-radius: 25px;
+  }
+
+  .nav-links {
+    font-size: 0.85rem;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-sep {
+    display: none;
+  }
+
+  .nav-logo,
+  .pill-logo {
+    width: 30px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .footer-pill {
+    padding: 25px 20px;
+    border-radius: 25px;
+  }
+
+  .footer-cta,
+  .footer-text {
+    font-size: 1.2rem;
+  }
+
+  .footer-links,
+  .footer-socials {
+    font-size: 0.85rem;
+  }
+
+  .resume-btn,
+  .pill-btn {
+    padding: 10px 25px;
+    font-size: 0.8rem;
+  }
+
+  .orb {
+    filter: blur(60px);
+  }
+
+  /* Reduce orb sizes on mobile for better performance */
+  .orb-1 {
+    width: 400px;
+    height: 400px;
+  }
+
+  .orb-2 {
+    width: 350px;
+    height: 350px;
+  }
+
+  .orb-3 {
+    width: 450px;
+    height: 450px;
+  }
+
+  .orb-4 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orb-5 {
+    width: 350px;
+    height: 350px;
+  }
 }

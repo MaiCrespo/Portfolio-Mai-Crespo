@@ -108,19 +108,32 @@ const GraphicDesignPage = () => {
         </div>
         {/* Footer */}
         <footer className="footer-pill">
-          <h2 className="footer-callout">Don't be a stranger!</h2>
-          <div className="footer-socials">
-            <span>Email</span> <span className="nav-sep">|</span>
-            <span>LinkedIn</span> <span className="nav-sep">|</span>
-            <span>Instagram</span>
+          <h3 className="footer-text">Don't be a stranger!</h3>
+          <div className="nav-links">
+            <a href="mailto:yomaicrespo@gmail.com" className="nav-item">
+              Email
+            </a>
+            <span className="nav-sep">|</span>
+            <a
+              href="https://linkedin.com/in/mai-crespo/"
+              target="_blank"
+              rel="noreferrer"
+              className="nav-item"
+            >
+              LinkedIn
+            </a>
+            <span className="nav-sep">|</span>
+            <a
+              href="https://instagram.com/heymaicomics/"
+              target="_blank"
+              rel="noreferrer"
+              className="nav-item"
+            >
+              Instagram
+            </a>
           </div>
-          <a
-            href="/MaiCrespoResume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ textDecoration: "none" }}
-          >
-            <button className="resume-btn">MY RESUME</button>
+          <a href="/MaiCrespoResume.pdf" target="_blank" rel="noreferrer">
+            <button className="pill-btn">MY RESUME</button>
           </a>
         </footer>
       </div>
