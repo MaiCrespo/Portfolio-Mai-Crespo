@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import LoadingPage from "./LoadingPage";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
@@ -10,13 +9,8 @@ import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
 
 function App() {
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
-
     const handleMouseMove = (e) => {
       const root = document.documentElement;
       root.style.setProperty("--mouse-x", `${e.clientX}px`);
@@ -26,7 +20,6 @@ function App() {
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
@@ -55,9 +48,6 @@ function App() {
     },
   ];
 
-  if (isLoading) {
-    return <LoadingPage />;
-  }
 
   return (
     <>

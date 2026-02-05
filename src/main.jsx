@@ -1,23 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
-import CardSelection from "./Cardselection";
-import GotItCaseStudy from "./GotItCaseStudy";
-import GotItCaseStudyNew from "./GotItCaseStudyNew";
-import GraphicDesignPage from "./GraphicDesignPage";
+import { BrowserRouter } from "react-router-dom";
+import AppWrapper from "./AppWrapper";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/pick-a-card" element={<CardSelection />} />
-        <Route path="/project/gotit-new" element={<GotItCaseStudyNew />} />
-        <Route path="/project/gotit" element={<GotItCaseStudy />} />
-        <Route path="/graphic-design" element={<GraphicDesignPage />} />
-      </Routes>
+      <AppWrapper />
     </BrowserRouter>
   </React.StrictMode>
 );
