@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
-import "./GotItCaseStudy.css";
 import "./GotItCaseStudyNew.css";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
-import headerImage from "./assets/UI-UX/GotIt/CaseStudyHeadersGot It.png";
+import headerImage from "./assets/UI-UX/GotIt/CaseStudyHeadersGotIt.png";
 import homepage from "./assets/UI-UX/GotIt/Homepage.png";
 import styleGuide from "./assets/UI-UX/GotIt/styleguide.png";
 import persona from "./assets/UI-UX/GotIt/Persona.png";
@@ -20,7 +19,7 @@ import brochure2 from "./assets/UI-UX/GotIt/GotItBrochure2.jpg";
 import businessCards from "./assets/UI-UX/GotIt/GotItBusinessCards.png";
 import businessCards2 from "./assets/UI-UX/GotIt/GotItBusinessCards2.png";
 import stickers from "./assets/UI-UX/GotIt/GotItStickers.jpg";
-import teamPhoto from "./assets/UI-UX/GotIt/Team Got It.jpg";
+import teamPhoto from "./assets/UI-UX/GotIt/TeamGotIt.jpg";
 import studyingBC from "./assets/UI-UX/GotIt/studyingbc.jpg";
 
 function GotItCaseStudyNew() {
@@ -126,7 +125,11 @@ function GotItCaseStudyNew() {
               </div>
             </div>
             <div className="image-showcase team-photo">
-              <img src={teamPhoto} alt="Team Got It" className="showcase-image" />
+              <img
+                src={teamPhoto}
+                alt="Team Got It"
+                className="showcase-image"
+              />
             </div>
           </section>
 
@@ -142,7 +145,9 @@ function GotItCaseStudyNew() {
               The challenge was to create a digital study guide that:
             </p>
             <ul className="challenge-list">
-              <li>Accommodates different learning styles and cognitive needs</li>
+              <li>
+                Accommodates different learning styles and cognitive needs
+              </li>
               <li>Makes complex technical content more digestible</li>
               <li>Maintains professional standards for trades education</li>
               <li>Provides an engaging and motivating learning experience</li>
@@ -172,10 +177,9 @@ function GotItCaseStudyNew() {
           <section className="content-section">
             <h2 className="section-heading">Ideation & Design Process</h2>
             <p className="section-text">
-              The design process involved extensive brainstorming,
-              wireframing, and iterative design. We explored multiple
-              approaches to ensure the final solution met the needs of our
-              diverse user base.
+              The design process involved extensive brainstorming, wireframing,
+              and iterative design. We explored multiple approaches to ensure
+              the final solution met the needs of our diverse user base.
             </p>
             <div className="image-showcase">
               <img
@@ -225,8 +229,8 @@ function GotItCaseStudyNew() {
           <section className="content-section">
             <h2 className="section-heading">Design Mockups</h2>
             <p className="section-text">
-              High-fidelity mockups and prototypes were created to visualize
-              the final product and test with users before development. These
+              High-fidelity mockups and prototypes were created to visualize the
+              final product and test with users before development. These
               mockups showcase the interface across different devices and use
               cases.
             </p>
@@ -245,8 +249,16 @@ function GotItCaseStudyNew() {
               accessibility and user experience.
             </p>
             <div className="image-grid-2">
-              <img src={omega} alt="Interface Screen 1" className="grid-image" />
-              <img src={omega2} alt="Interface Screen 2" className="grid-image" />
+              <img
+                src={omega}
+                alt="Interface Screen 1"
+                className="grid-image"
+              />
+              <img
+                src={omega2}
+                alt="Interface Screen 2"
+                className="grid-image"
+              />
             </div>
           </section>
 
@@ -258,7 +270,7 @@ function GotItCaseStudyNew() {
               marketing materials including brochures, business cards, and
               stickers to maintain brand consistency across all touchpoints.
             </p>
-            
+
             <h3 className="subsection-title">Brochures</h3>
             <div className="image-grid-2">
               <img src={brochure} alt="Brochure Front" className="grid-image" />

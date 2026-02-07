@@ -293,3 +293,34 @@
     padding: 1rem;
   }
 }
+/* Gradient Orbs Background - Push to back */
+.gradient-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1; /* Push behind all content */
+  overflow: hidden;
+}
+
+/* Ensure page layout creates stacking context */
+.page-layout {
+  position: relative;
+  z-index: 1; /* Above the orbs */
+  min-height: 100vh;
+}
+
+/* Ensure main content is above orbs */
+.case-study-scroller {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure nav and footer are above orbs */
+.nav-pill,
+.footer-pill {
+  position: relative;
+  z-index: 10;
+}
