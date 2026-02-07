@@ -193,12 +193,13 @@ body {
   opacity: 0.7;
 }
 
+/* BIGGER TEXT SIZES */
 .text-layer span:first-child {
-  font-size: clamp(5rem, 12vw, 9rem);
+  font-size: clamp(6rem, 15vw, 11rem);
   letter-spacing: 0.15em;
 }
 .text-layer span:last-child {
-  font-size: clamp(7rem, 16vw, 13rem);
+  font-size: clamp(9rem, 20vw, 16rem);
   letter-spacing: 0.1em;
 }
 
@@ -210,12 +211,12 @@ body {
   height: 100%;
   z-index: 2;
   -webkit-mask-image: radial-gradient(
-    circle 180px at var(--mouse-x) var(--mouse-y),
+    circle 220px at var(--mouse-x) var(--mouse-y),
     black 30%,
     transparent 100%
   );
   mask-image: radial-gradient(
-    circle 180px at var(--mouse-x) var(--mouse-y),
+    circle 220px at var(--mouse-x) var(--mouse-y),
     black 30%,
     transparent 100%
   );
@@ -470,11 +471,11 @@ body {
   }
 
   .text-layer span:first-child {
-    font-size: clamp(4rem, 10vw, 7rem);
+    font-size: clamp(4.5rem, 12vw, 8rem);
   }
 
   .text-layer span:last-child {
-    font-size: clamp(5rem, 13vw, 10rem);
+    font-size: clamp(6.5rem, 16vw, 12rem);
   }
 
   .bio-text {
@@ -533,11 +534,11 @@ body {
   }
 
   .text-layer span:first-child {
-    font-size: clamp(3rem, 9vw, 5rem);
+    font-size: clamp(3.5rem, 10vw, 6rem);
   }
 
   .text-layer span:last-child {
-    font-size: clamp(4rem, 11vw, 7rem);
+    font-size: clamp(5rem, 13vw, 9rem);
   }
 
   .bio-text {
