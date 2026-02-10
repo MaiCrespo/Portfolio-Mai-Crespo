@@ -82,10 +82,13 @@ function GotItCaseStudyNew() {
           <section className="content-section">
             <h2 className="section-heading">Project Overview</h2>
             <p className="section-text">
-              Got It is a study guide website designed to support neurodiverse
-              electrical trades students. The platform provides an accessible
-              and inclusive learning experience tailored to different learning
-              styles and needs.
+              Designed with accessibility at its core, the platform transforms
+              complex textbooks into clear, structured, and visual learning
+              experiences. The project combines AI-driven study tools with an
+              interface intentionally designed to reduce cognitive overload and
+              anxiety. By meeting apprentices where they are and adapting to
+              different learning styles, Got It helps users move from overwhelm
+              to understanding with confidence.
             </p>
             <p className="section-text">
               As the UI Design Lead and Product Designer, I led the visual
@@ -99,6 +102,11 @@ function GotItCaseStudyNew() {
                 alt="Study context"
                 className="showcase-image"
               />
+              <p>
+                BCIT Electrical Foundation Student Working in Workshop. (n.d.).
+                British Columbia Institute of Technology. Retrieved from
+                bcit.ca.
+              </p>
             </div>
           </section>
 

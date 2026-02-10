@@ -64,7 +64,9 @@ function App() {
               Works
             </span>
             <span className="nav-sep">|</span>
-            <span className="nav-item">About Me</span>
+            <span className="nav-item" onClick={() => navigate("/about-me")}>
+              About Me
+            </span>
           </div>
           <img src={whiteLogo} className="nav-logo" alt="logo" />
         </nav>
