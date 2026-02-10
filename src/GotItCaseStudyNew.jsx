@@ -67,7 +67,11 @@ function GotItCaseStudyNew() {
               />
             </div>
             <div className="hero-text">
-              <h1 className="project-title">Got It</h1>
+              <h1 className="project-title">
+                <strong>Got It</strong> is an accessible learning platform
+                designed to help Level 1 electrical apprentices navigate dense,
+                overwhelming textbooks.{" "}
+              </h1>
               <p className="project-subtitle">
                 Study Guide Website | UI Design Lead & Product Designer
               </p>

@@ -33,9 +33,9 @@
 .project-title {
   font-size: 3.5rem;
   font-weight: 700;
+  font-family: "Neue Plak", sans-serif;
   color: #fff;
   margin-bottom: 1rem;
-  text-transform: uppercase;
   letter-spacing: 2px;
 }
 

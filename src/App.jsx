@@ -84,8 +84,8 @@ function App() {
           <p className="bio-text">
             Hello, I'm a <strong>UI/UX Designer</strong> with a strong
             background in <strong>Illustration and Graphic Design</strong>.
-            Aside from problem-solving through tech, I like to draw crazy weird
-            dark things.
+            Aside from <strong>problem-solving</strong> through tech, I like to
+            draw <strong>crazy weird dark things</strong>.
           </p>
           <button className="pill-btn" onClick={() => navigate("/pick-a-card")}>
             PICK A CARD

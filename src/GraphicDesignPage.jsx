@@ -17,7 +17,7 @@ const GraphicDesignPage = () => {
       id: 1,
       name: "Underbroth",
       cat: "Package Design",
-      desc: "A spicy canned soup concept inspired by Japanese vending machines.",
+      desc: "A spicy canned soup concept inspired by Japanese vending machines and Chinese hot pot culture.",
       img: UnderbrothThumb,
       extraClass: "",
     },
@@ -25,7 +25,7 @@ const GraphicDesignPage = () => {
       id: 2,
       name: "Ace of Cups",
       cat: "Poster Design",
-      desc: "A visual identity for a conceptual café that combines coffee and tarot.",
+      desc: "A visual identity for a conceptual café that combines coffee, pastries, and tarot.",
       img: AceThumb,
       extraClass: "",
     },
@@ -33,7 +33,7 @@ const GraphicDesignPage = () => {
       id: 3,
       name: "Rebel Your Style",
       cat: "Poster Design",
-      desc: "A poster design focusing on punk rock fashion.",
+      desc: "A poster design for a hypothetical exhibition at the National Canadian Museum of History focused on punk rock fashion.",
       img: RebelThumb,
       extraClass: "",
     },
@@ -41,7 +41,7 @@ const GraphicDesignPage = () => {
       id: 4,
       name: "Manila City to El Nido Beach",
       cat: "Brochure Design",
-      desc: "A 10-day travel itinerary for a tour of the Philippines.",
+      desc: "A 10-day travel itinerary for a tour of the Philippines, created as a reference to G Adventures.",
       img: TravelThumb,
       extraClass: "bottom-row",
     },
@@ -49,7 +49,7 @@ const GraphicDesignPage = () => {
       id: 5,
       name: "Swaolamb",
       cat: "Poster Design",
-      desc: "Conceptual branding for a lab that genetically engineers pets.",
+      desc: "A conceptual branding project for Cherubica Labs, an evil corporation that genetically engineers pets.",
       img: SwaolambThumb,
       extraClass: "bottom-row",
     },
@@ -85,18 +85,16 @@ const GraphicDesignPage = () => {
         <div className="scrollable-content">
           <h1 className="project-page-title">Graphic Design Projects</h1>
           <div className="title-separator">
-            <span className="sep-dot"></span>
             <hr />
-            <span className="sep-dot"></span>
           </div>
 
           <div className="gd-grid">
             {projects.map((p) => (
               <div key={p.id} className={`project-item ${p.extraClass}`}>
                 <h2 className="project-name">{p.name}</h2>
-                <div className="project-card">
+                <div className="project-card2">
                   <img src={p.img} alt={p.name} />
-                  <div className="project-info">
+                  <div className="gd-project-info">
                     <h3>{p.cat}</h3>
                     <p>{p.desc}</p>
                     <button className="view-more-btn">VIEW MORE</button>

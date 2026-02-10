@@ -62,8 +62,8 @@
 }
 
 /* =============================================
-     MAIN CONTENT CONTAINER (GLASS)
-     ============================================= */
+         MAIN CONTENT CONTAINER (GLASS)
+         ============================================= */
 .scrollable-content {
   padding: 80px 40px !important;
   display: flex;
@@ -107,8 +107,8 @@
 }
 
 /* =============================================
-     PROJECT GRID SYSTEM (12-COLUMN)
-     ============================================= */
+         PROJECT GRID SYSTEM (12-COLUMN)
+         ============================================= */
 .gd-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -144,33 +144,45 @@
   color: #fff;
 }
 
-.project-card {
+/* CARD WITH SMALLER IMAGES */
+.project-card2 {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.project-card:hover {
+.project-card2:hover {
   transform: translateY(-12px);
 }
 
-.project-card img {
+.project-card2 img {
   width: 100%;
-  aspect-ratio: 4/5;
+  max-width: 280px;
+  aspect-ratio: 3/4;
   object-fit: cover;
-  border-radius: 40px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-  margin-bottom: 25px;
+  border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  margin-bottom: 20px;
 }
 
-.project-info h3 {
-  font-size: 1.4rem;
-  margin-bottom: 12px;
-  font-weight: 600;
+.gd-project-info {
+  text-align: center;
+  width: 100%;
 }
 
-.project-info p {
+.gd-project-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: none;
+}
+
+.gd-project-info p {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.85);
   max-width: 300px;
   margin: 0 auto 25px;
   line-height: 1.5;
@@ -195,8 +207,8 @@
 }
 
 /* =============================================
-     RESPONSIVE (MOBILE)
-     ============================================= */
+         RESPONSIVE (MOBILE)
+         ============================================= */
 @media (max-width: 900px) {
   .gd-grid {
     grid-template-columns: 1fr;
