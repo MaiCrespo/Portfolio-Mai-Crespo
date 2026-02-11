@@ -15,11 +15,11 @@
   margin-bottom: 2rem;
   border-radius: 20px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.05);
+
   padding: 2rem;
 }
 
-.hero-image-header {
+.hero-image {
   width: 100%;
   max-width: 900px;
   height: auto;

@@ -31,7 +31,7 @@ function AppWrapper() {
       <Route path="/project/gotit" element={<GotItCaseStudyNew />} />
       <Route path="/graphic-design" element={<GraphicDesignPage />} />
       <Route path="/underbroth" element={<Underbroth />} /> {/* New Route */}
-      <Route path="/ace-of-cups" element={<AceOfCups />} />
+      <Route path="/aceofcups" element={<AceOfCups />} />
       <Route path="/about-me" element={<AboutMe />} />
     </Routes>
   );

@@ -177,19 +177,11 @@
 /* =============================================
      HERO IMAGE
      ============================================= */
-.hero-image-container {
-  width: 100%;
-  margin-bottom: 60px;
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 40px;
-  display: flex;
-  justify-content: center;
-}
 
 .hero-image {
-  width: 1200px;
-  max-width: 2000px;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
   display: block;
   object-fit: contain; /* Prevents stretching */
 }
