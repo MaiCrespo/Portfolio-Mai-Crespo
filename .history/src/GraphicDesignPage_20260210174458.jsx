@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./GraphicDesignPage.css";
 import whiteLogo from "./assets/Head@300x.png";
@@ -12,6 +12,11 @@ import AceThumb from "./assets/GraphicDesign/AceOfCupsThumbnail.png";
 const GraphicDesignPage = () => {
   const navigate = useNavigate();
 
+  // Ensures the page starts at the top when navigating here
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const projects = [
     {
       id: 1,
@@ -19,8 +24,8 @@ const GraphicDesignPage = () => {
       cat: "Package Design",
       desc: "A spicy canned soup concept inspired by Japanese vending machines and Chinese hot pot culture.",
       img: UnderbrothThumb,
+      path: "/underbroth", // Added path for navigation
       extraClass: "",
-      route: "/underbroth", // Add route path
     },
     {
       id: 2,
@@ -28,8 +33,8 @@ const GraphicDesignPage = () => {
       cat: "Poster Design",
       desc: "A visual identity for a conceptual café that combines coffee, pastries, and tarot.",
       img: AceThumb,
+      path: "#",
       extraClass: "",
-      route: "/ace-of-cups", // Add route for future
     },
     {
       id: 3,
@@ -37,8 +42,8 @@ const GraphicDesignPage = () => {
       cat: "Poster Design",
       desc: "A poster design for a hypothetical exhibition at the National Canadian Museum of History focused on punk rock fashion.",
       img: RebelThumb,
+      path: "#",
       extraClass: "",
-      route: "/rebel-your-style", // Add route for future
     },
     {
       id: 4,
@@ -46,8 +51,8 @@ const GraphicDesignPage = () => {
       cat: "Brochure Design",
       desc: "A 10-day travel itinerary for a tour of the Philippines, created as a reference to G Adventures.",
       img: TravelThumb,
+      path: "#",
       extraClass: "bottom-row",
-      route: "/manila-el-nido", // Add route for future
     },
     {
       id: 5,
@@ -55,14 +60,13 @@ const GraphicDesignPage = () => {
       cat: "Poster Design",
       desc: "A conceptual branding project for Cherubica Labs, an evil corporation that genetically engineers pets.",
       img: SwaolambThumb,
+      path: "#",
       extraClass: "bottom-row",
-      route: "/swaolamb", // Add route for future
     },
   ];
 
   return (
     <>
-      {/* Background Orbs */}
       <div className="orb-canvas">
         <div className="orb orb-1"></div>
         <div className="orb orb-2"></div>
@@ -97,27 +101,26 @@ const GraphicDesignPage = () => {
 
           <div className="gd-grid">
             {projects.map((p) => (
-              <div key={p.id} className={`project-item ${p.extraClass}`}>
+              <div
+                key={p.id}
+                className={`project-item ${p.extraClass}`}
+                onClick={() => p.path !== "#" && navigate(p.path)}
+                style={{ cursor: p.path !== "#" ? "pointer" : "default" }}
+              >
                 <h2 className="project-name">{p.name}</h2>
                 <div className="project-card2">
                   <img src={p.img} alt={p.name} />
                   <div className="gd-project-info">
                     <h3>{p.cat}</h3>
                     <p>{p.desc}</p>
-                    {/* ADD NAVIGATION HERE */}
-                    <button
-                      className="view-more-btn"
-                      onClick={() => navigate(p.route)}
-                    >
-                      VIEW MORE
-                    </button>
+                    <button className="view-more-btn">VIEW MORE</button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        {/* Footer */}
+
         <footer className="footer-pill">
           <h3 className="footer-text">Don't be a stranger!</h3>
           <div className="nav-links">
@@ -126,7 +129,7 @@ const GraphicDesignPage = () => {
             </a>
             <span className="nav-sep">|</span>
             <a
-              href="https://linkedin.com/in/mai-crespo/ "
+              href="https://linkedin.com/in/mai-crespo/"
               target="_blank"
               rel="noreferrer"
               className="nav-item"
@@ -135,7 +138,7 @@ const GraphicDesignPage = () => {
             </a>
             <span className="nav-sep">|</span>
             <a
-              href="https://instagram.com/heymaicomics/ "
+              href="https://instagram.com/heymaicomics/"
               target="_blank"
               rel="noreferrer"
               className="nav-item"

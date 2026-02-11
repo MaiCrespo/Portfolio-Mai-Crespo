@@ -65,13 +65,12 @@
          MAIN CONTENT CONTAINER (GLASS)
          ============================================= */
 .scrollable-content {
-  padding: 60px 40px !important;
+  padding: 80px 40px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 80vh;
-  width: 90%; /* Match nav/footer */
-  max-width: 1300px; /* Match nav/footer */
+  width: 1200px;
   background: rgba(255, 255, 255, 0.03) !important;
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);

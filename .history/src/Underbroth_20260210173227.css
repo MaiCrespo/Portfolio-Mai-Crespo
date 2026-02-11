@@ -1,0 +1,132 @@
+.underbroth-page {
+  background: black;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: var(--font-body);
+  /* The background gradient seen in your screenshots */
+  background: radial-gradient(circle at 20% 30%, #ff590033 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, #ff935a22 0%, transparent 40%), #000;
+}
+
+.project-hero {
+  text-align: center;
+  margin: 60px 0;
+  width: 100%;
+}
+
+.project-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+
+.project-subtitle {
+  font-size: 1.5rem;
+  opacity: 0.8;
+  letter-spacing: 2px;
+}
+
+.next-project-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  float: right;
+  cursor: pointer;
+}
+
+.project-details {
+  max-width: 800px;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.detail-group h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin: 40px 0 15px;
+  opacity: 0.9;
+}
+
+.tool-tags {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.tool-tags span {
+  background: #b86e2f; /* Matching the brown/orange tags in your image */
+  padding: 5px 20px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+}
+
+.main-mockup {
+  width: 100%;
+  max-width: 1000px;
+  background: white; /* Matches the white container in your reference */
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 100px;
+  box-shadow: none !important; /* Grounded in user request for no shadows */
+}
+
+.main-mockup img {
+  width: 100%;
+  display: block;
+}
+
+.flavor-showcase {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.flavor-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.label-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.flavor-info h4 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.flavor-info p {
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* Specific to your layout: Second row is reversed */
+.flavor-row:nth-child(even) {
+  direction: rtl;
+}
+.flavor-row:nth-child(even) .flavor-info {
+  direction: ltr;
+}
+
+.resume-btn {
+  background: #ff5900;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+}

@@ -1,0 +1,158 @@
+/* =============================================
+   SHARED LAYOUT (Synced with Reference)
+   ============================================= */
+.page-layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.scrollable-content {
+  padding: 80px 40px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 60px;
+}
+
+/* =============================================
+     UNDERBROTH SPECIFIC CONTENT
+     ============================================= */
+.project-hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.project-main-title {
+  font-family: "Hellishy", serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.project-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.project-details {
+  max-width: 700px;
+  text-align: center;
+  margin-bottom: 80px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.mockup-container {
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.main-image {
+  width: 100%;
+  border-radius: 40px;
+  /* Removal of shadows as per previous grounded instructions */
+  box-shadow: none !important;
+}
+
+.flavor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.flavor-grid img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* =============================================
+     REUSABLE PILL COMPONENTS (NAV & FOOTER)
+     ============================================= */
+.nav-pill,
+.footer-pill {
+  width: 90%;
+  max-width: 1300px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-pill {
+  height: 80px;
+  padding: 0 40px;
+  border-radius: 40px;
+}
+
+.footer-pill {
+  min-height: 140px;
+  padding: 40px 60px;
+  border-radius: 70px;
+  margin-top: 40px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  opacity: 1;
+}
+
+.nav-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.pill-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pill-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+@media (max-width: 900px) {
+  .flavor-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-pill {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    border-radius: 40px;
+  }
+}

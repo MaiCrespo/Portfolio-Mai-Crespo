@@ -20,7 +20,6 @@ const GraphicDesignPage = () => {
       desc: "A spicy canned soup concept inspired by Japanese vending machines and Chinese hot pot culture.",
       img: UnderbrothThumb,
       extraClass: "",
-      route: "/underbroth", // Add route path
     },
     {
       id: 2,
@@ -29,7 +28,6 @@ const GraphicDesignPage = () => {
       desc: "A visual identity for a conceptual café that combines coffee, pastries, and tarot.",
       img: AceThumb,
       extraClass: "",
-      route: "/ace-of-cups", // Add route for future
     },
     {
       id: 3,
@@ -38,7 +36,6 @@ const GraphicDesignPage = () => {
       desc: "A poster design for a hypothetical exhibition at the National Canadian Museum of History focused on punk rock fashion.",
       img: RebelThumb,
       extraClass: "",
-      route: "/rebel-your-style", // Add route for future
     },
     {
       id: 4,
@@ -47,7 +44,6 @@ const GraphicDesignPage = () => {
       desc: "A 10-day travel itinerary for a tour of the Philippines, created as a reference to G Adventures.",
       img: TravelThumb,
       extraClass: "bottom-row",
-      route: "/manila-el-nido", // Add route for future
     },
     {
       id: 5,
@@ -56,7 +52,6 @@ const GraphicDesignPage = () => {
       desc: "A conceptual branding project for Cherubica Labs, an evil corporation that genetically engineers pets.",
       img: SwaolambThumb,
       extraClass: "bottom-row",
-      route: "/swaolamb", // Add route for future
     },
   ];
 
@@ -82,9 +77,7 @@ const GraphicDesignPage = () => {
               Works
             </span>
             <span className="nav-sep">|</span>
-            <span className="nav-item" onClick={() => navigate("/about-me")}>
-              About Me
-            </span>
+            <span className="nav-item">About Me</span>
           </div>
           <img src={whiteLogo} className="nav-logo" alt="logo" />
         </nav>
@@ -104,13 +97,7 @@ const GraphicDesignPage = () => {
                   <div className="gd-project-info">
                     <h3>{p.cat}</h3>
                     <p>{p.desc}</p>
-                    {/* ADD NAVIGATION HERE */}
-                    <button
-                      className="view-more-btn"
-                      onClick={() => navigate(p.route)}
-                    >
-                      VIEW MORE
-                    </button>
+                    <button className="view-more-btn">VIEW MORE</button>
                   </div>
                 </div>
               </div>
@@ -126,7 +113,7 @@ const GraphicDesignPage = () => {
             </a>
             <span className="nav-sep">|</span>
             <a
-              href="https://linkedin.com/in/mai-crespo/ "
+              href="https://linkedin.com/in/mai-crespo/"
               target="_blank"
               rel="noreferrer"
               className="nav-item"
@@ -135,7 +122,7 @@ const GraphicDesignPage = () => {
             </a>
             <span className="nav-sep">|</span>
             <a
-              href="https://instagram.com/heymaicomics/ "
+              href="https://instagram.com/heymaicomics/"
               target="_blank"
               rel="noreferrer"
               className="nav-item"
