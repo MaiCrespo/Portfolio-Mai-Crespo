@@ -62,15 +62,15 @@
 }
 
 /* =============================================
-         MAIN CONTENT CONTAINER (GLASS)
-         ============================================= */
+       MAIN CONTENT CONTAINER (GLASS)
+       ============================================= */
 .scrollable-content {
   padding: 80px 40px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 80vh;
-  width: 90%;
+  width: 100%;
   background: rgba(255, 255, 255, 0.03) !important;
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -107,8 +107,8 @@
 }
 
 /* =============================================
-         PROJECT GRID SYSTEM (12-COLUMN)
-         ============================================= */
+       PROJECT GRID SYSTEM (12-COLUMN)
+       ============================================= */
 .gd-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -144,43 +144,42 @@
   color: #fff;
 }
 
-/* CARD WITH SMALLER IMAGES */
-.project-card2 {
+/* CARD - Just the image, no text overlay */
+.project-card {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.project-card2:hover {
-  transform: translateY(-12px);
-}
-
-.project-card2 img {
-  width: 100%;
-  max-width: 280px;
+  border-radius: 40px;
+  overflow: hidden;
   aspect-ratio: 3/4;
-  object-fit: cover;
-  border-radius: 30px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin-bottom: 20px;
 }
 
-.gd-project-info {
-  text-align: center;
+.project-card:hover {
+  transform: translateY(-12px);
+}
+
+/* Image fills card completely */
+.project-card img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.gd-project-info h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  text-transform: none;
+/* Text content flows below the card */
+.project-info {
+  text-align: center;
 }
 
-.gd-project-info p {
+.project-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.project-info p {
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.85);
   max-width: 300px;
@@ -207,8 +206,8 @@
 }
 
 /* =============================================
-         RESPONSIVE (MOBILE)
-         ============================================= */
+       RESPONSIVE (MOBILE)
+       ============================================= */
 @media (max-width: 900px) {
   .gd-grid {
     grid-template-columns: 1fr;

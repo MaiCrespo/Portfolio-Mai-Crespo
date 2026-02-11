@@ -70,7 +70,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 80vh;
-  width: 90%;
+  width: 100%;
   background: rgba(255, 255, 255, 0.03) !important;
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -167,20 +167,19 @@
   margin-bottom: 20px;
 }
 
-.gd-project-info {
+.project-info {
   text-align: center;
   width: 100%;
 }
 
-.gd-project-info h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  text-transform: none;
+.project-info h3 {
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #fff;
 }
 
-.gd-project-info p {
+.project-info p {
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.85);
   max-width: 300px;

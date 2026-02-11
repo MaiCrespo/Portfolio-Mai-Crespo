@@ -70,7 +70,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 80vh;
-  width: 90%;
+  width: 100%;
   background: rgba(255, 255, 255, 0.03) !important;
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -173,7 +173,7 @@
 }
 
 .gd-project-info h3 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 10px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
