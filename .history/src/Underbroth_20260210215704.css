@@ -200,7 +200,7 @@
      FLAVOR SECTIONS
      ============================================= */
 .flavor-sections {
-  width: 100%;
+  width: 1600px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -214,7 +214,7 @@
 }
 
 .flavor-image {
-  width: 750px;
+  width: 100%;
 }
 
 .flavor-image img {
