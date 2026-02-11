@@ -21,9 +21,6 @@ const Underbroth = () => {
       <div className="page-layout">
         {/* Navigation */}
         <nav className="nav-pill">
-          <button className="back-btn" onClick={() => navigate(-1)}>
-            ← Back
-          </button>
           <div className="nav-links">
             <span className="nav-item" onClick={() => navigate("/")}>
               Home

@@ -155,9 +155,6 @@ body {
   transform: translateX(-3px);
 }
 .nav-links {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   gap: 30px;
   font-size: 0.9rem;
