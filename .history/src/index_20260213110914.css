@@ -27,7 +27,7 @@
 }
 
 body {
-  background: #000;
+  background: #8c0b0b;
   color: #fff;
   font-family: var(--font-body);
   overflow-x: hidden;
@@ -39,7 +39,7 @@ body {
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background: #5f0000;
+  background: #000;
 }
 
 .orb {
