@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import defaultCursor from "./assets/misc/Default.png";
+import onClickCursor from "./assets/misc/OnClick.png";
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
 import gotItThumb from "./assets/UI-UX/GotIt/GotItThumbnail.png";
@@ -10,7 +11,6 @@ import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
 function App() {
   const navigate = useNavigate();
 
-  // Mouse position for blur effect
   useEffect(() => {
     const handleMouseMove = (e) => {
       const root = document.documentElement;
@@ -19,7 +19,10 @@ function App() {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   const projects = [

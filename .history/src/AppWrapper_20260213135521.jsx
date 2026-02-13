@@ -40,13 +40,13 @@ function AppWrapper() {
     const handleMouseDown = () => {
       if (!cursorRef.current) return;
       cursorRef.current.style.backgroundImage = `url(${onClickCursor})`;
-      cursorRef.current.style.transform = `translate(-4px, -4px) rotate(20deg) scale(0.9)`;
+      cursorRef.current.style.transform = `translate(-4px, -4px) rotate(45deg) scale(0.9)`;
     };
 
     const handleMouseUp = () => {
       if (!cursorRef.current) return;
       cursorRef.current.style.backgroundImage = `url(${defaultCursor})`;
-      cursorRef.current.style.transform = `translate(-4px, -4px) rotate(20deg)`;
+      cursorRef.current.style.transform = `translate(-4px, -4px) rotate(45deg)`;
     };
 
     window.addEventListener("mousemove", handleMouseMove);

@@ -6,6 +6,8 @@ import whiteLogo from "./assets/Head@300x.png";
 import gotItThumb from "./assets/UI-UX/GotIt/GotItThumbnail.png";
 import daybreakThumb from "./assets/UI-UX/Daybreak/DaybreakThumbnail.png";
 import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
+import defaultCursor from "./assets/misc/Default.png";
+import onClickCursor from "./assets/misc/OnClick.png";
 
 function App() {
   const navigate = useNavigate();
@@ -20,6 +22,30 @@ function App() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Custom cursor
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.id = "custom-cursor-style";
+    style.innerHTML = `* { cursor: url(${defaultCursor}) 12 12, auto !important; }`;
+    document.head.appendChild(style);
+
+    const handleMouseDown = () => {
+      style.innerHTML = `* { cursor: url(${onClickCursor}) 12 12, auto !important; }`;
+    };
+    const handleMouseUp = () => {
+      style.innerHTML = `* { cursor: url(${defaultCursor}) 12 12, auto !important; }`;
+    };
+
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
+      document.head.removeChild(style);
+    };
   }, []);
 
   const projects = [

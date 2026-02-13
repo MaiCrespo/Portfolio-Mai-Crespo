@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Assets
@@ -6,9 +6,12 @@ import whiteLogo from "./assets/Head@300x.png";
 import gotItThumb from "./assets/UI-UX/GotIt/GotItThumbnail.png";
 import daybreakThumb from "./assets/UI-UX/Daybreak/DaybreakThumbnail.png";
 import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
+import defaultCursor from "./assets/misc/Default.png";
+import onClickCursor from "./assets/misc/OnClick.png";
 
 function App() {
   const navigate = useNavigate();
+  const cursorRef = useRef(null);
 
   // Mouse position for blur effect
   useEffect(() => {
@@ -20,6 +23,43 @@ function App() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Custom cursor div that follows mouse
+  useEffect(() => {
+    // Hide native cursor everywhere
+    const style = document.createElement("style");
+    style.id = "hide-cursor";
+    style.innerHTML = `* { cursor: none !important; }`;
+    document.head.appendChild(style);
+
+    const cursor = cursorRef.current;
+
+    const handleMouseMove = (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    };
+
+    const handleMouseDown = () => {
+      cursor.style.backgroundImage = `url(${onClickCursor})`;
+      cursor.style.transform = `translate(-4px, -4px) rotate(45deg) scale(0.9)`;
+    };
+
+    const handleMouseUp = () => {
+      cursor.style.backgroundImage = `url(${defaultCursor})`;
+      cursor.style.transform = `translate(-4px, -4px) rotate(45deg)`;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
+      style?.remove();
+    };
   }, []);
 
   const projects = [
@@ -48,6 +88,22 @@ function App() {
 
   return (
     <>
+      {/* Custom Cursor */}
+      <div
+        ref={cursorRef}
+        style={{
+          position: "fixed",
+          width: "48px",
+          height: "48px",
+          backgroundImage: `url(${defaultCursor})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          pointerEvents: "none",
+          zIndex: 99999,
+          transform: "translate(-4px, -4px) rotate(45deg)",
+          transition: "transform 0.05s ease",
+        }}
+      />
       <div className="orb-canvas">
         <div className="orb orb-1"></div>
         <div className="orb orb-2"></div>

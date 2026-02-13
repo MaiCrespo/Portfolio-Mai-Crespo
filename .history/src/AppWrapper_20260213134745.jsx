@@ -31,22 +31,21 @@ function AppWrapper() {
     style.innerHTML = `* { cursor: none !important; }`;
     document.head.appendChild(style);
 
+    const cursor = cursorRef.current;
+
     const handleMouseMove = (e) => {
-      if (!cursorRef.current) return;
-      cursorRef.current.style.left = `${e.clientX}px`;
-      cursorRef.current.style.top = `${e.clientY}px`;
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
     };
 
     const handleMouseDown = () => {
-      if (!cursorRef.current) return;
-      cursorRef.current.style.backgroundImage = `url(${onClickCursor})`;
-      cursorRef.current.style.transform = `translate(-4px, -4px) rotate(20deg) scale(0.9)`;
+      cursor.style.backgroundImage = `url(${onClickCursor})`;
+      cursor.style.transform = `translate(-4px, -4px) rotate(45deg) scale(0.9)`;
     };
 
     const handleMouseUp = () => {
-      if (!cursorRef.current) return;
-      cursorRef.current.style.backgroundImage = `url(${defaultCursor})`;
-      cursorRef.current.style.transform = `translate(-4px, -4px) rotate(20deg)`;
+      cursor.style.backgroundImage = `url(${defaultCursor})`;
+      cursor.style.transform = `translate(-4px, -4px) rotate(45deg)`;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -61,15 +60,17 @@ function AppWrapper() {
     };
   }, []);
 
+  if (showLoading) {
+    return <LoadingPage />;
+  }
+
   return (
     <>
-      {/* Global Custom Cursor - always rendered */}
+      {/* Global Custom Cursor */}
       <div
         ref={cursorRef}
         style={{
           position: "fixed",
-          left: "-100px",
-          top: "-100px",
           width: "72px",
           height: "72px",
           backgroundImage: `url(${defaultCursor})`,
@@ -77,24 +78,20 @@ function AppWrapper() {
           backgroundRepeat: "no-repeat",
           pointerEvents: "none",
           zIndex: 99999,
-          transform: "translate(-4px, -4px) rotate(20deg)",
+          transform: "translate(-4px, -4px) rotate(45deg)",
           transition: "transform 0.05s ease",
         }}
       />
 
-      {showLoading ? (
-        <LoadingPage />
-      ) : (
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/pick-a-card" element={<CardSelection />} />
-          <Route path="/project/gotit" element={<GotItCaseStudyNew />} />
-          <Route path="/graphic-design" element={<GraphicDesignPage />} />
-          <Route path="/underbroth" element={<Underbroth />} />
-          <Route path="/ace-of-cups" element={<AceOfCups />} />
-          <Route path="/about-me" element={<AboutMe />} />
-        </Routes>
-      )}
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/pick-a-card" element={<CardSelection />} />
+        <Route path="/project/gotit" element={<GotItCaseStudyNew />} />
+        <Route path="/graphic-design" element={<GraphicDesignPage />} />
+        <Route path="/underbroth" element={<Underbroth />} />
+        <Route path="/ace-of-cups" element={<AceOfCups />} />
+        <Route path="/about-me" element={<AboutMe />} />
+      </Routes>
     </>
   );
 }

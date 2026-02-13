@@ -6,6 +6,8 @@ import whiteLogo from "./assets/Head@300x.png";
 import gotItThumb from "./assets/UI-UX/GotIt/GotItThumbnail.png";
 import daybreakThumb from "./assets/UI-UX/Daybreak/DaybreakThumbnail.png";
 import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
+import defaultCursor from "./assets/misc/Default.png";
+import onClickCursor from "./assets/misc/OnClick.png";
 
 function App() {
   const navigate = useNavigate();
@@ -20,6 +22,61 @@ function App() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Custom cursor
+  useEffect(() => {
+    const setCursor = (src, callback) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = 32;
+        canvas.height = 32;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, 32, 32);
+        callback(canvas.toDataURL());
+      };
+      img.src = src;
+    };
+
+    let defaultDataUrl = "";
+    let clickDataUrl = "";
+
+    setCursor(defaultCursor, (url) => {
+      defaultDataUrl = url;
+      const style =
+        document.getElementById("custom-cursor-style") ||
+        document.createElement("style");
+      style.id = "custom-cursor-style";
+      style.innerHTML = `* { cursor: url(${url}) 16 16, auto !important; }`;
+      if (!document.getElementById("custom-cursor-style")) {
+        document.head.appendChild(style);
+      }
+    });
+
+    setCursor(onClickCursor, (url) => {
+      clickDataUrl = url;
+    });
+
+    const handleMouseDown = () => {
+      const style = document.getElementById("custom-cursor-style");
+      if (style && clickDataUrl)
+        style.innerHTML = `* { cursor: url(${clickDataUrl}) 16 16, auto !important; }`;
+    };
+    const handleMouseUp = () => {
+      const style = document.getElementById("custom-cursor-style");
+      if (style && defaultDataUrl)
+        style.innerHTML = `* { cursor: url(${defaultDataUrl}) 16 16, auto !important; }`;
+    };
+
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
+      document.getElementById("custom-cursor-style")?.remove();
+    };
   }, []);
 
   const projects = [
