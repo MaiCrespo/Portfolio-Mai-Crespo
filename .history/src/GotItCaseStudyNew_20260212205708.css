@@ -1,9 +1,8 @@
 /* Case Study Content Container */
 .case-study-content {
   padding: 3rem 4rem;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
 }
 
 /* Hero Section */
@@ -16,12 +15,13 @@
   margin-bottom: 2rem;
   border-radius: 20px;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
   padding: 2rem;
 }
 
 .hero-image-header {
-  width: 1200px;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 900px;
   height: auto;
   border-radius: 12px;
 }
@@ -92,9 +92,9 @@
 }
 
 .embed-container {
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   margin: 30px auto 0;
-  align-self: center;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -111,7 +111,7 @@
   margin: 2.5rem 0;
   border-radius: 16px;
   overflow: hidden;
-
+  background: rgba(255, 255, 255, 0.03);
   padding: 1.5rem;
 }
 
@@ -138,6 +138,7 @@
   width: 100%;
   height: auto;
   border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
   padding: 1rem;
 }
 
@@ -150,6 +151,7 @@
 }
 
 .role-item {
+  background: rgba(255, 255, 255, 0.05);
   padding: 2rem;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -157,6 +159,7 @@
 }
 
 .role-item:hover {
+  background: rgba(255, 255, 255, 0.08);
   transform: translateY(-4px);
   border-color: rgba(255, 255, 255, 0.2);
 }
@@ -304,61 +307,6 @@
   .hero-image-container {
     padding: 1rem;
   }
-}
-
-/* =============================================
-   LIGHTBOX
-   ============================================= */
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  cursor: pointer;
-}
-
-.lightbox-image {
-  max-width: 90vw;
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 12px;
-  cursor: default;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lightbox-close:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.clickable-img {
-  cursor: zoom-in;
-  transition: opacity 0.3s ease;
-}
-
-.clickable-img:hover {
-  opacity: 0.85;
 }
 /* Gradient Orbs Background - Push to back */
 .gradient-orbs {

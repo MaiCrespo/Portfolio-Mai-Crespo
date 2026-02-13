@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import "./GotItCaseStudyNew.css";
@@ -6,9 +6,14 @@ import "./GotItCaseStudyNew.css";
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
 import headerImage from "./assets/UI-UX/GotIt/CaseStudyHeadersGotIt.png";
+import homepage from "./assets/UI-UX/GotIt/Homepage.png";
 import styleGuide from "./assets/UI-UX/GotIt/styleguide.png";
 import persona from "./assets/UI-UX/GotIt/Persona.png";
 import ideation from "./assets/UI-UX/GotIt/GotItIdeation.png";
+import mockup1 from "./assets/UI-UX/GotIt/Mockup.png";
+import mockup2 from "./assets/UI-UX/GotIt/Mockup2.png";
+import omega from "./assets/UI-UX/GotIt/Omega.png";
+import omega2 from "./assets/UI-UX/GotIt/Omega2.png";
 import brochure from "./assets/UI-UX/GotIt/GotItBrochure.jpg";
 import brochure2 from "./assets/UI-UX/GotIt/GotItBrochure2.jpg";
 import businessCards from "./assets/UI-UX/GotIt/GotItBusinessCards.png";
@@ -19,41 +24,13 @@ import studyingBC from "./assets/UI-UX/GotIt/studyingbc.jpg";
 
 function GotItCaseStudyNew() {
   const navigate = useNavigate();
-  const [lightboxSrc, setLightboxSrc] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Close lightbox on Escape key
-  useEffect(() => {
-    const handleKey = (e) => {
-      if (e.key === "Escape") setLightboxSrc(null);
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, []);
-
-  const openLightbox = (src) => setLightboxSrc(src);
-  const closeLightbox = () => setLightboxSrc(null);
-
   return (
     <div className="page-layout">
-      {/* Lightbox Overlay */}
-      {lightboxSrc && (
-        <div className="lightbox-overlay" onClick={closeLightbox}>
-          <button className="lightbox-close" onClick={closeLightbox}>
-            ✕
-          </button>
-          <img
-            src={lightboxSrc}
-            alt="Enlarged view"
-            className="lightbox-image"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
-
       {/* Gradient Orbs Background */}
       <div className="gradient-orbs">
         <div className="orb orb-1"></div>
@@ -88,9 +65,8 @@ function GotItCaseStudyNew() {
             <div className="hero-image-container">
               <img
                 src={headerImage}
-                className="hero-image-header clickable-img"
+                className="hero-image-header"
                 alt="Got It Case Study Header"
-                onClick={() => openLightbox(headerImage)}
               />
             </div>
             <div className="hero-text">
@@ -127,8 +103,7 @@ function GotItCaseStudyNew() {
               <img
                 src={studyingBC}
                 alt="Study context"
-                className="showcase-image clickable-img"
-                onClick={() => openLightbox(studyingBC)}
+                className="showcase-image"
               />
               <p>
                 BCIT Electrical Foundation Student Working in Workshop. (n.d.).
@@ -168,8 +143,7 @@ function GotItCaseStudyNew() {
               <img
                 src={teamPhoto}
                 alt="Team Got It"
-                className="showcase-image clickable-img"
-                onClick={() => openLightbox(teamPhoto)}
+                className="showcase-image"
               />
             </div>
           </section>
@@ -209,8 +183,7 @@ function GotItCaseStudyNew() {
               <img
                 src={persona}
                 alt="User Persona"
-                className="showcase-image clickable-img"
-                onClick={() => openLightbox(persona)}
+                className="showcase-image"
               />
             </div>
           </section>
@@ -227,8 +200,7 @@ function GotItCaseStudyNew() {
               <img
                 src={ideation}
                 alt="Design Ideation"
-                className="showcase-image clickable-img"
-                onClick={() => openLightbox(ideation)}
+                className="showcase-image"
               />
             </div>
           </section>
@@ -246,8 +218,7 @@ function GotItCaseStudyNew() {
               <img
                 src={styleGuide}
                 alt="Style Guide"
-                className="showcase-image clickable-img"
-                onClick={() => openLightbox(styleGuide)}
+                className="showcase-image"
               />
             </div>
           </section>
@@ -260,32 +231,27 @@ function GotItCaseStudyNew() {
               featuring clear navigation, accessible color contrast, and an
               intuitive layout that guides students to their study materials.
             </p>
-            <div className="embed-container">
-              <iframe
-                src="https://got-it-phi.vercel.app/"
-                title="Got It Homepage"
-                className="site-embed"
-                allowFullScreen
+            <div className="image-showcase">
+              <img
+                src={homepage}
+                alt="Homepage Design"
+                className="showcase-image"
               />
             </div>
           </section>
 
           {/* Mockups & Prototypes */}
           <section className="content-section">
-            <h2 className="section-heading">Design Screens</h2>
+            <h2 className="section-heading">Design Mockups</h2>
             <p className="section-text">
               High-fidelity mockups and prototypes were created to visualize the
               final product and test with users before development. These
               mockups showcase the interface across different devices and use
               cases.
             </p>
-            <div className="embed-container">
-              <iframe
-                src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/ZehM4zoUzKhYDgKwGjWggV/Got-It---TradeAccess?node-id=3950-10678%26t=rG2xRTp1UuSELbJb-4"
-                title="Got It Figma Mockups"
-                className="site-embed"
-                allowFullScreen
-              />
+            <div className="image-grid-2">
+              <img src={mockup1} alt="Mockup 1" className="grid-image" />
+              <img src={mockup2} alt="Mockup 2" className="grid-image" />
             </div>
           </section>
 
@@ -318,18 +284,8 @@ function GotItCaseStudyNew() {
 
             <h3 className="subsection-title">Brochures</h3>
             <div className="image-grid-2">
-              <img
-                src={brochure}
-                alt="Brochure Front"
-                className="grid-image clickable-img"
-                onClick={() => openLightbox(brochure)}
-              />
-              <img
-                src={brochure2}
-                alt="Brochure Back"
-                className="grid-image clickable-img"
-                onClick={() => openLightbox(brochure2)}
-              />
+              <img src={brochure} alt="Brochure Front" className="grid-image" />
+              <img src={brochure2} alt="Brochure Back" className="grid-image" />
             </div>
 
             <h3 className="subsection-title">Business Cards</h3>
@@ -337,14 +293,12 @@ function GotItCaseStudyNew() {
               <img
                 src={businessCards}
                 alt="Business Cards 1"
-                className="grid-image clickable-img"
-                onClick={() => openLightbox(businessCards)}
+                className="grid-image"
               />
               <img
                 src={businessCards2}
                 alt="Business Cards 2"
-                className="grid-image clickable-img"
-                onClick={() => openLightbox(businessCards2)}
+                className="grid-image"
               />
             </div>
 
@@ -353,8 +307,7 @@ function GotItCaseStudyNew() {
               <img
                 src={stickers}
                 alt="Got It Stickers"
-                className="showcase-image clickable-img"
-                onClick={() => openLightbox(stickers)}
+                className="showcase-image"
               />
             </div>
           </section>
