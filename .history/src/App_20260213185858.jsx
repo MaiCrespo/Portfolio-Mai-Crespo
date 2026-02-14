@@ -25,53 +25,47 @@ const INITIAL_FACES = [
 ];
 
 function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
-  const imgRef = useRef(null);
   const dragging = useRef(false);
   const offset = useRef({ x: 0, y: 0 });
-  const posRef = useRef({
-    x:
-      face.fromRight != null
-        ? containerWidth - face.size + face.fromRight
-        : face.x,
-    y: face.y,
-  });
 
-  // Apply position directly to DOM — no re-render needed
-  const applyPos = (x, y) => {
-    posRef.current = { x, y };
-    if (imgRef.current) {
-      imgRef.current.style.left = `${x}px`;
-      imgRef.current.style.top = `${y}px`;
-    }
-  };
+  // Resolve initial x from either left or right anchor
+  const initX =
+    face.fromRight != null
+      ? containerWidth - face.size + face.fromRight
+      : face.x;
 
+  const [pos, setPos] = useState({ x: initX, y: face.y });
+
+  // Update position if container width changes (e.g. on resize)
   useEffect(() => {
     if (face.fromRight != null) {
-      applyPos(containerWidth - face.size + face.fromRight, posRef.current.y);
+      setPos((prev) => ({
+        ...prev,
+        x: containerWidth - face.size + face.fromRight,
+      }));
     }
-  }, [containerWidth]);
+  }, [containerWidth, face.fromRight, face.size]);
 
   const onMouseDown = useCallback(
     (e) => {
       e.preventDefault();
       dragging.current = true;
       onDragStart(face.id);
-      // Pause animation while dragging
-      if (imgRef.current) imgRef.current.style.animationPlayState = "paused";
       offset.current = {
-        x: e.clientX - posRef.current.x,
-        y: e.clientY - posRef.current.y,
+        x: e.clientX - pos.x,
+        y: e.clientY - pos.y,
       };
 
       const onMouseMove = (e) => {
         if (!dragging.current) return;
-        applyPos(e.clientX - offset.current.x, e.clientY - offset.current.y);
+        setPos({
+          x: e.clientX - offset.current.x,
+          y: e.clientY - offset.current.y,
+        });
       };
 
       const onMouseUp = () => {
         dragging.current = false;
-        // Resume animation after drag
-        if (imgRef.current) imgRef.current.style.animationPlayState = "running";
         window.removeEventListener("mousemove", onMouseMove);
         window.removeEventListener("mouseup", onMouseUp);
       };
@@ -79,19 +73,18 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
     },
-    [face.id, onDragStart]
+    [pos, face.id, onDragStart]
   );
 
   return (
     <img
-      ref={imgRef}
       src={face.src}
       alt=""
       onMouseDown={onMouseDown}
       style={{
         position: "absolute",
-        left: `${posRef.current.x}px`,
-        top: `${posRef.current.y}px`,
+        left: `${pos.x}px`,
+        top: `${pos.y}px`,
         width: `${face.size}px`,
         height: "auto",
         transform: `rotate(${face.rot}deg)`,

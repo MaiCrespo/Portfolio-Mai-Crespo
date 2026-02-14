@@ -7,14 +7,6 @@
 @font-face {
   font-family: "Neue Plak";
   src: url("./assets/fonts/Neue Plak Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Neue Plak";
-  src: url("./assets/fonts/Neue Plak Bold.ttf") format("truetype");
-  font-weight: 700;
   font-display: swap;
 }
 
@@ -32,7 +24,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: none !important;
 }
 
 body {
@@ -40,11 +31,6 @@ body {
   color: #fff;
   font-family: var(--font-body);
   overflow-x: hidden;
-  cursor: none !important;
-}
-
-html {
-  cursor: none !important;
 }
 
 /* --- BACKGROUND ORBS --- */
@@ -134,211 +120,6 @@ html {
   }
 }
 
-/* --- PAGE LAYOUT --- */
-.page-layout {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-}
-
-/* --- FLOATING FACES LAYER --- */
-.faces-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-  overflow: visible;
-}
-
-.faces-layer img {
-  pointer-events: all;
-}
-
-/* Creepy per-face animations with sudden ticks */
-@keyframes creepy1 {
-  0% {
-    transform: translateY(0px) rotate(-8deg);
-  }
-  18% {
-    transform: translateY(-12px) rotate(-8deg);
-  }
-  20% {
-    transform: translateY(-14px) rotate(-14deg);
-  }
-  21% {
-    transform: translateY(-12px) rotate(-8deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(-8deg);
-  }
-  70% {
-    transform: translateY(-10px) rotate(-5deg);
-  }
-  71% {
-    transform: translateY(-10px) rotate(-12deg);
-  }
-  72% {
-    transform: translateY(-10px) rotate(-5deg);
-  }
-  100% {
-    transform: translateY(0px) rotate(-8deg);
-  }
-}
-
-@keyframes creepy2 {
-  0% {
-    transform: translateY(0px) rotate(7deg);
-  }
-  10% {
-    transform: translateY(-8px) rotate(7deg);
-  }
-  30% {
-    transform: translateY(-6px) rotate(12deg);
-  }
-  31% {
-    transform: translateY(-8px) rotate(5deg);
-  }
-  32% {
-    transform: translateY(-6px) rotate(12deg);
-  }
-  60% {
-    transform: translateY(-14px) rotate(7deg);
-  }
-  85% {
-    transform: translateY(-10px) rotate(10deg);
-  }
-  86% {
-    transform: translateY(-12px) rotate(4deg);
-  }
-  100% {
-    transform: translateY(0px) rotate(7deg);
-  }
-}
-
-@keyframes creepy3 {
-  0% {
-    transform: translateY(0px) rotate(6deg);
-  }
-  15% {
-    transform: translateY(-15px) rotate(6deg);
-  }
-  40% {
-    transform: translateY(-10px) rotate(6deg);
-  }
-  41% {
-    transform: translateY(-10px) rotate(11deg);
-  }
-  42% {
-    transform: translateY(-12px) rotate(3deg);
-  }
-  43% {
-    transform: translateY(-10px) rotate(6deg);
-  }
-  75% {
-    transform: translateY(-8px) rotate(6deg);
-  }
-  100% {
-    transform: translateY(0px) rotate(6deg);
-  }
-}
-
-@keyframes creepy4 {
-  0% {
-    transform: translateY(0px) rotate(-5deg);
-  }
-  25% {
-    transform: translateY(-10px) rotate(-5deg);
-  }
-  50% {
-    transform: translateY(-6px) rotate(-10deg);
-  }
-  51% {
-    transform: translateY(-8px) rotate(-2deg);
-  }
-  52% {
-    transform: translateY(-6px) rotate(-10deg);
-  }
-  80% {
-    transform: translateY(-12px) rotate(-5deg);
-  }
-  90% {
-    transform: translateY(-12px) rotate(-8deg);
-  }
-  91% {
-    transform: translateY(-10px) rotate(-3deg);
-  }
-  100% {
-    transform: translateY(0px) rotate(-5deg);
-  }
-}
-
-@keyframes creepy5 {
-  0% {
-    transform: translateY(0px) rotate(4deg);
-  }
-  5% {
-    transform: translateY(-5px) rotate(9deg);
-  }
-  6% {
-    transform: translateY(-5px) rotate(1deg);
-  }
-  7% {
-    transform: translateY(-5px) rotate(4deg);
-  }
-  35% {
-    transform: translateY(-18px) rotate(4deg);
-  }
-  65% {
-    transform: translateY(-10px) rotate(4deg);
-  }
-  88% {
-    transform: translateY(-14px) rotate(8deg);
-  }
-  89% {
-    transform: translateY(-14px) rotate(2deg);
-  }
-  100% {
-    transform: translateY(0px) rotate(4deg);
-  }
-}
-
-@keyframes creepy6 {
-  0% {
-    transform: translateY(0px) rotate(-7deg);
-  }
-  20% {
-    transform: translateY(-10px) rotate(-7deg);
-  }
-  45% {
-    transform: translateY(-8px) rotate(-12deg);
-  }
-  46% {
-    transform: translateY(-10px) rotate(-4deg);
-  }
-  47% {
-    transform: translateY(-8px) rotate(-12deg);
-  }
-  70% {
-    transform: translateY(-14px) rotate(-7deg);
-  }
-  95% {
-    transform: translateY(-6px) rotate(-10deg);
-  }
-  96% {
-    transform: translateY(-8px) rotate(-5deg);
-  }
-  100% {
-    transform: translateY(0px) rotate(-7deg);
-  }
-}
-
 /* --- NAVIGATION PILL --- */
 .nav-pill {
   width: 90%;
@@ -353,14 +134,13 @@ html {
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   border-radius: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  z-index: 3;
 }
-
 .back-btn {
   position: absolute;
   left: 40px;
@@ -369,6 +149,7 @@ html {
   color: #fff;
   padding: 8px 20px;
   border-radius: 25px;
+  cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -380,7 +161,6 @@ html {
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateX(-3px);
 }
-
 .nav-links {
   position: absolute;
   left: 50%;
@@ -393,6 +173,7 @@ html {
 
 .nav-item {
   opacity: 0.6;
+  cursor: pointer;
   transition: 0.3s;
   color: #fff;
   text-decoration: none;
@@ -419,7 +200,77 @@ html {
   text-align: center;
   padding: 0 20px;
   position: relative;
-  z-index: 3;
+  overflow: hidden;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- FLOATING FACES --- */
+.faces-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.face {
+  position: absolute;
+  width: 220px;
+  height: auto;
+  animation: faceBob 6s ease-in-out infinite;
+}
+.face-1 {
+  top: -2%;
+  left: 2%;
+  animation-delay: 0s;
+  transform: rotate(-5deg);
+}
+.face-3 {
+  top: 38%;
+  left: 0%;
+  animation-delay: 1.5s;
+  transform: rotate(4deg);
+}
+.face-5 {
+  bottom: -5%;
+  left: 4%;
+  animation-delay: 3s;
+  transform: rotate(-3deg);
+}
+
+/* Right column - top to bottom */
+.face-2 {
+  top: -2%;
+  right: 2%;
+  animation-delay: 0.8s;
+  transform: rotate(6deg);
+}
+.face-4 {
+  top: 38%;
+  right: 0%;
+  animation-delay: 2s;
+  transform: rotate(-4deg);
+}
+.face-6 {
+  bottom: -5%;
+  right: 4%;
+  animation-delay: 1s;
+  transform: rotate(3deg);
+}
+
+@keyframes faceBob {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
 }
 
 .brand-title {
@@ -443,6 +294,7 @@ html {
   opacity: 0.7;
 }
 
+/* BIGGER TEXT SIZES */
 .text-layer span:first-child {
   font-size: clamp(6rem, 15vw, 11rem);
   letter-spacing: 0.15em;
@@ -472,18 +324,11 @@ html {
 }
 
 .bio-text {
-  max-width: 800px;
+  max-width: 1000px;
   font-size: 1.8rem;
   line-height: 1.4;
+  opacity: 0.9;
   margin-bottom: 40px;
-  color: #fff;
-  position: relative;
-  z-index: 4;
-}
-
-.bio-text strong {
-  font-weight: 700;
-  color: #fff;
 }
 
 /* --- PROJECTS SECTION --- */
@@ -493,8 +338,6 @@ html {
   flex-direction: column;
   align-items: center;
   padding: 40px 0;
-  position: relative;
-  z-index: 3;
 }
 
 .section-title {
@@ -502,7 +345,6 @@ html {
   font-size: 3.5rem;
   margin-bottom: 15px;
 }
-
 .title-line {
   width: 300px;
   height: 1px;
@@ -545,6 +387,7 @@ html {
   order: 2;
 }
 
+/* --- TEXT ALIGNMENT (FLUSH TO TITLE) --- */
 .project-info {
   display: flex;
   flex-direction: column;
@@ -575,12 +418,13 @@ html {
   max-width: 600px;
 }
 
+/* --- THUMBNAIL (SHADOWS FULLY REMOVED) --- */
 .img-container {
   width: 100%;
   border-radius: 35px;
   overflow: hidden;
-  box-shadow: none !important;
-  filter: none !important;
+  box-shadow: none !important; /* Forces shadow removal */
+  filter: none !important; /* Removes any filter-based shadows */
   background: transparent;
 }
 
@@ -589,7 +433,7 @@ html {
   height: auto;
   display: block;
   border-radius: 35px;
-  box-shadow: none !important;
+  box-shadow: none !important; /* Double-check image itself */
   filter: none !important;
 }
 
@@ -617,8 +461,6 @@ html {
   -webkit-backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: 40px;
-  position: relative;
-  z-index: 3;
 }
 
 .footer-text {
@@ -632,6 +474,7 @@ html {
   color: #fff;
   padding: 14px 40px;
   border-radius: 50px;
+  cursor: pointer;
   font-weight: 600;
   transition: 0.3s;
 }
@@ -641,36 +484,17 @@ html {
   color: #000;
 }
 
-/* --- BACK BUTTON --- */
-.back-btn {
-  position: absolute;
-  left: 40px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
-  padding: 8px 20px;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  font-family: var(--font-body);
-}
-
-.back-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateX(-3px);
-}
-
 /* --- RESPONSIVE --- */
 @media (max-width: 1200px) {
   .projects-grid {
     width: 95%;
   }
+
   .project-card {
     gap: 40px;
     padding: 50px;
   }
+
   .bio-text {
     font-size: 1.6rem;
   }
@@ -680,20 +504,25 @@ html {
   .hero-viewport {
     min-height: 60vh;
   }
+
   .bio-text {
     font-size: 1.4rem;
     max-width: 800px;
   }
+
   .section-title {
     font-size: 3rem;
   }
+
   .project-card {
     gap: 30px;
     padding: 40px;
   }
+
   .project-info h3 {
     font-size: clamp(1.8rem, 3vw, 2.5rem);
   }
+
   .footer-pill {
     width: 95%;
     padding: 0 40px;
@@ -707,19 +536,24 @@ html {
     padding: 30px;
     gap: 25px;
   }
+
   .project-card:nth-child(even) .img-container {
     order: 0;
   }
+
   .project-info {
     align-items: center;
     text-align: center;
   }
+
   .project-info p {
     margin-left: 0;
   }
+
   .view-more {
     align-self: center;
   }
+
   .footer-pill {
     flex-direction: column;
     padding: 40px 20px;
@@ -728,16 +562,13 @@ html {
     gap: 20px;
     border-radius: 40px;
   }
+
   .nav-pill {
     height: auto;
     padding: 20px;
     flex-direction: column;
     gap: 15px;
     border-radius: 25px;
-  }
-  .back-btn {
-    position: static;
-    margin-bottom: 10px;
   }
 }
 
@@ -746,52 +577,62 @@ html {
     min-height: 50vh;
     padding: 0 15px;
   }
+
   .text-layer span:first-child {
     font-size: clamp(4.5rem, 12vw, 8rem);
   }
+
   .text-layer span:last-child {
     font-size: clamp(6.5rem, 16vw, 12rem);
   }
+
   .bio-text {
     font-size: 1.2rem;
     margin-bottom: 30px;
   }
+
   .section-title {
     font-size: 2.5rem;
   }
+
   .title-line {
     width: 200px;
     margin-bottom: 50px;
   }
+
   .projects-grid {
     width: 100%;
   }
+
   .project-card {
     padding: 25px;
     border-radius: 30px;
   }
+
   .project-info h3 {
     margin-bottom: 20px;
   }
+
   .project-info p {
     font-size: 1rem;
     margin-bottom: 25px;
   }
+
   .p-cat {
     font-size: 0.75rem;
   }
+
   .footer-pill {
     width: 100%;
     min-height: 100px;
   }
+
   .footer-text {
     font-size: 2rem;
   }
+
   .pill-btn {
     padding: 12px 35px;
-  }
-  .faces-layer {
-    display: none;
   }
 }
 
@@ -799,52 +640,66 @@ html {
   .hero-viewport {
     min-height: 45vh;
   }
+
   .text-layer span:first-child {
     font-size: clamp(3.5rem, 10vw, 6rem);
   }
+
   .text-layer span:last-child {
     font-size: clamp(5rem, 13vw, 9rem);
   }
+
   .bio-text {
     font-size: 1rem;
     line-height: 1.5;
     margin-bottom: 25px;
   }
+
   .section-title {
     font-size: 2rem;
   }
+
   .title-line {
     width: 150px;
     margin-bottom: 40px;
   }
+
   .project-card {
     padding: 20px;
     border-radius: 25px;
   }
+
   .img-container,
   .img-container img {
     border-radius: 20px;
   }
+
   .project-info h3 {
     font-size: clamp(1.5rem, 5vw, 2rem);
     margin-bottom: 15px;
   }
+
   .project-info p {
     font-size: 0.95rem;
     margin-bottom: 20px;
   }
+
   .footer-text {
     font-size: 1.5rem;
   }
+
   .pill-btn {
     padding: 10px 28px;
     font-size: 0.8rem;
   }
+
+  /* Disable mask effect on mobile for better performance */
   .text-layer.sharp {
     -webkit-mask-image: none;
     mask-image: none;
     position: relative;
   }
+
   .text-layer.blurred {
     display: none;
   }
@@ -854,12 +709,15 @@ html {
   .bio-text {
     font-size: 0.9rem;
   }
+
   .section-title {
     font-size: 1.8rem;
   }
+
   .project-card {
     padding: 15px;
   }
+
   .footer-text {
     font-size: 1.3rem;
   }

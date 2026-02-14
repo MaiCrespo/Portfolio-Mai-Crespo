@@ -16,62 +16,56 @@ import face6 from "./assets/faces/Face6.png";
 // Initial positions: x/y in px from top-left of page
 // Left side: faces 1, 3, 5 | Right side: faces 2, 4, 6
 const INITIAL_FACES = [
-  { id: 1, src: face1, x: -80, y: 40, rot: -8, size: 380 },
-  { id: 2, src: face2, x: null, y: -60, rot: 7, size: 300, fromRight: 120 },
-  { id: 3, src: face3, x: -100, y: 360, rot: 6, size: 420 },
-  { id: 4, src: face4, x: null, y: 300, rot: -5, size: 350, fromRight: 80 },
-  { id: 5, src: face5, x: -60, y: 750, rot: 4, size: 460 },
-  { id: 6, src: face6, x: null, y: 700, rot: -7, size: 310, fromRight: 60 },
+  { id: 1, src: face1, x: -60, y: 80, rot: -8, size: 340 },
+  { id: 2, src: face2, x: null, y: -30, rot: 7, size: 320, fromRight: 80 },
+  { id: 3, src: face3, x: -40, y: 380, rot: 6, size: 350 },
+  { id: 4, src: face4, x: null, y: 320, rot: -5, size: 330, fromRight: 60 },
+  { id: 5, src: face5, x: -50, y: 720, rot: 4, size: 360 },
+  { id: 6, src: face6, x: null, y: 680, rot: -7, size: 325, fromRight: 70 },
 ];
 
 function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
-  const imgRef = useRef(null);
   const dragging = useRef(false);
   const offset = useRef({ x: 0, y: 0 });
-  const posRef = useRef({
-    x:
-      face.fromRight != null
-        ? containerWidth - face.size + face.fromRight
-        : face.x,
-    y: face.y,
-  });
 
-  // Apply position directly to DOM — no re-render needed
-  const applyPos = (x, y) => {
-    posRef.current = { x, y };
-    if (imgRef.current) {
-      imgRef.current.style.left = `${x}px`;
-      imgRef.current.style.top = `${y}px`;
-    }
-  };
+  // Resolve initial x from either left or right anchor
+  const initX =
+    face.fromRight != null
+      ? containerWidth - face.size + face.fromRight
+      : face.x;
 
+  const [pos, setPos] = useState({ x: initX, y: face.y });
+
+  // Update position if container width changes (e.g. on resize)
   useEffect(() => {
     if (face.fromRight != null) {
-      applyPos(containerWidth - face.size + face.fromRight, posRef.current.y);
+      setPos((prev) => ({
+        ...prev,
+        x: containerWidth - face.size + face.fromRight,
+      }));
     }
-  }, [containerWidth]);
+  }, [containerWidth, face.fromRight, face.size]);
 
   const onMouseDown = useCallback(
     (e) => {
       e.preventDefault();
       dragging.current = true;
       onDragStart(face.id);
-      // Pause animation while dragging
-      if (imgRef.current) imgRef.current.style.animationPlayState = "paused";
       offset.current = {
-        x: e.clientX - posRef.current.x,
-        y: e.clientY - posRef.current.y,
+        x: e.clientX - pos.x,
+        y: e.clientY - pos.y,
       };
 
       const onMouseMove = (e) => {
         if (!dragging.current) return;
-        applyPos(e.clientX - offset.current.x, e.clientY - offset.current.y);
+        setPos({
+          x: e.clientX - offset.current.x,
+          y: e.clientY - offset.current.y,
+        });
       };
 
       const onMouseUp = () => {
         dragging.current = false;
-        // Resume animation after drag
-        if (imgRef.current) imgRef.current.style.animationPlayState = "running";
         window.removeEventListener("mousemove", onMouseMove);
         window.removeEventListener("mouseup", onMouseUp);
       };
@@ -79,19 +73,18 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
     },
-    [face.id, onDragStart]
+    [pos, face.id, onDragStart]
   );
 
   return (
     <img
-      ref={imgRef}
       src={face.src}
       alt=""
       onMouseDown={onMouseDown}
       style={{
         position: "absolute",
-        left: `${posRef.current.x}px`,
-        top: `${posRef.current.y}px`,
+        left: `${pos.x}px`,
+        top: `${pos.y}px`,
         width: `${face.size}px`,
         height: "auto",
         transform: `rotate(${face.rot}deg)`,
@@ -100,8 +93,8 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
         WebkitUserDrag: "none",
         cursor: "grab",
         filter: "drop-shadow(0 10px 30px rgba(0,0,0,0.4))",
-        animation: `creepy${face.id} ${7 + face.id * 0.7}s ease-in-out ${
-          face.id * 0.6
+        animation: `faceBob ${5 + face.id * 0.5}s ease-in-out ${
+          face.id * 0.4
         }s infinite`,
       }}
       draggable={false}

@@ -741,7 +741,7 @@ html {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .hero-viewport {
     min-height: 50vh;
     padding: 0 15px;
