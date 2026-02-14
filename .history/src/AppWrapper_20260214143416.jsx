@@ -8,7 +8,6 @@ import Underbroth from "./Underbroth";
 import AceOfCups from "./AceOfCups";
 import LoadingPage from "./LoadingPage";
 import AboutMe from "./AboutMe";
-import DaybreakCaseStudy from "./DaybreakCaseStudy";
 
 import defaultCursor from "./assets/misc/Default.png";
 import onClickCursor from "./assets/misc/OnClick.png";
