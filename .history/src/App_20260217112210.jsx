@@ -26,7 +26,6 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
   const imgRef = useRef(null);
   const dragging = useRef(false);
   const offset = useRef({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
 
   const initX =
     face.fromRight != null
@@ -52,7 +51,6 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
     (e) => {
       e.preventDefault();
       dragging.current = true;
-      setIsDragging(true); // Boost z-index while dragging
       onDragStart(face.id);
       if (imgRef.current) imgRef.current.style.animationPlayState = "paused";
       offset.current = {
@@ -67,7 +65,6 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
 
       const onMouseUp = () => {
         dragging.current = false;
-        setIsDragging(false); // Return to normal z-index
         if (imgRef.current) imgRef.current.style.animationPlayState = "running";
         window.removeEventListener("mousemove", onMouseMove);
         window.removeEventListener("mouseup", onMouseUp);
@@ -93,7 +90,7 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
         width: `${face.size}px`,
         height: "auto",
         transform: `rotate(${face.rot}deg)`,
-        zIndex: isDragging ? 100 : zIndex, // Boost to 100 while dragging
+        zIndex: zIndex,
         userSelect: "none",
         WebkitUserDrag: "none",
         cursor: "grab",
@@ -169,7 +166,7 @@ function App() {
             <DraggableFace
               key={face.id}
               face={face}
-              zIndex={faceOrder.indexOf(face.id) + 1}
+              zIndex={faceOrder.indexOf(face.id) + 10}
               onDragStart={bringToFront}
               containerWidth={containerWidth}
             />

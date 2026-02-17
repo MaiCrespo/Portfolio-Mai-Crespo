@@ -26,7 +26,6 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
   const imgRef = useRef(null);
   const dragging = useRef(false);
   const offset = useRef({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
 
   const initX =
     face.fromRight != null
@@ -52,7 +51,6 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
     (e) => {
       e.preventDefault();
       dragging.current = true;
-      setIsDragging(true); // Boost z-index while dragging
       onDragStart(face.id);
       if (imgRef.current) imgRef.current.style.animationPlayState = "paused";
       offset.current = {
@@ -67,7 +65,6 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
 
       const onMouseUp = () => {
         dragging.current = false;
-        setIsDragging(false); // Return to normal z-index
         if (imgRef.current) imgRef.current.style.animationPlayState = "running";
         window.removeEventListener("mousemove", onMouseMove);
         window.removeEventListener("mouseup", onMouseUp);
@@ -87,13 +84,13 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
       onMouseDown={onMouseDown}
       draggable={false}
       style={{
-        position: "absolute",
+        position: "fixed",
         left: `${posRef.current.x}px`,
         top: `${posRef.current.y}px`,
         width: `${face.size}px`,
         height: "auto",
         transform: `rotate(${face.rot}deg)`,
-        zIndex: isDragging ? 100 : zIndex, // Boost to 100 while dragging
+        zIndex: zIndex,
         userSelect: "none",
         WebkitUserDrag: "none",
         cursor: "grab",
@@ -162,20 +159,18 @@ function App() {
         <div className="orb orb-2"></div>
       </div>
 
-      <div className="page-layout">
-        {/* Faces container - absolute positioning within page-layout */}
-        <div className="faces-container-absolute">
-          {INITIAL_FACES.map((face) => (
-            <DraggableFace
-              key={face.id}
-              face={face}
-              zIndex={faceOrder.indexOf(face.id) + 1}
-              onDragStart={bringToFront}
-              containerWidth={containerWidth}
-            />
-          ))}
-        </div>
+      {/* Faces — fixed, above orbs (z-index 1), below page content (z-index 2+) */}
+      {INITIAL_FACES.map((face) => (
+        <DraggableFace
+          key={face.id}
+          face={face}
+          zIndex={faceOrder.indexOf(face.id) + 1}
+          onDragStart={bringToFront}
+          containerWidth={containerWidth}
+        />
+      ))}
 
+      <div className="page-layout">
         <nav className="nav-pill">
           <div className="nav-links">
             <span className="nav-item active">Home</span>
