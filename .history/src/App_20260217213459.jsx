@@ -203,9 +203,10 @@ function App() {
             </div>
           </div>
           <p className="bio-text">
-            I'm a <strong>UI/UX Designer and Illustrator</strong> currently
-            venturing into <strong>Game Design</strong>. While I enjoy technical
-            problem solving, I'm passionate about horror art and dark design.
+            I'm a UI/UX Designer and Illustrator currently venturing into Game
+            Design. While I enjoy technical problem solving, I also draw crazy
+            weird dark things and am now looking to channel that aesthetic into
+            immersive concept art and world building.
           </p>
           <button className="pill-btn" onClick={() => navigate("/pick-a-card")}>
             PICK A CARD
