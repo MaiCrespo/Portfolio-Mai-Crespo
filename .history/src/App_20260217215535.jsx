@@ -14,12 +14,12 @@ import face5 from "./assets/faces/Face5.png";
 import face6 from "./assets/faces/Face6.png";
 
 const INITIAL_FACES = [
-  { id: 1, src: face1, x: -120, y: -50, rot: -15, size: 600 }, // Top left
-  { id: 2, src: face2, x: null, y: 300, rot: 12, size: 380, fromRight: 50 }, // Middle right
-  { id: 3, src: face3, x: -180, y: 600, rot: 6, size: 520 }, // Bottom left - MOVED DOWN from 620
-  { id: 4, src: face4, x: null, y: 620, rot: -10, size: 600, fromRight: 30 }, // Lower right
-  { id: 5, src: face5, x: 180, y: 480, rot: 5, size: 380 }, // Left of paragraph
-  { id: 6, src: face6, x: null, y: -100, rot: 15, size: 480, fromRight: -50 }, // Top right corner, partially off screen
+  { id: 1, src: face1, x: -50, y: 80, rot: -15, size: 480 }, // 2 inches, tilted left
+  { id: 2, src: face2, x: null, y: 20, rot: 12, size: 380, fromRight: 80 }, // 1.5 inches, tilted right
+  { id: 3, src: face3, x: -80, y: 550, rot: 8, size: 520 }, // Large, below Face1
+  { id: 4, src: face4, x: null, y: 500, rot: -10, size: 600, fromRight: 60 }, // 2.5 inches, below Face2
+  { id: 5, src: face5, x: -60, y: 1100, rot: 5, size: 550 }, // Large, bottom left
+  { id: 6, src: face6, x: null, y: 80, rot: 15, size: 480, fromRight: 100 }, // Same level as Face1, opposite tilt
 ];
 
 function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {

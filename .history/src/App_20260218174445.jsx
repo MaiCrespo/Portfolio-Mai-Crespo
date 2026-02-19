@@ -14,12 +14,12 @@ import face5 from "./assets/faces/Face5.png";
 import face6 from "./assets/faces/Face6.png";
 
 const INITIAL_FACES = [
-  { id: 1, src: face1, x: -120, y: -50, rot: -15, size: 600 }, // Top left
-  { id: 2, src: face2, x: null, y: 300, rot: 12, size: 380, fromRight: 50 }, // Middle right
-  { id: 3, src: face3, x: -180, y: 600, rot: 6, size: 520 }, // Bottom left - MOVED DOWN from 620
-  { id: 4, src: face4, x: null, y: 620, rot: -10, size: 600, fromRight: 30 }, // Lower right
-  { id: 5, src: face5, x: 180, y: 480, rot: 5, size: 380 }, // Left of paragraph
-  { id: 6, src: face6, x: null, y: -100, rot: 15, size: 480, fromRight: -50 }, // Top right corner, partially off screen
+  { id: 1, src: face1, x: -50, y: 80, rot: -15, size: 480 },
+  { id: 2, src: face2, x: null, y: 150, rot: 12, size: 380, fromRight: 80 }, // Moved down from 20
+  { id: 3, src: face3, x: -30, y: 600, rot: 6, size: 520 }, // Moved down and right
+  { id: 4, src: face4, x: null, y: 500, rot: -10, size: 600, fromRight: 60 },
+  { id: 5, src: face5, x: 30, y: 480, rot: 5, size: 380 }, // Near paragraph, moved right from -60
+  { id: 6, src: face6, x: null, y: 10, rot: 15, size: 480, fromRight: 100 }, // Above Face2
 ];
 
 function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {

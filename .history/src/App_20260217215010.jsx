@@ -13,26 +13,69 @@ import face4 from "./assets/faces/Face4.png";
 import face5 from "./assets/faces/Face5.png";
 import face6 from "./assets/faces/Face6.png";
 
+// Generate random positions with collision detection
+function generateRandomPositions(containerWidth) {
+  const sizes = [480, 380, 520, 600, 550, 480]; // Face sizes
+  const positions = [];
+  const margin = 100; // Minimum space between faces
+  const maxAttempts = 50;
+
+  const checkCollision = (x, y, size, existing) => {
+    for (let pos of existing) {
+      const distance = Math.sqrt(
+        Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2)
+      );
+      const minDistance = (size + pos.size) / 2 + margin;
+      if (distance < minDistance) return true;
+    }
+    return false;
+  };
+
+  for (let i = 0; i < 6; i++) {
+    const size = sizes[i];
+    let placed = false;
+    let attempts = 0;
+
+    while (!placed && attempts < maxAttempts) {
+      // Random position within viewport
+      const x = Math.random() * (containerWidth - size) - size / 2;
+      const y = Math.random() * 1200; // Height range
+
+      if (!checkCollision(x, y, size, positions)) {
+        positions.push({ x, y, size });
+        placed = true;
+      }
+      attempts++;
+    }
+
+    // Fallback if no position found
+    if (!placed) {
+      positions.push({
+        x: i % 2 === 0 ? -50 : containerWidth - size + 50,
+        y: i * 200,
+        size,
+      });
+    }
+  }
+
+  return positions;
+}
+
 const INITIAL_FACES = [
-  { id: 1, src: face1, x: -120, y: -50, rot: -15, size: 600 }, // Top left
-  { id: 2, src: face2, x: null, y: 300, rot: 12, size: 380, fromRight: 50 }, // Middle right
-  { id: 3, src: face3, x: -180, y: 600, rot: 6, size: 520 }, // Bottom left - MOVED DOWN from 620
-  { id: 4, src: face4, x: null, y: 620, rot: -10, size: 600, fromRight: 30 }, // Lower right
-  { id: 5, src: face5, x: 180, y: 480, rot: 5, size: 380 }, // Left of paragraph
-  { id: 6, src: face6, x: null, y: -100, rot: 15, size: 480, fromRight: -50 }, // Top right corner, partially off screen
+  { id: 1, src: face1, rot: -15, size: 480 },
+  { id: 2, src: face2, rot: 12, size: 380 },
+  { id: 3, src: face3, rot: 8, size: 520 },
+  { id: 4, src: face4, rot: -10, size: 600 },
+  { id: 5, src: face5, rot: 5, size: 550 },
+  { id: 6, src: face6, rot: 15, size: 480 },
 ];
 
-function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
+function DraggableFace({ face, initialPos, zIndex, onDragStart }) {
   const imgRef = useRef(null);
   const dragging = useRef(false);
   const offset = useRef({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-
-  const initX =
-    face.fromRight != null
-      ? containerWidth - face.size + face.fromRight
-      : face.x;
-  const posRef = useRef({ x: initX, y: face.y });
+  const posRef = useRef({ x: initialPos.x, y: initialPos.y });
 
   const applyPos = useCallback((x, y) => {
     posRef.current = { x, y };
@@ -41,12 +84,6 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
       imgRef.current.style.top = `${y}px`;
     }
   }, []);
-
-  useEffect(() => {
-    if (face.fromRight != null) {
-      applyPos(containerWidth - face.size + face.fromRight, posRef.current.y);
-    }
-  }, [containerWidth, face.fromRight, face.size, applyPos]);
 
   const onMouseDown = useCallback(
     (e) => {
@@ -110,6 +147,13 @@ function App() {
   const navigate = useNavigate();
   const [faceOrder, setFaceOrder] = useState(INITIAL_FACES.map((f) => f.id));
   const [containerWidth, setContainerWidth] = useState(window.innerWidth);
+  const [facePositions, setFacePositions] = useState([]);
+
+  // Generate random positions on mount
+  useEffect(() => {
+    const positions = generateRandomPositions(window.innerWidth);
+    setFacePositions(positions);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => setContainerWidth(window.innerWidth);
@@ -165,15 +209,16 @@ function App() {
       <div className="page-layout">
         {/* Faces container - absolute positioning within page-layout */}
         <div className="faces-container-absolute">
-          {INITIAL_FACES.map((face) => (
-            <DraggableFace
-              key={face.id}
-              face={face}
-              zIndex={faceOrder.indexOf(face.id) + 1}
-              onDragStart={bringToFront}
-              containerWidth={containerWidth}
-            />
-          ))}
+          {facePositions.length > 0 &&
+            INITIAL_FACES.map((face, index) => (
+              <DraggableFace
+                key={face.id}
+                face={face}
+                initialPos={facePositions[index]}
+                zIndex={faceOrder.indexOf(face.id) + 1}
+                onDragStart={bringToFront}
+              />
+            ))}
         </div>
 
         <nav className="nav-pill">
