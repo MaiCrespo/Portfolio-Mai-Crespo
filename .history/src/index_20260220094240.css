@@ -21,8 +21,8 @@
 :root {
   --font-display: "Hellishy", Georgia, serif;
   --font-body: "Neue Plak", sans-serif;
-  --orb-start: #ffaa00;
-  --orb-end: #791a00;
+  --orb-start: #fff8e8;
+  --orb-end: #ab4022;
   --mouse-x: 50%;
   --mouse-y: 50%;
   --content-max-width: 1300px;
@@ -53,7 +53,7 @@ html {
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background: #391313;
+  background: #b60000;
 }
 
 .orb {
