@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
-import "./GotItCaseStudyNew.css";
+import "./DaybreakCaseStudy.css";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
-import headerImage from "./assets/UI-UX/TheDescent/CaseStudyHeaders_TheDescent.png";
-import descentLogo from "./assets/UI-UX/TheDescent/TheDescentlogo.png";
-import descentSplash from "./assets/UI-UX/TheDescent/descentsplash.png";
-import limbo from "./assets/UI-UX/TheDescent/Limbo.png";
-import lust from "./assets/UI-UX/TheDescent/Lust.png";
-import violence from "./assets/UI-UX/TheDescent/Violence.png";
-import thumbnail from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
+import headerImage from "./assets/UI-UX/Daybreak/CaseStudyHeaders_Daybreak.png";
+import daybreakLogo from "./assets/UI-UX/Daybreak/DaybreakLogo.png";
+import boardGame from "./assets/UI-UX/Daybreak/BoardGameUggo.png";
+import mapMain from "./assets/UI-UX/Daybreak/daybreak_map_main.png";
+import horizontalMap from "./assets/UI-UX/Daybreak/horizontalMap.png";
+import monster from "./assets/UI-UX/Daybreak/Monster.png";
+import badTile from "./assets/UI-UX/Daybreak/bad_tile.png";
+import splashBackground from "./assets/UI-UX/Daybreak/splashBackground.jpg";
 
-function TheDescentCaseStudy() {
+function DaybreakCaseStudy() {
   const navigate = useNavigate();
   const [lightboxSrc, setLightboxSrc] = useState(null);
 
@@ -86,20 +87,18 @@ function TheDescentCaseStudy() {
               <img
                 src={headerImage}
                 className="hero-image-header clickable-img"
-                alt="The Descent Case Study Header"
+                alt="Daybreak Case Study Header"
                 onClick={() => openLightbox(headerImage)}
               />
             </div>
             <div className="hero-text">
               <h1 className="project-title">
-                <strong>The Descent</strong> is an interactive learning game
-                inspired by Dante's Inferno, guiding players through the nine
-                circles of Hell while exploring morality, choice, and
-                transformation.
+                <strong>Daybreak</strong> is an online multiplayer survival
+                horror game centered on betrayal and sabotage as players compete
+                to reach the finish line.
               </h1>
               <p className="project-subtitle">
-                Horror | Interactive Learning Game | Creative Director &
-                Prototyper
+                Horror Game | Art Director & UI Designer
               </p>
             </div>
           </section>
@@ -108,24 +107,22 @@ function TheDescentCaseStudy() {
           <section className="content-section">
             <h2 className="section-heading">Project Overview</h2>
             <p className="section-text">
-              The Descent is a solo project that reimagines Dante's Inferno as
-              an interactive learning experience. Players journey through the
-              nine circles of Hell, confronting moral dilemmas and witnessing
-              the consequences of different choices.
+              Daybreak is a multiplayer horror game where players must survive
+              the night while one among them works to sabotage the group. I led
+              the visual direction of the game, designing the world map, villain
+              characters, and all promotional materials.
             </p>
             <p className="section-text">
-              As Creative Director and Prototyper, I handled every aspect of
-              production — from conceptual design and illustration to
-              prototyping and asset creation. The project blends educational
-              content with horror aesthetics to create a memorable exploration
-              of sin, punishment, and transformation.
+              As Art Director and UI Designer, I was responsible for
+              establishing the game's visual identity — a dark, atmospheric
+              aesthetic that balances tension with playability.
             </p>
             <div className="image-showcase">
               <img
-                src={descentSplash}
-                alt="The Descent Splash"
+                src={splashBackground}
+                alt="Daybreak Splash"
                 className="showcase-image clickable-img"
-                onClick={() => openLightbox(descentSplash)}
+                onClick={() => openLightbox(splashBackground)}
               />
             </div>
           </section>
@@ -135,24 +132,24 @@ function TheDescentCaseStudy() {
             <h2 className="section-heading">My Role & Responsibilities</h2>
             <div className="role-grid">
               <div className="role-item">
-                <h3 className="role-title">Creative Direction</h3>
+                <h3 className="role-title">Art Direction</h3>
                 <p className="role-desc">
-                  Defined the overall vision, tone, and narrative structure for
-                  the interactive experience.
+                  Defined the overall visual language, mood, and aesthetic
+                  direction for the game's world and characters.
                 </p>
               </div>
               <div className="role-item">
-                <h3 className="role-title">Illustration & Art</h3>
+                <h3 className="role-title">UI Design</h3>
                 <p className="role-desc">
-                  Created all visual assets including character designs,
-                  environmental illustrations, and UI elements.
+                  Designed in-game interface elements, iconography, and
+                  typography systems suited for a horror game context.
                 </p>
               </div>
               <div className="role-item">
-                <h3 className="role-title">Prototyping</h3>
+                <h3 className="role-title">World Building</h3>
                 <p className="role-desc">
-                  Built and tested interactive prototypes to validate gameplay
-                  mechanics and narrative flow.
+                  Illustrated the game's world map and environmental assets that
+                  set the tone for gameplay.
                 </p>
               </div>
             </div>
@@ -162,20 +159,23 @@ function TheDescentCaseStudy() {
           <section className="content-section">
             <h2 className="section-heading">The Challenge</h2>
             <p className="section-text">
-              Creating an educational game about Dante's Inferno required
-              balancing horror elements with accessibility. The experience
-              needed to feel authentic to the source material while remaining
-              engaging for players unfamiliar with classical literature.
+              Designing a horror game requires balancing atmosphere with
+              usability. The visual design needed to feel genuinely unsettling
+              while remaining clear enough for players to engage with during
+              high-stakes gameplay moments.
             </p>
             <ul className="challenge-list">
-              <li>Translating medieval allegory into interactive gameplay</li>
-              <li>Making complex moral philosophy accessible and engaging</li>
+              <li>Creating a dark aesthetic without sacrificing readability</li>
               <li>
-                Creating a horror aesthetic that educates rather than just
-                shocks
+                Designing a world map that communicates spatial relationships
+                clearly
               </li>
               <li>
-                Designing all assets solo while maintaining visual consistency
+                Developing villain characters that feel threatening yet distinct
+              </li>
+              <li>
+                Maintaining visual consistency across game assets and
+                promotional materials
               </li>
             </ul>
           </section>
@@ -184,54 +184,87 @@ function TheDescentCaseStudy() {
           <section className="content-section">
             <h2 className="section-heading">Logo & Branding</h2>
             <p className="section-text">
-              The Descent logo captures the journey's dark, transformative
-              nature. The typography and visual treatment reflect the game's
-              literary roots while establishing a distinct horror identity.
+              The Daybreak logo reflects the game's core tension — the moment
+              just before dawn when danger is still present. The typographic
+              treatment and color choices reinforce the horror theme while
+              remaining legible.
             </p>
             <div className="image-showcase">
               <img
-                src={descentLogo}
-                alt="The Descent Logo"
+                src={daybreakLogo}
+                alt="Daybreak Logo"
                 className="showcase-image clickable-img"
-                onClick={() => openLightbox(descentLogo)}
+                onClick={() => openLightbox(daybreakLogo)}
               />
             </div>
           </section>
 
-          {/* Circle Illustrations */}
+          {/* World Map */}
           <section className="content-section">
-            <h2 className="section-heading">The Nine Circles</h2>
+            <h2 className="section-heading">World Map Design</h2>
             <p className="section-text">
-              Each circle of Hell was illustrated to reflect its unique thematic
-              content and punishment. The visual design guides players through
-              an increasingly intense emotional and moral journey.
+              The game map is a core gameplay element — players navigate it to
+              survive the night. I designed it to feel both functional and
+              atmospheric, communicating key locations while reinforcing the
+              game's dread-filled tone.
             </p>
             <div className="image-showcase">
               <img
-                src={limbo}
-                alt="Limbo - First Circle"
+                src={mapMain}
+                alt="Daybreak Main Map"
                 className="showcase-image clickable-img"
-                onClick={() => openLightbox(limbo)}
+                onClick={() => openLightbox(mapMain)}
               />
-              <p className="image-caption">Limbo — The First Circle</p>
             </div>
             <div className="image-showcase">
               <img
-                src={lust}
-                alt="Lust - Second Circle"
+                src={horizontalMap}
+                alt="Daybreak Horizontal Map"
                 className="showcase-image clickable-img"
-                onClick={() => openLightbox(lust)}
+                onClick={() => openLightbox(horizontalMap)}
               />
-              <p className="image-caption">Lust — The Second Circle</p>
             </div>
+          </section>
+
+          {/* Character & Asset Design */}
+          <section className="content-section">
+            <h2 className="section-heading">Character & Asset Design</h2>
+            <p className="section-text">
+              The villain character and game tile designs were created to
+              reinforce the horror atmosphere. Each asset was carefully crafted
+              to feel cohesive within the game's visual world.
+            </p>
+            <div className="image-grid-2">
+              <img
+                src={monster}
+                alt="Daybreak Monster"
+                className="grid-image clickable-img"
+                onClick={() => openLightbox(monster)}
+              />
+              <img
+                src={badTile}
+                alt="Bad Tile"
+                className="grid-image clickable-img"
+                onClick={() => openLightbox(badTile)}
+              />
+            </div>
+          </section>
+
+          {/* Board Game Prototype */}
+          <section className="content-section">
+            <h2 className="section-heading">Board Game Prototype</h2>
+            <p className="section-text">
+              A physical prototype was produced to test the game's layout,
+              pacing, and visual clarity. This helped validate design decisions
+              before the digital version was developed.
+            </p>
             <div className="image-showcase">
               <img
-                src={violence}
-                alt="Violence - Seventh Circle"
+                src={boardGame}
+                alt="Board Game Prototype"
                 className="showcase-image clickable-img"
-                onClick={() => openLightbox(violence)}
+                onClick={() => openLightbox(boardGame)}
               />
-              <p className="image-caption">Violence — The Seventh Circle</p>
             </div>
           </section>
 
@@ -240,31 +273,31 @@ function TheDescentCaseStudy() {
             <h2 className="section-heading">Key Design Features</h2>
             <div className="features-grid">
               <div className="feature-card">
-                <h3 className="feature-title">Narrative-Driven Design</h3>
+                <h3 className="feature-title">Dark Visual Language</h3>
                 <p className="feature-text">
-                  Story and visuals work together to create an immersive
-                  exploration of moral philosophy.
+                  A cohesive horror aesthetic across all game assets, from UI
+                  elements to character design.
                 </p>
               </div>
               <div className="feature-card">
-                <h3 className="feature-title">Hand-Illustrated Worlds</h3>
+                <h3 className="feature-title">Atmospheric World Map</h3>
                 <p className="feature-text">
-                  Each circle of Hell features unique, carefully crafted
-                  illustrations that reflect its thematic punishment.
+                  Hand-illustrated map design that serves both functional
+                  navigation and storytelling purposes.
                 </p>
               </div>
               <div className="feature-card">
-                <h3 className="feature-title">Interactive Choices</h3>
+                <h3 className="feature-title">Character Design</h3>
                 <p className="feature-text">
-                  Players make meaningful decisions that affect their journey
-                  through the underworld.
+                  Distinct villain characters that feel threatening and
+                  memorable within the game's world.
                 </p>
               </div>
               <div className="feature-card">
-                <h3 className="feature-title">Educational Horror</h3>
+                <h3 className="feature-title">Brand Consistency</h3>
                 <p className="feature-text">
-                  Horror elements serve the educational goal of exploring moral
-                  consequence and transformation.
+                  Unified visual system across digital game assets and
+                  promotional materials.
                 </p>
               </div>
             </div>
@@ -274,23 +307,23 @@ function TheDescentCaseStudy() {
           <section className="content-section">
             <h2 className="section-heading">Outcome & Impact</h2>
             <p className="section-text">
-              The Descent successfully bridges classical literature and
-              interactive gaming. As a solo project, it demonstrates the
-              potential for one designer to create a cohesive, immersive
-              experience from concept through execution.
+              Daybreak successfully delivers a tense, atmospheric horror
+              experience through its visual design. The cohesive art direction
+              creates an immersive world that enhances gameplay and keeps
+              players on edge throughout.
             </p>
             <div className="impact-stats">
               <div className="stat-item">
-                <div className="stat-value">Solo</div>
-                <div className="stat-label">Project</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">9</div>
-                <div className="stat-label">Illustrated Circles</div>
+                <div className="stat-value">Multiplayer</div>
+                <div className="stat-label">Game Format</div>
               </div>
               <div className="stat-item">
                 <div className="stat-value">Full</div>
-                <div className="stat-label">Creative Control</div>
+                <div className="stat-label">Art Direction</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-value">Horror</div>
+                <div className="stat-label">Genre</div>
               </div>
             </div>
           </section>
@@ -299,16 +332,15 @@ function TheDescentCaseStudy() {
           <section className="content-section last-section">
             <h2 className="section-heading">Key Learnings</h2>
             <p className="section-text">
-              Working solo on The Descent taught me the importance of clear
-              vision and disciplined execution. Without a team to delegate to,
-              every design decision required careful consideration of how it
-              would impact the entire project.
+              This project deepened my understanding of how visual design can
+              shape emotional experience. Designing for horror required
+              intentional restraint — knowing when to add detail and when to
+              leave space for the imagination to fill in.
             </p>
             <p className="section-text">
-              The project also reinforced my belief that horror and education
-              can coexist productively. By making players emotionally invested
-              in the journey, the game creates lasting engagement with complex
-              philosophical ideas.
+              Leading the art direction also reinforced the importance of
+              establishing a strong visual foundation early, so every asset
+              produced by the team felt like it belonged to the same world.
             </p>
           </section>
         </div>
@@ -348,4 +380,4 @@ function TheDescentCaseStudy() {
   );
 }
 
-export default TheDescentCaseStudy;
+export default DaybreakCaseStudy;

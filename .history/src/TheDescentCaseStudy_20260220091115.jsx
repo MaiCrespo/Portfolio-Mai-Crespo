@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
-import "./GotItCaseStudyNew.css";
+import "./TheDescentCaseStudy.css";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";

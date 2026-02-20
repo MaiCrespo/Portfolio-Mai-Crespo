@@ -5,7 +5,7 @@ import "./GotItCaseStudyNew.css";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
-import headerImage from "./assets/UI-UX/TheDescent/CaseStudyHeaders_TheDescent.png";
+import headerImage from "./assets/UI-UX/TheDescent/CaseStudyHeaders_The Descent.png";
 import descentLogo from "./assets/UI-UX/TheDescent/TheDescentlogo.png";
 import descentSplash from "./assets/UI-UX/TheDescent/descentsplash.png";
 import limbo from "./assets/UI-UX/TheDescent/Limbo.png";
