@@ -149,34 +149,17 @@ function DaybreakCaseStudy() {
           <section className="content-section">
             <h2 className="section-heading">Gameplay</h2>
             <p className="section-text">
-              This shows the main gameplay loop of Daybreak, where players must
-              survive the night and work to sabotage the group.
+              The Daybreak game trailer was crafted using After Effects and
+              Procreate — every frame hand-drawn and narrated by me, bringing
+              the world of Daybreak to life through illustration and motion.
             </p>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "2rem" }}
-            >
-              <div>
-                <h3>Movement, Dice, Bad Tiles</h3>
-                <div className="embed-container">
-                  <iframe
-                    src="https://www.youtube.com/embed/nidryo-uLzo"
-                    title="Daybreak Gameplay"
-                    className="site-embed"
-                    allowFullScreen
-                  />
-                </div>
-              </div>
-              <div>
-                <h3>Playing Cards and Card Cost</h3>
-                <div className="embed-container">
-                  <iframe
-                    src="https://www.youtube.com/embed/BW3fjrB8bng"
-                    title="Daybreak Playing Cards and Card Cost"
-                    className="site-embed"
-                    allowFullScreen
-                  />
-                </div>
-              </div>
+            <div className="embed-container">
+              <iframe
+                src="https://www.youtube.com/embed/nidryo-uLzo"
+                title="Daybreak Gameplay"
+                className="site-embed"
+                allowFullScreen
+              />
             </div>
           </section>
 
