@@ -157,9 +157,11 @@ function DaybreakCaseStudy() {
             </p>
             <div className="embed-container">
               <iframe
+                style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
+                width="800"
+                height="450"
                 src="https://embed.figma.com/design/2QmAsMnJSC00cNPbZGkriH/Daybreak?node-id=2553-4488&embed-host=share"
                 title="Daybreak Game Wireframes"
-                className="site-embed"
                 allowFullScreen
               />
             </div>

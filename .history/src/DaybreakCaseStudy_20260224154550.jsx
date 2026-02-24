@@ -144,27 +144,6 @@ function DaybreakCaseStudy() {
             </div>
           </section>
 
-          {/* Game Wireframes */}
-          <section className="content-section">
-            <h2 className="section-heading">Game Wireframes</h2>
-            <p className="section-text">
-              Early wireframes were created to map out the game's screens, user
-              flow, and interface layout before visual design began. These
-              low-fidelity frames helped establish the structure of key
-              interactions — from the lobby and room setup to in-game menus and
-              card displays — ensuring a clear and intuitive experience for
-              players.
-            </p>
-            <div className="embed-container">
-              <iframe
-                src="https://embed.figma.com/design/2QmAsMnJSC00cNPbZGkriH/Daybreak?node-id=2553-4488&embed-host=share"
-                title="Daybreak Game Wireframes"
-                className="site-embed"
-                allowFullScreen
-              />
-            </div>
-          </section>
-
           {/* Gameplay */}
           <section className="content-section">
             <h2 className="section-heading">Gameplay</h2>
