@@ -203,11 +203,10 @@ function DaybreakCaseStudy() {
           <section className="content-section">
             <h2 className="section-heading">World Map Design</h2>
             <p className="section-text">
-              The game map was designed in two orientations — horizontal and
-              vertical, with the vertical version serving as the final
-              iteration. Every asset was custom-designed, drawing inspiration
-              from the background art style of Adventure Time, blending
-              functionality with an atmospheric, dread-filled tone.
+              The game map is a core gameplay element — players navigate it to
+              survive the night. I designed it to feel both functional and
+              atmospheric, communicating key locations while reinforcing the
+              game's dread-filled tone.
             </p>
             <div className="image-showcase">
               <img
@@ -253,11 +252,11 @@ function DaybreakCaseStudy() {
 
           {/* Board Game Prototype */}
           <section className="content-section">
-            <h2 className="section-heading">Board Game Coded Prototype</h2>
+            <h2 className="section-heading">Board Game Prototype</h2>
             <p className="section-text">
-              A coded prototype was developed to showcase the game's layout and
-              UI/UX design. Enter any room code combination to explore the
-              experience.
+              A physical prototype was produced to test the game's layout,
+              pacing, and visual clarity. This helped validate design decisions
+              before the digital version was developed.
             </p>
             <div className="embed-container">
               <iframe
