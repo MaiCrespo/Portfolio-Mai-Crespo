@@ -6,7 +6,6 @@ import GotItCaseStudyNew from "./GotItCaseStudyNew";
 import GraphicDesignPage from "./GraphicDesignPage";
 import Underbroth from "./Underbroth";
 import AceOfCups from "./AceOfCups";
-import RebelYourStyle from "./RebelYourStyle";
 import LoadingPage from "./LoadingPage";
 import AboutMe from "./AboutMe";
 import TheDescentCaseStudy from "./TheDescentCaseStudy";
@@ -95,7 +94,6 @@ function AppWrapper() {
           <Route path="/graphic-design" element={<GraphicDesignPage />} />
           <Route path="/underbroth" element={<Underbroth />} />
           <Route path="/ace-of-cups" element={<AceOfCups />} />
-          <Route path="/rebel-your-style" element={<RebelYourStyle />} />
           <Route path="/about-me" element={<AboutMe />} />
           <Route path="/project/descent" element={<TheDescentCaseStudy />} />
           <Route path="/project/daybreak" element={<DaybreakCaseStudy />} />
