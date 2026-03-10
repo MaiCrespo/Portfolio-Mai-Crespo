@@ -95,8 +95,7 @@ function AppWrapper() {
           <Route path="/" element={<App />} />
           <Route path="/pick-a-card" element={<CardSelection />} />
           <Route path="/uiux-design" element={<UiuxPage />} />
-          <Route path="/got-it" element={<GotItCaseStudyNew />} />
-          <Route path="/project/gotit" element={<GotItCaseStudyNew />} />
+          <Route path="/project/got-it" element={<GotItCaseStudyNew />} />
           <Route path="/graphic-design" element={<GraphicDesignPage />} />
           <Route path="/underbroth" element={<Underbroth />} />
           <Route path="/ace-of-cups" element={<AceOfCups />} />

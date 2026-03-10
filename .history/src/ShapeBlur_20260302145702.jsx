@@ -127,6 +127,7 @@ void main() {
 
 const ShapeBlur = ({
   className = "",
+  text = "MAI CRESPO",
   variation = 0,
   pixelRatioProp = 2,
   shapeSize = 1.2,

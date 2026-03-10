@@ -1,0 +1,97 @@
+@font-face {
+  font-family: "Hellishy";
+  src: url("./assets/fonts/Hellishy.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Plak";
+  src: url("./assets/fonts/Neue Plak Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Plak";
+  src: url("./assets/fonts/Neue Plak Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --font-display: "Hellishy", Georgia, serif;
+  --font-body: "Neue Plak", sans-serif;
+  --orb-start: #ffaa00;
+  --orb-end: #791a00;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --content-max-width: 1300px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none !important;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: var(--font-body);
+  cursor: none !important;
+}
+
+html {
+  overflow-x: hidden;
+  cursor: none !important;
+}
+
+/* --- BACKGROUND ORBS --- */
+.orb-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #391313;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.8;
+  mix-blend-mode: screen;
+}
+
+.orb-1 {
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(
+    circle,
+    var(--orb-start) 0%,
+    var(--orb-end) 40%,
+    transparent 70%
+  );
+  top: -10%;
+  left: -15%;
+  animation: floatOrb 12s infinite ease-in-out;
+}
+
+.orb-2 {
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(
+    circle,
+    var(--orb-start) 0%,
+    var(--orb-end) 40%,
+    transparent 70%
+  );
+  bottom: 5%;
+  right: -10%;
+  animation: floatOrbReverse 10s infinite ease-in-out;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0)

@@ -15,26 +15,14 @@ varying vec2 v_texcoord;
 uniform vec2 u_mouse;
 uniform vec2 u_resolution;
 uniform float u_pixelRatio;
+uniform float u_blurStrength;
 
-uniform float u_shapeSize;
-uniform float u_roundness;
-uniform float u_borderSize;
-uniform float u_circleSize;
-uniform float u_circleEdge;
+uniform sampler2D u_textTexture;
 
 #ifndef PI
 #define PI 3.1415926535897932384626433832795
 #endif
-#ifndef TWO_PI
-#define TWO_PI 6.2831853071795864769252867665590
-#endif
 
-#ifndef VAR
-#define VAR 0
-#endif
-
-#ifndef FNC_COORD
-#define FNC_COORD
 vec2 coord(in vec2 p) {
     p = p / u_resolution.xy;
     if (u_resolution.x > u_resolution.y) {
@@ -48,85 +36,62 @@ vec2 coord(in vec2 p) {
     p *= vec2(-1.0, 1.0);
     return p;
 }
-#endif
 
 #define st0 coord(gl_FragCoord.xy)
 #define mx coord(u_mouse * u_pixelRatio)
 
-float sdRoundRect(vec2 p, vec2 b, float r) {
-    vec2 d = abs(p - 0.5) * 4.2 - b + vec2(r);
-    return min(max(d.x, d.y), 0.0) + length(max(d, 0.0)) - r;
-}
-float sdCircle(in vec2 st, in vec2 center) {
-    return length(st - center) * 2.0;
-}
-float sdPoly(in vec2 p, in float w, in int sides) {
-    float a = atan(p.x, p.y) + PI;
-    float r = TWO_PI / float(sides);
-    float d = cos(floor(0.5 + a / r) * r - a) * length(max(abs(p) * 1.0, 0.0));
-    return d * 2.0 - w;
-}
-
-float aastep(float threshold, float value) {
-    float afwidth = length(vec2(dFdx(value), dFdy(value))) * 0.70710678118654757;
-    return smoothstep(threshold - afwidth, threshold + afwidth, value);
-}
-float fill(in float x) { return 1.0 - aastep(0.0, x); }
-float fill(float x, float size, float edge) {
-    return 1.0 - smoothstep(size - edge, size + edge, x);
-}
-float stroke(in float d, in float t) { return (1.0 - aastep(t, abs(d))); }
-float stroke(float x, float size, float w, float edge) {
-    float d = smoothstep(size - edge, size + edge, x + w * 0.5) - smoothstep(size - edge, size + edge, x - w * 0.5);
-    return clamp(d, 0.0, 1.0);
-}
-
-float strokeAA(float x, float size, float w, float edge) {
-    float afwidth = length(vec2(dFdx(x), dFdy(x))) * 0.70710678;
-    float d = smoothstep(size - edge - afwidth, size + edge + afwidth, x + w * 0.5)
-            - smoothstep(size - edge - afwidth, size + edge + afwidth, x - w * 0.5);
-    return clamp(d, 0.0, 1.0);
+// Multi-sample blur function
+vec4 blur(sampler2D tex, vec2 uv, float radius) {
+    vec4 color = vec4(0.0);
+    float total = 0.0;
+    
+    for(float x = -6.0; x <= 6.0; x += 1.0) {
+        for(float y = -6.0; y <= 6.0; y += 1.0) {
+            vec2 offset = vec2(x, y) * radius * 0.003;
+            color += texture2D(tex, uv + offset);
+            total += 1.0;
+        }
+    }
+    
+    return color / total;
 }
 
 void main() {
     vec2 st = st0 + 0.5;
     vec2 posMouse = mx * vec2(1., -1.) + 0.5;
-
-    float size = u_shapeSize;
-    float roundness = u_roundness;
-    float borderSize = u_borderSize;
-    float circleSize = u_circleSize;
-    float circleEdge = u_circleEdge;
-
-    float sdfCircle = fill(
-        sdCircle(st, posMouse),
-        circleSize,
-        circleEdge
-    );
-
-    float sdf;
-    if (VAR == 0) {
-        sdf = sdRoundRect(st, vec2(size), roundness);
-        sdf = strokeAA(sdf, 0.0, borderSize, sdfCircle) * 4.0;
-    } else if (VAR == 1) {
-        sdf = sdCircle(st, vec2(0.5));
-        sdf = fill(sdf, 0.6, sdfCircle) * 1.2;
-    } else if (VAR == 2) {
-        sdf = sdCircle(st, vec2(0.5));
-        sdf = strokeAA(sdf, 0.58, 0.02, sdfCircle) * 4.0;
-    } else if (VAR == 3) {
-        sdf = sdPoly(st - vec2(0.5, 0.45), 0.3, 3);
-        sdf = fill(sdf, 0.05, sdfCircle) * 1.4;
-    }
-
-    vec3 color = vec3(1.0);
-    float alpha = sdf;
-    gl_FragColor = vec4(color.rgb, alpha);
+    
+    vec2 uv = v_texcoord;
+    
+    // Calculate distance from mouse to current pixel
+    float dist = distance(st, posMouse);
+    
+    // INVERTED LOGIC: Clear by default, blur when mouse is close
+    float blurRadius = 0.25;      // Size of blur zone around mouse
+    float blurFalloff = 0.15;     // Softness of the edge
+    
+    // When dist is small (mouse close), blurAmount = 1 (blurred)
+    // When dist is large (mouse far), blurAmount = 0 (sharp)
+    float blurAmount = 1.0 - smoothstep(blurRadius, blurRadius + blurFalloff, dist);
+    
+    // Apply strength multiplier
+    blurAmount *= u_blurStrength;
+    
+    // Sample sharp text
+    vec4 sharpText = texture2D(u_textTexture, uv);
+    
+    // Sample blurred text (stronger blur)
+    vec4 blurredText = blur(u_textTexture, uv, 3.0);
+    
+    // Mix: 0 = sharp, 1 = blurred
+    vec4 finalColor = mix(sharpText, blurredText, blurAmount);
+    
+    gl_FragColor = finalColor;
 }
 `;
 
 const ShapeBlur = ({
   className = "",
+  text = "MAI CRESPO",
   variation = 0,
   pixelRatioProp = 2,
   shapeSize = 1.2,
@@ -134,6 +99,7 @@ const ShapeBlur = ({
   borderSize = 0.05,
   circleSize = 0.3,
   circleEdge = 0.5,
+  blurStrength = 1.0,
 }) => {
   const mountRef = useRef();
 
@@ -154,9 +120,34 @@ const ShapeBlur = ({
     const camera = new THREE.OrthographicCamera();
     camera.position.z = 1;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setClearColor(0x000000, 0);
     mount.appendChild(renderer.domElement);
+
+    // Create high-res text texture
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 2048;
+    canvas.height = 512;
+
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw text
+    ctx.fillStyle = "white";
+    ctx.font = "bold 280px Hellishy, Georgia, serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    // Draw "MAI" on top half
+    ctx.fillText("MAI", canvas.width / 2, canvas.height * 0.35);
+
+    // Draw "CRESPO" on bottom half
+    ctx.fillText("CRESPO", canvas.width / 2, canvas.height * 0.75);
+
+    const textTexture = new THREE.CanvasTexture(canvas);
+    textTexture.minFilter = THREE.LinearFilter;
+    textTexture.magFilter = THREE.LinearFilter;
 
     const geo = new THREE.PlaneGeometry(1, 1);
     const material = new THREE.ShaderMaterial({
@@ -166,13 +157,9 @@ const ShapeBlur = ({
         u_mouse: { value: vMouseDamp },
         u_resolution: { value: vResolution },
         u_pixelRatio: { value: pixelRatioProp },
-        u_shapeSize: { value: shapeSize },
-        u_roundness: { value: roundness },
-        u_borderSize: { value: borderSize },
-        u_circleSize: { value: circleSize },
-        u_circleEdge: { value: circleEdge },
+        u_textTexture: { value: textTexture },
+        u_blurStrength: { value: blurStrength },
       },
-      defines: { VAR: variation },
       transparent: true,
     });
 
@@ -181,7 +168,7 @@ const ShapeBlur = ({
 
     const onPointerMove = (e) => {
       const rect = mount.getBoundingClientRect();
-      vMouse.set(e.clientX - rect.left, e.clientY - rect.top);
+      vMouse.set(e.clientX - rect.left, rect.height - (e.clientY - rect.top));
     };
 
     document.addEventListener("mousemove", onPointerMove);
@@ -233,18 +220,15 @@ const ShapeBlur = ({
       if (ro) ro.disconnect();
       document.removeEventListener("mousemove", onPointerMove);
       document.removeEventListener("pointermove", onPointerMove);
-      mount.removeChild(renderer.domElement);
+      if (mount.contains(renderer.domElement)) {
+        mount.removeChild(renderer.domElement);
+      }
       renderer.dispose();
+      geo.dispose();
+      material.dispose();
+      textTexture.dispose();
     };
-  }, [
-    variation,
-    pixelRatioProp,
-    shapeSize,
-    roundness,
-    borderSize,
-    circleSize,
-    circleEdge,
-  ]);
+  }, [blurStrength, pixelRatioProp, text]);
 
   return (
     <div

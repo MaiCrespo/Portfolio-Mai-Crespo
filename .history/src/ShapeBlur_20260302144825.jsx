@@ -1,13 +1,5 @@
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
-
-const vertexShader = /* glsl */ `
-varying vec2 v_texcoord;
-void main() {
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-    v_texcoord = uv;
-}
-`;
 
 const fragmentShader = /* glsl */ `
 varying vec2 v_texcoord;
@@ -126,131 +118,147 @@ void main() {
 `;
 
 const ShapeBlur = ({
-  className = "",
+  text = "MAI CRESPO",
   variation = 0,
-  pixelRatioProp = 2,
-  shapeSize = 1.2,
-  roundness = 0.4,
+  pixelRatioProp = window.devicePixelRatio || 1,
+  shapeSize = 1,
+  roundness = 0.5,
   borderSize = 0.05,
-  circleSize = 0.3,
-  circleEdge = 0.5,
+  circleSize = 0.25,
+  circleEdge = 1,
+  className = "",
 }) => {
-  const mountRef = useRef();
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    const mount = mountRef.current;
-    let animationFrameId;
-    let time = 0,
-      lastTime = 0;
-
-    const vMouse = new THREE.Vector2();
-    const vMouseDamp = new THREE.Vector2();
-    const vResolution = new THREE.Vector2();
-
-    let w = 1,
-      h = 1;
+    const container = containerRef.current;
+    if (!container) return;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera();
-    camera.position.z = 1;
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setPixelRatio(pixelRatioProp);
+    container.appendChild(renderer.domElement);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setClearColor(0x000000, 0);
-    mount.appendChild(renderer.domElement);
+    const geometry = new THREE.PlaneGeometry(2, 2);
 
-    const geo = new THREE.PlaneGeometry(1, 1);
+    const uniforms = {
+      u_time: { value: 0 },
+      u_resolution: { value: new THREE.Vector2() },
+      u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
+      u_variation: { value: variation },
+      u_shapeSize: { value: shapeSize },
+      u_roundness: { value: roundness },
+      u_borderSize: { value: borderSize },
+      u_circleSize: { value: circleSize },
+      u_circleEdge: { value: circleEdge },
+      u_textTexture: { value: null },
+    };
+
+    // Create High-Res Text Texture
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 2048;
+    canvas.height = 1024;
+    ctx.fillStyle = "white";
+    // Matches your 'Hellishy' font
+    ctx.font = "bold 220px Hellishy, sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+    const textTexture = new THREE.CanvasTexture(canvas);
+    uniforms.u_textTexture.value = textTexture;
+
     const material = new THREE.ShaderMaterial({
-      vertexShader,
-      fragmentShader,
-      uniforms: {
-        u_mouse: { value: vMouseDamp },
-        u_resolution: { value: vResolution },
-        u_pixelRatio: { value: pixelRatioProp },
-        u_shapeSize: { value: shapeSize },
-        u_roundness: { value: roundness },
-        u_borderSize: { value: borderSize },
-        u_circleSize: { value: circleSize },
-        u_circleEdge: { value: circleEdge },
-      },
-      defines: { VAR: variation },
+      uniforms,
       transparent: true,
+      vertexShader: `
+        varying vec2 v_uv;
+        void main() {
+          v_uv = uv;
+          gl_Position = vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform vec2 u_mouse;
+        uniform float u_time;
+        uniform sampler2D u_textTexture;
+        uniform float u_circleSize;
+        varying vec2 v_uv;
+
+        // Noise function for "atomic" disintegration
+        float hash(vec2 p) {
+            return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+        }
+
+        void main() {
+          vec2 uv = v_uv;
+          float dist = distance(uv, u_mouse);
+          
+          // Influence of the "disintegrating" lens
+          float strength = smoothstep(u_circleSize, 0.0, dist);
+          
+          // Atomic displacement calculation
+          float n = hash(uv + u_time * 0.1);
+          vec2 displacement = vec2(
+            sin(uv.y * 150.0 + u_time * 8.0 + n * 10.0),
+            cos(uv.x * 150.0 + u_time * 8.0 + n * 10.0)
+          ) * 0.02 * strength;
+
+          vec4 texColor = texture2D(u_textTexture, uv + displacement);
+          
+          // Blend sharpness vs blur based on mouse distance
+          float alpha = texColor.a;
+          if(strength > 0.0) {
+            alpha *= (1.0 - strength * 0.4);
+          }
+
+          gl_FragColor = vec4(texColor.rgb, alpha);
+        }
+      `,
     });
 
-    const quad = new THREE.Mesh(geo, material);
-    scene.add(quad);
-
-    const onPointerMove = (e) => {
-      const rect = mount.getBoundingClientRect();
-      vMouse.set(e.clientX - rect.left, e.clientY - rect.top);
-    };
-
-    document.addEventListener("mousemove", onPointerMove);
-    document.addEventListener("pointermove", onPointerMove);
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
     const resize = () => {
-      const container = mountRef.current;
-      w = container.clientWidth;
-      h = container.clientHeight;
-      const dpr = Math.min(window.devicePixelRatio, 2);
-
-      renderer.setSize(w, h);
-      renderer.setPixelRatio(dpr);
-
-      camera.left = -w / 2;
-      camera.right = w / 2;
-      camera.top = h / 2;
-      camera.bottom = -h / 2;
-      camera.updateProjectionMatrix();
-
-      quad.scale.set(w, h, 1);
-      vResolution.set(w, h).multiplyScalar(dpr);
-      material.uniforms.u_pixelRatio.value = dpr;
+      const { clientWidth, clientHeight } = container;
+      renderer.setSize(clientWidth, clientHeight);
+      uniforms.u_resolution.value.set(clientWidth, clientHeight);
     };
 
-    resize();
+    const mouseMove = (e) => {
+      const rect = container.getBoundingClientRect();
+      uniforms.u_mouse.value.set(
+        (e.clientX - rect.left) / rect.width,
+        1.0 - (e.clientY - rect.top) / rect.height
+      );
+    };
+
     window.addEventListener("resize", resize);
+    container.addEventListener("mousemove", mouseMove);
+    resize();
 
-    const ro = new ResizeObserver(() => resize());
-    if (mountRef.current) ro.observe(mountRef.current);
-
-    const update = () => {
-      time = performance.now() * 0.001;
-      const dt = time - lastTime;
-      lastTime = time;
-
-      ["x", "y"].forEach((k) => {
-        vMouseDamp[k] = THREE.MathUtils.damp(vMouseDamp[k], vMouse[k], 8, dt);
-      });
-
+    const animate = (time) => {
+      uniforms.u_time.value = time * 0.001;
       renderer.render(scene, camera);
-      animationFrameId = requestAnimationFrame(update);
+      requestAnimationFrame(animate);
     };
-    update();
+    requestAnimationFrame(animate);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", resize);
-      if (ro) ro.disconnect();
-      document.removeEventListener("mousemove", onPointerMove);
-      document.removeEventListener("pointermove", onPointerMove);
-      mount.removeChild(renderer.domElement);
+      container.removeEventListener("mousemove", mouseMove);
       renderer.dispose();
     };
-  }, [
-    variation,
-    pixelRatioProp,
-    shapeSize,
-    roundness,
-    borderSize,
-    circleSize,
-    circleEdge,
-  ]);
+  }, [text, circleSize]);
 
   return (
     <div
+      ref={containerRef}
       className={className}
-      ref={mountRef}
-      style={{ width: "100%", height: "100%" }}
+      style={{ width: "100%", height: "450px" }}
     />
   );
 };

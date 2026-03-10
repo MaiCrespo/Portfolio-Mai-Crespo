@@ -21,6 +21,8 @@ uniform float u_roundness;
 uniform float u_borderSize;
 uniform float u_circleSize;
 uniform float u_circleEdge;
+uniform sampler2D u_textTexture;
+uniform float u_hover;
 
 #ifndef PI
 #define PI 3.1415926535897932384626433832795
@@ -88,9 +90,26 @@ float strokeAA(float x, float size, float w, float edge) {
     return clamp(d, 0.0, 1.0);
 }
 
+// Simple blur function
+vec4 blur(sampler2D tex, vec2 uv, float radius) {
+    vec4 color = vec4(0.0);
+    float total = 0.0;
+    
+    for(float x = -4.0; x <= 4.0; x += 1.0) {
+        for(float y = -4.0; y <= 4.0; y += 1.0) {
+            vec2 offset = vec2(x, y) * radius * 0.002;
+            color += texture2D(tex, uv + offset);
+            total += 1.0;
+        }
+    }
+    
+    return color / total;
+}
+
 void main() {
     vec2 st = st0 + 0.5;
     vec2 posMouse = mx * vec2(1., -1.) + 0.5;
+    vec2 uv = v_texcoord;
 
     float size = u_shapeSize;
     float roundness = u_roundness;
@@ -98,35 +117,31 @@ void main() {
     float circleSize = u_circleSize;
     float circleEdge = u_circleEdge;
 
-    float sdfCircle = fill(
-        sdCircle(st, posMouse),
-        circleSize,
-        circleEdge
-    );
+    // Calculate distance from mouse
+    float dist = distance(st, posMouse);
+    
+    // INVERTED: Sharp by default (no hover), blur around mouse when hovering
+    float sharpRadius = 0.2;
+    float blurFalloff = 0.15;
+    // When hovering (u_hover > 0), create blur zone around mouse
+    // When not hovering, everything is sharp (blurAmount = 0)
+    float blurAmount = u_hover * (1.0 - smoothstep(sharpRadius, sharpRadius + blurFalloff, dist));
+    
+    // Sample sharp text
+    vec4 sharpText = texture2D(u_textTexture, uv);
+    // Sample blurred text
+    vec4 blurredText = blur(u_textTexture, uv, 3.0);
+    
+    // Mix based on blur amount
+    vec4 finalColor = mix(sharpText, blurredText, blurAmount);
 
-    float sdf;
-    if (VAR == 0) {
-        sdf = sdRoundRect(st, vec2(size), roundness);
-        sdf = strokeAA(sdf, 0.0, borderSize, sdfCircle) * 4.0;
-    } else if (VAR == 1) {
-        sdf = sdCircle(st, vec2(0.5));
-        sdf = fill(sdf, 0.6, sdfCircle) * 1.2;
-    } else if (VAR == 2) {
-        sdf = sdCircle(st, vec2(0.5));
-        sdf = strokeAA(sdf, 0.58, 0.02, sdfCircle) * 4.0;
-    } else if (VAR == 3) {
-        sdf = sdPoly(st - vec2(0.5, 0.45), 0.3, 3);
-        sdf = fill(sdf, 0.05, sdfCircle) * 1.4;
-    }
-
-    vec3 color = vec3(1.0);
-    float alpha = sdf;
-    gl_FragColor = vec4(color.rgb, alpha);
+    gl_FragColor = finalColor;
 }
 `;
 
 const ShapeBlur = ({
   className = "",
+  text = "MAI CRESPO",
   variation = 0,
   pixelRatioProp = 2,
   shapeSize = 1.2,
@@ -134,6 +149,7 @@ const ShapeBlur = ({
   borderSize = 0.05,
   circleSize = 0.3,
   circleEdge = 0.5,
+  isHovering = false,
 }) => {
   const mountRef = useRef();
 
@@ -154,9 +170,34 @@ const ShapeBlur = ({
     const camera = new THREE.OrthographicCamera();
     camera.position.z = 1;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setClearColor(0x000000, 0);
     mount.appendChild(renderer.domElement);
+
+    // Create text texture
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 2048;
+    canvas.height = 512;
+
+    // Clear with transparent
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw text with your exact styling
+    ctx.fillStyle = "white";
+    ctx.font = "bold 280px Hellishy, Georgia, serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    // Draw "MAI"
+    ctx.fillText("MAI", canvas.width / 2, canvas.height * 0.35);
+
+    // Draw "CRESPO"
+    ctx.fillText("CRESPO", canvas.width / 2, canvas.height * 0.75);
+
+    const textTexture = new THREE.CanvasTexture(canvas);
+    textTexture.minFilter = THREE.LinearFilter;
+    textTexture.magFilter = THREE.LinearFilter;
 
     const geo = new THREE.PlaneGeometry(1, 1);
     const material = new THREE.ShaderMaterial({
@@ -171,6 +212,8 @@ const ShapeBlur = ({
         u_borderSize: { value: borderSize },
         u_circleSize: { value: circleSize },
         u_circleEdge: { value: circleEdge },
+        u_textTexture: { value: textTexture },
+        u_hover: { value: 0.0 },
       },
       defines: { VAR: variation },
       transparent: true,
@@ -222,6 +265,11 @@ const ShapeBlur = ({
         vMouseDamp[k] = THREE.MathUtils.damp(vMouseDamp[k], vMouse[k], 8, dt);
       });
 
+      // Smooth transition for hover state
+      const targetHover = isHovering ? 1.0 : 0.0;
+      material.uniforms.u_hover.value +=
+        (targetHover - material.uniforms.u_hover.value) * 0.1;
+
       renderer.render(scene, camera);
       animationFrameId = requestAnimationFrame(update);
     };
@@ -235,6 +283,9 @@ const ShapeBlur = ({
       document.removeEventListener("pointermove", onPointerMove);
       mount.removeChild(renderer.domElement);
       renderer.dispose();
+      geo.dispose();
+      material.dispose();
+      textTexture.dispose();
     };
   }, [
     variation,
@@ -244,6 +295,8 @@ const ShapeBlur = ({
     borderSize,
     circleSize,
     circleEdge,
+    text,
+    isHovering,
   ]);
 
   return (

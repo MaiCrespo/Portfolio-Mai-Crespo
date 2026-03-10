@@ -15,6 +15,7 @@ varying vec2 v_texcoord;
 uniform vec2 u_mouse;
 uniform vec2 u_resolution;
 uniform float u_pixelRatio;
+uniform sampler2D u_textTexture;
 
 uniform float u_shapeSize;
 uniform float u_roundness;
@@ -22,19 +23,8 @@ uniform float u_borderSize;
 uniform float u_circleSize;
 uniform float u_circleEdge;
 
-#ifndef PI
 #define PI 3.1415926535897932384626433832795
-#endif
-#ifndef TWO_PI
-#define TWO_PI 6.2831853071795864769252867665590
-#endif
 
-#ifndef VAR
-#define VAR 0
-#endif
-
-#ifndef FNC_COORD
-#define FNC_COORD
 vec2 coord(in vec2 p) {
     p = p / u_resolution.xy;
     if (u_resolution.x > u_resolution.y) {
@@ -48,7 +38,6 @@ vec2 coord(in vec2 p) {
     p *= vec2(-1.0, 1.0);
     return p;
 }
-#endif
 
 #define st0 coord(gl_FragCoord.xy)
 #define mx coord(u_mouse * u_pixelRatio)
@@ -60,25 +49,13 @@ float sdRoundRect(vec2 p, vec2 b, float r) {
 float sdCircle(in vec2 st, in vec2 center) {
     return length(st - center) * 2.0;
 }
-float sdPoly(in vec2 p, in float w, in int sides) {
-    float a = atan(p.x, p.y) + PI;
-    float r = TWO_PI / float(sides);
-    float d = cos(floor(0.5 + a / r) * r - a) * length(max(abs(p) * 1.0, 0.0));
-    return d * 2.0 - w;
-}
 
 float aastep(float threshold, float value) {
     float afwidth = length(vec2(dFdx(value), dFdy(value))) * 0.70710678118654757;
     return smoothstep(threshold - afwidth, threshold + afwidth, value);
 }
-float fill(in float x) { return 1.0 - aastep(0.0, x); }
 float fill(float x, float size, float edge) {
     return 1.0 - smoothstep(size - edge, size + edge, x);
-}
-float stroke(in float d, in float t) { return (1.0 - aastep(t, abs(d))); }
-float stroke(float x, float size, float w, float edge) {
-    float d = smoothstep(size - edge, size + edge, x + w * 0.5) - smoothstep(size - edge, size + edge, x - w * 0.5);
-    return clamp(d, 0.0, 1.0);
 }
 
 float strokeAA(float x, float size, float w, float edge) {
@@ -88,9 +65,27 @@ float strokeAA(float x, float size, float w, float edge) {
     return clamp(d, 0.0, 1.0);
 }
 
+// Blur function for text
+vec4 blur(sampler2D tex, vec2 uv, float amount) {
+    vec4 color = vec4(0.0);
+    float total = 0.0;
+    float radius = amount * 0.008;
+    
+    for(float x = -5.0; x <= 5.0; x += 1.0) {
+        for(float y = -5.0; y <= 5.0; y += 1.0) {
+            vec2 offset = vec2(x, y) * radius;
+            color += texture2D(tex, uv + offset);
+            total += 1.0;
+        }
+    }
+    
+    return color / total;
+}
+
 void main() {
     vec2 st = st0 + 0.5;
     vec2 posMouse = mx * vec2(1., -1.) + 0.5;
+    vec2 uv = v_texcoord;
 
     float size = u_shapeSize;
     float roundness = u_roundness;
@@ -98,30 +93,23 @@ void main() {
     float circleSize = u_circleSize;
     float circleEdge = u_circleEdge;
 
+    // Calculate the shape blur mask
     float sdfCircle = fill(
         sdCircle(st, posMouse),
         circleSize,
         circleEdge
     );
 
-    float sdf;
-    if (VAR == 0) {
-        sdf = sdRoundRect(st, vec2(size), roundness);
-        sdf = strokeAA(sdf, 0.0, borderSize, sdfCircle) * 4.0;
-    } else if (VAR == 1) {
-        sdf = sdCircle(st, vec2(0.5));
-        sdf = fill(sdf, 0.6, sdfCircle) * 1.2;
-    } else if (VAR == 2) {
-        sdf = sdCircle(st, vec2(0.5));
-        sdf = strokeAA(sdf, 0.58, 0.02, sdfCircle) * 4.0;
-    } else if (VAR == 3) {
-        sdf = sdPoly(st - vec2(0.5, 0.45), 0.3, 3);
-        sdf = fill(sdf, 0.05, sdfCircle) * 1.4;
-    }
-
-    vec3 color = vec3(1.0);
-    float alpha = sdf;
-    gl_FragColor = vec4(color.rgb, alpha);
+    // Get text color
+    vec4 textColor = texture2D(u_textTexture, uv);
+    
+    // Apply blur where the shape mask is active
+    vec4 blurredText = blur(u_textTexture, uv, sdfCircle * 2.0);
+    
+    // Mix: clear text by default, blurred where mouse hovers
+    vec4 finalColor = mix(textColor, blurredText, sdfCircle);
+    
+    gl_FragColor = finalColor;
 }
 `;
 
@@ -139,6 +127,8 @@ const ShapeBlur = ({
 
   useEffect(() => {
     const mount = mountRef.current;
+    if (!mount) return;
+
     let animationFrameId;
     let time = 0,
       lastTime = 0;
@@ -158,6 +148,30 @@ const ShapeBlur = ({
     renderer.setClearColor(0x000000, 0);
     mount.appendChild(renderer.domElement);
 
+    // Create text texture
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 2048;
+    canvas.height = 1024;
+
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    // Draw MAI - smaller size, proper spacing
+    ctx.font = "bold 240px Hellishy, serif";
+    ctx.letterSpacing = "0.15em";
+    ctx.fillText("MAI", canvas.width / 2, canvas.height / 2 - 220);
+
+    // Draw CRESPO - larger size, proper spacing
+    ctx.font = "bold 320px Hellishy, serif";
+    ctx.letterSpacing = "0.1em";
+    ctx.fillText("CRESPO", canvas.width / 2, canvas.height / 2 + 150);
+
+    const textTexture = new THREE.CanvasTexture(canvas);
+    textTexture.minFilter = THREE.LinearFilter;
+    textTexture.magFilter = THREE.LinearFilter;
+
     const geo = new THREE.PlaneGeometry(1, 1);
     const material = new THREE.ShaderMaterial({
       vertexShader,
@@ -166,13 +180,13 @@ const ShapeBlur = ({
         u_mouse: { value: vMouseDamp },
         u_resolution: { value: vResolution },
         u_pixelRatio: { value: pixelRatioProp },
+        u_textTexture: { value: textTexture },
         u_shapeSize: { value: shapeSize },
         u_roundness: { value: roundness },
         u_borderSize: { value: borderSize },
         u_circleSize: { value: circleSize },
         u_circleEdge: { value: circleEdge },
       },
-      defines: { VAR: variation },
       transparent: true,
     });
 
@@ -233,7 +247,9 @@ const ShapeBlur = ({
       if (ro) ro.disconnect();
       document.removeEventListener("mousemove", onPointerMove);
       document.removeEventListener("pointermove", onPointerMove);
-      mount.removeChild(renderer.domElement);
+      if (mount.contains(renderer.domElement)) {
+        mount.removeChild(renderer.domElement);
+      }
       renderer.dispose();
     };
   }, [

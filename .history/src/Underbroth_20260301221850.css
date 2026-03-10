@@ -188,8 +188,7 @@
 }
 
 .hero-image {
-  width: 100%;
-  height: auto;
+  width: 2000px;
   max-width: 2000px;
   display: block;
   object-fit: contain; /* Prevents stretching */
