@@ -6,14 +6,13 @@ import whiteLogo from "./assets/Head@300x.png";
 import gotItThumb from "./assets/UI-UX/GotIt/GotItThumbnail.png";
 import daybreakThumb from "./assets/UI-UX/Daybreak/DaybreakThumbnail.png";
 import descentThumb from "./assets/UI-UX/TheDescent/TheDescentThumbnail.png";
-// import face1 from "./assets/faces/Face1.png";
-// import face2 from "./assets/faces/Face2.png";
-// import face3 from "./assets/faces/Face3.png";
-// import face4 from "./assets/faces/Face4.png";
-// import face5 from "./assets/faces/Face5.png";
-// import face6 from "./assets/faces/Face6.png";
+import face1 from "./assets/faces/Face1.png";
+import face2 from "./assets/faces/Face2.png";
+import face3 from "./assets/faces/Face3.png";
+import face4 from "./assets/faces/Face4.png";
+import face5 from "./assets/faces/Face5.png";
+import face6 from "./assets/faces/Face6.png";
 
-/*
 const INITIAL_FACES = [
   { id: 1, src: face1, x: -120, y: -50, rot: -15, size: 600 }, // Top left
   { id: 2, src: face2, x: null, y: 300, rot: 12, size: 380, fromRight: 50 }, // Middle right
@@ -106,7 +105,6 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
     />
   );
 }
-*/
 
 function App() {
   const navigate = useNavigate();

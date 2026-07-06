@@ -16,8 +16,8 @@ import face6 from "./assets/faces/Face6.png";
 const INITIAL_FACES = [
   { id: 1, src: face1, x: -120, y: -50, rot: -15, size: 600 }, // Top left
   { id: 2, src: face2, x: null, y: 300, rot: 12, size: 380, fromRight: 50 }, // Middle right
-  { id: 3, src: face3, x: -100, y: 600, rot: 6, size: 520 }, // Bottom left - MOVED DOWN from 620
-  { id: 4, src: face4, x: null, y: 650, rot: -10, size: 600, fromRight: 30 }, // Lower right
+  { id: 3, src: face3, x: -180, y: 600, rot: 6, size: 520 }, // Bottom left - MOVED DOWN from 620
+  { id: 4, src: face4, x: null, y: 620, rot: -10, size: 600, fromRight: 30 }, // Lower right
   { id: 5, src: face5, x: 180, y: 480, rot: 5, size: 380 }, // Left of paragraph
   { id: 6, src: face6, x: null, y: -100, rot: 15, size: 480, fromRight: -50 }, // Top right corner, partially off screen
 ];
@@ -108,14 +108,16 @@ function DraggableFace({ face, zIndex, onDragStart, containerWidth }) {
 
 function App() {
   const navigate = useNavigate();
-  const [faceOrder, setFaceOrder] = useState(INITIAL_FACES.map((f) => f.id));
-  const [containerWidth, setContainerWidth] = useState(window.innerWidth);
+  // const [faceOrder, setFaceOrder] = useState(INITIAL_FACES.map((f) => f.id));
+  // const [containerWidth, setContainerWidth] = useState(window.innerWidth);
 
+  /*
   useEffect(() => {
     const handleResize = () => setContainerWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  */
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -127,9 +129,11 @@ function App() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  /*
   const bringToFront = useCallback((id) => {
     setFaceOrder((prev) => [...prev.filter((i) => i !== id), id]);
   }, []);
+  */
 
   const projects = [
     {
@@ -163,7 +167,8 @@ function App() {
       </div>
 
       <div className="page-layout">
-        {/* Faces container - absolute positioning within page-layout */}
+        {/* Faces container - COMMENTED OUT */}
+        {/*
         <div className="faces-container-absolute">
           {INITIAL_FACES.map((face) => (
             <DraggableFace
@@ -175,6 +180,7 @@ function App() {
             />
           ))}
         </div>
+        */}
 
         <nav className="nav-pill">
           <div className="nav-links">
