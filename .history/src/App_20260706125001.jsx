@@ -176,7 +176,7 @@ function App() {
             />
           ))}
         </div>
-}
+   }
 
         <nav className="nav-pill">
           <div className="nav-links">

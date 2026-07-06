@@ -163,8 +163,8 @@ function App() {
       </div>
 
       <div className="page-layout">
-        { Faces container - COMMENTED OUT }
-        {
+        {/* Faces container - COMMENTED OUT */}
+        {/*
         <div className="faces-container-absolute">
           {INITIAL_FACES.map((face) => (
             <DraggableFace
@@ -176,7 +176,7 @@ function App() {
             />
           ))}
         </div>
-}
+        */}
 
         <nav className="nav-pill">
           <div className="nav-links">
