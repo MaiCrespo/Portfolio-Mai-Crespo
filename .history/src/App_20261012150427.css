@@ -1,0 +1,582 @@
+/* =========================================
+   FONTS
+========================================= */
+
+@font-face {
+  font-family: "Bayon";
+  src: url("./assets/fonts/Bayon-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Plak";
+  src: url("./assets/fonts/Neue Plak Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Plak";
+  src: url("./assets/fonts/Neue Plak Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+:root {
+  --bg: #e0dedc;
+  --text: #1a1a1a;
+  --font-display: "Bayon", sans-serif;
+  --font-body: "Neue Plak", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+html {
+  overflow-x: hidden;
+}
+
+/* =========================================
+   LANDING PAGE
+========================================= */
+
+.landing-page {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 40px;
+  background: var(--bg);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.landing-header {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 40px;
+  margin-bottom: 36px;
+}
+
+.landing-brand {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.landing-logo {
+  width: clamp(70px, 7vw, 120px);
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.landing-title {
+  margin: 0;
+
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 7.5vw, 8rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.landing-bio {
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
+
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  line-height: 1.5;
+
+  text-align: right;
+  color: var(--text);
+  flex-shrink: 1;
+}
+
+.landing-bio strong {
+  font-weight: 700;
+}
+
+/* =========================================
+   MAIN TAROT CONTAINER
+========================================= */
+
+.content-pill-main {
+  position: relative;
+
+  width: 100%;
+  flex: 1;
+  min-height: 440px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 48px 60px;
+
+  background: #000;
+  border-radius: 48px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* =========================================
+   ROTATING TAROT MAT
+========================================= */
+
+.mat-overflow-container {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rotating-mat-img {
+  position: absolute;
+
+  width: max(140%, 1100px);
+  height: auto;
+  max-width: none;
+
+  opacity: 0.3;
+
+  animation: slowSpin 120s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes slowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   TAROT CARD FAN
+========================================= */
+
+.tarot-card-fan {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: clamp(12px, 2.5vw, 40px);
+}
+
+.tarot-card {
+  position: relative;
+  flex: 0 0 auto;
+
+  width: clamp(150px, 17vw, 260px);
+
+  cursor: pointer;
+
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tarot-card img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 3px;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Left card */
+
+.c-left {
+  transform: rotate(-10deg) translateY(25px);
+  z-index: 1;
+}
+
+/* Middle card */
+
+.c-mid {
+  transform: translateY(-15px);
+  z-index: 3;
+}
+
+/* Right card */
+
+.c-right {
+  transform: rotate(10deg) translateY(25px);
+  z-index: 1;
+}
+
+/* Hover */
+
+.tarot-card:hover {
+  transform: translateY(-35px) scale(1.05) rotate(0deg);
+  z-index: 10;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.landing-footer {
+  width: 100%;
+  min-height: 80px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  gap: 24px;
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 16px;
+
+  font-size: 0.9rem;
+}
+
+.footer-link {
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.8;
+
+  transition: opacity 0.2s ease;
+}
+
+.footer-link:hover {
+  opacity: 1;
+}
+
+.footer-sep {
+  color: var(--text);
+  opacity: 0.4;
+}
+
+.footer-about {
+  margin: 0;
+
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1;
+
+  text-align: center;
+  white-space: nowrap;
+
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.footer-about:hover {
+  opacity: 0.6;
+}
+
+.landing-footer > a {
+  justify-self: end;
+}
+
+.footer-resume-btn {
+  background: transparent;
+
+  border: 1.5px solid var(--text);
+  border-radius: 50px;
+
+  padding: 10px 26px;
+
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.footer-resume-btn:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* =========================================
+   SMALL DESKTOP / LAPTOP
+========================================= */
+
+@media (max-width: 1200px) {
+  .landing-page {
+    padding: 30px;
+  }
+
+  .landing-header {
+    gap: 24px;
+    margin-bottom: 30px;
+  }
+
+  .landing-brand {
+    gap: 16px;
+  }
+
+  .landing-title {
+    font-size: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .landing-bio {
+    max-width: 340px;
+  }
+
+  .content-pill-main {
+    padding: 50px 35px;
+    border-radius: 40px;
+  }
+
+  .tarot-card {
+    width: clamp(145px, 19vw, 230px);
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .landing-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .landing-bio {
+    max-width: 600px;
+    text-align: left;
+  }
+
+  .content-pill-main {
+    min-height: 440px;
+    padding: 40px 24px;
+  }
+
+  .tarot-card-fan {
+    gap: 12px;
+  }
+
+  .tarot-card {
+    width: clamp(130px, 23vw, 200px);
+  }
+
+  .landing-footer {
+    grid-template-columns: 1fr auto;
+    row-gap: 18px;
+  }
+
+  .footer-about {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .footer-links {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .landing-footer > a {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .landing-page {
+    padding: 20px;
+    gap: 0;
+  }
+
+  .landing-header {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .landing-brand {
+    gap: 12px;
+  }
+
+  .landing-logo {
+    width: 55px;
+  }
+
+  .landing-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    white-space: nowrap;
+  }
+
+  .landing-bio {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .content-pill-main {
+    flex: 1;
+    min-height: 340px;
+    padding: 36px 12px;
+    border-radius: 28px;
+  }
+
+  .tarot-card-fan {
+    gap: 0;
+  }
+
+  .tarot-card {
+    width: min(31%, 150px);
+  }
+
+  .c-left {
+    transform: rotate(-9deg) translate(8px, 10px);
+  }
+
+  .c-mid {
+    transform: translateY(-10px);
+  }
+
+  .c-right {
+    transform: rotate(9deg) translate(-8px, 10px);
+  }
+
+  .tarot-card:hover {
+    transform: translateY(-18px) scale(1.05) rotate(0);
+  }
+
+  .rotating-mat-img {
+    width: 1100px;
+  }
+
+  .landing-footer {
+    min-height: auto;
+    padding-top: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 20px;
+  }
+
+  .footer-about {
+    order: 0;
+    font-size: 2rem;
+  }
+
+  .footer-links {
+    order: 1;
+    justify-content: center;
+    gap: 12px;
+    font-size: 0.8rem;
+  }
+
+  .landing-footer > a {
+    order: 2;
+    align-self: center;
+  }
+}
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .landing-title {
+    font-size: 2.3rem;
+  }
+
+  .landing-logo {
+    width: 45px;
+  }
+
+  .content-pill-main {
+    min-height: 300px;
+  }
+
+  .footer-links {
+    gap: 8px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .rotating-mat-img {
+    animation: none;
+  }
+
+  .tarot-card,
+  .footer-link,
+  .footer-about,
+  .footer-resume-btn {
+    transition: none;
+  }
+}

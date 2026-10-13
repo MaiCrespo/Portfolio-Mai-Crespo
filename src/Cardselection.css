@@ -7,7 +7,7 @@
      ========================= */
 .content-pill-main {
   flex: 1;
-  width: 90%;
+  width: 100%;
   background: #000;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 60px;

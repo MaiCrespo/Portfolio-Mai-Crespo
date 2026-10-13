@@ -72,7 +72,7 @@ function App() {
           </a>
           <span className="footer-sep">|</span>
           <a
-            href="https://instagram.com/heymaicomics/"
+            href="https://instagram.com/magik_mai/"
             target="_blank"
             rel="noreferrer"
             className="footer-link"

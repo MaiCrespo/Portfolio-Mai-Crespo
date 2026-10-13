@@ -306,30 +306,45 @@ html {
   .card-right {
     transform: rotate(10deg) translateX(-28px) translateY(20px);
   }
+
   .landing-footer {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
   }
+
   .footer-links {
     justify-content: center;
   }
 }
+
 .content-pill-main {
-  flex: 1;
+  flex: 1 0 auto;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
   background: #000;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 80px;
+
   position: relative;
   overflow: hidden;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  align-self: stretch;
   z-index: 1;
-  /* Increased padding to prevent clipping of text and cards */
-  padding: 80px 80px;
+
+  margin: 0 0 40px 0;
+  padding: 80px;
+
+  box-sizing: border-box;
 }
 
 /* Tarot Mat */
