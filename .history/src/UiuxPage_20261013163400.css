@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Bayon";
+  src: url("./assets/fonts/Bayon-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Neue Plak";
+  src: url("./assets/fonts/Neue Plak Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Neue Plak";
+  src: url("./assets/fonts/Neue Plak Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+:root {
+  --font-display: "Bayon", sans-serif;
+  --font-body: "Neue Plak", sans-serif;
+}

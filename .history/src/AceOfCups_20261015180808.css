@@ -1,0 +1,439 @@
+/* ACE OF CUPS — STANDALONE PROJECT STYLES */
+.ace-page {
+  --ace-bg: #e0dedc;
+  --ace-ink: #171717;
+  --ace-muted: #575451;
+  --ace-line: rgba(23, 23, 23, 0.19);
+  background: var(--ace-bg);
+  color: var(--ace-ink);
+  min-height: 100vh;
+  width: 100%;
+  font-family: "Neue Plak", sans-serif;
+  padding: 30px clamp(20px, 5vw, 80px) 36px;
+}
+.ace-page *,
+.ace-page *::before,
+.ace-page *::after {
+  box-sizing: border-box;
+}
+.ace-page button,
+.ace-page a {
+  cursor: pointer;
+}
+/* Buttons define their own typography to avoid overriding Bayon navigation. */
+
+/* NAVIGATION — MATCH UI/UX CASE STUDIES */
+.ace-page .ace-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto 54px;
+  padding: 0 0 40px;
+  background: transparent;
+  border: 0;
+}
+.ace-page .ace-brand,
+.ace-page .ace-header-link,
+.ace-page .ace-header-name {
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  color: #000;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.ace-page .ace-brand,
+.ace-page .ace-header-link {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.ace-page .ace-brand {
+  gap: 14px;
+  justify-self: start;
+}
+.ace-page .ace-brand img {
+  display: block;
+  width: 45px;
+  height: auto;
+  flex-shrink: 0;
+}
+.ace-page .ace-brand span {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+.ace-page .ace-header-link {
+  justify-self: center;
+}
+.ace-page .ace-header-name {
+  justify-self: end;
+}
+.ace-page .ace-brand:hover,
+.ace-page .ace-header-link:hover {
+  opacity: 0.65;
+}
+
+/* PROJECT INTRO */
+.ace-main {
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+.ace-eyebrow,
+.ace-section-kicker,
+.ace-gallery-heading > span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+.ace-eyebrow {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--ace-line);
+  padding: 16px 0 28px;
+}
+.ace-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 36px;
+  padding-bottom: 38px;
+}
+.ace-intro h1 {
+  margin: 0;
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(4.6rem, 12vw, 12rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+}
+.ace-tagline {
+  margin: 10px 0 0;
+  font-size: clamp(1rem, 1.7vw, 1.4rem);
+  font-style: italic;
+}
+.ace-intro-note {
+  margin: 0 0 6px;
+  max-width: 265px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ace-muted);
+}
+.ace-hero-art {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #cac6c1;
+}
+.ace-hero-art img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* CONCEPT */
+.ace-overview {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(0, 2fr);
+  gap: clamp(30px, 7vw, 120px);
+  padding: clamp(65px, 9vw, 130px) 0;
+  border-bottom: 1px solid var(--ace-line);
+}
+.ace-overview-copy {
+  max-width: 920px;
+}
+.ace-overview-copy h2,
+.ace-gallery-heading h2 {
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(2.6rem, 5.4vw, 5.8rem);
+  font-weight: 400;
+  line-height: 1;
+  margin: 0 0 28px;
+}
+.ace-overview-copy > p {
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  line-height: 1.7;
+  max-width: 780px;
+  margin: 0;
+}
+.ace-meta {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  margin-top: 46px;
+  padding-top: 22px;
+  border-top: 1px solid var(--ace-line);
+}
+.ace-meta > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.95rem;
+}
+.ace-meta-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ace-muted);
+}
+
+/* POSTER GALLERY — original proportions, no cropping */
+.ace-gallery {
+  padding-top: clamp(65px, 8vw, 115px);
+}
+.ace-gallery-heading {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(0, 2fr);
+  gap: clamp(30px, 7vw, 120px);
+  padding-bottom: 45px;
+}
+.ace-gallery-heading > span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+.ace-gallery-heading h2 {
+  max-width: 800px;
+  margin-bottom: 0;
+}
+.ace-poster {
+  margin: 0;
+  padding: clamp(35px, 5vw, 75px) 0;
+  border-top: 1px solid var(--ace-line);
+}
+.ace-poster img {
+  display: block;
+  width: min(100%, 1100px);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 18px;
+}
+.ace-poster figcaption {
+  text-align: right;
+  padding-top: 16px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  color: var(--ace-muted);
+}
+
+/* NEXT PROJECT */
+.ace-next {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  border-top: 1px solid var(--ace-line);
+  padding: 34px 0 80px;
+}
+.ace-next > span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.ace-next button {
+  background: none;
+  padding: 0;
+  border: 0;
+  color: var(--ace-ink);
+  text-align: right;
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(1.7rem, 3vw, 3rem);
+  line-height: 1;
+  transition: opacity 0.2s;
+}
+.ace-next button:hover {
+  opacity: 0.5;
+}
+
+/* FOOTER */
+.ace-footer {
+  max-width: 1600px;
+  margin: 0 auto;
+  border-top: 1px solid var(--ace-line);
+  padding-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.ace-socials {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+.ace-socials a {
+  text-decoration: none;
+  color: var(--ace-ink);
+}
+.ace-socials a:hover {
+  text-decoration: underline;
+}
+.ace-socials > span {
+  opacity: 0.35;
+}
+.ace-about {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ace-ink);
+  font-family: "Bayon", sans-serif !important;
+  font-size: 2rem;
+}
+.ace-resume {
+  justify-self: end;
+  padding: 10px 25px;
+  border: 1px solid var(--ace-ink);
+  border-radius: 50px;
+  text-decoration: none;
+  color: var(--ace-ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.ace-resume:hover {
+  background: var(--ace-ink);
+  color: var(--ace-bg);
+}
+
+@media (max-width: 900px) {
+  .ace-page .ace-header {
+    margin-bottom: 35px;
+    padding: 8px 0 18px;
+  }
+  .ace-page .ace-brand,
+  .ace-page .ace-header-link,
+  .ace-page .ace-header-name {
+    font-size: 1.8rem;
+  }
+  .ace-page .ace-brand img {
+    width: 36px;
+  }
+  .ace-intro {
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .ace-overview,
+  .ace-gallery-heading {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .ace-footer {
+    grid-template-columns: 1fr auto;
+  }
+  .ace-about {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+  }
+}
+@media (max-width: 650px) {
+  .ace-page {
+    padding: 22px 16px 30px;
+  }
+  .ace-page .ace-header {
+    gap: 7px;
+    padding: 0 0 14px;
+  }
+  .ace-page .ace-brand,
+  .ace-page .ace-header-link,
+  .ace-page .ace-header-name {
+    font-size: clamp(0.95rem, 3.6vw, 1.4rem);
+  }
+  .ace-page .ace-brand {
+    gap: 6px;
+  }
+  .ace-page .ace-brand img {
+    width: 25px;
+  }
+  .ace-eyebrow {
+    font-size: 0.65rem;
+  }
+  .ace-intro h1 {
+    font-size: clamp(3.8rem, 15vw, 7rem);
+  }
+  .ace-hero-art {
+    border-radius: 12px;
+  }
+  .ace-overview {
+    padding: 60px 0;
+  }
+  .ace-meta {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .ace-next {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ace-next button {
+    text-align: left;
+  }
+  .ace-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .ace-socials {
+    justify-content: center;
+  }
+}
+
+/* ACE OF CUPS SPECIFIC ADJUSTMENTS */
+.ace-intro h1 {
+  font-size: clamp(4.1rem, 11vw, 11rem);
+}
+.ace-hero-art {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  background: transparent;
+}
+.ace-hero-art img {
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 900px) {
+  .ace-gallery-heading {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+@media (max-width: 650px) {
+  .ace-page .ace-header {
+    grid-template-columns: 1fr auto;
+    row-gap: 18px;
+  }
+  .ace-page .ace-header-link {
+    grid-column: 2;
+    justify-self: end;
+  }
+  .ace-page .ace-header-name {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+  .ace-intro h1 {
+    font-size: clamp(3.4rem, 14vw, 6rem);
+  }
+  .ace-poster img {
+    border-radius: 10px;
+  }
+}

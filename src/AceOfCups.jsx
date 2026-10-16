@@ -1,63 +1,78 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./AceOfCups.css";
-import whiteLogo from "./assets/Head@300x.png";
+
+import logo from "./assets/Head@300x.png";
 import first from "./assets/GraphicDesign/1st.png";
 import second from "./assets/GraphicDesign/2nd.png";
 import third from "./assets/GraphicDesign/3rd.png";
 
-const AceOfCups = () => {
+const posters = [
+  {
+    image: first,
+    label: "01",
+    alt: "Ace of Cups conceptual café poster, first composition",
+  },
+  {
+    image: second,
+    label: "02",
+    alt: "Ace of Cups poster design, second composition",
+  },
+  {
+    image: third,
+    label: "03",
+    alt: "Ace of Cups poster design, third composition",
+  },
+];
+
+function AceOfCups() {
   const navigate = useNavigate();
 
   return (
-    <>
-      {/* Background Orbs */}
-      <div className="orb-canvas">
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-      </div>
+    <div className="ace-page">
+      <header className="ace-header">
+        <button
+          className="ace-brand"
+          type="button"
+          onClick={() => navigate("/")}
+          aria-label="Go to homepage"
+        >
+          <img src={logo} alt="" />
+          <span>MAI CRESPO</span>
+        </button>
+        <button
+          className="ace-header-link"
+          type="button"
+          onClick={() => navigate("/graphic-design")}
+        >
+          GRAPHIC DESIGN
+        </button>
+        <span className="ace-header-name">ACE OF CUPS</span>
+      </header>
 
-      <div className="page-layout">
-        {/* Navigation */}
-        <nav className="nav-pill">
-          <button className="back-btn" onClick={() => navigate(-1)}>
-            ← Back
-          </button>
-          <div className="nav-links">
-            <span className="nav-item" onClick={() => navigate("/")}>
-              Home
-            </span>
-            <span className="nav-sep">|</span>
-            <span
-              className="nav-item active"
-              onClick={() => navigate("/pick-a-card")}
-            >
-              Works
-            </span>
-            <span className="nav-sep">|</span>
-            <span className="nav-item" onClick={() => navigate("/about-me")}>
-              About Me
-            </span>
+      <main className="ace-main">
+        <div className="ace-eyebrow">
+          <span>SELECTED WORK / 02</span>
+          <span>POSTER DESIGN</span>
+        </div>
+
+        <section className="ace-intro" aria-labelledby="ace-title">
+          <div>
+            <h1 id="ace-title">ACE OF CUPS</h1>
+            <p className="ace-tagline">Coffee, Pastries, and Tarot</p>
           </div>
-          <img src={whiteLogo} className="nav-logo" alt="logo" />
-        </nav>
+          <p className="ace-intro-note">
+            A conceptual café where everyday rituals meet a little magic.
+          </p>
+        </section>
 
-        {/* Main Content Area */}
-        <div className="scrollable-content">
-          {/* Next Project Button - Top Right */}
-          <div className="next-project-top">
-            <button className="next-project-btn">NEXT PROJECT →</button>
+        <section className="ace-overview" aria-labelledby="ace-about">
+          <div className="ace-section-kicker">
+            <span>01 / THE CONCEPT</span>
           </div>
-
-          <header className="project-hero">
-            <h1 className="project-main-title">Ace of Cups</h1>
-            <p className="project-subtitle">Coffee, Pastries, and Tarot</p>
-          </header>
-
-          {/* About Section */}
-          <section className="about-section">
-            <h3 className="section-label">About the Project</h3>
-            <p className="project-description">
+          <div className="ace-overview-copy">
+            <h2 id="ace-about">A LITTLE MAGIC WITH YOUR COFFEE.</h2>
+            <p>
               Ace of Cups is a graphic poster design project for a conceptual
               cafe that brings together coffee pastries and tarot. The concept
               is inspired by my long standing interest in esoteric symbolism and
@@ -68,64 +83,80 @@ const AceOfCups = () => {
               offerings while ensuring that every visual element remains aligned
               with the overall theme.
             </p>
-          </section>
-
-          {/* Tools Used */}
-          <section className="tools-section">
-            <h3 className="section-label">Tools Used</h3>
-            <div className="tools-pills">
-              <span className="tool-pill">Adobe Illustrator</span>
-              <span className="tool-pill">Adobe Photoshop</span>
-              <span className="tool-pill">Procreate</span>
+            <div className="ace-meta">
+              <div>
+                <span className="ace-meta-label">DISCIPLINE</span>
+                <span>Poster Design</span>
+              </div>
+              <div>
+                <span className="ace-meta-label">TOOLS</span>
+                <span>Adobe Illustrator · Adobe Photoshop · Procreate</span>
+              </div>
             </div>
-          </section>
-
-          {/* Hero Image */}
-          <div className="hero-image-container">
-            <img src={first} alt="first" className="hero-image" />
-            <img src={second} alt="second" className="hero-image" />
-            <img src={third} alt="third" className="hero-image" />
           </div>
+        </section>
 
-          {/* Next Project Button - Bottom */}
-          <div className="next-project-bottom">
-            <button className="next-project-btn">NEXT PROJECT →</button>
+        <section className="ace-gallery" aria-labelledby="ace-gallery-title">
+          <div className="ace-gallery-heading">
+            <span>02 / THE POSTERS</span>
+            <h2 id="ace-gallery-title">THE POSTER SERIES.</h2>
           </div>
+          <div className="ace-poster-grid">
+            {posters.map((poster) => (
+              <figure className="ace-poster" key={poster.label}>
+                <img src={poster.image} alt={poster.alt} loading="lazy" />
+                <figcaption>POSTER / {poster.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        <div className="ace-next">
+          <span>KEEP EXPLORING</span>
+          <button type="button" onClick={() => navigate("/rebel-your-style")}>
+            NEXT PROJECT: REBEL YOUR STYLE <span aria-hidden="true">↗</span>
+          </button>
         </div>
+      </main>
 
-        {/* Footer */}
-        <footer className="footer-pill">
-          <h3 className="footer-text">Don't be a stranger!</h3>
-          <div className="nav-links">
-            <a href="mailto:yomaicrespo@gmail.com" className="nav-item">
-              Email
-            </a>
-            <span className="nav-sep">|</span>
-            <a
-              href="https://linkedin.com/in/mai-crespo/ "
-              target="_blank"
-              rel="noreferrer"
-              className="nav-item"
-            >
-              LinkedIn
-            </a>
-            <span className="nav-sep">|</span>
-            <a
-              href="https://instagram.com/heymaicomics/ "
-              target="_blank"
-              rel="noreferrer"
-              className="nav-item"
-            >
-              Instagram
-            </a>
-          </div>
-          <a href="/MaiCrespoResume.pdf" target="_blank" rel="noreferrer">
-            <button className="pill-btn">MY RESUME</button>
+      <footer className="ace-footer">
+        <div className="ace-socials">
+          <a href="mailto:yomaicrespo@gmail.com">Email</a>
+          <span>|</span>
+          <a
+            href="https://linkedin.com/in/mai-crespo/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
           </a>
-        </footer>
-      </div>
-    </>
+          <span>|</span>
+          <a
+            href="https://instagram.com/heymaicomics/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Instagram
+          </a>
+        </div>
+        <button
+          type="button"
+          className="ace-about"
+          onClick={() => navigate("/about-me")}
+        >
+          ABOUT ME
+        </button>
+        <a
+          href="/Mai_Crespo_Resume.pdf"
+          className="ace-resume"
+          target="_blank"
+          rel="noreferrer"
+        >
+          MY RESUME
+        </a>
+      </footer>
+    </div>
   );
-};
+}
 
 export default AceOfCups;

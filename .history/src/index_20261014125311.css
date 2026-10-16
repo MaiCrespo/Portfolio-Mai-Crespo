@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "Bayon";
+  src: url("./assets/fonts/Bayon-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Plak";
+  src: url("./assets/fonts/Neue Plak Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Plak";
+  src: url("./assets/fonts/Neue Plak Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+:root {
+  --font-display: "Bayon", sans-serif;
+  --font-body: "Neue Plak", sans-serif;
+  --orb-start: #ffffff;
+  --orb-end: #b5b4b4;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --content-max-width: 1300px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none !important;
+}
+body {
+  background: #fbfbfb;
+  color: #fff;
+  font-family: var(--font-body);
+  cursor: none !important;
+}
+html {
+  overflow-x: hidden;
+  cursor: none !important;
+}

@@ -83,7 +83,7 @@ function App() {
         <h2 className="footer-about" onClick={() => navigate("/about-me")}>
           ABOUT ME
         </h2>
-        <a href="/MaiCrespoResume.pdf" target="_blank" rel="noreferrer">
+        <a href="/Mai_Crespo_Resume.pdf" target="_blank" rel="noreferrer">
           <button className="footer-resume-btn">MY RESUME</button>
         </a>
       </footer>

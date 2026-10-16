@@ -9,66 +9,64 @@ const ManilaElnido = () => {
   const navigate = useNavigate();
 
   return (
-    <>
-      {/* Background Orbs */}
-      <div className="orb-canvas">
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-      </div>
+    <div className="manila-page">
+      <header className="manila-header">
+        <button
+          className="manila-brand"
+          type="button"
+          onClick={() => navigate("/")}
+          aria-label="Go to homepage"
+        >
+          <img src={whiteLogo} alt="" className="manila-logo" />
+          <span>MAI CRESPO</span>
+        </button>
+        <button
+          className="manila-nav-category"
+          type="button"
+          onClick={() => navigate("/graphic-design")}
+        >
+          GRAPHIC DESIGN
+        </button>
+        <span className="manila-nav-project">MANILA TO EL NIDO</span>
+      </header>
 
-      <div className="page-layout">
-        {/* Navigation */}
-        <nav className="nav-pill">
-          <button className="back-btn" onClick={() => navigate(-1)}>
-            ← Back
-          </button>
-          <div className="nav-links">
-            <span className="nav-item" onClick={() => navigate("/")}>
-              Home
-            </span>
-            <span className="nav-sep">|</span>
-            <span
-              className="nav-item active"
-              onClick={() => navigate("/pick-a-card")}
-            >
-              Works
-            </span>
-            <span className="nav-sep">|</span>
-            <span className="nav-item" onClick={() => navigate("/about-me")}>
-              About Me
-            </span>
+      <main className="manila-main">
+        <div className="manila-topline">
+          <span>SELECTED WORK / 04</span>
+          <span>BROCHURE DESIGN</span>
+        </div>
+
+        <section className="manila-hero" aria-labelledby="manila-title">
+          <p className="manila-eyebrow">TRAVEL BROCHURE / PHILIPPINES</p>
+          <h1 id="manila-title" className="manila-title">
+            MANILA CITY TO
+            <br />
+            EL NIDO BEACH
+          </h1>
+          <p className="manila-subtitle">G Adventures: Philippines</p>
+        </section>
+
+        <figure className="manila-feature-image">
+          <img
+            src={mockupBrochure}
+            alt="Manila City to El Nido Beach travel brochure mockup"
+          />
+        </figure>
+
+        <section className="manila-overview">
+          <div className="manila-section-name">
+            <span className="manila-index">01 / THE CONCEPT</span>
+            <h2>ABOUT THE PROJECT</h2>
           </div>
-          <img src={whiteLogo} className="nav-logo" alt="logo" />
-        </nav>
-
-        {/* Main Content Area */}
-        <div className="scrollable-content">
-          {/* Next Project Button - Top Right */}
-          <div className="next-project-top">
-            <button className="next-project-btn">NEXT PROJECT →</button>
-          </div>
-
-          <header className="project-hero">
-            <h1 className="project-main-title">
-              Manila City to
-              <br />
-              El Nido Beach
-            </h1>
-            <p className="project-subtitle">G Adventures: Philippines</p>
-          </header>
-
-          {/* About Section */}
-          <section className="about-section">
-            <h3 className="section-label">About the Project</h3>
-            <p className="project-description">
+          <div className="manila-overview-body">
+            <p>
               This project is a comprehensive 10-day travel itinerary for a
               guided tour through the Philippines, designed as a creative
               partnership with G Adventures. The brochure captures the dynamic
               contrast between the bustling urban landscape of Manila City to
               the serene, turquoise waters of El Nido Beach.
             </p>
-            <br />
-            <p className="project-description">
+            <p>
               The design focuses on high-impact travel photography and
               sophisticated typography to sell the "Pearl of the Orient"
               experience. By balancing structured information with an inviting,
@@ -76,84 +74,93 @@ const ManilaElnido = () => {
               a visual narrative that guides a traveler from the city streets to
               a tropical paradise.
             </p>
-          </section>
-
-          {/* Tools Used */}
-          <section className="tools-section">
-            <h3 className="section-label">Tools Used</h3>
-            <div className="tools-pills">
-              <span className="tool-pill">Adobe Illustrator</span>
-              <span className="tool-pill">Adobe Photoshop</span>
+            <div className="manila-meta">
+              <div>
+                <span className="manila-meta-label">DISCIPLINE</span>
+                <strong>Brochure Design / Travel Itinerary</strong>
+              </div>
+              <div>
+                <span className="manila-meta-label">TOOLS USED</span>
+                <div className="manila-tools">
+                  <span>Adobe Illustrator</span>
+                  <span>Adobe Photoshop</span>
+                </div>
+              </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* PDF Button */}
-          <div className="pdf-button-container">
+        <section
+          className="manila-gallery-section"
+          aria-labelledby="manila-gallery-title"
+        >
+          <div className="manila-gallery-heading">
+            <div>
+              <span className="manila-index">02 / THE DESIGN</span>
+              <h2 id="manila-gallery-title">EXPLORE THE BROCHURE</h2>
+            </div>
             <a
+              className="manila-pdf-link"
               href="/TravelItineraryBrochure.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="view-pdf-btn">VIEW PDF</button>
+              VIEW FULL PDF <span aria-hidden="true">↗</span>
             </a>
           </div>
+          <figure className="manila-brochure-image">
+            <img
+              src={travelBrochure}
+              alt="Manila to El Nido travel brochure design"
+            />
+          </figure>
+        </section>
 
-          {/* Hero Images - Side by Side */}
-          <div className="hero-images-grid">
-            <div className="hero-image-item1">
-              <img
-                src={mockupBrochure}
-                alt="Travel Brochure Mockup"
-                className="hero-image1"
-              />
-            </div>
-            <div className="hero-image-item1">
-              <img
-                src={travelBrochure}
-                alt="Manila to El Nido Brochure"
-                className="hero-image1"
-              />
-            </div>
-          </div>
-
-          {/* Next Project Button - Bottom */}
-          <div className="next-project-bottom">
-            <button className="next-project-btn">NEXT PROJECT →</button>
-          </div>
+        <div className="manila-next-section">
+          <span>KEEP EXPLORING</span>
+          <button type="button" onClick={() => navigate("/swaolamb")}>
+            NEXT PROJECT: SWAOLAMB <span aria-hidden="true">↗</span>
+          </button>
         </div>
+      </main>
 
-        {/* Footer */}
-        <footer className="footer-pill">
-          <h3 className="footer-text">Don't be a stranger!</h3>
-          <div className="nav-links">
-            <a href="mailto:yomaicrespo@gmail.com" className="nav-item">
-              Email
-            </a>
-            <span className="nav-sep">|</span>
-            <a
-              href="https://linkedin.com/in/mai-crespo/"
-              target="_blank"
-              rel="noreferrer"
-              className="nav-item"
-            >
-              LinkedIn
-            </a>
-            <span className="nav-sep">|</span>
-            <a
-              href="https://instagram.com/heymaicomics/"
-              target="_blank"
-              rel="noreferrer"
-              className="nav-item"
-            >
-              Instagram
-            </a>
-          </div>
-          <a href="/MaiCrespoResume.pdf" target="_blank" rel="noreferrer">
-            <button className="pill-btn">MY RESUME</button>
+      <footer className="manila-footer">
+        <div className="manila-footer-links">
+          <a href="mailto:yomaicrespo@gmail.com">Email</a>
+          <span aria-hidden="true">|</span>
+          <a
+            href="https://linkedin.com/in/mai-crespo/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
           </a>
-        </footer>
-      </div>
-    </>
+          <span aria-hidden="true">|</span>
+          <a
+            href="https://instagram.com/heymaicomics/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+        </div>
+        <button
+          type="button"
+          className="manila-footer-about"
+          onClick={() => navigate("/about-me")}
+        >
+          ABOUT ME
+        </button>
+        <a
+          href="/Mai_Crespo_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="manila-resume"
+        >
+          MY RESUME
+        </a>
+      </footer>
+    </div>
   );
 };
 

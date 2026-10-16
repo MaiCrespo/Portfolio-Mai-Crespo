@@ -1,0 +1,717 @@
+/* =============================================
+   SHARED LAYOUT
+   ============================================= */
+.page-layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  width: 100%;
+  max-width: 1400px; /* Keep this */
+  margin: 0 auto;
+}
+
+.scrollable-content {
+  padding: 40px 60px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%; /* Match nav/footer */
+  max-width: 1300px; /* Match nav/footer */
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  position: relative;
+}
+
+/* =============================================
+     NAVIGATION
+     ============================================= */
+.nav-pill {
+  width: 90%;
+  max-width: 1300px;
+  height: 80px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 40px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  opacity: 1;
+}
+
+.nav-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-logo {
+  position: absolute;
+  right: 40px;
+  width: 35px;
+}
+
+/* =============================================
+     NEXT PROJECT BUTTONS
+     ============================================= */
+.next-project-top {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}
+
+.next-project-bottom {
+  align-self: flex-end;
+  margin-top: 40px;
+}
+
+.next-project-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.next-project-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* =============================================
+     PROJECT HERO
+     ============================================= */
+.project-hero {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.project-main-title {
+  font-family: "Hellishy", serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.project-subtitle {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+}
+
+/* =============================================
+     ABOUT SECTION
+     ============================================= */
+.about-section {
+  text-align: center;
+  margin-bottom: 30px;
+  max-width: 800px;
+}
+
+.section-label {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* =============================================
+     TOOLS SECTION
+     ============================================= */
+.tools-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tools-pills {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tool-pill {
+  background: rgba(139, 90, 43, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+}
+
+/* =============================================
+     HERO IMAGE
+     ============================================= */
+.hero-image-container {
+  width: 100%;
+  margin-bottom: 60px;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  max-width: 2000px;
+  display: block;
+  object-fit: contain; /* Prevents stretching */
+}
+
+/* =============================================
+     FLAVOR SECTIONS
+     ============================================= */
+.flavor-sections {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.flavor-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.flavor-image {
+  width: 750px;
+}
+
+.flavor-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  display: block;
+}
+
+.flavor-content {
+  text-align: left;
+}
+
+.flavor-title {
+  font-family: "Hellishy", serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.flavor-desc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* =============================================
+     FOOTER
+     ============================================= */
+.footer-pill {
+  width: 90%;
+  max-width: 1300px;
+  min-height: 100px;
+  padding: 30px 60px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.footer-text {
+  font-family: "Hellishy", serif;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.pill-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pill-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* =============================================
+     RESPONSIVE
+     ============================================= */
+@media (max-width: 900px) {
+  .scrollable-content {
+    padding: 30px !important;
+    width: 95%;
+  }
+
+  .next-project-top {
+    position: static;
+    align-self: flex-end;
+    margin-bottom: 20px;
+  }
+
+  .flavor-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .flavor-content {
+    text-align: center;
+  }
+
+  .hero-image-container {
+    padding: 20px;
+  }
+
+  .footer-pill {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    border-radius: 40px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-main-title {
+    font-size: 2.5rem;
+  }
+
+  .tools-pills {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tool-pill {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* =============================================
+   SHARED LAYOUT
+   ============================================= */
+.page-layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  width: 100%;
+  max-width: 1400px; /* Keep this */
+  margin: 0 auto;
+}
+
+.scrollable-content {
+  padding: 40px 60px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%; /* Match nav/footer */
+  max-width: 1300px; /* Match nav/footer */
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  position: relative;
+}
+
+/* =============================================
+     NAVIGATION
+     ============================================= */
+.nav-pill {
+  width: 90%;
+  max-width: 1300px;
+  height: 80px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 40px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  opacity: 1;
+}
+
+.nav-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-logo {
+  position: absolute;
+  right: 40px;
+  width: 35px;
+}
+
+/* =============================================
+     TOP BAR / NEXT PROJECT
+     ============================================= */
+.project-topbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.project-category {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.next-project-bottom {
+  align-self: flex-end;
+  margin-top: 60px;
+}
+
+.next-project-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.next-project-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* =============================================
+     PROJECT HERO
+     ============================================= */
+.project-hero {
+  text-align: center;
+  margin: 30px 0 40px;
+}
+
+.project-main-title {
+  font-family: "Hellishy", serif;
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.project-subtitle {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+}
+
+/* =============================================
+     HERO IMAGE
+     ============================================= */
+.hero-image-container {
+  width: 100%;
+  margin-bottom: 70px;
+  padding: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* =============================================
+     INTRO (ABOUT + TOOLS)
+     ============================================= */
+.intro-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 60px;
+  align-items: start;
+  padding-bottom: 70px;
+  margin-bottom: 70px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.about-section {
+  text-align: left;
+  max-width: 680px;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.project-description {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 16px;
+}
+
+.project-description.lead {
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.tools-section {
+  text-align: left;
+  margin: 0;
+}
+
+.tools-pills {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.tool-pill {
+  background: rgba(139, 90, 43, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+}
+
+/* =============================================
+     FLAVOR SECTIONS
+     ============================================= */
+.flavor-sections {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.lineup-title {
+  font-family: "Hellishy", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #fff;
+  text-align: center;
+  margin: 0;
+}
+
+.flavor-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 60px;
+  align-items: center;
+}
+
+.flavor-row.reverse {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+}
+
+.flavor-row.reverse .flavor-image {
+  order: 2;
+}
+
+.flavor-image {
+  width: 100%;
+}
+
+.flavor-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+}
+
+.flavor-content {
+  text-align: left;
+}
+
+.flavor-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.flavor-title {
+  font-family: "Hellishy", serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+.flavor-desc {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  max-width: 480px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* =============================================
+     FOOTER
+     ============================================= */
+.footer-pill {
+  width: 90%;
+  max-width: 1300px;
+  min-height: 100px;
+  padding: 30px 60px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.footer-text {
+  font-family: "Hellishy", serif;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.pill-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pill-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* =============================================
+     RESPONSIVE
+     ============================================= */
+@media (max-width: 900px) {
+  .scrollable-content {
+    padding: 30px !important;
+    width: 95%;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .flavor-row,
+  .flavor-row.reverse {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .flavor-row.reverse .flavor-image {
+    order: 0;
+  }
+
+  .flavor-sections {
+    gap: 56px;
+  }
+
+  .footer-pill {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    border-radius: 40px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-main-title {
+    font-size: 3rem;
+  }
+
+  .project-category {
+    font-size: 0.7rem;
+  }
+
+  .tool-pill {
+    width: 100%;
+    text-align: center;
+  }
+}

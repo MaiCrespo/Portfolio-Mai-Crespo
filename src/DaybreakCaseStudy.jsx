@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
-import "./GotItCaseStudyNew.css";
+import "./DaybreakCaseStudy.css";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
@@ -33,7 +33,7 @@ function DaybreakCaseStudy() {
   const closeLightbox = () => setLightboxSrc(null);
 
   return (
-    <div className="page-layout">
+    <div className="page-layout daybreak-case-study">
       {/* Lightbox Overlay */}
       {lightboxSrc && (
         <div className="lightbox-overlay" onClick={closeLightbox}>
@@ -49,33 +49,26 @@ function DaybreakCaseStudy() {
         </div>
       )}
 
-      {/* Gradient Orbs Background */}
-      <div className="gradient-orbs">
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-        <div className="orb orb-3"></div>
-        <div className="orb orb-4"></div>
-        <div className="orb orb-5"></div>
-      </div>
-
-      {/* Navigation */}
-      <nav className="nav-pill">
-        <button className="back-btn" onClick={() => navigate(-1)}>
-          ← Back
+      {/* Navigation — standalone Daybreak layout */}
+      <header className="daybreak-header">
+        <button
+          type="button"
+          className="daybreak-brand"
+          onClick={() => navigate("/")}
+          aria-label="Return to homepage"
+        >
+          <img src={whiteLogo} alt="" className="daybreak-logo" />
+          <span>MAI CRESPO</span>
         </button>
-        <div className="nav-links">
-          <span onClick={() => navigate("/")} className="nav-item">
-            Home
-          </span>
-          <span className="nav-sep">|</span>
-          <span className="nav-item active">Works</span>
-          <span className="nav-sep">|</span>
-          <span onClick={() => navigate("/about-me")} className="nav-item">
-            About Me
-          </span>
-        </div>
-        <img src={whiteLogo} className="nav-logo" alt="logo" />
-      </nav>
+        <button
+          type="button"
+          className="daybreak-nav-category"
+          onClick={() => navigate("/uiux-design")}
+        >
+          UI/UX
+        </button>
+        <span className="daybreak-nav-project">DAYBREAK</span>
+      </header>
 
       {/* Case Study Content */}
       <main className="case-study-scroller">
@@ -134,7 +127,7 @@ function DaybreakCaseStudy() {
               Procreate — every frame hand-drawn and narrated by me, bringing
               the world of Daybreak to life through illustration and motion.
             </p>
-            <div className="embed-container">
+            <div className="embed-container daybreak-video-embed">
               <iframe
                 src="https://www.youtube.com/embed/k7QUwUKi5Rs"
                 title="Daybreak Game Trailer"
@@ -177,7 +170,7 @@ function DaybreakCaseStudy() {
             >
               <div>
                 <h3>Movement, Dice, Bad Tiles</h3>
-                <div className="embed-container">
+                <div className="embed-container daybreak-video-embed">
                   <iframe
                     src="https://www.youtube.com/embed/nidryo-uLzo"
                     title="Daybreak Gameplay"
@@ -188,7 +181,7 @@ function DaybreakCaseStudy() {
               </div>
               <div>
                 <h3>Playing Cards and Card Cost</h3>
-                <div className="embed-container">
+                <div className="embed-container daybreak-video-embed">
                   <iframe
                     src="https://www.youtube.com/embed/BW3fjrB8bng"
                     title="Daybreak Playing Cards and Card Cost"
@@ -332,14 +325,22 @@ function DaybreakCaseStudy() {
               UI/UX design. Enter any room code combination to explore the
               experience.
             </p>
-            <div className="embed-container">
+            <div className="embed-container prototype-embed">
               <iframe
                 src="https://daybreak-da1w.onrender.com/"
-                title="Got It Homepage"
-                className="site-embed"
+                title="Daybreak Board Game Prototype"
+                className="site-embed prototype-iframe"
                 allowFullScreen
               />
             </div>
+            <a
+              href="https://daybreak-da1w.onrender.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="prototype-open-link"
+            >
+              OPEN FULL PROTOTYPE ↗
+            </a>
           </section>
 
           {/* Key Features */}
@@ -446,7 +447,7 @@ function DaybreakCaseStudy() {
             Instagram
           </a>
         </div>
-        <a href="/MaiCrespoResume.pdf" target="_blank" rel="noreferrer">
+        <a href="/Mai_Crespo_Resume.pdf" target="_blank" rel="noreferrer">
           <button className="pill-btn">MY RESUME</button>
         </a>
       </footer>

@@ -1,0 +1,508 @@
+/* THE DESCENT CASE STUDY — standalone styling inspired by Got It.
+   Scoped to the Descent page to avoid affecting other case studies. */
+
+.descent-case-study {
+  --ds-bg: #e0dedc;
+  --ds-surface: #efeeec;
+  --ds-ink: #000;
+  --ds-muted: #333;
+  --ds-line: rgba(0, 0, 0, 0.14);
+  --ds-radius: 16px;
+  --ds-reading-width: 720px;
+  --ds-inner-pad: clamp(20px, 4vw, 64px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: var(--ds-bg);
+  color: var(--ds-ink);
+  font-family: "Neue Plak", sans-serif;
+}
+
+/* Three-column case study navigation */
+.descent-case-study > .descent-header {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  width: min(calc(100% - 80px), 1600px);
+  margin: 0 auto;
+  padding: 30px 0 40px;
+  background: transparent;
+  color: #000;
+}
+.descent-case-study .descent-brand,
+.descent-case-study .descent-nav-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.descent-case-study .descent-brand {
+  justify-self: start;
+  gap: 14px;
+}
+.descent-case-study .descent-logo {
+  display: block;
+  width: 45px;
+  height: auto;
+}
+.descent-case-study .descent-brand span,
+.descent-case-study .descent-nav-category,
+.descent-case-study .descent-nav-project {
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+.descent-case-study .descent-nav-category {
+  justify-self: center;
+}
+.descent-case-study .descent-nav-project {
+  justify-self: end;
+}
+.descent-case-study .descent-brand:hover,
+.descent-case-study .descent-nav-category:hover {
+  opacity: 0.65;
+}
+
+/* Wide outer frame and comfortable inner reading area. */
+.descent-case-study .case-study-scroller {
+  position: relative;
+  z-index: 2;
+  width: min(calc(100% - 80px), 1600px);
+  max-width: none;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: visible;
+  background: var(--ds-bg);
+}
+.descent-case-study .case-study-content {
+  counter-reset: ds-section;
+  width: 100%;
+  padding: 3.5rem var(--ds-inner-pad) 4rem;
+  background: var(--ds-bg);
+  border-radius: 24px;
+  color: var(--ds-ink);
+  font-family: "Neue Plak", sans-serif;
+}
+
+/* Hero */
+.descent-case-study .hero-section {
+  margin-bottom: 3rem;
+  text-align: left;
+}
+.descent-case-study .hero-image-container {
+  padding: 0;
+  margin: 0 0 2.5rem;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.descent-case-study .hero-image-header {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+.descent-case-study .hero-text {
+  max-width: 900px;
+}
+.descent-case-study .project-title {
+  margin: 0 0 1.5rem;
+  color: var(--ds-ink);
+  font-family: "Neue Plak", sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+.descent-case-study .project-title strong {
+  font-weight: 700;
+}
+.descent-case-study .project-subtitle {
+  color: var(--ds-ink);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Numbered content sections */
+.descent-case-study .content-section {
+  counter-increment: ds-section;
+  margin: 0;
+  padding: 4rem 0;
+  scroll-margin-top: 24px;
+  border-bottom: 1px solid var(--ds-line);
+}
+.descent-case-study .content-section.last-section {
+  padding-bottom: 1rem;
+  border-bottom: 0;
+}
+.descent-case-study .section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  font-family: "Neue Plak", sans-serif;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ds-ink);
+}
+.descent-case-study .section-heading::before {
+  content: counter(ds-section, decimal-leading-zero);
+  flex: 0 0 2rem;
+  min-width: 2rem;
+  font-family: "Bayon", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--ds-muted);
+}
+.descent-case-study .section-heading::after {
+  display: none;
+}
+.descent-case-study .section-text {
+  max-width: var(--ds-reading-width);
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ds-ink);
+}
+.descent-case-study .subsection-title,
+.descent-case-study .content-section h3:not([class]) {
+  margin: 2rem 0 1rem;
+  color: var(--ds-muted);
+  font-family: "Neue Plak", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Embedded video, Figma designs, and playable game. */
+.descent-case-study .embed-container {
+  width: 100%;
+  max-width: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius);
+  overflow: hidden;
+  background: var(--ds-surface);
+}
+.descent-case-study .site-embed {
+  display: block;
+  width: 100%;
+  height: clamp(600px, 75vh, 900px);
+  border: 0;
+  background: #fff;
+}
+.descent-case-study .image-showcase {
+  margin: 2rem 0 0;
+  padding: 0;
+  border-radius: var(--ds-radius);
+  overflow: hidden;
+}
+.descent-case-study .showcase-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--ds-radius);
+}
+.descent-case-study .image-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 1rem 0 0;
+}
+.descent-case-study .grid-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border-radius: var(--ds-radius);
+}
+
+/* Cards */
+.descent-case-study .role-grid,
+.descent-case-study .features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+.descent-case-study .role-item,
+.descent-case-study .feature-card {
+  padding: 1.75rem;
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius);
+  background: var(--ds-surface);
+  box-shadow: none;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+.descent-case-study .role-item:hover,
+.descent-case-study .feature-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 0, 0, 0.35);
+  box-shadow: none;
+}
+.descent-case-study .role-title,
+.descent-case-study .feature-title {
+  margin: 0 0 0.6rem;
+  color: var(--ds-ink);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.descent-case-study .role-desc,
+.descent-case-study .feature-text {
+  margin: 0;
+  color: var(--ds-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* Numbered challenge cards */
+.descent-case-study .challenge-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: ds-challenge;
+}
+.descent-case-study .challenge-list li {
+  counter-increment: ds-challenge;
+  position: relative;
+  margin: 0;
+  padding: 1.25rem 1.25rem 1.25rem 3.5rem;
+  color: var(--ds-ink);
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.descent-case-study .challenge-list li::before {
+  content: counter(ds-challenge);
+  position: absolute;
+  left: 1.1rem;
+  top: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Impact stats */
+.descent-case-study .impact-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+  padding: 2.5rem 2rem;
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius);
+}
+.descent-case-study .stat-item {
+  text-align: center;
+}
+.descent-case-study .stat-value {
+  margin: 0 0 0.4rem;
+  color: var(--ds-ink);
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+.descent-case-study .stat-label {
+  color: var(--ds-ink);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* Lightbox */
+.descent-case-study .lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.9);
+}
+.descent-case-study .lightbox-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+}
+.descent-case-study .lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+}
+.descent-case-study .lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.descent-case-study .clickable-img {
+  cursor: zoom-in;
+  transition: opacity 0.3s;
+}
+.descent-case-study .clickable-img:hover {
+  opacity: 0.88;
+}
+
+/* Footer — retain current footer content, adapted to gray palette. */
+.descent-case-study > .footer-pill {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: min(calc(100% - 80px), 1600px);
+  max-width: none;
+  margin: 0 auto;
+  padding: 2.25rem 0 3rem;
+  border: 0;
+  border-top: 1px solid var(--ds-line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  color: var(--ds-ink);
+}
+.descent-case-study .footer-text {
+  color: var(--ds-ink);
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+}
+.descent-case-study .footer-pill .nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+  background: transparent;
+}
+.descent-case-study .footer-pill .nav-item,
+.descent-case-study .footer-pill .nav-sep {
+  color: var(--ds-ink);
+  font-family: "Neue Plak", sans-serif;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+.descent-case-study .footer-pill .pill-btn {
+  padding: 12px 22px;
+  border: 1px solid #111;
+  border-radius: 999px;
+  background: transparent;
+  color: #111;
+  font-family: "Neue Plak", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: none;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.descent-case-study .footer-pill .pill-btn:hover {
+  background: #111;
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .descent-case-study .image-grid-2,
+  .descent-case-study .challenge-list {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .descent-case-study > .descent-header,
+  .descent-case-study .case-study-scroller,
+  .descent-case-study > .footer-pill {
+    width: calc(100% - 32px);
+  }
+  .descent-case-study > .descent-header {
+    padding: 25px 0 35px;
+    gap: 12px;
+  }
+  .descent-case-study .descent-logo {
+    width: 35px;
+  }
+  .descent-case-study .descent-brand span,
+  .descent-case-study .descent-nav-category,
+  .descent-case-study .descent-nav-project {
+    font-size: clamp(1.1rem, 3.5vw, 1.8rem);
+  }
+  .descent-case-study .case-study-content {
+    --ds-inner-pad: 16px;
+    padding-top: 2rem;
+    padding-bottom: 2.5rem;
+  }
+  .descent-case-study .content-section {
+    padding: 2.75rem 0;
+  }
+  .descent-case-study .section-heading {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .descent-case-study .role-grid,
+  .descent-case-study .features-grid,
+  .descent-case-study .impact-stats {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .descent-case-study .descent-brand {
+    gap: 6px;
+  }
+  .descent-case-study .descent-logo {
+    width: 25px;
+  }
+  .descent-case-study .descent-brand span,
+  .descent-case-study .descent-nav-category,
+  .descent-case-study .descent-nav-project {
+    font-size: clamp(0.9rem, 3.6vw, 1.25rem);
+  }
+  .descent-case-study .footer-pill {
+    justify-content: center;
+    text-align: center;
+  }
+}

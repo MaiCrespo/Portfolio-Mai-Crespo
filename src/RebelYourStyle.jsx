@@ -9,61 +9,61 @@ const RebelYourStyle = () => {
   const navigate = useNavigate();
 
   return (
-    <>
-      {/* Background Orbs */}
-      <div className="orb-canvas">
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-      </div>
+    <div className="rebel-page">
+      <header className="rebel-header">
+        <button
+          className="rebel-brand"
+          type="button"
+          onClick={() => navigate("/")}
+          aria-label="Go to homepage"
+        >
+          <img src={whiteLogo} alt="" className="rebel-logo" />
+          <span>MAI CRESPO</span>
+        </button>
+        <button
+          className="rebel-nav-category"
+          type="button"
+          onClick={() => navigate("/graphic-design")}
+        >
+          GRAPHIC DESIGN
+        </button>
+        <span className="rebel-nav-project">REBEL YOUR STYLE</span>
+      </header>
 
-      <div className="page-layout">
-        {/* Navigation */}
-        <nav className="nav-pill">
-          <button className="back-btn" onClick={() => navigate(-1)}>
-            ← Back
-          </button>
-          <div className="nav-links">
-            <span className="nav-item" onClick={() => navigate("/")}>
-              Home
-            </span>
-            <span className="nav-sep">|</span>
-            <span
-              className="nav-item active"
-              onClick={() => navigate("/pick-a-card")}
-            >
-              Works
-            </span>
-            <span className="nav-sep">|</span>
-            <span className="nav-item" onClick={() => navigate("/about-me")}>
-              About Me
-            </span>
+      <main className="rebel-main">
+        <div className="rebel-topline">
+          <span>SELECTED WORK / 03</span>
+          <span>POSTER DESIGN</span>
+        </div>
+
+        <section className="rebel-hero" aria-labelledby="rebel-title">
+          <p className="rebel-eyebrow">POSTER DESIGN / CONCEPTUAL EXHIBITION</p>
+          <h1 id="rebel-title" className="rebel-title">
+            REBEL YOUR STYLE
+          </h1>
+          <p className="rebel-subtitle">Age of Punk Rock</p>
+        </section>
+
+        <figure className="rebel-feature-image">
+          <img
+            src={yungblud}
+            alt="Rebel Your Style — first punk exhibition poster"
+          />
+        </figure>
+
+        <section className="rebel-overview">
+          <div className="rebel-section-name">
+            <span className="rebel-index">01 / THE CONCEPT</span>
+            <h2>ABOUT THE PROJECT</h2>
           </div>
-          <img src={whiteLogo} className="nav-logo" alt="logo" />
-        </nav>
-
-        {/* Main Content Area */}
-        <div className="scrollable-content">
-          {/* Next Project Button - Top Right */}
-          <div className="next-project-top">
-            <button className="next-project-btn">NEXT PROJECT →</button>
-          </div>
-
-          <header className="project-hero">
-            <h1 className="project-main-title">Rebel Your Style</h1>
-            <p className="project-subtitle">Age of Punk Rock</p>
-          </header>
-
-          {/* About Section */}
-          <section className="about-section">
-            <h3 className="section-label">About the Project</h3>
-            <p className="project-description">
+          <div className="rebel-overview-body">
+            <p>
               "Rebel Your Style" is a bold and immersive poster series designed
               for a conceptual museum exhibition celebrating the cultural impact
               and revolutionary history. The project explores the visceral DIY
               aesthetic of the Age of Punk Rock fashion scene.
             </p>
-            <br />
-            <p className="project-description">
+            <p>
               This series blends raw, high-energy gritty aesthetics to pay
               homage to the grit and DIY culture of the 1970's and 80's. By
               blending gritty textures, torn paper elements, and unpolished
@@ -71,30 +71,29 @@ const RebelYourStyle = () => {
               historical preservation and the raw, visceral energy of the era's
               subculture.
             </p>
-          </section>
-
-          {/* Tools Used */}
-          <section className="tools-section">
-            <h3 className="section-label">Tools Used</h3>
-            <div className="tools-pills">
-              <span className="tool-pill">Adobe InDesign</span>
-              <span className="tool-pill">Adobe Photoshop</span>
+            <div className="rebel-meta">
+              <div>
+                <span className="rebel-meta-label">DISCIPLINE</span>
+                <strong>Poster Design / Exhibition Concept</strong>
+              </div>
+              <div>
+                <span className="rebel-meta-label">TOOLS USED</span>
+                <div className="rebel-tools">
+                  <span>Adobe InDesign</span>
+                  <span>Adobe Photoshop</span>
+                </div>
+              </div>
             </div>
-          </section>
-
-          {/* Hero Images */}
-          <div className="hero-image-container">
-            <img
-              src={yungblud}
-              alt="Rebel Your Style Poster 1"
-              className="hero-image"
-            />
           </div>
+        </section>
 
-          {/* The Punk Rock Fashion Section */}
-          <section className="flavor-section">
-            <h3 className="flavor-title">The Punk Rock Fashion</h3>
-            <p className="flavor-desc">
+        <section className="rebel-process" aria-labelledby="punk-heading">
+          <div className="rebel-section-name">
+            <span className="rebel-index">02 / VISUAL LANGUAGE</span>
+            <h2 id="punk-heading">THE PUNK ROCK FASHION</h2>
+          </div>
+          <div className="rebel-process-body">
+            <p>
               This visual language of this project was heavily influenced by DIY
               zine designs from the 90's, Rather than aspiring for a clean,
               modern museum aesthetic, I chose to embrace the "mess" of a living
@@ -104,54 +103,62 @@ const RebelYourStyle = () => {
               punk fashion's DIY ideals while keeping with the historical and
               conceptual context presented by a museum.
             </p>
-          </section>
-
-          <div className="hero-image-container">
-            <img
-              src={yungblud2}
-              alt="Rebel Your Style Poster 2"
-              className="hero-image"
-            />
           </div>
+        </section>
 
-          {/* Next Project Button - Bottom */}
-          <div className="next-project-bottom">
-            <button className="next-project-btn">NEXT PROJECT →</button>
-          </div>
+        <figure className="rebel-second-image">
+          <img
+            src={yungblud2}
+            alt="Rebel Your Style — second punk exhibition poster"
+          />
+        </figure>
+
+        <div className="rebel-next-section">
+          <span>KEEP EXPLORING</span>
+          <button type="button" onClick={() => navigate("/manila-el-nido")}>
+            NEXT PROJECT: MANILA CITY TO EL NIDO BEACH{" "}
+            <span aria-hidden="true">↗</span>
+          </button>
         </div>
+      </main>
 
-        {/* Footer */}
-        <footer className="footer-pill">
-          <h3 className="footer-text">Don't be a stranger!</h3>
-          <div className="nav-links">
-            <a href="mailto:yomaicrespo@gmail.com" className="nav-item">
-              Email
-            </a>
-            <span className="nav-sep">|</span>
-            <a
-              href="https://linkedin.com/in/mai-crespo/"
-              target="_blank"
-              rel="noreferrer"
-              className="nav-item"
-            >
-              LinkedIn
-            </a>
-            <span className="nav-sep">|</span>
-            <a
-              href="https://instagram.com/heymaicomics/"
-              target="_blank"
-              rel="noreferrer"
-              className="nav-item"
-            >
-              Instagram
-            </a>
-          </div>
-          <a href="/MaiCrespoResume.pdf" target="_blank" rel="noreferrer">
-            <button className="pill-btn">MY RESUME</button>
+      <footer className="rebel-footer">
+        <div className="rebel-footer-links">
+          <a href="mailto:yomaicrespo@gmail.com">Email</a>
+          <span aria-hidden="true">|</span>
+          <a
+            href="https://linkedin.com/in/mai-crespo/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
           </a>
-        </footer>
-      </div>
-    </>
+          <span aria-hidden="true">|</span>
+          <a
+            href="https://instagram.com/heymaicomics/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+        </div>
+        <button
+          type="button"
+          className="rebel-footer-about"
+          onClick={() => navigate("/about-me")}
+        >
+          ABOUT ME
+        </button>
+        <a
+          href="/Mai_Crespo_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rebel-resume"
+        >
+          MY RESUME
+        </a>
+      </footer>
+    </div>
   );
 };
 

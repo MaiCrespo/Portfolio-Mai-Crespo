@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+
 import App from "./App";
-import CardSelection from "./Cardselection";
 import GotItCaseStudyNew from "./GotItCaseStudyNew";
 import GraphicDesignPage from "./GraphicDesignPage";
 import UiuxPage from "./UiuxPage";
@@ -22,6 +22,7 @@ function AppWrapper() {
   const [showLoading, setShowLoading] = useState(true);
   const cursorRef = useRef(null);
 
+  // Loading screen
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLoading(false);
@@ -39,18 +40,21 @@ function AppWrapper() {
 
     const handleMouseMove = (e) => {
       if (!cursorRef.current) return;
+
       cursorRef.current.style.left = `${e.clientX}px`;
       cursorRef.current.style.top = `${e.clientY}px`;
     };
 
     const handleMouseDown = () => {
       if (!cursorRef.current) return;
+
       cursorRef.current.style.backgroundImage = `url(${onClickCursor})`;
       cursorRef.current.style.transform = `translate(-50%, -50%) rotate(45deg) scale(0.9)`;
     };
 
     const handleMouseUp = () => {
       if (!cursorRef.current) return;
+
       cursorRef.current.style.backgroundImage = `url(${defaultCursor})`;
       cursorRef.current.style.transform = `translate(-50%, -50%) rotate(45deg)`;
     };
@@ -63,13 +67,13 @@ function AppWrapper() {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
-      style?.remove();
+      style.remove();
     };
   }, []);
 
   return (
     <>
-      {/* Global Custom Cursor - always rendered */}
+      {/* Global Custom Cursor */}
       <div
         ref={cursorRef}
         style={{
@@ -92,20 +96,29 @@ function AppWrapper() {
         <LoadingPage />
       ) : (
         <Routes>
+          {/* HOMEPAGE */}
           <Route path="/" element={<App />} />
-          <Route path="/pick-a-card" element={<CardSelection />} />
+
+          {/* Redirect old card selection page to homepage */}
+          <Route path="/pick-a-card" element={<Navigate to="/" replace />} />
+
+          {/* UI/UX DESIGN */}
           <Route path="/uiux-design" element={<UiuxPage />} />
           <Route path="/got-it" element={<GotItCaseStudyNew />} />
           <Route path="/project/gotit" element={<GotItCaseStudyNew />} />
+          <Route path="/project/descent" element={<TheDescentCaseStudy />} />
+          <Route path="/project/daybreak" element={<DaybreakCaseStudy />} />
+
+          {/* GRAPHIC DESIGN */}
           <Route path="/graphic-design" element={<GraphicDesignPage />} />
           <Route path="/underbroth" element={<Underbroth />} />
           <Route path="/ace-of-cups" element={<AceOfCups />} />
           <Route path="/rebel-your-style" element={<RebelYourStyle />} />
-          <Route path="/swaolamb" element={<Swaolamb />} />
           <Route path="/manila-el-nido" element={<ManilaElnido />} />
+          <Route path="/swaolamb" element={<Swaolamb />} />
+
+          {/* ABOUT ME */}
           <Route path="/about-me" element={<AboutMe />} />
-          <Route path="/project/descent" element={<TheDescentCaseStudy />} />
-          <Route path="/project/daybreak" element={<DaybreakCaseStudy />} />
         </Routes>
       )}
     </>

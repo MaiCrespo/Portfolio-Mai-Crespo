@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
-import "./GotItCaseStudyNew.css";
+import "./TheDescentCaseStudy.css";
 
 // Assets
 import whiteLogo from "./assets/Head@300x.png";
@@ -32,7 +32,7 @@ function TheDescentCaseStudy() {
   const closeLightbox = () => setLightboxSrc(null);
 
   return (
-    <div className="page-layout">
+    <div className="page-layout descent-case-study">
       {/* Lightbox Overlay */}
       {lightboxSrc && (
         <div className="lightbox-overlay" onClick={closeLightbox}>
@@ -48,33 +48,26 @@ function TheDescentCaseStudy() {
         </div>
       )}
 
-      {/* Gradient Orbs Background */}
-      <div className="gradient-orbs">
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-        <div className="orb orb-3"></div>
-        <div className="orb orb-4"></div>
-        <div className="orb orb-5"></div>
-      </div>
-
-      {/* Navigation */}
-      <nav className="nav-pill">
-        <button className="back-btn" onClick={() => navigate(-1)}>
-          ← Back
+      {/* Case Study Navigation */}
+      <header className="descent-header">
+        <button
+          type="button"
+          className="descent-brand"
+          onClick={() => navigate("/")}
+          aria-label="Return to homepage"
+        >
+          <img src={whiteLogo} alt="" className="descent-logo" />
+          <span>MAI CRESPO</span>
         </button>
-        <div className="nav-links">
-          <span onClick={() => navigate("/")} className="nav-item">
-            Home
-          </span>
-          <span className="nav-sep">|</span>
-          <span className="nav-item active">Works</span>
-          <span className="nav-sep">|</span>
-          <span onClick={() => navigate("/about-me")} className="nav-item">
-            About Me
-          </span>
-        </div>
-        <img src={whiteLogo} className="nav-logo" alt="logo" />
-      </nav>
+        <button
+          type="button"
+          className="descent-nav-category"
+          onClick={() => navigate("/uiux-design")}
+        >
+          UI/UX
+        </button>
+        <span className="descent-nav-project">THE DESCENT</span>
+      </header>
 
       {/* Case Study Content */}
       <main className="case-study-scroller">
@@ -339,7 +332,7 @@ function TheDescentCaseStudy() {
             Instagram
           </a>
         </div>
-        <a href="/MaiCrespoResume.pdf" target="_blank" rel="noreferrer">
+        <a href="/Mai_Crespo_Resume.pdf" target="_blank" rel="noreferrer">
           <button className="pill-btn">MY RESUME</button>
         </a>
       </footer>

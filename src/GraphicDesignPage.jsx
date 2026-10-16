@@ -1,158 +1,141 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./GraphicDesignPage.css";
-import whiteLogo from "./assets/Head@300x.png";
 
+import logo from "./assets/Head@300x.png";
 import SwaolambThumb from "./assets/GraphicDesign/SwaolambThumbnail.png";
 import TravelThumb from "./assets/GraphicDesign/TravelThumbnail.png";
 import RebelThumb from "./assets/GraphicDesign/RebelYourStyleThumbnail.png";
 import UnderbrothThumb from "./assets/GraphicDesign/UnderbrothThumbnail.png";
 import AceThumb from "./assets/GraphicDesign/AceOfCupsThumbnail.png";
 
-const GraphicDesignPage = () => {
+const projects = [
+  {
+    id: 1,
+    name: "Underbroth",
+    cat: "Package Design",
+    desc: "A spicy canned soup concept inspired by Japanese vending machines and Chinese hot pot culture.",
+    img: UnderbrothThumb,
+    route: "/underbroth",
+  },
+  {
+    id: 2,
+    name: "Ace of Cups",
+    cat: "Poster Design",
+    desc: "A visual identity for a conceptual café that combines coffee, pastries, and tarot.",
+    img: AceThumb,
+    route: "/ace-of-cups",
+  },
+  {
+    id: 3,
+    name: "Rebel Your Style",
+    cat: "Poster Design",
+    desc: "A poster design for a hypothetical exhibition at the National Canadian Museum of History focused on punk rock fashion.",
+    img: RebelThumb,
+    route: "/rebel-your-style",
+  },
+  {
+    id: 4,
+    name: "Manila City to El Nido Beach",
+    cat: "Brochure Design",
+    desc: "A 10-day travel itinerary for a tour of the Philippines, created as a reference to G Adventures.",
+    img: TravelThumb,
+    route: "/manila-el-nido",
+  },
+  {
+    id: 5,
+    name: "Swaolamb",
+    cat: "Poster Design",
+    desc: "A conceptual branding project for Cherubica Labs, an evil corporation that genetically engineers pets.",
+    img: SwaolambThumb,
+    route: "/swaolamb",
+  },
+];
+
+function GraphicDesignPage() {
   const navigate = useNavigate();
 
-  const projects = [
-    {
-      id: 1,
-      name: "Underbroth",
-      cat: "Package Design",
-      desc: "A spicy canned soup concept inspired by Japanese vending machines and Chinese hot pot culture.",
-      img: UnderbrothThumb,
-      extraClass: "",
-      route: "/underbroth", // Add route path
-    },
-    {
-      id: 2,
-      name: "Ace of Cups",
-      cat: "Poster Design",
-      desc: "A visual identity for a conceptual café that combines coffee, pastries, and tarot.",
-      img: AceThumb,
-      extraClass: "",
-      route: "/ace-of-cups", // Add route for future
-    },
-    {
-      id: 3,
-      name: "Rebel Your Style",
-      cat: "Poster Design",
-      desc: "A poster design for a hypothetical exhibition at the National Canadian Museum of History focused on punk rock fashion.",
-      img: RebelThumb,
-      extraClass: "",
-      route: "/rebel-your-style", // Add route for future
-    },
-    {
-      id: 4,
-      name: "Manila City to El Nido Beach",
-      cat: "Brochure Design",
-      desc: "A 10-day travel itinerary for a tour of the Philippines, created as a reference to G Adventures.",
-      img: TravelThumb,
-      extraClass: "bottom-row",
-      route: "/manila-el-nido", // Add route for future
-    },
-    {
-      id: 5,
-      name: "Swaolamb",
-      cat: "Poster Design",
-      desc: "A conceptual branding project for Cherubica Labs, an evil corporation that genetically engineers pets.",
-      img: SwaolambThumb,
-      extraClass: "bottom-row",
-      route: "/swaolamb", // Add route for future
-    },
-  ];
-
   return (
-    <>
-      {/* Background Orbs */}
-      <div className="orb-canvas">
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-      </div>
+    <div className="gd-page">
+      <header className="gd-header">
+        <button
+          type="button"
+          className="gd-brand"
+          onClick={() => navigate("/")}
+          aria-label="Return to homepage"
+        >
+          <img src={logo} alt="" className="gd-logo" />
+          <span>MAI CRESPO</span>
+        </button>
+        <h1 className="gd-page-title">GRAPHIC DESIGN</h1>
+      </header>
 
-      <div className="page-layout">
-        <nav className="nav-pill">
-          <button className="back-btn" onClick={() => navigate(-1)}>
-            ← Back
-          </button>
-          <div className="nav-links">
-            <span className="nav-item" onClick={() => navigate("/")}>
-              Home
-            </span>
-            <span className="nav-sep">|</span>
-            <span
-              className="nav-item active"
-              onClick={() => navigate("/pick-a-card")}
-            >
-              Works
-            </span>
-            <span className="nav-sep">|</span>
-            <span className="nav-item" onClick={() => navigate("/about-me")}>
-              About Me
-            </span>
-          </div>
-          <img src={whiteLogo} className="nav-logo" alt="logo" />
-        </nav>
-
-        <div className="scrollable-content">
-          <h1 className="project-page-title">Graphic Design Projects</h1>
-          <div className="title-separator">
-            <hr />
-          </div>
-
-          <div className="gd-grid">
-            {projects.map((p) => (
-              <div key={p.id} className={`project-item ${p.extraClass}`}>
-                <h2 className="project-name">{p.name}</h2>
-                <div className="project-card2">
-                  <img src={p.img} alt={p.name} />
-                  <div className="gd-project-info">
-                    <h3>{p.cat}</h3>
-                    <p>{p.desc}</p>
-                    {/* ADD NAVIGATION HERE */}
-                    <button
-                      className="view-more-btn"
-                      onClick={() => navigate(p.route)}
-                    >
-                      VIEW MORE
-                    </button>
-                  </div>
-                </div>
+      <main className="gd-main">
+        <h2 className="gd-section-title">SELECTED WORKS</h2>
+        <div className="gd-projects-grid">
+          {projects.map((project) => (
+            <article className="gd-project" key={project.id}>
+              <h3 className="gd-project-title">{project.name}</h3>
+              <div className="gd-image-container">
+                <img
+                  src={project.img}
+                  alt={`${project.name} project thumbnail`}
+                />
               </div>
-            ))}
-          </div>
+              <div className="gd-project-info">
+                <h4 className="gd-category">{project.cat}</h4>
+                <p className="gd-description">{project.desc}</p>
+                <button
+                  type="button"
+                  className="gd-view-more"
+                  onClick={() => navigate(project.route)}
+                >
+                  VIEW MORE
+                </button>
+              </div>
+            </article>
+          ))}
         </div>
-        {/* Footer */}
-        <footer className="footer-pill">
-          <h3 className="footer-text">Don't be a stranger!</h3>
-          <div className="nav-links">
-            <a href="mailto:yomaicrespo@gmail.com" className="nav-item">
-              Email
-            </a>
-            <span className="nav-sep">|</span>
-            <a
-              href="https://linkedin.com/in/mai-crespo/ "
-              target="_blank"
-              rel="noreferrer"
-              className="nav-item"
-            >
-              LinkedIn
-            </a>
-            <span className="nav-sep">|</span>
-            <a
-              href="https://instagram.com/heymaicomics/ "
-              target="_blank"
-              rel="noreferrer"
-              className="nav-item"
-            >
-              Instagram
-            </a>
-          </div>
-          <a href="/MaiCrespoResume.pdf" target="_blank" rel="noreferrer">
-            <button className="pill-btn">MY RESUME</button>
+      </main>
+
+      <footer className="gd-footer">
+        <div className="gd-footer-links">
+          <a href="mailto:yomaicrespo@gmail.com">Email</a>
+          <span aria-hidden="true">|</span>
+          <a
+            href="https://linkedin.com/in/mai-crespo/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
           </a>
-        </footer>
-      </div>
-    </>
+          <span aria-hidden="true">|</span>
+          <a
+            href="https://instagram.com/heymaicomics/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Instagram
+          </a>
+        </div>
+        <button
+          type="button"
+          className="gd-footer-about"
+          onClick={() => navigate("/about-me")}
+        >
+          ABOUT ME
+        </button>
+        <a
+          className="gd-resume-link"
+          href="/Mai_Crespo_Resume.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          MY RESUME
+        </a>
+      </footer>
+    </div>
   );
-};
+}
 
 export default GraphicDesignPage;

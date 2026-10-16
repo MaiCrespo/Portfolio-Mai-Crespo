@@ -1,0 +1,398 @@
+/* SWAOLAMB — Independent Graphic Design case study */
+.swaolamb-page {
+  --swaolamb-bg: #e0dedc;
+  --swaolamb-ink: #111;
+  --swaolamb-line: rgba(0, 0, 0, 0.17);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--swaolamb-bg);
+  color: var(--swaolamb-ink);
+  font-family: "Neue Plak", sans-serif;
+}
+
+.swaolamb-page button,
+.swaolamb-page a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Navigation — same proportions as the UI/UX case-study header */
+.swaolamb-page .swaolamb-header {
+  width: min(calc(100% - 80px), 1600px);
+  margin: 0 auto;
+  padding: 30px 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  border: 0;
+  background: transparent;
+}
+.swaolamb-page .swaolamb-brand,
+.swaolamb-page .swaolamb-nav-category,
+.swaolamb-page .swaolamb-nav-project {
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #000;
+  white-space: nowrap;
+}
+.swaolamb-page .swaolamb-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 14px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.swaolamb-page .swaolamb-brand span {
+  font: inherit;
+  color: inherit;
+}
+.swaolamb-page .swaolamb-logo {
+  display: block;
+  width: 45px;
+  height: auto;
+  flex-shrink: 0;
+}
+.swaolamb-page .swaolamb-nav-category {
+  justify-self: center;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.swaolamb-page .swaolamb-nav-project {
+  justify-self: end;
+}
+.swaolamb-page .swaolamb-brand:hover,
+.swaolamb-page .swaolamb-nav-category:hover {
+  opacity: 0.65;
+}
+
+/* Overall editorial page width */
+.swaolamb-page .swaolamb-main {
+  width: min(calc(100% - 80px), 1600px);
+  margin: 0 auto;
+  flex: 1;
+}
+.swaolamb-page .swaolamb-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.swaolamb-page .swaolamb-topline {
+  border-top: 1px solid var(--swaolamb-line);
+  padding: 22px 0;
+}
+.swaolamb-page .swaolamb-topline > span,
+.swaolamb-page .swaolamb-index,
+.swaolamb-page .swaolamb-eyebrow,
+.swaolamb-page .swaolamb-meta-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.5;
+}
+/* Project masthead */
+.swaolamb-page .swaolamb-hero {
+  padding: clamp(45px, 7vw, 105px) 0 45px;
+}
+.swaolamb-page .swaolamb-eyebrow {
+  margin-bottom: 14px;
+}
+.swaolamb-page .swaolamb-title {
+  max-width: 1400px;
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(4.4rem, 12vw, 12rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 0.92;
+  color: var(--swaolamb-ink);
+  margin: 0 0 18px;
+}
+.swaolamb-page .swaolamb-subtitle {
+  font-size: clamp(1.1rem, 1.6vw, 1.45rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--swaolamb-ink);
+  margin: 0;
+}
+
+/* Feature artwork: natural aspect ratio, no cropping */
+.swaolamb-page .swaolamb-feature-image,
+.swaolamb-page .swaolamb-brochure-image {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 4vw, 60px);
+  border-radius: 24px;
+  background: #d3d0cd;
+}
+.swaolamb-page .swaolamb-feature-image img,
+.swaolamb-page .swaolamb-brochure-image img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 1050px;
+  object-fit: contain;
+  display: block;
+  border-radius: 10px;
+}
+.swaolamb-page .swaolamb-brochure-image {
+  background: #d0cecb;
+}
+
+/* Project overview and design context */
+.swaolamb-page .swaolamb-overview {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.45fr);
+  gap: clamp(36px, 6vw, 110px);
+  border-bottom: 1px solid var(--swaolamb-line);
+  padding: clamp(60px, 8vw, 125px) 0;
+}
+
+.swaolamb-page .swaolamb-section-name h2 {
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(2.3rem, 4vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  margin: 14px 0 0;
+  color: var(--swaolamb-ink);
+}
+.swaolamb-page .swaolamb-overview-body p {
+  max-width: 760px;
+  font-size: clamp(1rem, 1.1vw, 1.12rem);
+  line-height: 1.8;
+  color: var(--swaolamb-ink);
+  margin: 0 0 22px;
+}
+.swaolamb-page .swaolamb-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  border-top: 1px solid var(--swaolamb-line);
+  padding-top: 24px;
+  margin-top: 40px;
+}
+.swaolamb-page .swaolamb-meta > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.swaolamb-page .swaolamb-meta strong {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.swaolamb-page .swaolamb-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.swaolamb-page .swaolamb-tools span {
+  padding: 8px 14px;
+  border: 1px solid var(--swaolamb-line);
+  border-radius: 999px;
+  font-size: 0.84rem;
+}
+/* NEXT PROJECT — same treatment as Underbroth and Ace of Cups */
+.swaolamb-page .swaolamb-next-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  border-top: 1px solid var(--swaolamb-line);
+  padding: 34px 0 80px;
+  margin-top: 65px;
+}
+.swaolamb-page .swaolamb-next-section > span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.swaolamb-page .swaolamb-next-section button {
+  background: none;
+  padding: 0;
+  border: 0;
+  color: var(--swaolamb-ink);
+  text-align: right;
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(1.7rem, 3vw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.swaolamb-page .swaolamb-next-section button:hover {
+  opacity: 0.5;
+}
+
+/* Footer */
+.swaolamb-page .swaolamb-footer {
+  width: min(calc(100% - 80px), 1600px);
+  margin: auto auto 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0 40px;
+  border-top: 1px solid var(--swaolamb-line);
+}
+.swaolamb-page .swaolamb-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.swaolamb-page .swaolamb-footer-links a {
+  color: var(--swaolamb-ink);
+  text-decoration: none;
+}
+.swaolamb-page .swaolamb-footer-links a:hover {
+  text-decoration: underline;
+}
+.swaolamb-page .swaolamb-footer-about {
+  font-family: "Bayon", sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--swaolamb-ink);
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.swaolamb-page .swaolamb-resume {
+  justify-self: end;
+  text-decoration: none;
+  padding: 12px 26px;
+  border: 1px solid var(--swaolamb-ink);
+  border-radius: 999px;
+  color: var(--swaolamb-ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.swaolamb-page .swaolamb-resume:hover {
+  background: var(--swaolamb-ink);
+  color: var(--swaolamb-bg);
+}
+
+@media (max-width: 900px) {
+  .swaolamb-page .swaolamb-header,
+  .swaolamb-page .swaolamb-main,
+  .swaolamb-page .swaolamb-footer {
+    width: calc(100% - 40px);
+  }
+  .swaolamb-page .swaolamb-header {
+    padding: 25px 0 35px;
+    gap: 12px;
+  }
+  .swaolamb-page .swaolamb-brand,
+  .swaolamb-page .swaolamb-nav-category,
+  .swaolamb-page .swaolamb-nav-project {
+    font-size: clamp(1.05rem, 2.9vw, 1.8rem);
+  }
+  .swaolamb-page .swaolamb-logo {
+    width: 36px;
+  }
+  .swaolamb-page .swaolamb-overview {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .swaolamb-page .swaolamb-footer {
+    grid-template-columns: 1fr auto;
+  }
+  .swaolamb-page .swaolamb-footer-about {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+  }
+}
+@media (max-width: 600px) {
+  .swaolamb-page .swaolamb-header,
+  .swaolamb-page .swaolamb-main,
+  .swaolamb-page .swaolamb-footer {
+    width: calc(100% - 32px);
+  }
+  .swaolamb-page .swaolamb-header {
+    gap: 8px;
+    padding: 22px 0 28px;
+  }
+  .swaolamb-page .swaolamb-brand {
+    gap: 5px;
+  }
+  .swaolamb-page .swaolamb-logo {
+    width: 24px;
+  }
+  .swaolamb-page .swaolamb-brand,
+  .swaolamb-page .swaolamb-nav-category,
+  .swaolamb-page .swaolamb-nav-project {
+    font-size: clamp(0.73rem, 3.35vw, 1.1rem);
+  }
+  .swaolamb-page .swaolamb-hero {
+    padding: 44px 0 36px;
+  }
+  .swaolamb-page .swaolamb-title {
+    font-size: clamp(3.8rem, 15vw, 6.5rem);
+  }
+  .swaolamb-page .swaolamb-feature-image,
+  .swaolamb-page .swaolamb-brochure-image {
+    padding: 12px;
+    border-radius: 14px;
+  }
+  .swaolamb-page .swaolamb-meta {
+    grid-template-columns: 1fr;
+  }
+  .swaolamb-page .swaolamb-topline > span {
+    font-size: 0.65rem;
+  }
+  .swaolamb-page .swaolamb-next-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .swaolamb-page .swaolamb-next-section button {
+    text-align: left;
+  }
+  .swaolamb-page .swaolamb-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .swaolamb-page .swaolamb-footer-links {
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+}
+
+/* A single art print is the centerpiece of this case study. */
+.swaolamb-page .swaolamb-title {
+  font-size: clamp(4.2rem, 12vw, 11rem);
+}
+.swaolamb-page .swaolamb-feature-image {
+  padding: clamp(22px, 5vw, 80px);
+}
+.swaolamb-page .swaolamb-feature-image img {
+  width: 100%;
+  max-width: 980px;
+  max-height: none;
+  height: auto;
+  object-fit: contain;
+}
+@media (max-width: 600px) {
+  .swaolamb-page .swaolamb-title {
+    font-size: clamp(3.5rem, 13vw, 6rem);
+  }
+  .swaolamb-page .swaolamb-feature-image {
+    padding: 16px;
+  }
+}

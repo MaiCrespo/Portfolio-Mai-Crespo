@@ -21,30 +21,50 @@ function GotItCaseStudyNew() {
   const navigate = useNavigate();
   const [lightboxSrc, setLightboxSrc] = useState(null);
 
+  // Scroll to top when page loads
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Close lightbox on Escape key
+  // Close lightbox using Escape
   useEffect(() => {
     const handleKey = (e) => {
-      if (e.key === "Escape") setLightboxSrc(null);
+      if (e.key === "Escape") {
+        setLightboxSrc(null);
+      }
     };
+
     window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
+
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+    };
   }, []);
 
   const openLightbox = (src) => setLightboxSrc(src);
   const closeLightbox = () => setLightboxSrc(null);
 
   return (
-    <div className="page-layout">
-      {/* Lightbox Overlay */}
+    <div className="page-layout gotit-case-study">
+      {/* =====================================
+          LIGHTBOX
+      ===================================== */}
+
       {lightboxSrc && (
-        <div className="lightbox-overlay" onClick={closeLightbox}>
-          <button className="lightbox-close" onClick={closeLightbox}>
+        <div
+          className="lightbox-overlay"
+          onClick={closeLightbox}
+          role="presentation"
+        >
+          <button
+            type="button"
+            className="lightbox-close"
+            onClick={closeLightbox}
+            aria-label="Close image"
+          >
             ✕
           </button>
+
           <img
             src={lightboxSrc}
             alt="Enlarged view"
@@ -54,38 +74,44 @@ function GotItCaseStudyNew() {
         </div>
       )}
 
-      {/* Gradient Orbs Background */}
-      <div className="gradient-orbs">
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-        <div className="orb orb-3"></div>
-        <div className="orb orb-4"></div>
-        <div className="orb orb-5"></div>
-      </div>
+      {/* =====================================
+          NEW NAVIGATION
+      ===================================== */}
 
-      {/* Navigation */}
-      <nav className="nav-pill">
-        <button className="back-btn" onClick={() => navigate(-1)}>
-          ← Back
+      <header className="gotit-header">
+        {/* LEFT - BRAND */}
+        <button
+          type="button"
+          className="gotit-brand"
+          onClick={() => navigate("/")}
+          aria-label="Return to homepage"
+        >
+          <img src={whiteLogo} alt="" className="gotit-logo" />
+
+          <span>MAI CRESPO</span>
         </button>
-        <div className="nav-links">
-          <span onClick={() => navigate("/")} className="nav-item">
-            Home
-          </span>
-          <span className="nav-sep">|</span>
-          <span className="nav-item active">Works</span>
-          <span className="nav-sep">|</span>
-          <span className="nav-item" onClick={() => navigate("/about-me")}>
-            About Me
-          </span>
-        </div>
-        <img src={whiteLogo} className="nav-logo" alt="logo" />
-      </nav>
 
-      {/* Case Study Content */}
+        {/* CENTER - UI/UX */}
+        <button
+          type="button"
+          className="gotit-nav-category"
+          onClick={() => navigate("/uiux-design")}
+        >
+          UI/UX
+        </button>
+
+        {/* RIGHT - PROJECT */}
+        <span className="gotit-nav-project">GOT IT</span>
+      </header>
+
+      {/* =====================================
+          CASE STUDY CONTENT
+      ===================================== */}
+
       <main className="case-study-scroller">
         <div className="case-study-content">
-          {/* Hero Section */}
+          {/* HERO SECTION */}
+
           <section className="hero-section">
             <div className="hero-image-container">
               <img
@@ -95,21 +121,27 @@ function GotItCaseStudyNew() {
                 onClick={() => openLightbox(headerImage)}
               />
             </div>
+
             <div className="hero-text">
               <h1 className="project-title">
                 <strong>Got It</strong> is an accessible learning platform
                 designed to help Level 1 electrical apprentices navigate dense,
-                overwhelming textbooks.{" "}
+                overwhelming textbooks.
               </h1>
+
               <p className="project-subtitle">
                 Study Guide Website | UI Design Lead & Product Designer
               </p>
             </div>
           </section>
 
-          {/* Project Overview */}
+          {/* =====================================
+              PROJECT OVERVIEW
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">Project Overview</h2>
+
             <p className="section-text">
               Designed with accessibility at its core, the platform transforms
               complex textbooks into clear, structured, and visual learning
@@ -119,12 +151,14 @@ function GotItCaseStudyNew() {
               different learning styles, Got It helps users move from overwhelm
               to understanding with confidence.
             </p>
+
             <p className="section-text">
               As the UI Design Lead and Product Designer, I led the visual
               direction of the product, shaping the overall look and feel while
               ensuring the app and marketing materials were cohesive and
               visually aligned.
             </p>
+
             <div className="image-showcase">
               <img
                 src={studyingBC}
@@ -132,6 +166,7 @@ function GotItCaseStudyNew() {
                 className="showcase-image clickable-img"
                 onClick={() => openLightbox(studyingBC)}
               />
+
               <p>
                 BCIT Electrical Foundation Student Working in Workshop. (n.d.).
                 British Columbia Institute of Technology. Retrieved from
@@ -140,32 +175,42 @@ function GotItCaseStudyNew() {
             </div>
           </section>
 
-          {/* Role & Responsibilities */}
+          {/* =====================================
+              MY ROLE & RESPONSIBILITIES
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">My Role & Responsibilities</h2>
+
             <div className="role-grid">
               <div className="role-item">
                 <h3 className="role-title">UI Design Lead</h3>
+
                 <p className="role-desc">
                   Led the visual design system, creating a cohesive and
                   accessible interface that supports neurodiverse learners.
                 </p>
               </div>
+
               <div className="role-item">
                 <h3 className="role-title">Product Designer</h3>
+
                 <p className="role-desc">
                   Collaborated with stakeholders to define product requirements
                   and translate them into user-centered design solutions.
                 </p>
               </div>
+
               <div className="role-item">
                 <h3 className="role-title">Visual Design</h3>
+
                 <p className="role-desc">
                   Developed marketing materials and ensured brand consistency
                   across all touchpoints.
                 </p>
               </div>
             </div>
+
             <div className="image-showcase team-photo">
               <img
                 src={teamPhoto}
@@ -176,30 +221,43 @@ function GotItCaseStudyNew() {
             </div>
           </section>
 
-          {/* The Challenge */}
+          {/* =====================================
+              THE CHALLENGE
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">The Challenge</h2>
+
             <p className="section-text">
               Electrical trades education traditionally relies on dense
               textbooks and standardized testing, which can be challenging for
               neurodiverse students who may process information differently.
             </p>
+
             <p className="section-text">
               The challenge was to create a digital study guide that:
             </p>
+
             <ul className="challenge-list">
               <li>
                 Accommodates different learning styles and cognitive needs
               </li>
+
               <li>Makes complex technical content more digestible</li>
+
               <li>Maintains professional standards for trades education</li>
+
               <li>Provides an engaging and motivating learning experience</li>
             </ul>
           </section>
 
-          {/* User Research */}
+          {/* =====================================
+              USER RESEARCH
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">User Research & Personas</h2>
+
             <p className="section-text">
               I developed this user persona to ground design decisions in the
               authentic needs and behaviors of Level 1 electrical apprentices.
@@ -210,6 +268,7 @@ function GotItCaseStudyNew() {
               cognitive overload and practical stressors faced by apprentices
               during both classroom study and on-the-job application.
             </p>
+
             <div className="image-showcase">
               <img
                 src={persona}
@@ -220,14 +279,19 @@ function GotItCaseStudyNew() {
             </div>
           </section>
 
-          {/* Ideation & Design Process */}
+          {/* =====================================
+              IDEATION
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">Ideation & Design Process</h2>
+
             <p className="section-text">
               The design process involved extensive brainstorming, wireframing,
               and iterative design. We explored multiple approaches to ensure
               the final solution met the needs of our diverse user base.
             </p>
+
             <div className="image-showcase">
               <img
                 src={ideation}
@@ -238,9 +302,13 @@ function GotItCaseStudyNew() {
             </div>
           </section>
 
-          {/* Design System & Style Guide */}
+          {/* =====================================
+              DESIGN SYSTEM
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">Design System & Style Guide</h2>
+
             <p className="section-text">
               I developed this style guide to establish a cohesive visual
               identity for Got It, blending technical symbols with approachable
@@ -249,6 +317,7 @@ function GotItCaseStudyNew() {
               clear typographic hierarchy to ensure brand consistency across all
               digital touchpoints.
             </p>
+
             <div className="image-showcase">
               <img
                 src={styleGuide}
@@ -259,64 +328,97 @@ function GotItCaseStudyNew() {
             </div>
           </section>
 
-          {/* UI Design & Homepage */}
+          {/* =====================================
+              HOMEPAGE DESIGN
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">Homepage Design</h2>
+
             <p className="section-text">
               The homepage serves as the gateway to the learning experience,
               featuring clear navigation, accessible color contrast, and an
               intuitive layout that guides students to their study materials.
             </p>
+
             <div className="embed-container">
               <iframe
                 src="https://got-it-phi.vercel.app/"
                 title="Got It Homepage"
                 className="site-embed"
+                loading="lazy"
                 allowFullScreen
               />
             </div>
           </section>
 
-          {/* Mockups & Prototypes */}
+          {/* =====================================
+              DESIGN SCREENS
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">Design Screens</h2>
+
             <p className="section-text">
               High-fidelity mockups and prototypes were created to visualize the
               final product and test with users before development. These
               mockups showcase the interface across different devices and use
               cases.
             </p>
+
             <div className="embed-container">
               <iframe
                 src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/ZehM4zoUzKhYDgKwGjWggV/Got-It---TradeAccess?node-id=3950-10678%26t=rG2xRTp1UuSELbJb-4"
                 title="Got It Figma Mockups"
                 className="site-embed"
+                loading="lazy"
                 allowFullScreen
               />
             </div>
           </section>
 
-          {/* Omega Screens */}
+          {/* =====================================
+              VERCEL PROTOTYPE
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">The Vercel Prototype</h2>
+
             <p className="section-text">
               Detailed interface screens showing the learning modules and study
               materials with careful attention to accessibility and user
               experience.
             </p>
-            <div className="embed-container">
+
+            {/* WIDER PROTOTYPE */}
+            <div className="embed-container prototype-embed">
               <iframe
                 src="https://got-it-phi.vercel.app/dashboard"
-                title="Got It Dashboard"
-                className="site-embed"
+                title="Got It Interactive Dashboard Prototype"
+                className="site-embed prototype-iframe"
+                loading="lazy"
                 allowFullScreen
               />
             </div>
+
+            {/* OPEN FULL PROTOTYPE */}
+            <a
+              href="https://got-it-phi.vercel.app/dashboard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="prototype-open-link"
+            >
+              OPEN FULL PROTOTYPE ↗
+            </a>
           </section>
 
-          {/* Marketing Materials */}
+          {/* =====================================
+              MARKETING MATERIALS
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">Marketing & Brand Materials</h2>
+
             <p className="section-text">
               As part of the comprehensive design approach, I developed various
               marketing materials including brochures, business cards, and
@@ -324,6 +426,7 @@ function GotItCaseStudyNew() {
             </p>
 
             <h3 className="subsection-title">Brochures</h3>
+
             <div className="image-grid-2">
               <img
                 src={brochure}
@@ -331,6 +434,7 @@ function GotItCaseStudyNew() {
                 className="grid-image clickable-img"
                 onClick={() => openLightbox(brochure)}
               />
+
               <img
                 src={brochure2}
                 alt="Brochure Back"
@@ -340,6 +444,7 @@ function GotItCaseStudyNew() {
             </div>
 
             <h3 className="subsection-title">Business Cards</h3>
+
             <div className="image-grid-2">
               <img
                 src={businessCards}
@@ -347,6 +452,7 @@ function GotItCaseStudyNew() {
                 className="grid-image clickable-img"
                 onClick={() => openLightbox(businessCards)}
               />
+
               <img
                 src={businessCards2}
                 alt="Business Cards 2"
@@ -356,6 +462,7 @@ function GotItCaseStudyNew() {
             </div>
 
             <h3 className="subsection-title">Promotional Stickers</h3>
+
             <div className="image-showcase">
               <img
                 src={stickers}
@@ -366,33 +473,44 @@ function GotItCaseStudyNew() {
             </div>
           </section>
 
-          {/* Key Features */}
+          {/* =====================================
+              KEY DESIGN FEATURES
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">Key Design Features</h2>
+
             <div className="features-grid">
               <div className="feature-card">
                 <h3 className="feature-title">Accessible Color System</h3>
+
                 <p className="feature-text">
                   High contrast color palette with WCAG AAA compliance for
                   optimal readability and reduced visual strain.
                 </p>
               </div>
+
               <div className="feature-card">
                 <h3 className="feature-title">Clear Information Hierarchy</h3>
+
                 <p className="feature-text">
                   Structured layouts with clear visual hierarchy to help
                   students navigate and process complex information.
                 </p>
               </div>
+
               <div className="feature-card">
                 <h3 className="feature-title">Multiple Learning Modes</h3>
+
                 <p className="feature-text">
                   Visual, textual, and interactive content formats to
                   accommodate different learning preferences.
                 </p>
               </div>
+
               <div className="feature-card">
                 <h3 className="feature-title">Consistent Design Language</h3>
+
                 <p className="feature-text">
                   Cohesive visual system across web platform and marketing
                   materials for brand recognition.
@@ -401,9 +519,13 @@ function GotItCaseStudyNew() {
             </div>
           </section>
 
-          {/* Outcome & Impact */}
+          {/* =====================================
+              OUTCOME & IMPACT
+          ===================================== */}
+
           <section className="content-section">
             <h2 className="section-heading">Outcome & Impact</h2>
+
             <p className="section-text">
               The Got It platform successfully provides an accessible and
               engaging learning experience for neurodiverse electrical trades
@@ -411,15 +533,18 @@ function GotItCaseStudyNew() {
               all touchpoints while maintaining flexibility for different
               learning needs.
             </p>
+
             <div className="impact-stats">
               <div className="stat-item">
                 <div className="stat-value">WCAG AAA</div>
                 <div className="stat-label">Accessibility Standard</div>
               </div>
+
               <div className="stat-item">
                 <div className="stat-value">100%</div>
                 <div className="stat-label">Design System Coverage</div>
               </div>
+
               <div className="stat-item">
                 <div className="stat-value">Multiple</div>
                 <div className="stat-label">Learning Modes</div>
@@ -427,9 +552,13 @@ function GotItCaseStudyNew() {
             </div>
           </section>
 
-          {/* Learnings */}
+          {/* =====================================
+              KEY LEARNINGS
+          ===================================== */}
+
           <section className="content-section last-section">
             <h2 className="section-heading">Key Learnings</h2>
+
             <p className="section-text">
               This project reinforced the importance of designing with empathy
               and understanding the specific needs of diverse user groups.
@@ -437,6 +566,7 @@ function GotItCaseStudyNew() {
               that accessibility isn't just about compliance—it's about creating
               genuinely inclusive experiences that empower all learners.
             </p>
+
             <p className="section-text">
               Leading the UI design also strengthened my ability to maintain
               visual consistency across multiple platforms while adapting to
@@ -448,14 +578,20 @@ function GotItCaseStudyNew() {
         </div>
       </main>
 
-      {/* Footer */}
+      {/* =====================================
+          FOOTER
+      ===================================== */}
+
       <footer className="footer-pill">
         <h3 className="footer-text">Don't be a stranger!</h3>
+
         <div className="nav-links">
           <a href="mailto:yomaicrespo@gmail.com" className="nav-item">
             Email
           </a>
+
           <span className="nav-sep">|</span>
+
           <a
             href="https://www.linkedin.com/in/mai-crespo/"
             target="_blank"
@@ -464,7 +600,9 @@ function GotItCaseStudyNew() {
           >
             LinkedIn
           </a>
+
           <span className="nav-sep">|</span>
+
           <a
             href="https://www.instagram.com/heymaicomics/"
             target="_blank"
@@ -474,7 +612,8 @@ function GotItCaseStudyNew() {
             Instagram
           </a>
         </div>
-        <a href="/MaiCrespoResume.pdf" target="_blank" rel="noreferrer">
+
+        <a href="/Mai_Crespo_Resume.pdf" target="_blank" rel="noreferrer">
           <button className="pill-btn">MY RESUME</button>
         </a>
       </footer>

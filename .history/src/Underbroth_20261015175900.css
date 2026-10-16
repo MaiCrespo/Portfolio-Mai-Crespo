@@ -1,0 +1,419 @@
+/* UNDERBROTH — STANDALONE PROJECT STYLES */
+.underbroth-page {
+  --ub-bg: #e0dedc;
+  --ub-ink: #171717;
+  --ub-muted: #575451;
+  --ub-line: rgba(23, 23, 23, 0.19);
+  background: var(--ub-bg);
+  color: var(--ub-ink);
+  min-height: 100vh;
+  width: 100%;
+  font-family: "Neue Plak", sans-serif;
+  padding: 30px clamp(20px, 5vw, 80px) 36px;
+}
+.underbroth-page *,
+.underbroth-page *::before,
+.underbroth-page *::after {
+  box-sizing: border-box;
+}
+.underbroth-page button,
+.underbroth-page a {
+  cursor: pointer;
+}
+.underbroth-page button {
+  font: inherit;
+}
+
+/* NAVIGATION */
+.underbroth-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto 54px;
+}
+.underbroth-brand,
+.underbroth-header-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  padding: 0;
+  border: 0;
+  color: var(--ub-ink);
+  font-family: "Bayon", sans-serif !important;
+  font-size: clamp(1.25rem, 2.5vw, 2.45rem);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+.underbroth-brand {
+  justify-self: start;
+}
+.underbroth-brand img {
+  display: block;
+  width: clamp(30px, 3vw, 45px);
+  height: auto;
+}
+.underbroth-header-link {
+  justify-self: center;
+}
+.underbroth-header-name {
+  justify-self: end;
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(1.25rem, 2.5vw, 2.45rem);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+.underbroth-brand:hover,
+.underbroth-header-link:hover {
+  opacity: 0.6;
+}
+
+/* PROJECT INTRO */
+.underbroth-main {
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+.underbroth-eyebrow,
+.underbroth-section-kicker,
+.underbroth-flavors-heading > span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+.underbroth-eyebrow {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--ub-line);
+  padding: 16px 0 28px;
+}
+.underbroth-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 36px;
+  padding-bottom: 38px;
+}
+.underbroth-intro h1 {
+  margin: 0;
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(4.6rem, 12vw, 12rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+}
+.underbroth-tagline {
+  margin: 10px 0 0;
+  font-size: clamp(1rem, 1.7vw, 1.4rem);
+  font-style: italic;
+}
+.underbroth-intro-note {
+  margin: 0 0 6px;
+  max-width: 265px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ub-muted);
+}
+.underbroth-hero-art {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #cac6c1;
+}
+.underbroth-hero-art img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* CONCEPT */
+.underbroth-overview {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(0, 2fr);
+  gap: clamp(30px, 7vw, 120px);
+  padding: clamp(65px, 9vw, 130px) 0;
+  border-bottom: 1px solid var(--ub-line);
+}
+.underbroth-overview-copy {
+  max-width: 920px;
+}
+.underbroth-overview-copy h2,
+.underbroth-flavors-heading h2 {
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(2.6rem, 5.4vw, 5.8rem);
+  font-weight: 400;
+  line-height: 1;
+  margin: 0 0 28px;
+}
+.underbroth-overview-copy > p {
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  line-height: 1.7;
+  max-width: 780px;
+  margin: 0;
+}
+.underbroth-meta {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  margin-top: 46px;
+  padding-top: 22px;
+  border-top: 1px solid var(--ub-line);
+}
+.underbroth-meta > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.95rem;
+}
+.underbroth-meta-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ub-muted);
+}
+
+/* FLAVORS */
+.underbroth-flavors {
+  padding-top: clamp(65px, 8vw, 115px);
+}
+.underbroth-flavors-heading {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(0, 2fr);
+  gap: clamp(30px, 7vw, 120px);
+  padding-bottom: 45px;
+}
+.underbroth-flavors-heading h2 {
+  max-width: 800px;
+  margin-bottom: 0;
+}
+.underbroth-flavor {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(30px, 6vw, 110px);
+  align-items: center;
+  padding: clamp(42px, 6vw, 95px) 0;
+  border-top: 1px solid var(--ub-line);
+}
+.underbroth-flavor:nth-of-type(even) {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+.underbroth-flavor:nth-of-type(even) .underbroth-flavor-art {
+  order: 2;
+}
+.underbroth-flavor:nth-of-type(even) .underbroth-flavor-copy {
+  order: 1;
+}
+.underbroth-flavor-art {
+  width: 100%;
+  min-width: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.underbroth-flavor-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.underbroth-flavor-copy {
+  max-width: 490px;
+}
+.underbroth-flavor-index {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 25px;
+}
+.underbroth-flavor-copy h3 {
+  font-family: "Bayon", sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 1;
+  margin: 0 0 26px;
+}
+.underbroth-flavor-copy p {
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* NEXT PROJECT */
+.underbroth-next {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  border-top: 1px solid var(--ub-line);
+  padding: 34px 0 80px;
+}
+.underbroth-next > span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.underbroth-next button {
+  background: none;
+  padding: 0;
+  border: 0;
+  color: var(--ub-ink);
+  text-align: right;
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(1.7rem, 3vw, 3rem);
+  line-height: 1;
+  transition: opacity 0.2s;
+}
+.underbroth-next button:hover {
+  opacity: 0.5;
+}
+
+/* FOOTER */
+.underbroth-footer {
+  max-width: 1600px;
+  margin: 0 auto;
+  border-top: 1px solid var(--ub-line);
+  padding-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.underbroth-socials {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+.underbroth-socials a {
+  text-decoration: none;
+  color: var(--ub-ink);
+}
+.underbroth-socials a:hover {
+  text-decoration: underline;
+}
+.underbroth-socials > span {
+  opacity: 0.35;
+}
+.underbroth-about {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ub-ink);
+  font-family: "Bayon", sans-serif !important;
+  font-size: 2rem;
+}
+.underbroth-resume {
+  justify-self: end;
+  padding: 10px 25px;
+  border: 1px solid var(--ub-ink);
+  border-radius: 50px;
+  text-decoration: none;
+  color: var(--ub-ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.underbroth-resume:hover {
+  background: var(--ub-ink);
+  color: var(--ub-bg);
+}
+
+@media (max-width: 900px) {
+  .underbroth-header {
+    margin-bottom: 35px;
+  }
+  .underbroth-intro {
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .underbroth-overview,
+  .underbroth-flavors-heading {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .underbroth-flavor,
+  .underbroth-flavor:nth-of-type(even) {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .underbroth-footer {
+    grid-template-columns: 1fr auto;
+  }
+  .underbroth-about {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+  }
+}
+@media (max-width: 650px) {
+  .underbroth-page {
+    padding: 22px 16px 30px;
+  }
+  .underbroth-header {
+    gap: 7px;
+  }
+  .underbroth-brand,
+  .underbroth-header-link,
+  .underbroth-header-name {
+    font-size: clamp(0.95rem, 3.6vw, 1.4rem);
+  }
+  .underbroth-brand {
+    gap: 6px;
+  }
+  .underbroth-brand img {
+    width: 25px;
+  }
+  .underbroth-eyebrow {
+    font-size: 0.65rem;
+  }
+  .underbroth-intro h1 {
+    font-size: clamp(3.8rem, 15vw, 7rem);
+  }
+  .underbroth-hero-art {
+    border-radius: 12px;
+  }
+  .underbroth-overview {
+    padding: 60px 0;
+  }
+  .underbroth-meta {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .underbroth-flavor,
+  .underbroth-flavor:nth-of-type(even) {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .underbroth-flavor:nth-of-type(even) .underbroth-flavor-art,
+  .underbroth-flavor:nth-of-type(even) .underbroth-flavor-copy {
+    order: initial;
+  }
+  .underbroth-flavor-copy h3 {
+    font-size: 3rem;
+  }
+  .underbroth-next {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .underbroth-next button {
+    text-align: left;
+  }
+  .underbroth-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .underbroth-socials {
+    justify-content: center;
+  }
+}
