@@ -48,9 +48,9 @@ function App() {
           </div>
           <div
             className="tarot-card c-right"
-            onClick={() => navigate("/illustrations")}
+            onClick={() => navigate("/Odds-and-Ends")}
           >
-            <img src={cardIllustrations} alt="Illustrations" />
+            <img src={cardIllustrations} alt="Odds and Ends" />
           </div>
         </div>
       </main>

@@ -14,6 +14,7 @@ import LoadingPage from "./LoadingPage";
 import AboutMe from "./AboutMe";
 import TheDescentCaseStudy from "./TheDescentCaseStudy";
 import DaybreakCaseStudy from "./DaybreakCaseStudy";
+import OddsAndEnds from "./OddsAndEnds";
 
 import defaultCursor from "./assets/misc/Default.png";
 import onClickCursor from "./assets/misc/OnClick.png";
@@ -31,7 +32,7 @@ function AppWrapper() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Custom cursor - applied globally
+  // Global custom cursor
   useEffect(() => {
     const style = document.createElement("style");
     style.id = "hide-cursor";
@@ -49,14 +50,15 @@ function AppWrapper() {
       if (!cursorRef.current) return;
 
       cursorRef.current.style.backgroundImage = `url(${onClickCursor})`;
-      cursorRef.current.style.transform = `translate(-50%, -50%) rotate(45deg) scale(0.9)`;
+      cursorRef.current.style.transform =
+        "translate(-50%, -50%) rotate(45deg) scale(0.9)";
     };
 
     const handleMouseUp = () => {
       if (!cursorRef.current) return;
 
       cursorRef.current.style.backgroundImage = `url(${defaultCursor})`;
-      cursorRef.current.style.transform = `translate(-50%, -50%) rotate(45deg)`;
+      cursorRef.current.style.transform = "translate(-50%, -50%) rotate(45deg)";
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -73,7 +75,7 @@ function AppWrapper() {
 
   return (
     <>
-      {/* Global Custom Cursor */}
+      {/* Global custom cursor */}
       <div
         ref={cursorRef}
         style={{
@@ -99,7 +101,7 @@ function AppWrapper() {
           {/* HOMEPAGE */}
           <Route path="/" element={<App />} />
 
-          {/* Redirect old card selection page to homepage */}
+          {/* Redirect old card selection URL to homepage */}
           <Route path="/pick-a-card" element={<Navigate to="/" replace />} />
 
           {/* UI/UX DESIGN */}
@@ -116,6 +118,15 @@ function AppWrapper() {
           <Route path="/rebel-your-style" element={<RebelYourStyle />} />
           <Route path="/manila-el-nido" element={<ManilaElnido />} />
           <Route path="/swaolamb" element={<Swaolamb />} />
+
+          {/* ODDS & ENDS */}
+          <Route path="/odds-and-ends" element={<OddsAndEnds />} />
+
+          {/* Redirect old Illustrations URL */}
+          <Route
+            path="/illustrations"
+            element={<Navigate to="/odds-and-ends" replace />}
+          />
 
           {/* ABOUT ME */}
           <Route path="/about-me" element={<AboutMe />} />
