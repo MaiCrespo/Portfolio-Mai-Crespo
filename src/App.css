@@ -543,3 +543,82 @@ html {
     width: 160px;
   }
 }
+
+/* =========================================
+   LANDING PAGE - MOBILE FOOTER FIX
+========================================= */
+
+@media (max-width: 768px) {
+  .landing-page .landing-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 30px 0;
+    text-align: center;
+  }
+
+  /* SOCIAL LINKS */
+  .landing-page .footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .landing-page .footer-link {
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  /* ABOUT ME */
+  .landing-page .footer-about {
+    display: block;
+    width: auto;
+    font-family: "Bayon", sans-serif;
+    font-size: 2rem;
+    line-height: 1.1;
+    white-space: nowrap;
+    text-align: center;
+    margin: 0;
+  }
+
+  /* RESUME BUTTON */
+  .landing-page .footer-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 175px;
+    max-width: 100%;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+
+/* EXTRA SMALL PHONES */
+@media (max-width: 380px) {
+  .landing-page .landing-footer {
+    gap: 20px;
+  }
+
+  .landing-page .footer-links {
+    gap: 8px;
+  }
+
+  .landing-page .footer-link {
+    font-size: 0.8rem;
+  }
+
+  .landing-page .footer-about {
+    font-size: 1.8rem;
+  }
+}
