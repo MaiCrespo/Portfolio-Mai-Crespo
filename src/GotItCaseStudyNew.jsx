@@ -582,39 +582,47 @@ function GotItCaseStudyNew() {
           FOOTER
       ===================================== */}
 
-      <footer className="footer-pill">
-        <h3 className="footer-text">Don't be a stranger!</h3>
+      {/* FOOTER */}
+      <footer className="case-study-footer">
+        <div className="case-study-footer-links">
+          <a href="mailto:yomaicrespo@gmail.com">Email</a>
 
-        <div className="nav-links">
-          <a href="mailto:yomaicrespo@gmail.com" className="nav-item">
-            Email
-          </a>
-
-          <span className="nav-sep">|</span>
+          <span>|</span>
 
           <a
-            href="https://www.linkedin.com/in/mai-crespo/"
+            href="https://linkedin.com/in/mai-crespo/"
             target="_blank"
             rel="noopener noreferrer"
-            className="nav-item"
           >
             LinkedIn
           </a>
 
-          <span className="nav-sep">|</span>
+          <span>|</span>
 
           <a
-            href="https://www.instagram.com/heymaicomics/"
+            href="https://instagram.com/heymaicomics/"
             target="_blank"
             rel="noopener noreferrer"
-            className="nav-item"
           >
             Instagram
           </a>
         </div>
 
-        <a href="/Mai_Crespo_Resume.pdf" target="_blank" rel="noreferrer">
-          <button className="pill-btn">MY RESUME</button>
+        <button
+          type="button"
+          className="case-study-footer-about"
+          onClick={() => navigate("/about-me")}
+        >
+          ABOUT ME
+        </button>
+
+        <a
+          href="/Mai_Crespo_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="case-study-resume-btn"
+        >
+          MY RESUME
         </a>
       </footer>
     </div>

@@ -933,3 +933,157 @@
     border-radius: 12px;
   }
 }
+
+/* =========================================
+   CASE STUDY FOOTER
+   Matches Graphic Design projects
+========================================= */
+
+.case-study-footer {
+  width: min(calc(100% - 80px), 1600px);
+  margin: 70px auto 0;
+  padding: 45px 0 50px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 24px;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.18);
+  background: transparent;
+}
+
+/* SOCIAL LINKS */
+
+.case-study-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.case-study-footer-links a {
+  font-family: "Neue Plak", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.case-study-footer-links a:hover {
+  opacity: 0.55;
+}
+
+.case-study-footer-links span {
+  color: #1a1a1a;
+}
+
+/* ABOUT ME */
+
+.case-study-footer-about {
+  justify-self: center;
+
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+
+  font-family: "Bayon", sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #111;
+
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.case-study-footer-about:hover {
+  opacity: 0.6;
+}
+
+/* RESUME BUTTON */
+
+.case-study-resume-btn {
+  justify-self: end;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 30px;
+  border: 1.5px solid #111;
+  border-radius: 100px;
+  background: transparent;
+
+  font-family: "Neue Plak", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.case-study-resume-btn:hover {
+  background: #111;
+  color: #e0dedc;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .case-study-footer {
+    width: calc(100% - 40px);
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 28px;
+    padding: 40px 0;
+    margin-top: 50px;
+  }
+
+  .case-study-footer-links {
+    justify-content: center;
+  }
+
+  .case-study-footer-about,
+  .case-study-resume-btn {
+    justify-self: center;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .case-study-footer {
+    width: calc(100% - 32px);
+    gap: 28px;
+    padding: 35px 0 45px;
+  }
+
+  .case-study-footer-links {
+    gap: 12px;
+  }
+
+  .case-study-footer-links a {
+    font-size: 0.9rem;
+  }
+
+  .case-study-footer-about {
+    font-size: 2.5rem;
+  }
+
+  .case-study-resume-btn {
+    padding: 14px 30px;
+    min-width: 180px;
+  }
+}
