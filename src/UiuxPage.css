@@ -290,3 +290,39 @@
 .uiux-page .uiux-footer-sep {
   color: #000;
 }
+
+/* Entire UI/UX project card is clickable */
+
+.uiux-page .uiux-project-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.uiux-page .uiux-project-link:visited {
+  color: inherit;
+}
+
+.uiux-page .uiux-project-link:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 6px;
+  border-radius: 12px;
+}
+
+.uiux-page .uiux-view-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .uiux-page .uiux-project-link:hover .uiux-image-container img {
+    transform: scale(1.03);
+  }
+}

@@ -1,0 +1,328 @@
+/* UI/UX gallery — independently styled to match Graphic Design */
+.uiux-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #e0dedc;
+  color: #000;
+  font-family: "Neue Plak", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.uiux-page,
+.uiux-page * {
+  box-sizing: border-box;
+}
+
+.uiux-header,
+.uiux-main,
+.uiux-footer {
+  width: min(100% - 80px, 1600px);
+  margin-inline: auto;
+}
+
+/* Header: brand on the left, discipline on the right */
+.uiux-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding-block: 32px 56px;
+}
+.uiux-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #000;
+  font:
+    400 clamp(24px, 3vw, 44px)/1 "Bayon",
+    sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.uiux-logo {
+  display: block;
+  width: 48px;
+  height: auto;
+}
+.uiux-page-title {
+  margin: 0;
+  color: #000;
+  font:
+    400 clamp(32px, 5.2vw, 86px)/0.95 "Bayon",
+    sans-serif;
+  text-align: right;
+}
+
+.uiux-main {
+  flex: 1;
+  padding-bottom: 100px;
+}
+.uiux-section-title {
+  margin: 0 0 32px;
+  font:
+    400 clamp(38px, 5.2vw, 76px)/1 "Bayon",
+    sans-serif;
+  color: #000;
+}
+
+/* Three equal-width project columns; last two naturally flow to row two */
+.uiux-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 28px;
+  row-gap: 74px;
+}
+.uiux-project {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.uiux-project-title {
+  margin: 0 0 14px;
+  font:
+    400 clamp(24px, 2.6vw, 39px)/1.1 "Bayon",
+    sans-serif;
+  color: #000;
+}
+
+.uiux-page .uiux-image-container {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.uiux-page .uiux-image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: inherit;
+  transition: transform 0.4s ease;
+}
+
+.uiux-project:hover .uiux-image-container img {
+  transform: scale(1.035);
+}
+.uiux-project-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 18px;
+}
+.uiux-category {
+  margin: 0 0 9px;
+  color: #000;
+  font:
+    700 16px/1.4 "Neue Plak",
+    sans-serif;
+}
+.uiux-description {
+  margin: 0 0 20px;
+  color: #202020;
+  font:
+    400 15px/1.55 "Neue Plak",
+    sans-serif;
+  flex: 1;
+}
+.uiux-view-more {
+  align-self: flex-start;
+  padding: 11px 22px;
+  border: 1px solid #000;
+  border-radius: 999px;
+  background: transparent;
+  color: #000;
+  font:
+    700 13px/1 "Neue Plak",
+    sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.uiux-view-more:hover,
+.uiux-view-more:focus-visible {
+  background: #000;
+  color: #e0dedc;
+}
+
+/* Footer matches the clean UI/UX gallery treatment */
+.uiux-footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: end;
+  padding-block: 30px 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.35);
+}
+.uiux-footer-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.uiux-footer-links a,
+.uiux-footer-links span {
+  color: #000;
+  font:
+    400 15px/1.4 "Neue Plak",
+    sans-serif;
+  text-decoration: none;
+}
+.uiux-footer-links a:hover {
+  text-decoration: underline;
+}
+.uiux-footer-about {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font:
+    400 clamp(28px, 3.2vw, 50px)/1 "Bayon",
+    sans-serif;
+  cursor: pointer;
+}
+.uiux-resume-link {
+  justify-self: end;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid #000;
+  color: #000;
+  font:
+    700 13px/1 "Neue Plak",
+    sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.uiux-resume-link:hover {
+  background: #000;
+  color: #e0dedc;
+}
+
+@media (max-width: 950px) {
+  .uiux-header,
+  .uiux-main,
+  .uiux-footer {
+    width: calc(100% - 48px);
+  }
+  .uiux-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px 22px;
+  }
+  .uiux-header {
+    padding-bottom: 44px;
+  }
+  .uiux-footer {
+    grid-template-columns: 1fr auto;
+  }
+  .uiux-footer-about {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .uiux-header,
+  .uiux-main,
+  .uiux-footer {
+    width: calc(100% - 32px);
+  }
+  .uiux-header {
+    padding-block: 24px 40px;
+    align-items: center;
+  }
+  .uiux-logo {
+    width: 30px;
+  }
+  .uiux-brand {
+    font-size: 21px;
+    gap: 7px;
+  }
+  .uiux-page-title {
+    font-size: clamp(27px, 8vw, 42px);
+  }
+  .uiux-section-title {
+    margin-bottom: 22px;
+  }
+  .uiux-projects-grid {
+    grid-template-columns: 1fr;
+    row-gap: 44px;
+  }
+  .uiux-project-title {
+    font-size: 32px;
+  }
+  .uiux-main {
+    padding-bottom: 64px;
+  }
+  .uiux-footer {
+    grid-template-columns: 1fr;
+    align-items: center;
+    text-align: center;
+    gap: 25px;
+  }
+  .uiux-footer-about {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .uiux-footer-links {
+    justify-content: center;
+  }
+  .uiux-resume-link {
+    justify-self: center;
+  }
+}
+
+/* Brand name uses an inner span in the existing UI/UX JSX */
+.uiux-page .uiux-brand-name {
+  font: inherit;
+  color: inherit;
+}
+.uiux-page .uiux-footer-sep {
+  color: #000;
+}
+
+/* Entire UI/UX project card is clickable */
+
+.uiux-page .uiux-project-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.uiux-page .uiux-project-link:visited {
+  color: inherit;
+}
+
+.uiux-page .uiux-project-link:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 6px;
+  border-radius: 12px;
+}
+
+.uiux-page .uiux-view-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .uiux-page .uiux-project-link:hover .uiux-image-container img {
+    transform: scale(1.03);
+  }
+}

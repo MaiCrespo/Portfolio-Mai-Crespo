@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./UiuxPage.css";
 
 // Assets
@@ -64,31 +64,31 @@ function UiuxPage() {
         <div className="uiux-projects-grid">
           {projects.map((project) => (
             <article key={project.id} className="uiux-project">
-              {/* PROJECT TITLE */}
-              <h3 className="uiux-project-title">{project.name}</h3>
+              <Link
+                to={project.route}
+                className="uiux-project-link"
+                aria-label={`View ${project.name} case study`}
+              >
+                {/* PROJECT TITLE */}
+                <h3 className="uiux-project-title">{project.name}</h3>
 
-              {/* PROJECT IMAGE */}
-              <div className="uiux-image-container">
-                <img
-                  src={project.img}
-                  alt={`${project.name} project thumbnail`}
-                />
-              </div>
+                {/* PROJECT IMAGE */}
+                <div className="uiux-image-container">
+                  <img
+                    src={project.img}
+                    alt={`${project.name} project thumbnail`}
+                  />
+                </div>
 
-              {/* PROJECT INFORMATION */}
-              <div className="uiux-project-info">
-                <h4 className="uiux-category">{project.cat}</h4>
+                {/* PROJECT INFORMATION */}
+                <div className="uiux-project-info">
+                  <h4 className="uiux-category">{project.cat}</h4>
 
-                <p className="uiux-description">{project.desc}</p>
+                  <p className="uiux-description">{project.desc}</p>
 
-                <button
-                  type="button"
-                  className="uiux-view-more"
-                  onClick={() => navigate(project.route)}
-                >
-                  VIEW MORE
-                </button>
-              </div>
+                  <span className="uiux-view-more">VIEW MORE</span>
+                </div>
+              </Link>
             </article>
           ))}
         </div>

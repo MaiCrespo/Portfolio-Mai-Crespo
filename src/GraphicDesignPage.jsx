@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./GraphicDesignPage.css";
 
 import logo from "./assets/Head@300x.png";
@@ -67,32 +67,38 @@ function GraphicDesignPage() {
           <img src={logo} alt="" className="gd-logo" />
           <span>MAI CRESPO</span>
         </button>
+
         <h1 className="gd-page-title">GRAPHIC DESIGN</h1>
       </header>
 
       <main className="gd-main">
         <h2 className="gd-section-title">SELECTED WORKS</h2>
+
         <div className="gd-projects-grid">
           {projects.map((project) => (
             <article className="gd-project" key={project.id}>
-              <h3 className="gd-project-title">{project.name}</h3>
-              <div className="gd-image-container">
-                <img
-                  src={project.img}
-                  alt={`${project.name} project thumbnail`}
-                />
-              </div>
-              <div className="gd-project-info">
-                <h4 className="gd-category">{project.cat}</h4>
-                <p className="gd-description">{project.desc}</p>
-                <button
-                  type="button"
-                  className="gd-view-more"
-                  onClick={() => navigate(project.route)}
-                >
-                  VIEW MORE
-                </button>
-              </div>
+              <Link
+                to={project.route}
+                className="gd-project-link"
+                aria-label={`View ${project.name} project`}
+              >
+                <h3 className="gd-project-title">{project.name}</h3>
+
+                <div className="gd-image-container">
+                  <img
+                    src={project.img}
+                    alt={`${project.name} project thumbnail`}
+                  />
+                </div>
+
+                <div className="gd-project-info">
+                  <h4 className="gd-category">{project.cat}</h4>
+
+                  <p className="gd-description">{project.desc}</p>
+
+                  <span className="gd-view-more">VIEW MORE</span>
+                </div>
+              </Link>
             </article>
           ))}
         </div>
@@ -101,7 +107,9 @@ function GraphicDesignPage() {
       <footer className="gd-footer">
         <div className="gd-footer-links">
           <a href="mailto:yomaicrespo@gmail.com">Email</a>
+
           <span aria-hidden="true">|</span>
+
           <a
             href="https://linkedin.com/in/mai-crespo/"
             target="_blank"
@@ -109,7 +117,9 @@ function GraphicDesignPage() {
           >
             LinkedIn
           </a>
+
           <span aria-hidden="true">|</span>
+
           <a
             href="https://instagram.com/heymaicomics/"
             target="_blank"
@@ -118,6 +128,7 @@ function GraphicDesignPage() {
             Instagram
           </a>
         </div>
+
         <button
           type="button"
           className="gd-footer-about"
@@ -125,6 +136,7 @@ function GraphicDesignPage() {
         >
           ABOUT ME
         </button>
+
         <a
           className="gd-resume-link"
           href="/Mai_Crespo_Resume.pdf"

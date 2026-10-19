@@ -280,3 +280,39 @@
     justify-self: center;
   }
 }
+
+/* Entire Graphic Design project card is clickable */
+
+.gd-page .gd-project-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.gd-page .gd-project-link:visited {
+  color: inherit;
+}
+
+.gd-page .gd-project-link:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 6px;
+  border-radius: 12px;
+}
+
+.gd-page .gd-view-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .gd-page .gd-project-link:hover .gd-image-container img {
+    transform: scale(1.03);
+  }
+}
